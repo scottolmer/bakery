@@ -91,8 +91,11 @@ function displayMixSheet(mixSheet) {
     let html = '';
 
     for (const bread of mixSheet.breads) {
+        // Add batch highlighting class if this is a batch
+        const batchClass = bread.batch_number ? 'bread-item-batch' : 'bread-item';
+
         html += `
-            <div class="bread-item">
+            <div class="${batchClass}">
                 <h3>${bread.name}</h3>
                 <div class="bread-info">
                     <div class="info-item">
@@ -164,7 +167,7 @@ function displayMorningEmmyFeed(morningEmmyData) {
     const container = document.getElementById('morning-emmy-content');
 
     if (!morningEmmyData || !morningEmmyData.emmy_feed) {
-        container.innerHTML = '<p class="placeholder-text">No Emmy feed needed (no starters using Emmy)</p>';
+        container.innerHTML = '<p class="placeholder-text">No Emmy feed needed (no production scheduled for tomorrow)</p>';
         return;
     }
 
@@ -230,8 +233,11 @@ function displayStarterSheet(starterSheet) {
     let html = '';
 
     for (const starter of starterSheet.starters) {
+        // Add batch highlighting class if this is a batch
+        const batchClass = starter.batch_number ? 'starter-card-batch' : 'starter-card';
+
         html += `
-            <div class="starter-card">
+            <div class="${batchClass}">
                 <h3>${starter.starter_name}</h3>
                 <p><strong>Total Needed: ${starter.total_grams.toLocaleString()}g</strong></p>
 
@@ -239,8 +245,12 @@ function displayStarterSheet(starterSheet) {
                     <strong>Needed for:</strong><br>
         `;
 
-        for (const recipe of starter.recipes_needing) {
-            html += `${recipe.recipe} (${recipe.amount_grams.toLocaleString()}g)<br>`;
+        if (starter.recipes_needing && starter.recipes_needing.length > 0) {
+            for (const recipe of starter.recipes_needing) {
+                html += `${recipe.recipe} (${recipe.amount_grams.toLocaleString()}g)<br>`;
+            }
+        } else if (starter.batch_number === 2) {
+            html += `(Same as Batch 1)<br>`;
         }
 
         html += `</div>`;

@@ -53,10 +53,16 @@ class MEPCalculator:
     def calculate_mix_sheet(self) -> Dict:
         """
         Today's Mix Sheet - what to mix right now
+        Includes batch splitting logic for Italian dough (>110 loaves)
         """
         breads = []
 
-        # First pass: find breads that use Italian dough (like Multigrain)
+        # ITALIAN SPLIT THRESHOLD
+        ITALIAN_SPLIT_THRESHOLD = 110  # loaves
+
+        # First pass: Count Italian + Multigrain loaves and calculate Italian dough needed
+        italian_loaves = 0
+        multigrain_loaves = 0
         italian_dough_needed = 0.0
         breads_using_italian_dough = []
 
@@ -65,9 +71,14 @@ class MEPCalculator:
             if not recipe or recipe.recipe_type != 'bread':
                 continue
 
-            # Check if this bread uses Italian dough
+            # Count Italian loaves
+            if recipe.name == 'Italian':
+                italian_loaves = item['quantity']
+
+            # Check if this bread uses Italian dough (like Multigrain)
             for ri in recipe.ingredients:
                 if ri.ingredient.name == 'Italian dough':
+                    multigrain_loaves = item['quantity']
                     quantity = item['quantity']
                     total_weight = quantity * recipe.loaf_weight
 
@@ -85,6 +96,20 @@ class MEPCalculator:
                     })
                     break
 
+        # Determine if Italian needs to be split
+        total_italian_units = italian_loaves + multigrain_loaves
+        needs_split = total_italian_units > ITALIAN_SPLIT_THRESHOLD
+
+        # Calculate batch sizes if splitting
+        if needs_split:
+            # Batch 1 includes Multigrain units
+            batch1_italian = (total_italian_units // 2) - multigrain_loaves
+            batch2_italian = total_italian_units // 2
+
+            # If odd number, give extra to batch 2
+            if total_italian_units % 2 == 1:
+                batch2_italian += 1
+
         # Second pass: process each bread for the mix sheet
         for item in self.production_items:
             recipe = Recipe.query.get(item['recipe_id'])
@@ -92,60 +117,136 @@ class MEPCalculator:
                 continue
 
             quantity = item['quantity']
-            total_weight = quantity * recipe.loaf_weight
 
             # Check if this bread uses Italian dough
             uses_italian_dough = any(ri.ingredient.name == 'Italian dough' for ri in recipe.ingredients)
-            italian_dough_amount = None
 
-            # For Italian bread, add extra dough for breads that use it
-            if recipe.name == 'Italian' and italian_dough_needed > 0:
-                total_weight += italian_dough_needed
+            # ITALIAN DOUGH - Handle splitting
+            if recipe.name == 'Italian' and needs_split:
+                # Create Batch 1 (includes Multigrain removal)
+                batch1_weight = batch1_italian * recipe.loaf_weight + italian_dough_needed
+                batch1_ingredients = self._calculate_bread_ingredients(recipe, batch1_italian, batch1_weight)
 
-            # Calculate ingredients for this bread
-            ingredients = []
-            for ri in recipe.ingredients:
-                # Handle Italian dough specially for breads that use it
-                if ri.ingredient.name == 'Italian dough':
-                    if ri.is_percentage:
-                        italian_dough_amount = round((ri.percentage / 100.0) * (quantity * recipe.loaf_weight), 1)
-                    else:
-                        if recipe.base_batch_weight > 0:
-                            italian_dough_amount = round(ri.amount_grams * ((quantity * recipe.loaf_weight) / recipe.base_batch_weight), 1)
-                        else:
-                            italian_dough_amount = 0
-                    continue
-
-                if ri.is_percentage:
-                    amount = (ri.percentage / 100.0) * total_weight
-                else:
-                    amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
-
-                ingredients.append({
-                    'name': ri.ingredient.name,
-                    'amount_grams': round(amount, 1),
-                    'category': ri.ingredient.category
+                breads.append({
+                    'name': 'Italian - BATCH 1',
+                    'quantity': batch1_italian,
+                    'loaf_weight': recipe.loaf_weight,
+                    'total_weight': batch1_weight,
+                    'ingredients': batch1_ingredients,
+                    'extra_dough_for': breads_using_italian_dough,
+                    'batch_number': 1
                 })
 
-            bread_info = {
-                'name': recipe.name,
-                'quantity': quantity,
-                'loaf_weight': recipe.loaf_weight,
-                'total_weight': total_weight,
-                'ingredients': ingredients
-            }
+                # Create Batch 2 (pure Italian, no removal)
+                batch2_weight = batch2_italian * recipe.loaf_weight
+                batch2_ingredients = self._calculate_bread_ingredients(recipe, batch2_italian, batch2_weight)
 
-            # Add note about extra dough if this is Italian
-            if recipe.name == 'Italian' and breads_using_italian_dough:
-                bread_info['extra_dough_for'] = breads_using_italian_dough
+                breads.append({
+                    'name': 'Italian - BATCH 2',
+                    'quantity': batch2_italian,
+                    'loaf_weight': recipe.loaf_weight,
+                    'total_weight': batch2_weight,
+                    'ingredients': batch2_ingredients,
+                    'batch_number': 2
+                })
 
-            # Add Italian dough amount if this bread uses it
-            if italian_dough_amount is not None:
-                bread_info['italian_dough_amount'] = italian_dough_amount
+            # ITALIAN DOUGH - No split needed
+            elif recipe.name == 'Italian' and not needs_split:
+                total_weight = quantity * recipe.loaf_weight
+                if italian_dough_needed > 0:
+                    total_weight += italian_dough_needed
 
-            breads.append(bread_info)
+                ingredients = self._calculate_bread_ingredients(recipe, quantity, total_weight)
+
+                bread_info = {
+                    'name': recipe.name,
+                    'quantity': quantity,
+                    'loaf_weight': recipe.loaf_weight,
+                    'total_weight': total_weight,
+                    'ingredients': ingredients
+                }
+
+                if breads_using_italian_dough:
+                    bread_info['extra_dough_for'] = breads_using_italian_dough
+
+                breads.append(bread_info)
+
+            # MULTIGRAIN OR OTHER BREADS USING ITALIAN DOUGH
+            elif uses_italian_dough:
+                # Calculate Italian dough amount needed
+                italian_dough_amount = None
+                for ri in recipe.ingredients:
+                    if ri.ingredient.name == 'Italian dough':
+                        if ri.is_percentage:
+                            italian_dough_amount = round((ri.percentage / 100.0) * (quantity * recipe.loaf_weight), 1)
+                        else:
+                            if recipe.base_batch_weight > 0:
+                                italian_dough_amount = round(ri.amount_grams * ((quantity * recipe.loaf_weight) / recipe.base_batch_weight), 1)
+                            else:
+                                italian_dough_amount = 0
+                        break
+
+                # Calculate other ingredients (exclude Italian dough)
+                ingredients = []
+                for ri in recipe.ingredients:
+                    if ri.ingredient.name == 'Italian dough':
+                        continue
+
+                    if ri.is_percentage:
+                        amount = (ri.percentage / 100.0) * (quantity * recipe.loaf_weight)
+                    else:
+                        amount = ri.amount_grams * ((quantity * recipe.loaf_weight) / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
+
+                    ingredients.append({
+                        'name': ri.ingredient.name,
+                        'amount_grams': round(amount, 1),
+                        'category': ri.ingredient.category
+                    })
+
+                breads.append({
+                    'name': recipe.name,
+                    'quantity': quantity,
+                    'loaf_weight': recipe.loaf_weight,
+                    'total_weight': quantity * recipe.loaf_weight,
+                    'ingredients': ingredients,
+                    'italian_dough_amount': italian_dough_amount
+                })
+
+            # ALL OTHER BREADS
+            else:
+                total_weight = quantity * recipe.loaf_weight
+                ingredients = self._calculate_bread_ingredients(recipe, quantity, total_weight)
+
+                breads.append({
+                    'name': recipe.name,
+                    'quantity': quantity,
+                    'loaf_weight': recipe.loaf_weight,
+                    'total_weight': total_weight,
+                    'ingredients': ingredients
+                })
 
         return {'breads': breads}
+
+    def _calculate_bread_ingredients(self, recipe, quantity, total_weight):
+        """Helper method to calculate ingredients for a bread batch"""
+        ingredients = []
+        for ri in recipe.ingredients:
+            # Skip Italian dough ingredient (handled separately)
+            if ri.ingredient.name == 'Italian dough':
+                continue
+
+            if ri.is_percentage:
+                amount = (ri.percentage / 100.0) * total_weight
+            else:
+                amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
+
+            ingredients.append({
+                'name': ri.ingredient.name,
+                'amount_grams': round(amount, 1),
+                'category': ri.ingredient.category
+            })
+
+        return ingredients
 
     def calculate_starter_sheet(self) -> Dict:
         """
@@ -177,45 +278,111 @@ class MEPCalculator:
                         'amount_grams': round(amount, 1)
                     })
 
-        # Format for output
+        # Format for output with splitting logic
+        LEVAIN_SPLIT_THRESHOLD = 6999  # grams
+
         starter_list = []
         for starter_name, data in starters.items():
             # Get the starter recipe if it exists
             starter_recipe = Recipe.query.filter_by(name=starter_name, recipe_type='starter').first()
 
-            starter_ingredients = []
-            if starter_recipe:
-                # Calculate ingredients for this starter
-                # Need to work backwards from total weight to flour weight
-                total_needed = data['total_grams']
+            total_needed = data['total_grams']
 
-                # Calculate sum of percentages to find flour weight
-                total_percentage = sum(ri.percentage for ri in starter_recipe.ingredients if ri.is_percentage)
+            # Check if this is a Levain that needs splitting
+            is_levain = 'Levain' in starter_name or 'levain' in starter_name.lower()
+            needs_split = is_levain and total_needed > LEVAIN_SPLIT_THRESHOLD
 
-                if total_percentage > 0:
-                    flour_weight = total_needed / (total_percentage / 100.0)
+            if needs_split:
+                # Split into 2 batches
+                batch1_weight = round(total_needed / 2, -1)  # Round to nearest 10g
+                batch2_weight = round(total_needed / 2, -1)
 
-                    for ri in starter_recipe.ingredients:
-                        if ri.is_percentage:
-                            # Calculate based on flour weight
-                            amount = (ri.percentage / 100.0) * flour_weight
-                        else:
-                            if starter_recipe.base_batch_weight > 0:
-                                amount = ri.amount_grams * (total_needed / starter_recipe.base_batch_weight)
+                # Calculate Batch 1 ingredients
+                batch1_ingredients = []
+                if starter_recipe:
+                    total_percentage = sum(ri.percentage for ri in starter_recipe.ingredients if ri.is_percentage)
+                    if total_percentage > 0:
+                        flour_weight = batch1_weight / (total_percentage / 100.0)
+
+                        for ri in starter_recipe.ingredients:
+                            if ri.is_percentage:
+                                amount = (ri.percentage / 100.0) * flour_weight
                             else:
-                                amount = 0
+                                amount = ri.amount_grams * (batch1_weight / starter_recipe.base_batch_weight) if starter_recipe.base_batch_weight > 0 else 0
 
-                        starter_ingredients.append({
-                            'name': ri.ingredient.name,
-                            'amount_grams': round(amount, 1)
-                        })
+                            batch1_ingredients.append({
+                                'name': ri.ingredient.name,
+                                'amount_grams': round(amount, -1)  # Round to nearest 10g
+                            })
 
-            starter_list.append({
-                'starter_name': starter_name,
-                'total_grams': round(data['total_grams'], 1),
-                'recipes_needing': data['recipes_needing'],
-                'ingredients': starter_ingredients
-            })
+                # Calculate Batch 2 ingredients
+                batch2_ingredients = []
+                if starter_recipe:
+                    total_percentage = sum(ri.percentage for ri in starter_recipe.ingredients if ri.is_percentage)
+                    if total_percentage > 0:
+                        flour_weight = batch2_weight / (total_percentage / 100.0)
+
+                        for ri in starter_recipe.ingredients:
+                            if ri.is_percentage:
+                                amount = (ri.percentage / 100.0) * flour_weight
+                            else:
+                                amount = ri.amount_grams * (batch2_weight / starter_recipe.base_batch_weight) if starter_recipe.base_batch_weight > 0 else 0
+
+                            batch2_ingredients.append({
+                                'name': ri.ingredient.name,
+                                'amount_grams': round(amount, -1)  # Round to nearest 10g
+                            })
+
+                # Add Batch 1
+                starter_list.append({
+                    'starter_name': f'{starter_name} - BATCH 1',
+                    'total_grams': batch1_weight,
+                    'recipes_needing': data['recipes_needing'],
+                    'ingredients': batch1_ingredients,
+                    'batch_number': 1
+                })
+
+                # Add Batch 2
+                starter_list.append({
+                    'starter_name': f'{starter_name} - BATCH 2',
+                    'total_grams': batch2_weight,
+                    'recipes_needing': [],  # Don't repeat recipes for batch 2
+                    'ingredients': batch2_ingredients,
+                    'batch_number': 2
+                })
+
+            else:
+                # No split needed
+                starter_ingredients = []
+                if starter_recipe:
+                    # Calculate ingredients for this starter
+                    # Need to work backwards from total weight to flour weight
+                    total_percentage = sum(ri.percentage for ri in starter_recipe.ingredients if ri.is_percentage)
+
+                    if total_percentage > 0:
+                        flour_weight = total_needed / (total_percentage / 100.0)
+
+                        for ri in starter_recipe.ingredients:
+                            if ri.is_percentage:
+                                # Calculate based on flour weight
+                                amount = (ri.percentage / 100.0) * flour_weight
+                            else:
+                                if starter_recipe.base_batch_weight > 0:
+                                    amount = ri.amount_grams * (total_needed / starter_recipe.base_batch_weight)
+                                else:
+                                    amount = 0
+
+                            starter_ingredients.append({
+                                'name': ri.ingredient.name,
+                                'amount_grams': round(amount, 1)
+                            })
+
+                starter_list.append({
+                    'starter_name': starter_name,
+                    'total_grams': round(total_needed, 1),
+                    'recipes_needing': data['recipes_needing'],
+                    'ingredients': starter_ingredients
+                })
 
         return {'starters': starter_list}
 
