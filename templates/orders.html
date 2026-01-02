@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Orders Management - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Weekly Orders Management</h2>
+    <p>Enter customer orders and generate production schedules</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Week Selection</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="start-date">Week Start (Monday):</label>
+                <input type="date" id="start-date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="end-date">Week End (Sunday):</label>
+                <input type="date" id="end-date" class="form-control">
+            </div>
+            <div class="form-group align-end">
+                <button onclick="loadOrders()" class="btn btn-secondary">Load Orders</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Add New Order</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="customer-select">Customer:</label>
+                <select id="customer-select" class="form-control">
+                    <option value="">Select customer...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="recipe-select">Recipe:</label>
+                <select id="recipe-select" class="form-control">
+                    <option value="">Select recipe...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="order-date">Delivery Date:</label>
+                <input type="date" id="order-date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" class="form-control" min="1" value="10">
+            </div>
+            <div class="form-group align-end">
+                <button onclick="addOrder()" class="btn btn-primary">Add Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3>Orders for Week</h3>
+            <div>
+                <button onclick="calculateProduction()" class="btn btn-success">Calculate Production</button>
+                <button onclick="createProductionRuns()" class="btn btn-primary">Create Production Runs</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div id="orders-table-container">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Customer</th>
+                        <th>Recipe</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-table-body">
+                    <tr>
+                        <td colspan="6" class="empty-state">No orders for selected week</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="production-summary-card" class="card" style="display: none;">
+    <div class="card-header">
+        <h3>Production Summary</h3>
+    </div>
+    <div class="card-body">
+        <div id="production-summary"></div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/orders.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+
+{% block title %}Complete MEP Sheets - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Complete MEP Sheets</h2>
+    <p>View all production sheets for mixing and preparation</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Select Production Date</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="mep-date">Delivery Date (when breads will be delivered):</label>
+            <input type="date" id="mep-date" class="form-control">
+            <button onclick="loadAllSheets()" class="btn btn-primary">Load All Sheets</button>
+            <small style="color: #7f8c8d; margin-top: 0.5rem; display: block;">
+                System will calculate mix date (delivery - 1 day) and prep date (delivery - 2 days)
+            </small>
+        </div>
+        <div id="date-info" style="display: none; margin-top: 1rem;">
+            <div class="batch-id-display">
+                <h3>BATCH: <span id="batch-id" style="font-size: 2rem; font-weight: bold; color: #e74c3c;"></span></h3>
+                <p style="margin: 0; color: #7f8c8d;">Label all containers, bins, and sheets with this batch ID</p>
+            </div>
+            <div class="timeline-display">
+                <h4>Production Timeline:</h4>
+                <p><strong>Prep Evening:</strong> <span id="prep-date"></span> - Build starters, prepare soakers, measure ingredients</p>
+                <p><strong>Mix Morning:</strong> <span id="mix-date"></span> - Feed Emmy, mix all doughs</p>
+                <p><strong>Bake & Deliver:</strong> <span id="delivery-date"></span> - Bake and deliver to customers</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tab Navigation -->
+<div class="tabs" id="sheet-tabs" style="display: none;">
+    <button class="tab-button active" onclick="showTab('mix')">Today's Mix Sheet</button>
+    <button class="tab-button" onclick="showTab('morning-emmy')">Morning Emmy Feed</button>
+    <button class="tab-button" onclick="showTab('starters')">Last Night's Starters</button>
+    <button class="tab-button" onclick="showTab('soakers')">Last Night's Soakers</button>
+    <button class="tab-button" onclick="showTab('ingredients')">Last Night's MEP</button>
+    <button class="tab-button" onclick="window.print()">Print All</button>
+</div>
+
+<!-- Mix Sheet -->
+<div id="tab-mix" class="tab-content active">
+    <div class="card print-section">
+        <div class="card-header print-header">
+            <h2>Mix Sheet</h2>
+            <p class="subtitle" id="mix-subtitle">Mix doughs in the morning</p>
+        </div>
+        <div class="card-body" id="mix-sheet-content">
+            <p class="placeholder-text">Select a date to load mix sheet</p>
+        </div>
+    </div>
+</div>
+
+<!-- Morning Emmy Feed -->
+<div id="tab-morning-emmy" class="tab-content">
+    <div class="card print-section">
+        <div class="card-header print-header">
+            <h2>Morning Emmy Feed</h2>
+            <p class="subtitle" id="emmy-subtitle">Feed Emmy in the morning using yesterday's leftover Levain</p>
+        </div>
+        <div class="card-body" id="morning-emmy-content">
+            <p class="placeholder-text">Select a date to load Emmy feed</p>
+        </div>
+    </div>
+</div>
+
+<!-- Starter Sheet -->
+<div id="tab-starters" class="tab-content">
+    <div class="card print-section">
+        <div class="card-header print-header">
+            <h2>Starter Prep Sheet</h2>
+            <p class="subtitle" id="starters-subtitle">Starters built last night for today's mix</p>
+        </div>
+        <div class="card-body" id="starters-sheet-content">
+            <p class="placeholder-text">Select a date to load starter sheet</p>
+        </div>
+    </div>
+</div>
+
+<!-- Soaker Sheet -->
+<div id="tab-soakers" class="tab-content">
+    <div class="card print-section">
+        <div class="card-header print-header">
+            <h2>Soak Prep Sheet</h2>
+            <p class="subtitle" id="soakers-subtitle">Soaks prepared last night for today's mix</p>
+        </div>
+        <div class="card-body" id="soakers-sheet-content">
+            <p class="placeholder-text">Select a date to load soaker sheet</p>
+        </div>
+    </div>
+</div>
+
+<!-- MEP Ingredients Sheet -->
+<div id="tab-ingredients" class="tab-content">
+    <div class="card print-section">
+        <div class="card-header print-header">
+            <h2>MEP Ingredient List</h2>
+            <p class="subtitle" id="mep-subtitle">Ingredients measured last night for today's mix</p>
+        </div>
+        <div class="card-body" id="ingredients-sheet-content">
+            <p class="placeholder-text">Select a date to load MEP ingredient list</p>
+        </div>
+    </div>
+</div>
+
+<div id="error-message" class="alert alert-error" style="display: none;"></div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 2rem 0 1rem 0;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.tab-button {
+    padding: 1rem 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #7f8c8d;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab-button:hover {
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+.tab-button.active {
+    color: #3498db;
+    border-bottom-color: #3498db;
+    font-weight: 600;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.print-section {
+    page-break-after: always;
+}
+
+.print-header {
+    background: #2c3e50 !important;
+    color: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.starter-card, .soaker-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    border-left: 4px solid #e74c3c;
+    page-break-inside: avoid;
+}
+
+.starter-card h3, .soaker-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.needed-for {
+    background: white;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.ingredient-table {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.ingredient-table th {
+    background: #34495e;
+    color: white;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.ingredient-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+@media print {
+    .tabs, .card:not(.print-section), .btn, #error-message, nav, footer {
+        display: none !important;
+    }
+
+    .tab-content {
+        display: block !important;
+    }
+
+    body {
+        background: white;
+    }
+}
+
+.timeline-display {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+.timeline-display h4 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: #2c3e50;
+}
+
+.timeline-display p {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+}
+
+.timeline-display p strong {
+    display: inline-block;
+    width: 140px;
+    color: #3498db;
+}
+
+.batch-id-display {
+    background: #fff3cd;
+    border: 3px solid #e74c3c;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.batch-id-display h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+@media print {
+    .batch-id-display {
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-inside: avoid;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/mep_complete.js') }}"></script>
+{% endblock %}

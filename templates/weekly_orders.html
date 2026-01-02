@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Weekly Order Sheets - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Weekly Order Sheets by Customer</h2>
+    <p>View and manage weekly orders for each customer account</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Select Customer & Week</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="customer-select">Customer:</label>
+                <select id="customer-select" class="form-control">
+                    <option value="">Select customer...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="week-start">Week Start (Monday):</label>
+                <input type="date" id="week-start" class="form-control">
+            </div>
+            <div class="form-group align-end">
+                <button onclick="loadWeeklySheet()" class="btn btn-primary">Load Weekly Sheet</button>
+                <button onclick="saveWeeklySheet()" class="btn btn-success">Save All Orders</button>
+                <button onclick="printWeeklySheet()" class="btn btn-secondary">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="weekly-sheet-container" class="card" style="display: none;">
+    <div class="card-header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 id="sheet-title">Weekly Orders</h3>
+            <span id="week-range" style="color: #7f8c8d;"></span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="weekly-sheet-wrapper">
+            <table class="weekly-sheet-table" id="weekly-sheet">
+                <thead>
+                    <tr>
+                        <th class="bread-column">Bread</th>
+                        <th class="day-column">Mon</th>
+                        <th class="day-column">Tue</th>
+                        <th class="day-column">Wed</th>
+                        <th class="day-column">Thu</th>
+                        <th class="day-column">Fri</th>
+                        <th class="day-column">Sat</th>
+                        <th class="day-column">Sun</th>
+                        <th class="total-column">Week Total</th>
+                    </tr>
+                </thead>
+                <tbody id="weekly-sheet-body">
+                    <!-- Rows will be dynamically generated -->
+                </tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td><strong>Daily Total</strong></td>
+                        <td id="total-mon">0</td>
+                        <td id="total-tue">0</td>
+                        <td id="total-wed">0</td>
+                        <td id="total-thu">0</td>
+                        <td id="total-fri">0</td>
+                        <td id="total-sat">0</td>
+                        <td id="total-sun">0</td>
+                        <td id="total-week"><strong>0</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Print-only version -->
+<div id="print-sheet" class="print-only" style="display: none;">
+    <div class="print-header-weekly">
+        <h1 id="print-customer-name"></h1>
+        <h2>Weekly Bread Order</h2>
+        <p id="print-week-range"></p>
+    </div>
+    <table class="weekly-sheet-table-print" id="print-table">
+        <!-- Content will be copied from main table -->
+    </table>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/weekly_orders.js') }}"></script>
+{% endblock %}

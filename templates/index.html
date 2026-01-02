@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Bakery Production Dashboard</h2>
+    <p>Your complete production management system</p>
+</div>
+
+<!-- Workflow Overview -->
+<div class="card">
+    <div class="card-header">
+        <h3>Your Workflow</h3>
+    </div>
+    <div class="card-body">
+        <div class="workflow-steps">
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <h4>Enter Orders</h4>
+                <p>Add customer orders for the week</p>
+                <a href="/orders" class="btn btn-primary">Go to Orders</a>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <h4>Generate Production</h4>
+                <p>Auto-create production schedules</p>
+                <a href="/orders" class="btn btn-secondary">Calculate</a>
+            </div>
+            <div class="workflow-arrow">→</div>
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <h4>View MEP Sheets</h4>
+                <p>Get your 4 production sheets</p>
+                <a href="/mep" class="btn btn-secondary">View MEP</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<div class="dashboard-grid">
+    <div class="stat-card">
+        <h3>This Week</h3>
+        <div class="stat-number" id="week-orders">-</div>
+        <p>Total Orders</p>
+    </div>
+    <div class="stat-card">
+        <h3>Production Days</h3>
+        <div class="stat-number" id="production-days">-</div>
+        <p>Scheduled</p>
+    </div>
+    <div class="stat-card">
+        <h3>Customers</h3>
+        <div class="stat-number" id="customer-count">6</div>
+        <p>Active</p>
+    </div>
+    <div class="stat-card">
+        <h3>Recipes</h3>
+        <div class="stat-number" id="recipe-count">32</div>
+        <p>Available</p>
+    </div>
+</div>
+
+<!-- Upcoming Production -->
+<div class="card">
+    <div class="card-header">
+        <h3>Upcoming Production (Next 7 Days)</h3>
+    </div>
+    <div class="card-body">
+        <div id="upcoming-production">
+            <p class="loading">Loading production schedule...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="card">
+    <div class="card-header">
+        <h3>Quick Actions</h3>
+    </div>
+    <div class="card-body">
+        <div class="quick-actions">
+            <a href="/orders/weekly" class="action-button">
+                <div class="action-icon">📅</div>
+                <h4>Weekly Order Sheets</h4>
+                <p>Customer weekly orders</p>
+            </a>
+            <a href="/orders" class="action-button">
+                <div class="action-icon">📋</div>
+                <h4>Add Orders</h4>
+                <p>Enter individual orders</p>
+            </a>
+            <a href="/production" class="action-button">
+                <div class="action-icon">🍞</div>
+                <h4>Manual Production</h4>
+                <p>Enter production directly</p>
+            </a>
+            <a href="/mep" class="action-button">
+                <div class="action-icon">📄</div>
+                <h4>MEP Sheets</h4>
+                <p>View production sheets</p>
+            </a>
+            <a href="/recipes" class="action-button">
+                <div class="action-icon">📖</div>
+                <h4>Manage Recipes</h4>
+                <p>Edit recipes & ingredients</p>
+            </a>
+            <a href="/history" class="action-button">
+                <div class="action-icon">📊</div>
+                <h4>Reports</h4>
+                <p>View history & export</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- System Info -->
+<div class="card">
+    <div class="card-header">
+        <h3>System Information</h3>
+    </div>
+    <div class="card-body">
+        <div class="info-grid">
+            <div class="info-item">
+                <strong>Customers:</strong>
+                <span>F2F, Trattoria, Slo Kitchen, Slo Retail, Ritrovo, AspenOak</span>
+            </div>
+            <div class="info-item">
+                <strong>Bread Recipes:</strong>
+                <span>32 recipes (Italian, Baguette, Multigrain, Rustic White, Pain d'Mie, etc.)</span>
+            </div>
+            <div class="info-item">
+                <strong>MEP Sheets:</strong>
+                <span>4 sheets (Mix, Starters, Soakers, Ingredients)</span>
+            </div>
+            <div class="info-item">
+                <strong>System Status:</strong>
+                <span class="status-active">✓ All systems operational</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

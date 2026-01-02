@@ -1,0 +1,860 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #3498db;
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 200px);
+}
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    color: #7f8c8d;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.card-header h3 {
+    color: #2c3e50;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-control {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 0.5rem;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Form Layouts */
+.form-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.form-group.align-end {
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+th {
+    background-color: #34495e;
+    color: white;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* MEP Sheet Specific */
+.mep-sheet {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.print-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 3px solid #2c3e50;
+    padding-bottom: 1rem;
+}
+
+.print-header h1 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.section h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.bread-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+.bread-item h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.bread-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 4px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #7f8c8d;
+}
+
+.ingredients-table {
+    font-size: 0.95rem;
+}
+
+/* Alerts */
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.alert-error {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.alert-success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.alert-info {
+    background-color: #3498db;
+    color: white;
+}
+
+/* Emmy Feed Specific */
+.emmy-feed-card {
+    max-width: 800px;
+}
+
+.emmy-feed-card h3 {
+    color: #2c3e50;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feed-instructions {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+.feed-instructions h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.feed-instructions ol {
+    margin-left: 1.5rem;
+}
+
+.feed-instructions li {
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.highlight-row {
+    background-color: #fff3cd;
+    font-weight: bold;
+}
+
+.highlight-row td {
+    color: #856404;
+}
+
+/* Orders Page Specific */
+.empty-state {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    padding: 2rem;
+}
+
+.orders-table {
+    width: 100%;
+}
+
+.production-date-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.production-date-section h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.summary-table {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.summary-table th {
+    background-color: #7f8c8d;
+}
+
+/* Dashboard Specific */
+.workflow-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.workflow-step {
+    flex: 1;
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: #3498db;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.workflow-arrow {
+    font-size: 2rem;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.workflow-step h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.workflow-step p {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stat-card h3 {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    color: #95a5a6;
+    margin: 0;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.action-button {
+    display: block;
+    padding: 2rem 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s;
+    border: 2px solid #e0e0e0;
+}
+
+.action-button:hover {
+    background: white;
+    border-color: #3498db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.action-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.action-button h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.action-button p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.info-grid .info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.info-grid .info-item strong {
+    color: #2c3e50;
+}
+
+.info-grid .info-item span {
+    color: #7f8c8d;
+    text-align: right;
+}
+
+.status-active {
+    color: #2ecc71 !important;
+    font-weight: bold;
+}
+
+.loading {
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.production-table {
+    width: 100%;
+}
+
+/* MEP Ingredient Bins */
+.mep-ingredients-list {
+    margin-top: 1rem;
+}
+
+.mep-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+}
+
+.section-note {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.ingredient-bin {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.ingredient-bin h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.bin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.bin-badge {
+    background: #3498db;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.bin-info {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.bread-bin {
+    border-left: 4px solid #3498db;
+}
+
+.bread-bin h4 {
+    font-size: 1.25rem;
+    color: #3498db;
+}
+
+.ingredient-table {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.ingredient-table th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    text-align: left;
+    padding: 0.75rem;
+    font-weight: 600;
+}
+
+.ingredient-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.ingredient-table td:last-child {
+    text-align: right;
+}
+
+/* Weekly Order Sheets */
+.weekly-sheet-wrapper {
+    overflow-x: auto;
+}
+
+.weekly-sheet-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 1rem;
+}
+
+.weekly-sheet-table th,
+.weekly-sheet-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.weekly-sheet-table th {
+    background-color: #34495e;
+    color: white;
+    font-weight: 600;
+}
+
+.weekly-sheet-table .bread-column {
+    text-align: left;
+    min-width: 150px;
+}
+
+.weekly-sheet-table .bread-name {
+    text-align: left;
+    background-color: #f8f9fa;
+}
+
+.weekly-sheet-table .day-column {
+    min-width: 80px;
+}
+
+.weekly-sheet-table .total-column {
+    background-color: #ecf0f1;
+    font-weight: bold;
+}
+
+.weekly-sheet-table .week-total {
+    background-color: #ecf0f1;
+    font-weight: bold;
+}
+
+.weekly-sheet-table .total-row td {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+.weekly-sheet-table .quantity-input {
+    width: 60px;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.weekly-sheet-table .quantity-input:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #f0f8ff;
+}
+
+/* Print styles for weekly sheets */
+.print-only {
+    display: none;
+}
+
+@media print {
+    .navbar, .card, .btn, footer, .form-row {
+        display: none !important;
+    }
+
+    .print-only {
+        display: block !important;
+    }
+
+    #weekly-sheet-container {
+        display: none !important;
+    }
+
+    .print-header-weekly {
+        text-align: center;
+        margin-bottom: 2rem;
+        border-bottom: 3px solid #2c3e50;
+        padding-bottom: 1rem;
+    }
+
+    .print-header-weekly h1 {
+        color: #2c3e50;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .print-header-weekly h2 {
+        color: #7f8c8d;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .weekly-sheet-table-print {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .weekly-sheet-table-print th,
+    .weekly-sheet-table-print td {
+        padding: 0.75rem;
+        text-align: center;
+        border: 1px solid #000;
+    }
+
+    .weekly-sheet-table-print th {
+        background-color: #34495e !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .weekly-sheet-table-print .bread-column {
+        text-align: left;
+    }
+
+    .weekly-sheet-table-print .bread-name {
+        text-align: left;
+        background-color: #f8f9fa !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .weekly-sheet-table-print .total-row td {
+        background-color: #3498db !important;
+        color: white !important;
+        font-weight: bold;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .weekly-sheet-table-print .week-total {
+        background-color: #ecf0f1 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .card, .btn, footer, #error-message {
+        display: none !important;
+    }
+
+    .mep-sheet {
+        display: block !important;
+        padding: 0;
+    }
+
+    body {
+        background: white;
+    }
+
+    .page-header {
+        display: none;
+    }
+
+    th {
+        background-color: #34495e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .bread-item {
+        page-break-inside: avoid;
+        border-left: 4px solid #3498db !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .bread-info {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-steps {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .workflow-arrow {
+        transform: rotate(90deg);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}

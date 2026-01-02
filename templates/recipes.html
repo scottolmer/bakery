@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+
+{% block title %}Recipe Management - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Recipe Management</h2>
+    <p>Manage bread recipes, ingredients, and formulas</p>
+</div>
+
+<div class="admin-container">
+    <!-- Recipes List -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Recipes</h3>
+            <button onclick="showAddRecipeModal()" class="btn btn-primary">+ Add Recipe</button>
+        </div>
+        <div class="card-body">
+            <div id="recipes-list">
+                <p class="placeholder-text">Loading recipes...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ingredients Library -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingredients Library</h3>
+            <button onclick="showAddIngredientModal()" class="btn btn-primary">+ Add Ingredient</button>
+        </div>
+        <div class="card-body">
+            <div id="ingredients-list">
+                <p class="placeholder-text">Loading ingredients...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Recipe Modal -->
+<div id="recipe-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="recipe-modal-title">Add Recipe</h3>
+            <span class="close" onclick="closeRecipeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="recipe-form">
+                <input type="hidden" id="recipe-id">
+
+                <div class="form-group">
+                    <label for="recipe-name">Recipe Name:</label>
+                    <input type="text" id="recipe-name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipe-type">Recipe Type:</label>
+                    <select id="recipe-type" class="form-control">
+                        <option value="bread">Bread</option>
+                        <option value="starter">Starter</option>
+                        <option value="soaker">Soaker</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="base-batch-weight">Base Batch Weight (g):</label>
+                    <input type="number" id="base-batch-weight" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loaf-weight">Loaf Weight (g):</label>
+                    <input type="number" id="loaf-weight" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipe-notes">Notes:</label>
+                    <textarea id="recipe-notes" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" onclick="closeRecipeModal()" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Recipe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add Ingredient Modal -->
+<div id="ingredient-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Add Ingredient</h3>
+            <span class="close" onclick="closeIngredientModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="ingredient-form">
+                <div class="form-group">
+                    <label for="ingredient-name">Ingredient Name:</label>
+                    <input type="text" id="ingredient-name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredient-category">Category:</label>
+                    <select id="ingredient-category" class="form-control">
+                        <option value="flour">Flour</option>
+                        <option value="water">Water</option>
+                        <option value="salt">Salt</option>
+                        <option value="yeast">Yeast</option>
+                        <option value="starter">Starter</option>
+                        <option value="soaker">Soaker</option>
+                        <option value="oil">Oil</option>
+                        <option value="sugar">Sugar</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" onclick="closeIngredientModal()" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Ingredient</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="success-message" class="alert alert-success" style="display: none;"></div>
+<div id="error-message" class="alert alert-error" style="display: none;"></div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.admin-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+.recipe-card h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.recipe-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.recipe-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-edit {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.ingredient-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 3px solid #2ecc71;
+}
+
+.ingredient-card h5 {
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.ingredient-category {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.close {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #95a5a6;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close:hover {
+    color: #2c3e50;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ecf0f1;
+}
+
+.placeholder-text {
+    text-align: center;
+    color: #95a5a6;
+    padding: 2rem;
+}
+
+.alert-success {
+    background-color: #2ecc71;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/recipes.js') }}"></script>
+{% endblock %}

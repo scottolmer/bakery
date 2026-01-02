@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}Production History - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Production History</h2>
+    <p>View historical production data and generate reports</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Filter Production History</h3>
+    </div>
+    <div class="card-body">
+        <div class="filter-form">
+            <div class="batch-search-section">
+                <div class="form-group">
+                    <label for="batch-id-search">Quick Search by Batch ID:</label>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <input type="text" id="batch-id-search" class="form-control" placeholder="e.g., 010826" maxlength="6" style="max-width: 200px;">
+                        <button onclick="searchByBatchId()" class="btn btn-primary">Find Batch</button>
+                    </div>
+                    <small style="color: #7f8c8d;">Enter batch ID in MMDDYY format</small>
+                </div>
+            </div>
+            <div style="text-align: center; margin: 1rem 0; color: #95a5a6;">
+                <strong>— OR —</strong>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="recipe-filter">Recipe:</label>
+                    <select id="recipe-filter" class="form-control">
+                        <option value="">All Recipes</option>
+                    </select>
+                </div>
+            </div>
+            <button onclick="loadHistory()" class="btn btn-primary">Search by Date Range</button>
+            <button onclick="clearFilters()" class="btn btn-secondary">Clear Filters</button>
+            <button onclick="exportCSV()" class="btn btn-secondary">Export CSV</button>
+        </div>
+    </div>
+</div>
+
+<div class="card" id="summary-card" style="display: none;">
+    <div class="card-header">
+        <h3>Summary</h3>
+    </div>
+    <div class="card-body">
+        <div class="summary-stats">
+            <div class="stat-card">
+                <div class="stat-label">Total Production Days</div>
+                <div class="stat-value" id="total-days">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Loaves</div>
+                <div class="stat-value" id="total-loaves">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Weight</div>
+                <div class="stat-value" id="total-weight">0 kg</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Production Records</h3>
+    </div>
+    <div class="card-body">
+        <div id="history-table-container">
+            <p class="placeholder-text">Select date range and click Search to view production history</p>
+        </div>
+    </div>
+</div>
+
+<div id="error-message" class="alert alert-error" style="display: none;"></div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.history-table {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.date-header {
+    background-color: #3498db;
+    color: white;
+    padding: 0.75rem;
+    font-weight: bold;
+}
+
+.recipe-row {
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.recipe-row:hover {
+    background-color: #f8f9fa;
+}
+
+.placeholder-text {
+    text-align: center;
+    color: #95a5a6;
+    padding: 2rem;
+}
+
+.expandable-row {
+    cursor: pointer;
+}
+
+.expandable-row:hover {
+    background-color: #ecf0f1;
+}
+
+.details-row {
+    background-color: #f8f9fa;
+    display: none;
+}
+
+.details-row.show {
+    display: table-row;
+}
+
+.ingredient-list {
+    padding: 1rem;
+    max-width: 600px;
+}
+
+.ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+    border-bottom: 1px dotted #ddd;
+}
+
+.batch-search-section {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.batch-search-section label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.batch-id-badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 1rem;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}

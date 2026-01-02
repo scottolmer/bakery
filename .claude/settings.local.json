@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(flask --app app run:*)",
+      "Bash(curl:*)",
+      "Bash(tasklist:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill /F /PID 7664)",
+      "Bash(taskkill //F //PID 7664)",
+      "Bash(taskkill //F //PID 18148)",
+      "Bash(taskkill //F //PID 22644)",
+      "Bash(taskkill //F //PID 21604)",
+      "Bash(taskkill //F //PID 8756)",
+      "Bash(taskkill //F //PID 24188)",
+      "Bash(taskkill //F //PID 20684)",
+      "Bash(taskkill //F //PID 21664)",
+      "Bash(taskkill:*)",
+      "Bash(timeout 3 bash -c 'while ! curl -s http://127.0.0.1:5000/ > /dev/null; do sleep 0.5; done')",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

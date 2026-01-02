@@ -1,0 +1,126 @@
+======================================================================
+EXPERIMENTAL MIXING SHEET (Today's Mix)
+======================================================================
+Dimensions: A1:V977
+
+First 30 rows with content:
+Row 1: A1:Friday MEP 1/2
+Row 2: A2:Italian | D2:Multigrain | G2:Rustic White
+Row 3: G3:1000 grams | H3:21
+Row 4: A4:1000 g Batard | B4:35 | D4:1000 grams | E4:19 | G4:RW  | H4:21
+Row 5: A5:Italian+Multgrain | B5:54 | D5:Italian Dough | E5:16399 | G5:Final Dough
+Row 6: A6:Final Dough | D6:MG Soaker | E6:2601 | G6:Red Rose | H6:10150
+Row 7: A7:Red Rose | B7:17900 | D7:Batch Weight, grams | E7:19000 | G7:Whole Wheat | H7:190
+Row 8: A8:Whole Wheat | B8:8670 | G8:Water | H8:6410
+Row 9: A9:Water | B9:18120 | D9:Pain d'Mie | G9:Levain | H9:3380
+Row 10: A10:Levain | B10:8674.698795 | D10:750 grams | E10:14 | G10:Biga | H10:480
+Row 11: A11:Poolish | D11:Final Dough | G11:Salt | H11:266
+Row 12: A12:Salt | B12:620 | D12:Red Rose | E12:5070 | G12:Olive Oil | H12:600
+Row 13: A13:Batch Weight, grams | B13:54000 | D13:Milk Powder | E13:300 | G13:RW Soaker | H13:2658
+Row 14: A14:Loaf, grams | B14:1000 | D14:Sugar | E14:410 | G14:Batch Weight, grams | H14:21000
+Row 15: D15:Instant Yeast | E15:61 | G15:baguette grams | H15:1000
+Row 16: D16:Levain Discard | E16:1115
+Row 17: A17:Baguette | D17:Water | E17:3142
+Row 18: A18:400 grams | B18:10 | D18:Salt | E18:61 | G18:Brioche
+Row 19: A19:Final Dough | D19:Butter, soft | E19:304.1 | G19:90 grams | H19:100
+Row 20: A20:Red Rose | B20:2160 | D20:batch weight | E20:10500 | G20:Final Dough
+Row 21: A21:Water 1 | B21:1460 | D21:baguette grams | E21:750 | G21:Whole Milk | H21:986
+Row 22: A22:Levain | B22:180 | G22:Gold Yeast | H22:60
+Row 23: A23:Biga | G23:Eggs | H23:1644
+Row 24: A24:Instant Yeast | B24:4.7 | D24:Dinkelbrot | G24:Red Rose | H24:4110
+Row 25: A25:Salt | B25:43 | D25:907 grams | E25:10 | F25:10 Sm. | G25:Sugar | H25:660
+Row 26: A26:Water 2 | B26:160 | D26:2268 grams | G26:Salt | H26:103
+Row 27: A27:Batch Weight, grams | B27:4000 | D27:Final Dough | G27:Water | H27:205
+Row 28: A28:baguette grams | B28:400 | D28:Spelt Flour | E28:1870 | G28:Butter | H28:1232.9
+Row 29: D29:Spice Mix | E29:11 | G29:batch weight | H29:9000
+Row 30: D30:Water | E30:700 | G30:Roll grams | H30:90
+
+======================================================================
+EXPERIMENTAL STARTERS SHEET (Prep for Tomorrow)
+======================================================================
+Dimensions: A1:I62
+
+First 30 rows with content:
+Row 1: B1:Levain  | D1:Friday MEP 1/2
+Row 3: C3:6390
+Row 4: B4:Levain Build
+Row 5: A5:1.0 | B5:Red Rose | C5:2910
+Row 6: A6:1.0 | B6:Water | C6:2910
+Row 7: A7:0.2 | B7:Emmy (starter) | C7:590
+Row 8: A8:2.2
+Row 10: B10:Italian Levain 
+Row 12: C12:8674.698795 | D12:SPLIT
+Row 13: B13:Levain Build | C13:Batch 1 | D13:Batch 2
+Row 14: A14:1.0 | B14:Red Rose | C14:1980 | D14:1980
+Row 15: A15:1.0 | B15:Water | C15:1980 | D15:1980
+Row 16: A16:0.2 | B16:Emmy (starter) | C16:400 | D16:400
+Row 17: A17:2.2
+Row 19: B19:BIGA
+Row 21: C21:480
+Row 22: B22:Poolish | C22: 
+Row 23: A23:1.0 | B23:Red Rose | C23:250
+Row 24: A24:0.96 | B24:Water | C24:240
+Row 25: A25:0.0005 | B25:Cake Yeast | C25:12.5
+Row 26: A26:1.9605
+Row 29: B29:Schiacciata Poolish
+Row 30: C30:* Gets refrigerated overnight!*
+
+======================================================================
+EXPERIMENTAL SOAKS SHEET (Prep for Tomorrow)
+======================================================================
+Dimensions: A1:F48
+
+First 30 rows with content:
+Row 1: B1:RW Soaker | E1:Friday MEP 1/2
+Row 3: B3:Batch Size | C3:2658
+Row 4: B4:Soaker  | C4: 
+Row 5: A5:0.26 | B5:Sesame | C5:760
+Row 6: A6:0.21 | B6:Cracked wheat | C6:610
+Row 7: A7:0.45 | B7:Water | C7:1310
+Row 8: A8:0.92
+Row 11: B11:7 Grain Soaker
+Row 13: B13:Batch size | C13:2601
+Row 14: B14:7 Grain Soaker | C14: 
+Row 15: A15:1.0 | B15:7 Grain Blend | C15:1340
+Row 16: A16:0.55 | B16:Water | C16:740
+Row 17: A17:0.4 | B17:honey | C17:540
+Row 18: A18:1.95
+Row 21: B21:Dinkel Soaker
+Row 23: B23:Batch size | C23:4196
+Row 24: C24: 
+Row 25: A25:0.45 | B25:Water | C25:1910
+Row 26: A26:0.36 | B26:Spelt Flake | C26:1530
+Row 27: A27:0.13 | B27:Sunflower Kernel | C27:560
+Row 28: A28:0.05 | B28:Potato | C28:220 | E28: 
+Row 29: A29:0.99
+
+======================================================================
+MEP HUB (Control Panel)
+======================================================================
+Dimensions: A1:Z28
+
+First 30 rows with content:
+Row 1: D1:Friday's MEP | E1:Auto | F1:Manual Override
+Row 2: D2:Italian | E2:35 | G2:35
+Row 3: B3:Monday's Date: | C3:2025-12-29 00:00:00 | D3:Baguette | E3:10 | G3:10
+Row 4: D4:Miche
+Row 5: B5:Monday | D5:Rustic White | E5:21 | G5:21
+Row 6: B6:Tuesday | D6:Multigrain | E6:19 | G6:19
+Row 7: B7:Wednesday | D7:Pain d'Mie | E7:14 | G7:14
+Row 8: B8:Thursday | D8:Specialty Bread
+Row 9: B9:Friday | C9:True | D9:Dinkelbrot | E9:10 | G9:10
+Row 10: B10:Saturday | D10:Dinklebrot Pullman | E10:1
+Row 11: B11:Sunday | D11:Focaccia Fino | E11:3 | G11:3
+Row 12: B12:Date | C12:MEP | D12:Focaccia
+Row 13: B13:2026-01-02 00:00:00 | C13:True | D13:Brioche Buns
+Row 14: C14:Holiday | D14:Schiacciata | F14:16.0 | G14:16 | H14:Note from Sam: "Fixed this."
+Row 15: D15:Brioche Dinner Rolls | E15:20 | G15:20
+Row 16: D16:Croissants
+Row 17: A17:Experimental Mixing Sheet | D17:Stollen
+Row 18: A18:Experimental Starters
+Row 19: A19:Experimental Soaks
+Row 20: A20:Experimental Rustic White
+Row 21: A21:Experimental Italian
+Row 22: A22:Two-Day Italian
+Row 23: A23:Two-Day Multigrain
+Row 24: A24:Two-Day Baguette

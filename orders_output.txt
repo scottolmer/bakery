@@ -1,0 +1,210 @@
+Available sheets: ['Slo Foods-Kitchen', 'F2f-copy', 'F2F', 'Slo Foods-Retail', 'SF Retail-copy', 'Ritrovo', 'Trattoria', 'AspenOak', 'Weekly Bread Totals', 'Weekly Pastry Totals', 'Bake Totals']
+
+
+=== Sheet: Slo Foods-Kitchen ===
+Dimensions: A1:Z994
+
+Row 1: A1: Item, B1: Mon, C1: Tue, D1: Wed, E1: Thu, F1: Fri, G1: Sat, H1: Sun, I1: Totals
+Row 2: A2: Dinkelbrot Pullman, B2: 0.0, C2: 0.0, D2: 0.0, E2: 0.0, F2: 0.0, G2: 0.0, H2: 0.0, I2: =SUM(B2:H2) (Formula)
+Row 3: A3: Schiacciata , B3: 10.0, C3: 12.0, D3: 12.0, E3: 0.0, F3: 10.0, G3: 10.0, H3: 8.0, I3: =SUM(B3:H3) (Formula)
+Row 4: A4: White Bread (Pain d'Mie), B4: 6.0, C4: 0.0, D4: 6.0, E4: 0.0, F4: 8.0, G4: 0.0, H4: 0.0, I4: =SUM(B4:H4) (Formula)
+Row 5: A5: Slo Foods Kitchen
+
+=== Sheet: F2f-copy ===
+Dimensions: A1:T54
+
+Row 1: A1: Item, B1: Monday, E1: Tuesday, H1: Wednesday, K1: Thursday, N1: Friday, Q1: Saturday, T1: Totals
+Row 2: B2: Ordered, C2: Recieved, D2: Returned, E2: Ordered, F2: Recieved, G2: Returned, H2: Ordered, I2: Recieved, J2: Returned, K2: Ordered, L2: Recieved, M2: Returned, N2: Ordered, O2: Recieved, P2: Returned, Q2: Ordered, R2: Recieved, S2: Returned
+Row 3: A3: Italian(Soup), B3: =F2F!C2 (Formula), E3: =F2F!E2 (Formula), H3: =F2F!G2 (Formula), K3: =F2F!I2 (Formula), N3: =F2F!K2 (Formula), Q3: =F2F!M2 (Formula), T3: =SUM(B3:Q3) (Formula)
+Row 4: A4: Brioche Pullman (French Toast), B4: =F2F!C3 (Formula), E4: =F2F!E3 (Formula), H4: =F2F!G3 (Formula), K4: =F2F!I3 (Formula), N4: =F2F!K3 (Formula), Q4: =F2F!M3 (Formula), T4: =SUM(B4:Q4) (Formula)
+Row 5: A5: Rustic White, B5: =F2F!C4 (Formula), E5: =F2F!E4 (Formula), H5: =F2F!G4 (Formula), K5: =F2F!I4 (Formula), N5: =F2F!K4 (Formula), Q5: =F2F!M4 (Formula), T5: =SUM(B5:Q5) (Formula)
+Row 6: A6: Multigrain, B6: =F2F!C5 (Formula), E6: =F2F!E5 (Formula), H6: =F2F!G5 (Formula), K6: =F2F!I5 (Formula), N6: =F2F!K5 (Formula), Q6: =F2F!M5 (Formula), T6: =SUM(B6:Q6) (Formula)
+Row 7: A7: Dinkelbrot Pullman, B7: =F2F!C6 (Formula), E7: =F2F!E6 (Formula), H7: =F2F!G6 (Formula), K7: =F2F!I6 (Formula), N7: =F2F!K6 (Formula), Q7: =F2F!M6 (Formula), T7: =SUM(B7:Q7) (Formula)
+Row 8: A8: Brioche Buns, B8: =F2F!C7 (Formula), E8: =F2F!E7 (Formula), H8: =F2F!G7 (Formula), K8: =F2F!I7 (Formula), N8: =F2F!K7 (Formula), Q8: =F2F!M7 (Formula), T8: =SUM(B8:Q8) (Formula)
+Row 9: A9: Biscuits, B9: =F2F!C8 (Formula), E9: =F2F!E8 (Formula), H9: =F2F!G8 (Formula), K9: =F2F!I8 (Formula), N9: =F2F!K8 (Formula), Q9: =F2F!M8 (Formula), T9: =SUM(B9:Q9) (Formula)
+Row 10: A10: Quiche, B10: =F2F!C9 (Formula), E10: =F2F!E9 (Formula), H10: =F2F!G9 (Formula), K10: =F2F!I9 (Formula), N10: =F2F!K9 (Formula), Q10: =F2F!M9 (Formula), T10: =SUM(B10:Q10) (Formula)
+Row 11: A11: Day Old Croissants, B11: =F2F!C10 (Formula), E11: =F2F!E10 (Formula), H11: =F2F!G10 (Formula), K11: =F2F!I10 (Formula), N11: =F2F!K10 (Formula), Q11: =F2F!M10 (Formula), T11: =SUM(B11:Q11) (Formula)
+Row 12: A12: Field to Fork
+Row 25: A25: Item, B25: Monday, E25: Tuesday, H25: Wednesday, K25: Thursday, N25: Friday, Q25: Saturday, T25: Totals
+Row 26: B26: Ordered, C26: Recieved, D26: Returned, E26: Ordered, F26: Recieved, G26: Returned, H26: Ordered, I26: Recieved, J26: Returned, K26: Ordered, L26: Recieved, M26: Returned, N26: Ordered, O26: Recieved, P26: Returned, Q26: Ordered, R26: Recieved, S26: Returned
+Row 27: A27: Muffins, B27: =F2F!C36 (Formula), E27: =F2F!E36 (Formula), H27: =F2F!G36 (Formula), K27: =F2F!I36 (Formula), N27: =F2F!K36 (Formula), Q27: =F2F!M36 (Formula), T27: =SUM(B27:Q27) (Formula)
+Row 28: A28: Scones, B28: =F2F!C37 (Formula), E28: =F2F!E37 (Formula), H28: =F2F!G37 (Formula), K28: =F2F!I37 (Formula), N28: =F2F!K37 (Formula), Q28: =F2F!M37 (Formula), T28: =SUM(B28:Q28) (Formula)
+Row 29: A29: Croissants, B29: =F2F!C38 (Formula), E29: =F2F!E38 (Formula), H29: =F2F!G38 (Formula), K29: =F2F!I38 (Formula), N29: =F2F!K38 (Formula), Q29: =F2F!M38 (Formula), T29: =SUM(B29:Q29) (Formula)
+Row 30: A30: Savory Croissants, B30: =F2F!C39 (Formula), E30: =F2F!E39 (Formula), H30: =F2F!G39 (Formula), K30: =F2F!I39 (Formula), N30: =F2F!K39 (Formula), Q30: =F2F!M39 (Formula), T30: =SUM(B30:Q30) (Formula)
+
+=== Sheet: F2F ===
+Dimensions: A1:N51
+
+Row 1: A1: Item, B1: Mon, D1: Tue, F1: Wed, H1: Thu, J1: Fri, L1: Sat, N1: Totals
+Row 2: A2: Italian(Soup), C2: 3.0, E2: 2.0, G2: 2.0, I2: 0.0, K2: 2.0, M2: 3.0, N2: =SUM(C2:M2) (Formula)
+Row 3: A3: Brioche Pullman (French Toast), C3: 1.0, E3: 1.0, G3: 1.0, I3: 0.0, K3: 1.0, M3: 1.0, N3: =SUM(C3:M3) (Formula)
+Row 4: A4: Rustic White, C4: 3.0, E4: 2.0, G4: 2.0, I4: 0.0, K4: 4.0, M4: 4.0, N4: =SUM(C4:M4) (Formula)
+Row 5: A5: Multigrain, C5: 3.0, E5: 3.0, G5: 2.0, I5: 0.0, K5: 5.0, M5: 5.0, N5: =SUM(C5:M5) (Formula)
+Row 6: A6: Dinkelbrot Pullman, C6: 1.0, E6: 1.0, G6: 1.0, I6: 0.0, K6: 2.0, M6: 2.0, N6: =SUM(C6:M6) (Formula)
+Row 7: A7: Brioche Buns, C7: 20.0, E7: 20.0, G7: 20.0, I7: 0.0, K7: 30.0, M7: 30.0, N7: =SUM(C7:M7) (Formula)
+Row 8: A8: Biscuits, C8: 20.0, E8: 20.0, G8: 20.0, I8: 0.0, K8: 36.0, M8: 36.0, N8: =SUM(C8:M8) (Formula)
+Row 9: A9: Quiche, C9: 10.0, E9: 10.0, G9: 10.0, I9: 0.0, K9: 12.0, M9: 18.0, N9: =SUM(C9:M9) (Formula)
+Row 10: A10: GF Quiche, C10: 5.0, E10: 0.0, G10: 5.0, I10: 0.0, K10: 0.0, M10: 0.0, N10: =SUM(C10:M10) (Formula)
+Row 11: A11: Schiacciata (Day-Old), C11: 2.0, E11: 2.0, G11: 2.0, I11: 0.0, K11: 3.0, M11: 3.0, N11: =SUM(C11:M11) (Formula)
+Row 12: A12: Field to Fork
+
+=== Sheet: Slo Foods-Retail ===
+Dimensions: A1:Z1002
+
+Row 1: A1: Item, B1: Mon, C1: Tue, D1: Wed, E1: Thu, F1: Fri, G1: Sat, H1: Sun, I1: Totals
+Row 2: A2: Italian, B2: 100.0, C2: 120.0, D2: 140.0, E2: 0.0, F2: 50.0, G2: 60.0, H2: 35.0, I2: =SUM(B2:H2) (Formula)
+Row 3: A3: Baguette, B3: 20.0, C3: 25.0, D3: 30.0, E3: 0.0, F3: 15.0, G3: 15.0, H3: 10.0, I3: =SUM(B3:H3) (Formula)
+Row 4: A4: Miche, B4: 5.0, C4: 7.0, D4: 7.0, E4: 0.0, F4: 7.0, G4: 7.0, H4: 0.0, I4: =SUM(B4:H4) (Formula)
+Row 5: A5: Rustic White, B5: 30.0, C5: 32.0, D5: 36.0, E5: 0.0, F5: 28.0, G5: 30.0, H5: 18.0, I5: =SUM(B5:H5) (Formula)
+Row 6: A6: Multigrain, B6: 30.0, C6: 32.0, D6: 36.0, E6: 0.0, F6: 24.0, G6: 24.0, H6: 16.0, I6: =SUM(B6:H6) (Formula)
+Row 7: A7: White Bread (Pain D'mie), B7: 8.0, C7: 0.0, D7: 8.0, E7: 0.0, F7: 6.0, G7: 0.0, H7: 0.0, I7: =SUM(B7:H7) (Formula)
+Row 8: A8: Schiacciata, B8: 10.0, C8: 12.0, D8: 12.0, E8: 0.0, F8: 10.0, G8: 10.0, H8: 8.0, I8: =SUM(B8:H8) (Formula)
+Row 9: A9: Dinkelbrot, B9: 12.0, C9: 12.0, D9: 12.0, E9: 0.0, F9: 12.0, G9: 12.0, H9: 10.0, I9: =SUM(B9:H9) (Formula)
+Row 10: A10: Brioche Dinner Rolls - 8 Pack, B10: 12.0, C10: 12.0, D10: 12.0, E10: 0.0, F10: 8.0, G10: 8.0, H10: 8.0, I10: =SUM(B10:H10) (Formula)
+Row 11: A11: Cardamom Braid , B11: 6.0, C11: 6.0, D11: 8.0, E11: 0.0, F11: 0.0, G11: 0.0, H11: 0.0, I11: =SUM(B11:H11) (Formula)
+Row 12: A12: Stollen, B12: 10.0, C12: 10.0, D12: 12.0, E12: 0.0, F12: 0.0, G12: 0.0, H12: 0.0, I12: =SUM(B12:H12) (Formula)
+Row 13: A13: Parmesan Peppercorn Fino, G13: 18.0, I13: =SUM(B13:H13) (Formula)
+Row 14: A14: Focaccia Friday, F14: 4.0, I14: =SUM(B14:H14) (Formula)
+Row 15: A15: Slo Food Retail
+
+=== Sheet: SF Retail-copy ===
+Dimensions: A1:P1002
+
+Row 1: A1: Item, B1: Monday, D1: Tuesday, F1: Wednesday, H1: Thursday, J1: Friday, L1: Saturday, N1: Sunday
+Row 2: B2: Received , C2: Leftover, D2: Received , E2: Leftover, F2: Received , G2: Leftover, H2: Received , I2: Leftover, J2: Received , K2: Leftover, L2: Received , M2: Leftover, N2: Received , O2: Leftover
+Row 3: A3: Italian, B3: ='Slo Foods-Retail'!B2 (Formula), D3: ='Slo Foods-Retail'!C2 (Formula), F3: ='Slo Foods-Retail'!D2 (Formula), H3: ='Slo Foods-Retail'!E2 (Formula), J3: ='Slo Foods-Retail'!F2 (Formula), L3: ='Slo Foods-Retail'!G2 (Formula), N3: ='Slo Foods-Retail'!H2 (Formula)
+Row 4: A4: Baguettes, B4: ='Slo Foods-Retail'!B3 (Formula), D4: ='Slo Foods-Retail'!C3 (Formula), F4: ='Slo Foods-Retail'!D3 (Formula), H4: ='Slo Foods-Retail'!E3 (Formula), J4: ='Slo Foods-Retail'!F3 (Formula), L4: ='Slo Foods-Retail'!G3 (Formula), N4: ='Slo Foods-Retail'!H3 (Formula)
+Row 5: A5: Miche, B5: ='Slo Foods-Retail'!B4 (Formula), D5: ='Slo Foods-Retail'!C4 (Formula), F5: ='Slo Foods-Retail'!D4 (Formula), H5: ='Slo Foods-Retail'!E4 (Formula), J5: ='Slo Foods-Retail'!F4 (Formula), L5: ='Slo Foods-Retail'!G4 (Formula), N5: ='Slo Foods-Retail'!H4 (Formula)
+Row 6: A6: Rustic White, B6: ='Slo Foods-Retail'!B5 (Formula), D6: ='Slo Foods-Retail'!C5 (Formula), F6: ='Slo Foods-Retail'!D5 (Formula), H6: ='Slo Foods-Retail'!E5 (Formula), J6: ='Slo Foods-Retail'!F5 (Formula), L6: ='Slo Foods-Retail'!G5 (Formula), N6: ='Slo Foods-Retail'!H5 (Formula)
+Row 7: A7: Multigrain, B7: ='Slo Foods-Retail'!B6 (Formula), D7: ='Slo Foods-Retail'!C6 (Formula), F7: ='Slo Foods-Retail'!D6 (Formula), H7: ='Slo Foods-Retail'!E6 (Formula), J7: ='Slo Foods-Retail'!F6 (Formula), L7: ='Slo Foods-Retail'!G6 (Formula), N7: ='Slo Foods-Retail'!H6 (Formula)
+Row 8: A8: White Bread (Pain D'mie), B8: ='Slo Foods-Retail'!B7 (Formula), D8: ='Slo Foods-Retail'!C7 (Formula), F8: ='Slo Foods-Retail'!D7 (Formula), H8: ='Slo Foods-Retail'!E7 (Formula), J8: ='Slo Foods-Retail'!F7 (Formula), L8: ='Slo Foods-Retail'!G7 (Formula), N8: ='Slo Foods-Retail'!H7 (Formula)
+Row 9: A9: Schiacciata, B9: ='Slo Foods-Retail'!B8 (Formula), D9: ='Slo Foods-Retail'!C8 (Formula), F9: ='Slo Foods-Retail'!D8 (Formula), H9: ='Slo Foods-Retail'!E8 (Formula), J9: ='Slo Foods-Retail'!F8 (Formula), L9: ='Slo Foods-Retail'!G8 (Formula), N9: ='Slo Foods-Retail'!H8 (Formula)
+Row 10: A10: Dinkelbrot, B10: ='Slo Foods-Retail'!B9 (Formula), D10: ='Slo Foods-Retail'!C9 (Formula), F10: ='Slo Foods-Retail'!D9 (Formula), H10: ='Slo Foods-Retail'!E9 (Formula), J10: ='Slo Foods-Retail'!F9 (Formula), L10: ='Slo Foods-Retail'!G9 (Formula), N10: ='Slo Foods-Retail'!H9 (Formula)
+Row 11: A11: Brioche Rolls - 4 Pack, B11: ='Slo Foods-Retail'!B10 (Formula), D11: ='Slo Foods-Retail'!C10 (Formula), F11: ='Slo Foods-Retail'!D10 (Formula), H11: ='Slo Foods-Retail'!E10 (Formula), J11: ='Slo Foods-Retail'!F10 (Formula), L11: ='Slo Foods-Retail'!G10 (Formula), N11: ='Slo Foods-Retail'!H10 (Formula)
+Row 12: A12: Cardamom, J12: ='Slo Foods-Retail'!F11 (Formula), L12: ='Slo Foods-Retail'!G11 (Formula)
+Row 13: A13: Stollen, J13: ='Slo Foods-Retail'!F12 (Formula), L13: ='Slo Foods-Retail'!G12 (Formula), N13: ='Slo Foods-Retail'!H12 (Formula)
+Row 14: A14: Parmesan Peppercorn Fino, L14: ='Slo Foods-Retail'!G13 (Formula)
+Row 15: A15: Focaccia Friday, J15: ='Slo Foods-Retail'!F14 (Formula)
+Row 16: A16: Slo Food Retail
+
+=== Sheet: Ritrovo ===
+Dimensions: A1:AF1000
+
+Row 1: A1: Item, B1: Mon, D1: Tue, F1: Wed, H1: Thu, J1: Fri, L1: Sat, N1: Totals
+Row 2: A2: Italian, C2: 24.0, E2: 26.0, G2: 32.0, I2: 0.0, K2: 40.0, M2: 47.0, N2: =SUM(C2:M2) (Formula)
+Row 3: A3: Day-Old Italian(Crostini), C3: 0.0, E3: 0.0, G3: 0.0, I3: 0.0, K3: 0.0, M3: 0.0, N3: =SUM(C3:M3) (Formula)
+Row 4: A4: Large Italian (3,000g), C4: 0.0, E4: 3.0, G4: 0.0, I4: 0.0, K4: 0.0, M4: 0.0, N4: =SUM(C4:M4) (Formula)
+Row 5: A5: Miche, C5: 0.0, E5: 0.0, G5: 0.0, I5: 0.0, K5: 0.0, M5: 0.0, N5: =SUM(C5:M5) (Formula)
+Row 6: A6: Il Ritrovo
+
+=== Sheet: Trattoria ===
+Dimensions: A1:AF1001
+
+Row 1: A1: Item, B1: Mon, D1: Tue, F1: Wed, H1: Thu, J1: Fri, L1: Sat, N1: Totals
+Row 2: A2: Italian, C2: 18.0, E2: 20.0, G2: 25.0, I2: 0.0, K2: 18.0, M2: 20.0, N2: =SUM(C2:M2) (Formula)
+Row 3: A3: Miche, C3: 0.0, E3: 0.0, G3: 0.0, I3: 0.0, K3: 0.0, M3: 0.0, N3: =SUM(C3:M3) (Formula)
+Row 4: A4: Schiacciata, C4: 0.0, K4: 4.0, N4: 2.0
+Row 5: A5: Trattoria Stefano
+
+=== Sheet: AspenOak ===
+Dimensions: A1:W999
+
+Row 1: A1: Item, B1: Mon, D1: Tue, F1: Wed, H1: Thu, J1: Fri, L1: Sat, N1: Sun, P1: Totals
+Row 2: A2: Croissants, K2: 0.0, M2: 0.0, O2: 0.0, P2: =SUM(B2:O2) (Formula)
+Row 3: A3: Morning Buns, K3: 0.0, M3: 0.0, O3: 0.0, P3: =SUM(B3:O3) (Formula)
+Row 4: A4: Rye Chocolate Chip, K4: 0.0, M4: 0.0, O4: 0.0, P4: =SUM(B4:O4) (Formula)
+Row 5: A5: Molasses Cookies, K5: 0.0, M5: 0.0, O5: 0.0, P5: =SUM(B5:O5) (Formula)
+Row 6: A6: Chocolate Croissants, K6: 0.0, M6: 0.0, P6: =SUM(B6:O6) (Formula)
+Row 7: A7: Savory Croissants (Ham Only), K7: 0.0, M7: 0.0, O7: 0.0, P7: =SUM(B7:O7) (Formula)
+Row 8: A8: Italian, K8: 0.0, M8: 0.0, O8: 0.0, P8: =SUM(B8:O8) (Formula)
+Row 9: A9: Dinkelbrot, M9: 0.0, O9: 0.0, P9: =SUM(B9:O9) (Formula)
+Row 10: A10: Schiacciata-Plain, K10: 0.0, M10: 0.0, O10: 0.0, P10: =SUM(B10:O10) (Formula)
+Row 11: A11: Schiacciata-Topped, K11: 0.0, M11: 0.0, O11: 0.0, P11: =SUM(B11:O11) (Formula)
+Row 12: A12: Aspen Oak
+
+=== Sheet: Weekly Bread Totals ===
+Dimensions: A1:Z1003
+
+Row 1: A1: Bread Totals, B1: Mon, C1: Tue, D1: Wed, E1: Thur, F1: Fri, G1: Sat, H1: Sun, I1: Totals
+Row 2: A2: Italian, B2: ='Slo Foods-Retail'!B2+Ritrovo!C2+Trattoria!C2+F2F!C2+Ritrovo!C4 (Formula), C2: ='Slo Foods-Retail'!C2+Ritrovo!E2+Trattoria!E2+F2F!E2+AspenOak!G8 (Formula), D2: ='Slo Foods-Retail'!D2+Ritrovo!G2+Trattoria!G2+F2F!G2+AspenOak!I8 (Formula), E2: ='Slo Foods-Retail'!E2+Ritrovo!I2+Trattoria!I2+F2F!I2 (Formula), F2: ='Slo Foods-Retail'!F2+Ritrovo!K2+Trattoria!K2+F2F!K2 (Formula), G2: ='Slo Foods-Retail'!G2+Ritrovo!M2+Trattoria!M2+F2F!M2+AspenOak!M8 (Formula), H2: ='Slo Foods-Retail'!H2 (Formula), I2: =SUM(B2:H2) (Formula)
+Row 3: A3: Baguette, B3: ='Slo Foods-Retail'!B3 (Formula), C3: ='Slo Foods-Retail'!C3 (Formula), D3: ='Slo Foods-Retail'!D3 (Formula), E3: ='Slo Foods-Retail'!E3 (Formula), F3: ='Slo Foods-Retail'!F3 (Formula), G3: ='Slo Foods-Retail'!G3 (Formula), H3: ='Slo Foods-Retail'!H3 (Formula), I3: =SUM(B3:H3) (Formula)
+Row 4: A4: Miche, B4: ='Slo Foods-Retail'!B4+Ritrovo!C5+Trattoria!C3 (Formula), C4: ='Slo Foods-Retail'!C4+Ritrovo!E5+Trattoria!E3 (Formula), D4: ='Slo Foods-Retail'!D4+Ritrovo!G5+Trattoria!G3 (Formula), E4: 0.0, F4: ='Slo Foods-Retail'!F4+Ritrovo!K5+Trattoria!K3 (Formula), G4: ='Slo Foods-Retail'!G4+Ritrovo!M5+Trattoria!M3 (Formula), H4: ='Slo Foods-Retail'!H4 (Formula), I4: =SUM(B4:H4) (Formula)
+Row 5: A5: Rustic White, B5: ='Slo Foods-Retail'!B5+F2F!E4 (Formula), C5: ='Slo Foods-Retail'!C5+F2F!G4 (Formula), D5: ='Slo Foods-Retail'!D5+F2F!I4+F2F!K4 (Formula), E5: ='Slo Foods-Retail'!E5+F2F!K4 (Formula), F5: ='Slo Foods-Retail'!F5+F2F!M4 (Formula), G5: ='Slo Foods-Retail'!G5 (Formula), H5: ='Slo Foods-Retail'!H5+F2F!C4 (Formula), I5: =SUM(B5:H5) (Formula)
+Row 6: A6: Multigrain, B6: ='Slo Foods-Retail'!B6+F2F!E5 (Formula), C6: ='Slo Foods-Retail'!C6+F2F!G5 (Formula), D6: ='Slo Foods-Retail'!D6+F2F!I5+F2F!K5 (Formula), E6: ='Slo Foods-Retail'!E6+F2F!K5 (Formula), F6: ='Slo Foods-Retail'!F6+F2F!M5 (Formula), G6: ='Slo Foods-Retail'!G6 (Formula), H6: ='Slo Foods-Retail'!H6+F2F!C5 (Formula), I6: =SUM(B6:H6) (Formula)
+Row 7: A7: Pain d'Mie, C7: ='Slo Foods-Retail'!D7+'Slo Foods-Kitchen'!D4 (Formula), D7: ='Slo Foods-Kitchen'!F4+'Slo Foods-Retail'!F7 (Formula), H7: ='Slo Foods-Retail'!B7+'Slo Foods-Kitchen'!B4 (Formula), I7: =SUM(B7:H7) (Formula)
+Row 8: A8: Specialty Bread, I8: =SUM(B8:H8) (Formula)
+Row 9: A9: Dinkelbrot, B9: ='Slo Foods-Retail'!B9 (Formula), C9: ='Slo Foods-Retail'!C9 (Formula), D9: ='Slo Foods-Retail'!D9 (Formula), E9: ='Slo Foods-Retail'!E9 (Formula), F9: ='Slo Foods-Retail'!F9+AspenOak!M9 (Formula), G9: ='Slo Foods-Retail'!G9 (Formula), H9: ='Slo Foods-Retail'!H9 (Formula), I9: =SUM(B9:H9) (Formula)
+Row 10: A10: Dinklebrot Pullman, B10: ='Slo Foods-Kitchen'!B2+F2F!E6 (Formula), C10: ='Slo Foods-Kitchen'!C2+F2F!G6 (Formula), D10: ='Slo Foods-Kitchen'!D2+F2F!I6+F2F!K6 (Formula), E10: ='Slo Foods-Kitchen'!E2 (Formula), F10: ='Slo Foods-Kitchen'!F2+F2F!M6 (Formula), G10: ='Slo Foods-Kitchen'!G2 (Formula), H10: ='Slo Foods-Kitchen'!H2+F2F!C6 (Formula), I10: =SUM(B10:H10) (Formula)
+Row 11: A11: Focaccia Fino, G11: ='Slo Foods-Retail'!G13 (Formula), H11: ='Slo Foods-Retail'!H13 (Formula), I11: =SUM(B11:H11) (Formula)
+Row 12: A12: Focaccia, B12: ='Slo Foods-Retail'!B14 (Formula), C12: ='Slo Foods-Retail'!C14 (Formula), D12: ='Slo Foods-Retail'!D14 (Formula), E12: ='Slo Foods-Retail'!E14 (Formula), F12: ='Slo Foods-Retail'!F14 (Formula), G12: ='Slo Foods-Retail'!G14 (Formula), H12: ='Slo Foods-Retail'!H14 (Formula), I12: =SUM(B12:H12) (Formula)
+Row 13: A13: Cardamom Braid , B13: ='Slo Foods-Retail'!B11 (Formula), C13: ='Slo Foods-Retail'!C11 (Formula), D13: ='Slo Foods-Retail'!D11 (Formula), E13: ='Slo Foods-Retail'!E11 (Formula), F13: ='Slo Foods-Retail'!F11 (Formula), G13: ='Slo Foods-Retail'!G11 (Formula), H13: ='Slo Foods-Retail'!H11 (Formula), I13: =SUM(B13:H13) (Formula)
+Row 14: A14: Stollen, B14: ='Slo Foods-Retail'!B12 (Formula), C14: ='Slo Foods-Retail'!C12 (Formula), D14: ='Slo Foods-Retail'!D12 (Formula), E14: ='Slo Foods-Retail'!E12 (Formula), F14: ='Slo Foods-Retail'!F12 (Formula), G14: ='Slo Foods-Retail'!G12 (Formula), H14: ='Slo Foods-Retail'!H12 (Formula), I14: =SUM(B14:H14) (Formula)
+Row 15: A15: Brioche Buns, B15: =F2F!E7 (Formula), C15: =F2F!G7 (Formula), D15: =F2F!I7+F2F!K7 (Formula), F15: =F2F!M7 (Formula), H15: =F2F!C7 (Formula), I15: =SUM(B15:H15) (Formula)
+Row 16: A16: Brioche Dinner Rolls-8Pk, B16: ='Slo Foods-Retail'!B10 (Formula), C16: ='Slo Foods-Retail'!C10 (Formula), D16: ='Slo Foods-Retail'!D10 (Formula), E16: ='Slo Foods-Retail'!E10 (Formula), F16: ='Slo Foods-Retail'!F10 (Formula), G16: ='Slo Foods-Retail'!G10 (Formula), H16: ='Slo Foods-Retail'!H10 (Formula), I16: =SUM(B16:H16) (Formula)
+Row 17: A17: Schiacciata, B17: ='Slo Foods-Kitchen'!B3+'Slo Foods-Retail'!B8+F2F!C11 (Formula), C17: ='Slo Foods-Kitchen'!C3+'Slo Foods-Retail'!C8+F2F!E11 (Formula), D17: ='Slo Foods-Kitchen'!D3+'Slo Foods-Retail'!D8+F2F!G11++AspenOak!K10+AspenOak!K11 (Formula), E17: ='Slo Foods-Kitchen'!E3+'Slo Foods-Retail'!E8+F2F!I11 (Formula), F17: ='Slo Foods-Kitchen'!F3+'Slo Foods-Retail'!F8+F2F!K11+AspenOak!M10+AspenOak!M11+Trattoria!K4 (Formula), G17: ='Slo Foods-Kitchen'!G3+'Slo Foods-Retail'!G8+F2F!M11+AspenOak!O10+AspenOak!O11 (Formula), H17: ='Slo Foods-Kitchen'!H3+'Slo Foods-Retail'!H8 (Formula), I17: =SUM(B17:H17) (Formula)
+Row 18: A18: Brioche Pullman (French Toast), B18: =F2F!E3 (Formula), C18: =F2F!G3 (Formula), D18: =F2F!I3+F2F!K3 (Formula), F18: =F2F!M3 (Formula), H18: =F2F!C3 (Formula), I18: =SUM(B18:H18) (Formula)
+
+=== Sheet: Weekly Pastry Totals ===
+Dimensions: A1:AG34
+
+Row 1: A1: Pastry Totals, B1: Mon, D1: Tue, F1: Wed, H1: Thu, J1: Fri, L1: Sat, N1: Sun, P1: Totals
+Row 2: A2: Muffins, B2: ='Slo Foods-Retail'!B37+F2F!C36 (Formula), D2: ='Slo Foods-Retail'!C37+F2F!E36 (Formula), F2: ='Slo Foods-Retail'!D37+F2F!G36 (Formula), H2: ='Slo Foods-Retail'!E37+F2F!I36 (Formula), J2: ='Slo Foods-Retail'!F37+F2F!K36 (Formula), L2: ='Slo Foods-Retail'!G37+F2F!M36 (Formula), N2: ='Slo Foods-Retail'!H37 (Formula), P2: =SUM(B2:N2) (Formula)
+Row 3: A3: GF Muffins, B3: ='Slo Foods-Retail'!B38 (Formula), D3: ='Slo Foods-Retail'!C38 (Formula), F3: ='Slo Foods-Retail'!D38 (Formula), H3: ='Slo Foods-Retail'!E38 (Formula), J3: ='Slo Foods-Retail'!F38 (Formula), L3: ='Slo Foods-Retail'!G38 (Formula), N3: ='Slo Foods-Retail'!H38 (Formula), P3: =SUM(B3:N3) (Formula)
+Row 4: A4: Scones, B4: ='Slo Foods-Retail'!B39+F2F!C37 (Formula), D4: ='Slo Foods-Retail'!C39+F2F!E37 (Formula), F4: ='Slo Foods-Retail'!D39+F2F!G37 (Formula), H4: ='Slo Foods-Retail'!E39+F2F!I37 (Formula), J4: ='Slo Foods-Retail'!F39+F2F!K37 (Formula), L4: ='Slo Foods-Retail'!G39+F2F!M37 (Formula), N4: ='Slo Foods-Retail'!H39 (Formula), P4: =SUM(B4:N4) (Formula)
+Row 5: A5: GF Scones, B5: ='Slo Foods-Retail'!B40 (Formula), D5: ='Slo Foods-Retail'!C40 (Formula), F5: ='Slo Foods-Retail'!D40 (Formula), H5: ='Slo Foods-Retail'!E40+F2F!I37 (Formula), J5: ='Slo Foods-Retail'!F40 (Formula), L5: ='Slo Foods-Retail'!G40 (Formula), N5: ='Slo Foods-Retail'!H40 (Formula), P5: =SUM(B5:N5) (Formula)
+Row 6: A6: Croissants, B6: ='Slo Foods-Retail'!B41+F2F!C38+AspenOak!C2 (Formula), D6: ='Slo Foods-Retail'!C41+F2F!E38+AspenOak!G2 (Formula), F6: ='Slo Foods-Retail'!D41+F2F!G38+AspenOak!I2 (Formula), H6: ='Slo Foods-Retail'!E41+F2F!I38+AspenOak!K2 (Formula), J6: ='Slo Foods-Retail'!F41+F2F!K38+AspenOak!M2 (Formula), L6: ='Slo Foods-Retail'!G41+F2F!M38+AspenOak!M2 (Formula), N6: ='Slo Foods-Retail'!H41 (Formula), P6: =SUM(B6:N6) (Formula)
+Row 7: A7: Savory Croissants, B7: ='Slo Foods-Retail'!B42+F2F!C39 (Formula), D7: ='Slo Foods-Retail'!C42+F2F!E39 (Formula), F7: ='Slo Foods-Retail'!D42+F2F!G39+AspenOak!I7 (Formula), H7: ='Slo Foods-Retail'!E42+F2F!I39 (Formula), J7: ='Slo Foods-Retail'!F42+F2F!K39+AspenOak!K7 (Formula), L7: ='Slo Foods-Retail'!G42+F2F!M39+AspenOak!M7 (Formula), N7: ='Slo Foods-Retail'!H42 (Formula), P7: =SUM(B7:N7) (Formula)
+Row 8: A8: Almond Croissants, B8: ='Slo Foods-Retail'!B43+F2F!C40 (Formula), D8: ='Slo Foods-Retail'!C43+F2F!E40 (Formula), F8: ='Slo Foods-Retail'!D43+F2F!G40 (Formula), H8: ='Slo Foods-Retail'!E43+F2F!I40 (Formula), J8: ='Slo Foods-Retail'!F43+F2F!K40 (Formula), L8: ='Slo Foods-Retail'!G43+F2F!M40 (Formula), N8: ='Slo Foods-Retail'!H43 (Formula), P8: =SUM(B8:N8) (Formula)
+Row 9: A9: Pistachio Croissants, B9: ='Slo Foods-Retail'!B44 (Formula), D9: ='Slo Foods-Retail'!C44 (Formula), F9: ='Slo Foods-Retail'!D44 (Formula), H9: ='Slo Foods-Retail'!E44 (Formula), J9: ='Slo Foods-Retail'!F44 (Formula), L9: ='Slo Foods-Retail'!G44 (Formula), N9: ='Slo Foods-Retail'!H44 (Formula), P9: =SUM(B9:N9) (Formula)
+Row 10: A10: Chocolate Croissants, B10: ='Slo Foods-Retail'!B45+F2F!C41 (Formula), D10: ='Slo Foods-Retail'!C45+F2F!E41 (Formula), F10: ='Slo Foods-Retail'!D45+F2F!G41+AspenOak!I6 (Formula), H10: ='Slo Foods-Retail'!E45+F2F!I41+AspenOak!K6 (Formula), J10: ='Slo Foods-Retail'!F45+F2F!K41+AspenOak!M6 (Formula), L10: ='Slo Foods-Retail'!G45+F2F!M41+AspenOak!M6 (Formula), N10: ='Slo Foods-Retail'!H45 (Formula), P10: =SUM(B10:N10) (Formula)
+Row 11: A11: Morning Bun, B11: ='Slo Foods-Retail'!B46+F2F!C42 (Formula), D11: ='Slo Foods-Retail'!C46+F2F!E42 (Formula), F11: ='Slo Foods-Retail'!D46+F2F!G42 (Formula), H11: ='Slo Foods-Retail'!E46+F2F!I42+AspenOak!K3 (Formula), J11: ='Slo Foods-Retail'!F46+F2F!K42 (Formula), L11: ='Slo Foods-Retail'!G46+F2F!M42 (Formula), N11: ='Slo Foods-Retail'!H46 (Formula), P11: =SUM(B11:N11) (Formula)
+Row 12: A12: Danish, B12: ='Slo Foods-Retail'!B47+F2F!C43+AspenOak!C3 (Formula), D12: ='Slo Foods-Retail'!C47+F2F!E43+AspenOak!G3 (Formula), F12: ='Slo Foods-Retail'!D47+F2F!G43+AspenOak!I3 (Formula), H12: ='Slo Foods-Retail'!E47+F2F!I43 (Formula), J12: ='Slo Foods-Retail'!F47+F2F!K43 (Formula), L12: ='Slo Foods-Retail'!G47+F2F!M43 (Formula), N12: ='Slo Foods-Retail'!H47 (Formula), P12: =SUM(B12:N12) (Formula)
+Row 13: A13: GF Quiche F2F, B13: =F2F!C10 (Formula), D13: =F2F!E10 (Formula), F13: =F2F!G10 (Formula), H13: =F2F!I10 (Formula), J13: =F2F!K10 (Formula), L13: =F2F!M10 (Formula), N13: 0.0, P13: =SUM(B13:N13) (Formula)
+Row 14: A14: Rye Chocolate Chip Cookies, B14: ='Slo Foods-Retail'!B48+F2F!C44 (Formula), D14: ='Slo Foods-Retail'!C48+F2F!E44+AspenOak!G4 (Formula), F14: ='Slo Foods-Retail'!D48+F2F!G44+AspenOak!I4 (Formula), H14: ='Slo Foods-Retail'!E48+F2F!I44+AspenOak!K4 (Formula), J14: ='Slo Foods-Retail'!F48+F2F!K44+AspenOak!M4 (Formula), L14: ='Slo Foods-Retail'!G48+F2F!M44+AspenOak!M4 (Formula), N14: ='Slo Foods-Retail'!H48 (Formula), P14: =SUM(B14:N14) (Formula)
+Row 15: A15: Molasses Cookies, B15: ='Slo Foods-Retail'!B49+F2F!C45 (Formula), D15: ='Slo Foods-Retail'!C49+F2F!E45+AspenOak!G5 (Formula), F15: ='Slo Foods-Retail'!D49+F2F!G45+AspenOak!I5 (Formula), H15: ='Slo Foods-Retail'!E49+F2F!I45+AspenOak!K5 (Formula), J15: ='Slo Foods-Retail'!F49+F2F!K45+AspenOak!M5 (Formula), L15: ='Slo Foods-Retail'!G49+F2F!M45+AspenOak!M5 (Formula), N15: ='Slo Foods-Retail'!H49 (Formula), P15: =SUM(B15:N15) (Formula)
+Row 16: A16: Marzipan Cookes, B16: ='Slo Foods-Retail'!B50+F2F!C46 (Formula), D16: ='Slo Foods-Retail'!C50+F2F!E46 (Formula), F16: ='Slo Foods-Retail'!D50+F2F!G46 (Formula), H16: ='Slo Foods-Retail'!E50+F2F!I46 (Formula), J16: ='Slo Foods-Retail'!F50+F2F!K46 (Formula), L16: ='Slo Foods-Retail'!G50+F2F!M46 (Formula), N16: ='Slo Foods-Retail'!H50 (Formula), P16: =SUM(B16:N16) (Formula)
+Row 17: A17: Childhood Cookies, B17: ='Slo Foods-Retail'!B51+F2F!C47 (Formula), D17: ='Slo Foods-Retail'!C51+F2F!E47 (Formula), F17: ='Slo Foods-Retail'!D51+F2F!G47 (Formula), H17: ='Slo Foods-Retail'!E51+F2F!I47 (Formula), J17: ='Slo Foods-Retail'!F51+F2F!K47 (Formula), L17: ='Slo Foods-Retail'!G51+F2F!M47 (Formula), N17: ='Slo Foods-Retail'!H51 (Formula), P17: =SUM(B17:N17) (Formula)
+Row 18: A18: Butter Pecan, B18: ='Slo Foods-Retail'!B52 (Formula), D18: ='Slo Foods-Retail'!C52+AspenOak!G7 (Formula), F18: ='Slo Foods-Retail'!D52 (Formula), H18: ='Slo Foods-Retail'!E52 (Formula), J18: ='Slo Foods-Retail'!F52 (Formula), L18: ='Slo Foods-Retail'!G52 (Formula), N18: ='Slo Foods-Retail'!H52 (Formula), P18: =SUM(B18:N18) (Formula)
+Row 19: A19: Whole GF Quiche, B19: ='Slo Foods-Retail'!B53 (Formula), D19: ='Slo Foods-Retail'!C53 (Formula), F19: ='Slo Foods-Retail'!D53 (Formula), H19: ='Slo Foods-Retail'!E53 (Formula), J19: ='Slo Foods-Retail'!F53 (Formula), L19: ='Slo Foods-Retail'!G53 (Formula), N19: ='Slo Foods-Retail'!H53 (Formula), P19: =SUM(B19:N19) (Formula)
+Row 20: A20: Quiche - F2F, B20: =F2F!C48 (Formula), D20: =F2F!E48 (Formula), F20: =F2F!G48 (Formula), H20: =F2F!I48 (Formula), J20: =F2F!K48 (Formula), L20: =F2F!M48 (Formula), N20: =F2F!O48 (Formula), P20: =SUM(B20:N20) (Formula)
+Row 21: A21: Deep Dish Quiche - Retail, B21: =#REF! (Formula), D21: =#REF! (Formula), F21: =#REF! (Formula), H21: =#REF! (Formula), J21: =#REF! (Formula), L21: =#REF! (Formula), N21: =#REF! (Formula), P21: =SUM(B21:N21) (Formula)
+Row 22: A22: Biscuits, B22: =F2F!C49 (Formula), D22: =F2F!E49 (Formula), F22: =F2F!G49 (Formula), H22: =F2F!I49 (Formula), J22: =F2F!K49 (Formula), L22: =F2F!M49 (Formula), N22: =F2F!O49 (Formula), P22: =SUM(B22:N22) (Formula)
+Row 23: A23: 4-Pack Rye Choc. Chip, P23: =SUM(B23:N23) (Formula)
+Row 24: A24: 4-Pack Molasses, P24: =SUM(B24:N24) (Formula)
+Row 25: A25: 4-Pack Marzipan, P25: =SUM(B25:N25) (Formula)
+Row 26: A26: 4-Pack Childhood, P26: =SUM(B26:N26) (Formula)
+Row 27: A27: 4-Pack Butter Pecan, P27: =SUM(B27:N27) (Formula)
+Row 28: A28: Sm. Retail Tiramisu, B28: 12.0, D28: 12.0, F28: 12.0, H28: 12.0, J28: 12.0, L28: 12.0, N28: 12.0
+Row 29: A29: Lg. Retail Tiramisu, B29: 4.0, D29: 4.0, F29: 4.0, H29: 4.0, J29: 4.0, L29: 4.0, N29: 4.0
+
+=== Sheet: Bake Totals ===
+Dimensions: A1:H29
+
+Row 1: A1: Bake 1 , B1: Mon, C1: Tue, D1: Wed, E1: Thur, F1: Fri, G1: Sat, H1: Sun
+Row 2: A2: Italian
+Row 3: A3: Baguette
+Row 4: A4: Miche
+Row 5: A5: Rustic White
+Row 6: A6: Multigrain
+Row 7: A7: Pain d'Mie
+Row 8: A8: Specialty Bread
+Row 9: A9: Dinkelbrot
+Row 10: A10: Dinkelbrot Pullman
+Row 11: A11: Fino
+Row 12: A12: Focaccia
+Row 13: A13: Parker Rolls
+Row 14: A14: Schiacciata, B14: 4.0, C14: 4.0, D14: 4.0, E14: 4.0, F14: 4.0, G14: 5.0, H14: 3.0
+Row 16: A16: Bake 2, B16: Mon, C16: Tue, D16: Wed, E16: Thur, F16: Fri, G16: Sat, H16: Sun
+Row 17: A17: Italian
+Row 18: A18: Baguette
+Row 19: A19: Miche
+Row 20: A20: Rustic White
+Row 21: A21: Multigrain
+Row 22: A22: Pain d'Mie
+Row 23: A23: Specialty Bread
+Row 24: A24: Dinkelbrot
+Row 25: A25: Dinkelbrot Pullman
+Row 26: A26: Fino
+Row 27: A27: Focaccia
+Row 28: A28: Parker Rolls, C28: 100.0, D28: 100.0, E28: 100.0
+Row 29: A29: Schiacciata, F29: 4.0, G29: 5.0

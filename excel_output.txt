@@ -1,0 +1,1930 @@
+Available sheets: ['Mixing Sheet', 'Experimental Mixing Sheet', 'MEP Hub', 'Experimental Starters', 'Experimental Soaks', 'Bake Sheet', 'Experimental Italian', 'Experimental Multigrain', 'Copy of Bake Sheet', 'Experimental Rustic White', 'Starters', 'Soaks', 'Two-Day Italian', 'Two-Day Multigrain', 'Two-Day Baguette', 'Italian', 'Multigrain', 'Rustic White', 'Baguette', 'Pain dMie', 'New Miche', 'Brioche', 'Schiacciata', 'Stollen', 'Pumpkin Miche', 'Dinkel', 'Hot Cross Buns', 'Fino', 'Focaccia', 'Croissant', 'Brotchen', 'Chocolate Croissant', 'Saturday Mixing Sheet', 'Saturday Soaks', 'Saturday Starters', 'Saturday Italian', 'Saturday Multigrain', 'Saturday Baguette', 'Light Rye ', 'Dark Rye', 'Ciabatta', 'Naan', 'Miche', 'Itl Levain', 'Levain', 'Biga', 'Emmy(starter)', 'Poolish', 'RW Soaker', '7 Grain Soaker', 'Dinkel Soaker', 'Mixing Instructions', 'Baking Tasks', 'Bread Tasks', 'Irish Soda Bread ', 'DDT Sheet', 'Baking Schedule', 'Maxes']
+
+
+=== Sheet: Mixing Sheet ===
+Dimensions: A1:V973
+
+Row 1: A1: Sunday Mix 11/17
+Row 2: A2: Italian, D2: Multigrain, G2: Rustic White
+Row 3: G3: 1000 grams, H3: ='Rustic White'!D3 (Formula)
+Row 4: A4: 1000 g Batard, B4: =Italian!D2 (Formula), D4: 1000 grams, E4: =Multigrain!D3 (Formula), G4: RW , H4: ='Rustic White'!D4 (Formula)
+Row 5: A5: Italian+Multgrain, B5: =Italian!D3 (Formula), C5: =IF(B5>Maxes!B27, "Split into 2 batches", "") (Formula), D5: Italian Dough, E5: =E7-E6 (Formula), G5: Final Dough
+Row 6: A6: Final Dough, C6: =IF(B5>Maxes!B27, "↓","") (Formula), D6: MG Soaker, E6: ='7 Grain Soaker'!D3 (Formula), G6: Red Rose, H6: ='Rustic White'!D28 (Formula)
+Row 7: A7: Red Rose, B7: =IF(B5>Maxes!B27, MROUND(Italian!D31/2, 5), Italian!D31) (Formula), C7: =IF(B5>Maxes!B27, MROUND(Italian!D31/2, 5), "") (Formula), D7: Batch Weight, grams, E7: =Multigrain!D41 (Formula), G7: Whole Wheat, H7: ='Rustic White'!D29 (Formula)
+Row 8: A8: Whole Wheat, B8: =IF(B5>Maxes!B27, MROUND(Italian!D32/2, 5), Italian!D32) (Formula), C8: =IF(B5>Maxes!B27, MROUND(Italian!D32/2, 5), "") (Formula), G8: Water, H8: ='Rustic White'!D30 (Formula)
+Row 9: A9: Water, B9: =IF(B5>Maxes!B27, MROUND(Italian!D33/2, 5), Italian!D33) (Formula), C9: =IF(B5>Maxes!B27, MROUND(Italian!D33/2, 5), "") (Formula), D9: Pain d'Mie, G9: Levain, H9: ='Rustic White'!D32 (Formula)
+Row 10: A10: Levain, B10: =IF(B5>Maxes!B27, ROUND(Italian!D36/2, 0), Italian!D36) (Formula), C10: =IF(B5>Maxes!B27, ROUND(Italian!D36/2, 0), "") (Formula), D10: 750 grams, E10: ='Pain dMie'!D3 (Formula), G10: Biga, H10: ='Rustic White'!D35 (Formula)
+Row 11: A11: Poolish, B11: =IF(B5>Maxes!B27, ROUND(Italian!D35/2, 0), Italian!D35) (Formula), C11: =IF(B5>Maxes!B27, ROUND(Italian!D35/2, 0), "") (Formula), D11: Final Dough, G11: Salt, H11: ='Rustic White'!D31 (Formula)
+Row 12: A12: Salt, B12: =IF(B5>Maxes!B27, ROUND(Italian!D34/2, 0),Italian!D34)  (Formula), C12: =IF(B5>Maxes!B27, ROUND(Italian!D34/2, 0), "") (Formula), D12: Red Rose, E12: ='Pain dMie'!D26 (Formula), G12: Olive Oil, H12: ='Rustic White'!D34 (Formula)
+Row 13: A13: Batch Weight, grams, B13: =Italian!D38 (Formula), D13: Whole Milk, E13: ='Pain dMie'!D27 (Formula), G13: RW Soaker, H13: ='Rustic White'!D33 (Formula)
+Row 14: A14: Loaf, grams, B14: =Italian!D41 (Formula), D14: Sugar, E14: ='Pain dMie'!D28 (Formula), G14: Batch Weight, grams, H14: ='Rustic White'!D36 (Formula)
+Row 15: D15: Gold Yeast, E15: ='Pain dMie'!D31 (Formula), G15: baguette grams, H15: ='Rustic White'!D38 (Formula)
+Row 16: D16: Levain Discard, E16: ='Pain dMie'!D33 (Formula)
+Row 17: A17: Baguette, D17: Salt, E17: ='Pain dMie'!D31 (Formula)
+Row 18: A18: 400 grams, B18: =Baguette!D3 (Formula), D18: Whole Egg, E18: ='Pain dMie'!D32 (Formula), G18: Brioche
+Row 19: A19: Final Dough, D19: Butter, soft, E19: ='Pain dMie'!D29 (Formula), G19: 90 grams, H19: =Brioche!D3 (Formula)
+Row 20: A20: Red Rose, B20: =Baguette!D26 (Formula), D20: batch weight, E20: ='Pain dMie'!D36 (Formula), G20: Final Dough
+Row 21: A21: Water 1, B21: =Baguette!D27 (Formula), D21: baguette grams, E21: ='Pain dMie'!D37 (Formula), G21: Water, H21: =Brioche!D33 (Formula)
+Row 22: A22: Levain, B22: =Baguette!D31 (Formula), G22: Whole Milk, H22: =Brioche!D31 (Formula)
+Row 23: A23: Dry Yeast, B23: =Baguette!D30 (Formula), G23: Gold Yeast, H23: =Brioche!D28 (Formula)
+Row 24: A24: Salt, B24: =Baguette!D29 (Formula), D24: Dinkelbrot, G24: Eggs, H24: =Brioche!D32 (Formula)
+Row 25: A25: Water 2, B25: =Baguette!D28 (Formula), D25: 907 grams, E25: =Dinkel!D3 (Formula), G25: Red Rose, H25: =Brioche!D26 (Formula)
+Row 26: A26: Batch Weight, grams, B26: =Baguette!D33 (Formula), D26: 2268 grams, G26: Sugar, H26: =Brioche!D27 (Formula)
+Row 27: A27: baguette grams, B27: =Baguette!D36 (Formula), D27: Final Dough, G27: Salt, H27: =Brioche!D30 (Formula)
+Row 28: D28: Spelt Flour, E28: =Dinkel!D28 (Formula), G28: Butter, H28: =Brioche!D29 (Formula)
+Row 29: D29: Spice Mix, E29: =Dinkel!D29 (Formula), G29: batch weight, H29: =Brioche!D35 (Formula)
+Row 30: A30: Miche, D30: Water, E30: =Dinkel!D30 (Formula), G30: Roll grams, H30: =Brioche!D36 (Formula)
+Row 31: A31: 1000 grams, B31: ='New Miche'!E2 (Formula), D31: Salt, E31: =Dinkel!D31 (Formula), H31: ='Pain dMie'!G36 (Formula)
+Row 32: A32: Final Dough, D32: Levain, E32: =Dinkel!D32 (Formula), G32: Fino
+Row 33: A33: Red Rose, B33: ='New Miche'!E9 (Formula), D33: Soak, E33: =Dinkel!D33 (Formula), G33: 400 grams, H33: =Fino!D3 (Formula)
+Row 34: A34: Whole Wheat, B34: ='New Miche'!E10 (Formula), D34: Barley Malt, E34: =Dinkel!D34 (Formula), G34: Final Dough
+Row 35: A35: Rye Levain, B35: ='New Miche'!E11 (Formula), D35: Honey, E35: =Dinkel!D35 (Formula), G35: Red Rose, H35: =Fino!D26 (Formula)
+Row 36: A36: Red Rose Levain, B36: ='New Miche'!E12 (Formula), D36: Cake Yeast, E36: =Dinkel!D36 (Formula), G36: Instant Yeast, H36: =Fino!D27 (Formula)
+Row 37: A37: Barley Malt, B37: ='New Miche'!E13 (Formula), D37: Batch Weight, grams, E37: =Dinkel!D39 (Formula), G37: Salt, H37: =Fino!D28 (Formula)
+Row 38: A38: Water 1, B38: ='New Miche'!E14 (Formula), D38: Retail Loaf, grams, E38: =Dinkel!D42 (Formula), G38: Sugar, H38: =Fino!D29 (Formula)
+Row 39: A39: Salt, B39: ='New Miche'!E15 (Formula), G39: Water 1, H39: =Fino!D30 (Formula)
+Row 40: A40: Water 2, B40: ='New Miche'!E16 (Formula), G40: Water 2, H40: =Fino!D31 (Formula)
+Row 41: A41: Batch Weight, grams, B41: ='New Miche'!E28 (Formula), D41: Seasonal, G41: Batch Weight, grams, H41: =Fino!D35 (Formula)
+Row 42: A42: baguette grams, B42: ='New Miche'!E30 (Formula), D42: 1000 grams, E42: 0.0, G42: 1 Tray, grams, H42: =Fino!D36 (Formula)
+Row 43: D43: Final Dough, H43: =Fino!D34 (Formula)
+Row 44: A44: Schiacciata, D44: RW Dough, E44: 0.0, G44: Croissant
+Row 45: A45: 2400 grams, B45: =Schiacciata!C3 (Formula), D45: Polenta, E45: 0.0, G45: 2700 grams, H45: =Croissant!D3 (Formula)
+Row 46: A46: Final Dough, D46: Soaker, E46: 0.0, G46: Final Dough
+Row 47: A47: Instant Yeast, B47: =Schiacciata!C32 (Formula), D47: Batch Weight, grams, E47: 0.0, G47: Red Rose, H47: =Croissant!D7 (Formula)
+Row 48: A48: Water , B48: =Schiacciata!C27 (Formula), D48: baguette grams, E48: 1000.0, G48: Water , H48: =Croissant!D8 (Formula)
+Row 49: A49: Biga, B49: =Schiacciata!C28 (Formula), G49: Salt, H49: =Croissant!D9 (Formula)
+Row 50: A50: Sugar, B50: =Schiacciata!C29 (Formula), G50: Whole Milk, H50: =Croissant!D10 (Formula)
+
+=== Sheet: Experimental Mixing Sheet ===
+Dimensions: A1:V977
+
+Row 1: A1: =IFERROR(__xludf.DUMMYFUNCTION("IFNA(Concatenate(Filter('MEP Hub'!B5:B11, 'MEP Hub'!C5:C11), IF('MEP Hub'!C13, "" MEP "", "" Mix ""), TEXTJOIN("""", TRUE, 'MEP Hub'!B13)), ""No Date Selected"")"),"Friday MEP 1/2") (Formula)
+Row 2: A2: Italian, D2: Multigrain, G2: Rustic White
+Row 3: G3: 1000 grams, H3: ='Experimental Rustic White'!D3 (Formula)
+Row 4: A4: 1000 g Batard, B4: =IF('MEP Hub'!C15, 'Two-Day Italian'!D2, 'Experimental Italian'!D2) (Formula), D4: 1000 grams, E4: =IF('MEP Hub'!C15, 'Two-Day Multigrain'!D3, Multigrain!D3) (Formula), G4: RW , H4: ='Experimental Rustic White'!D4 (Formula)
+Row 5: A5: Italian+Multgrain, B5: =IF('MEP Hub'!C15, 'Two-Day Italian'!D3, 'Experimental Italian'!D3) (Formula), C5: =IF(B5>Maxes!B27, "Split into 2 batches", "") (Formula), D5: Italian Dough, E5: =E7-E6 (Formula), G5: Final Dough
+Row 6: A6: Final Dough, C6: =IF(B5>Maxes!B27, "↓","") (Formula), D6: MG Soaker, E6: ='7 Grain Soaker'!D3 (Formula), G6: Red Rose, H6: ='Experimental Rustic White'!D28 (Formula)
+Row 7: A7: Red Rose, B7: =IF(B5>Maxes!B27, MROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D31, 'Experimental Italian'!D31)/2, 5), IF('MEP Hub'!C15, 'Two-Day Italian'!D31, 'Experimental Italian'!D31)) (Formula), C7: =IF(B5>Maxes!B27, MROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D31, 'Experimental Italian'!D31)/2, 5), "") (Formula), D7: Batch Weight, grams, E7: =IF('MEP Hub'!C15, 'Two-Day Multigrain'!D41, Multigrain!D41) (Formula), G7: Whole Wheat, H7: ='Experimental Rustic White'!D29 (Formula)
+Row 8: A8: Whole Wheat, B8: =IF(B5>Maxes!B27, MROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D32, 'Experimental Italian'!D32)/2, 5), IF('MEP Hub'!C15, 'Two-Day Italian'!D32, 'Experimental Italian'!D32)) (Formula), C8: =IF(B5>Maxes!B27, MROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D32, 'Experimental Italian'!D32)/2, 5), "") (Formula), G8: Water, H8: ='Experimental Rustic White'!D30 (Formula)
+Row 9: A9: Water, B9: =IF(B5>Maxes!B27, MROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D33, 'Experimental Italian'!D33)/2, 5), IF('MEP Hub'!C15, 'Two-Day Italian'!D33, 'Experimental Italian'!D33)) (Formula), C9: =IF(B5>Maxes!B27, MROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D33, 'Experimental Italian'!D33)/2, 5), "") (Formula), D9: Pain d'Mie, G9: Levain, H9: ='Experimental Rustic White'!D32 (Formula)
+Row 10: A10: Levain, B10: =IF(B5>Maxes!B27, ROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D36, 'Experimental Italian'!D36)/2, 0), IF('MEP Hub'!C15, 'Two-Day Italian'!D36, 'Experimental Italian'!D36)) (Formula), C10: =IF(B5>Maxes!B27, ROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D36, 'Experimental Italian'!D36)/2, 0), "") (Formula), D10: 750 grams, E10: ='MEP Hub'!G7 (Formula), G10: Biga, H10: ='Experimental Rustic White'!D35 (Formula)
+Row 11: A11: Poolish, B11: =IF(B5>Maxes!B27, ROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D35, 'Experimental Italian'!D35)/2, 0), 'Experimental Italian'!D35) (Formula), C11: =IF(B5>Maxes!B27, ROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D35, 'Experimental Italian'!D35)/2, 0), "") (Formula), D11: Final Dough, G11: Salt, H11: ='Experimental Rustic White'!D31 (Formula)
+Row 12: A12: Salt, B12: =IF(B5>Maxes!B27, ROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D34, 'Experimental Italian'!D34)/2, 0),'Experimental Italian'!D34)  (Formula), C12: =IF(B5>Maxes!B27, ROUND(IF('MEP Hub'!C15, 'Two-Day Italian'!D34, 'Experimental Italian'!D34)/2, 0), "") (Formula), D12: Red Rose, E12: ='Pain dMie'!D26 (Formula), G12: Olive Oil, H12: ='Experimental Rustic White'!D34 (Formula)
+Row 13: A13: Batch Weight, grams, B13: =IF('MEP Hub'!C15, 'Two-Day Italian'!D38, 'Experimental Italian'!D38) (Formula), D13: Milk Powder, E13: ='Pain dMie'!D27 (Formula), G13: RW Soaker, H13: ='Experimental Rustic White'!D33 (Formula)
+Row 14: A14: Loaf, grams, B14: =IF('MEP Hub'!C15, 'Two-Day Italian'!D41, 'Experimental Italian'!D41) (Formula), D14: Sugar, E14: ='Pain dMie'!D28 (Formula), G14: Batch Weight, grams, H14: ='Experimental Rustic White'!D36 (Formula)
+Row 15: D15: Instant Yeast, E15: ='Pain dMie'!D31 (Formula), G15: baguette grams, H15: ='Experimental Rustic White'!D38 (Formula)
+Row 16: D16: Levain Discard, E16: ='Pain dMie'!D33 (Formula)
+Row 17: A17: Baguette, D17: Water, E17: ='Pain dMie'!D32 (Formula)
+Row 18: A18: 400 grams, B18: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D3, Baguette!D3) (Formula), D18: Salt, E18: ='Pain dMie'!D31 (Formula), G18: Brioche
+Row 19: A19: Final Dough, D19: Butter, soft, E19: ='Pain dMie'!D29 (Formula), G19: 90 grams, H19: =Brioche!D3 (Formula)
+Row 20: A20: Red Rose, B20: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D27, Baguette!D26) (Formula), D20: batch weight, E20: ='Pain dMie'!D36 (Formula), G20: Final Dough
+Row 21: A21: Water 1, B21: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D28, Baguette!D27) (Formula), D21: baguette grams, E21: ='Pain dMie'!D37 (Formula), G21: Whole Milk, H21: =Brioche!D31 (Formula)
+Row 22: A22: Levain, B22: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D32, Baguette!D31) (Formula), G22: Gold Yeast, H22: =Brioche!D28 (Formula)
+Row 23: A23: Biga, B23: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D33, 0) (Formula), G23: Eggs, H23: =Brioche!D32 (Formula)
+Row 24: A24: Instant Yeast, B24: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D31, Baguette!D30) (Formula), D24: Dinkelbrot, G24: Red Rose, H24: =Brioche!D26 (Formula)
+Row 25: A25: Salt, B25: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D30, Baguette!D29) (Formula), D25: 907 grams, E25: =Dinkel!D3 (Formula), F25: =IF('MEP Hub'!G9<>0, Concatenate('MEP Hub'!G9, " Sm."),"") (Formula), G25: Sugar, H25: =Brioche!D27 (Formula)
+Row 26: A26: Water 2, B26: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D29, Baguette!D28) (Formula), D26: 2268 grams, F26: =IF('MEP Hub'!G10<>0, Concatenate('MEP Hub'!G10, " Lg."),"") (Formula), G26: Salt, H26: =Brioche!D30 (Formula)
+Row 27: A27: Batch Weight, grams, B27: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D33, Baguette!D33) (Formula), D27: Final Dough, G27: Water, H27: =Brioche!D33 (Formula)
+Row 28: A28: baguette grams, B28: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D38, Baguette!D36) (Formula), D28: Spelt Flour, E28: =Dinkel!D28 (Formula), G28: Butter, H28: =Brioche!D29 (Formula)
+Row 29: D29: Spice Mix, E29: =Dinkel!D29 (Formula), G29: batch weight, H29: =Brioche!D35 (Formula)
+Row 30: D30: Water, E30: =Dinkel!D30 (Formula), G30: Roll grams, H30: =Brioche!D36 (Formula)
+Row 31: A31: Miche, D31: Salt, E31: =Dinkel!D31 (Formula), H31: ='Pain dMie'!G36 (Formula)
+Row 32: A32: 1000 grams, B32: ='New Miche'!E2 (Formula), D32: Levain, E32: =Dinkel!D32 (Formula), G32: Fino
+Row 33: A33: Final Dough, D33: Soak, E33: =Dinkel!D33 (Formula), G33: 3066 grams, H33: =Fino!D3 (Formula)
+Row 34: A34: Red Rose, B34: ='New Miche'!E9 (Formula), D34: Barley Malt, E34: =Dinkel!D34 (Formula), G34: Final Dough
+Row 35: A35: Whole Wheat, B35: ='New Miche'!E10 (Formula), D35: Honey, E35: =Dinkel!D35 (Formula), G35: Red Rose, H35: =Fino!D26 (Formula)
+Row 36: A36: Rye Levain, B36: ='New Miche'!E11 (Formula), D36: Cake Yeast, E36: =Dinkel!D36 (Formula), G36: Instant Yeast, H36: =Fino!D27 (Formula)
+Row 37: A37: Red Rose Levain, B37: ='New Miche'!E12 (Formula), D37: Batch Weight, grams, E37: =Dinkel!D39 (Formula), G37: Salt, H37: =Fino!D28 (Formula)
+Row 38: A38: Barley Malt, B38: ='New Miche'!E13 (Formula), D38: Retail Loaf, grams, E38: =Dinkel!D42 (Formula), G38: Sugar, H38: =Fino!D29 (Formula)
+Row 39: A39: Water 1, B39: ='New Miche'!E14 (Formula), G39: Water 1, H39: =Fino!D30 (Formula)
+Row 40: A40: Salt, B40: ='New Miche'!E15 (Formula), G40: Water 2, H40: =Fino!D31 (Formula)
+Row 41: A41: Water 2, B41: ='New Miche'!E16 (Formula), D41: Brotchen, G41: Batch Weight, grams, H41: =Fino!D35 (Formula)
+Row 42: A42: Batch Weight, grams, B42: ='New Miche'!E28 (Formula), D42: 90 grams, E42: =Brotchen!D3 (Formula), G42: 1 Tray, grams, H42: =Fino!D36 (Formula)
+Row 43: A43: baguette grams, B43: ='New Miche'!E30 (Formula), D43: Final Dough, H43: =Fino!D34 (Formula)
+Row 44: D44: Red Rose, E44: =Brotchen!D7 (Formula), G44: Croissant
+Row 45: A45: Schiacciata, D45: Cold Water, E45: =Brotchen!D8 (Formula), G45: 2700 grams, H45: =Croissant!D3 (Formula)
+Row 46: A46: 800 grams, B46: =Schiacciata!C3 (Formula), D46: Cake Yeast, E46: =Brotchen!D9 (Formula), G46: Final Dough
+Row 47: A47: Final Dough, D47: Salt, E47: =Brotchen!D10 (Formula), G47: Red Rose, H47: =Croissant!D7 (Formula)
+Row 48: A48: Instant Yeast, B48: =Schiacciata!C32 (Formula), D48: Sugar, E48: =Brotchen!D11 (Formula), G48: Water , H48: =Croissant!D8 (Formula)
+Row 49: A49: Water , B49: =Schiacciata!C27 (Formula), D49: Diastatic B.M. Flour, E49: =Brotchen!D12 (Formula), G49: Salt, H49: =Croissant!D9 (Formula)
+Row 50: A50: Biga, B50: =Schiacciata!C28 (Formula), D50: Levain Discard, E50: =Brotchen!D13 (Formula), G50: Whole Milk, H50: =Croissant!D10 (Formula)
+
+=== Sheet: MEP Hub ===
+Dimensions: A1:Z28
+
+Row 1: B1: =IF(COUNTIF(C5:C11, TRUE)>1, "Only Select One 
+Day", "") (Formula), D1: =IFERROR(__xludf.DUMMYFUNCTION("IFNA(Concatenate(FILTER(B5:B11, C5:C11), ""'s "", IF(C13, ""MEP"", ""Mix"")), ""No Day Selected"")"),"Friday's MEP") (Formula), E1: Auto, F1: Manual Override
+Row 2: D2: Italian, E2: =IFERROR(__xludf.DUMMYFUNCTION("IFERROR(IFNA(INDIRECT(CONCATENATE(""Bake Sheet!"", FILTER(Z5:Z11,C5:C11), ""18"", "":"",FILTER(Z5:Z11,C5:C11),""31"")), TRANSPOSE({0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0})),"""")"),35.0) (Formula), G2: =IF(F2="", E2, F2)*1 (Formula)
+Row 3: B3: Monday's Date:, C3: 2025-12-29 00:00:00, D3: Baguette, E3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), G3: =IF(F3="", E3, F3)*1 (Formula)
+Row 4: D4: Miche, E4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G4: =IF(F4="", E4, F4)*1 (Formula)
+Row 5: B5: Monday, C5: False, D5: Rustic White, E5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),21.0) (Formula), G5: =IF(F5="", E5, F5)*1 (Formula), Y5: =C3 (Formula), Z5: B
+Row 6: B6: Tuesday, C6: False, D6: Multigrain, E6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),19.0) (Formula), G6: =IF(F6="", E6, F6)*1 (Formula), Y6: =Y5+1 (Formula), Z6: C
+Row 7: B7: Wednesday, C7: False, D7: Pain d'Mie, E7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), G7: =IF(F7="", E7, F7)*1 (Formula), Y7: =Y6+1 (Formula), Z7: D
+Row 8: B8: Thursday, C8: False, D8: Specialty Bread, G8: =IF(F8="", E8, F8)*1 (Formula), Y8: =Y7+1 (Formula), Z8: E
+Row 9: B9: Friday, C9: True, D9: Dinkelbrot, E9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), G9: =IF(F9="", E9, F9)*1 (Formula), Y9: =Y8+1 (Formula), Z9: F
+Row 10: B10: Saturday, C10: False, D10: Dinklebrot Pullman, E10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), F10: 0.0, G10: =IF(F10="", E10, F10)*1 (Formula), Y10: =Y9+1 (Formula), Z10: G
+Row 11: B11: Sunday, C11: False, D11: Focaccia Fino, E11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),3.0) (Formula), G11: =IF(F11="", E11, F11)*1 (Formula), Y11: =Y10+1 (Formula), Z11: H
+Row 12: B12: Date, C12: MEP, D12: Focaccia, E12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G12: =IF(F12="", E12, F12)*1 (Formula)
+Row 13: B13: =IFERROR(__xludf.DUMMYFUNCTION("ARRAY_CONSTRAIN(IFNA(FILTER(Y5:Y11,C5:C11), """"), 1, 1)"),46024.0) (Formula), C13: True, D13: Brioche Buns, E13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G13: =IF(F13="", E13, F13)*1 (Formula)
+Row 14: C14: Holiday, D14: Schiacciata, E14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F14: 16.0, G14: =IF(F14="", E14, F14)*1 (Formula), H14: Note from Sam: "Fixed this."
+Row 15: C15: False, D15: Brioche Dinner Rolls, E15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), G15: =IF(F15="", E15, F15)*1 (Formula)
+Row 16: D16: Croissants, G16: =IF(F16="", E16, F16)*1 (Formula)
+Row 17: A17: Experimental Mixing Sheet, D17: Stollen, G17: =IF(F17="", E17, F17)*1 (Formula)
+Row 18: A18: Experimental Starters
+Row 19: A19: Experimental Soaks
+Row 20: A20: Experimental Rustic White
+Row 21: A21: Experimental Italian
+Row 22: A22: Two-Day Italian
+Row 23: A23: Two-Day Multigrain
+Row 24: A24: Two-Day Baguette
+
+=== Sheet: Experimental Starters ===
+Dimensions: A1:I62
+
+Row 1: B1: Levain , D1: ='Experimental Mixing Sheet'!A1 (Formula)
+Row 3: C3: =IF('MEP Hub'!C15, 'Two-Day Baguette'!D32, Baguette!D31)+'Experimental Rustic White'!D32+'New Miche'!E12+'Emmy(starter)'!D7+Dinkel!D32+Ciabatta!D34+800 (Formula), D3: =IF(C3>Maxes!C27, "SPLIT", "") (Formula)
+Row 4: B4: Levain Build, C4: =IF(C3>Maxes!C27, "Batch 1", "") (Formula), D4: =IF(C3>Maxes!C27, "Batch 2", "") (Formula), E4: =IF('MEP Hub'!C13=FALSE, "MEP IS OFF", "") (Formula)
+Row 5: A5: 1.0, B5: Red Rose, C5: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A5/$A$8)/2,-1), ROUNDUP($C$3*A5/$A$8,-1)) (Formula), D5: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A5/$A$8)/2,-1), "") (Formula)
+Row 6: A6: 1.0, B6: Water, C6: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A6/$A$8)/2,-1), ROUNDUP($C$3*A6/$A$8,-1)) (Formula), D6: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A6/$A$8)/2,-1), "") (Formula)
+Row 7: A7: 0.2, B7: Emmy (starter), C7: =IF($C$3>Maxes!C27, roundup(((C5+D5)*A7)/2,-1), roundup(C5*A7,-1)) (Formula), D7: =IF($C$3>Maxes!C27, roundup(((C5+D5)*A7)/2,-1), "") (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+Row 10: B10: Italian Levain 
+Row 12: C12: =IF('MEP Hub'!C15, 'Two-Day Italian'!D36, 'Experimental Italian'!D36) (Formula), D12: =IF(C12>Maxes!C27, "SPLIT", "") (Formula)
+Row 13: B13: Levain Build, C13: =IF(C12>Maxes!C27, "Batch 1", "") (Formula), D13: =IF(C12>Maxes!C27, "Batch 2", "") (Formula)
+Row 14: A14: 1.0, B14: Red Rose, C14: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*$A$14/$A$17)/2,-1), ROUNDUP($C$12*$A$14/$A$17,-1)) (Formula), D14: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*A14/$A$17)/2,-1), "") (Formula)
+Row 15: A15: 1.0, B15: Water, C15: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*$A$14/$A$17)/2,-1), ROUNDUP($C$12*$A$14/$A$17,-1)) (Formula), D15: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*A15/$A$17)/2,-1), "") (Formula)
+Row 16: A16: 0.2, B16: Emmy (starter), C16: =IF(C12>Maxes!C27, roundup(((C14+D14)*A16)/2,-1), roundup(C14*A16,-1)) (Formula), D16: =IF(C12>Maxes!C27, roundup(((C14+D14)*A16)/2,-1), "") (Formula)
+Row 17: A17: =SUM(A14:A16) (Formula)
+Row 19: B19: BIGA
+Row 21: C21: ='Experimental Rustic White'!D35+Focaccia!C29+'Chocolate Croissant'!D28+IF('MEP Hub'!C15, 'Two-Day Baguette'!D33,0) (Formula)
+Row 22: B22: Poolish, C22:  
+Row 23: A23: 1.0, B23: Red Rose, C23: =ROUNDUP(C21*A23/A26,-1) (Formula)
+Row 24: A24: 0.96, B24: Water, C24: =roundup(C21*A24/A26,-1) (Formula)
+Row 25: A25: 0.0005, B25: Cake Yeast, C25: =C23*0.05 (Formula)
+Row 26: A26: =SUM(A23:A25) (Formula)
+Row 29: B29: Schiacciata Poolish
+Row 30: C30: * Gets refrigerated overnight!*
+Row 31: C31: =Schiacciata!C28 (Formula), D31: =IF(C31>Maxes!D27, "SPLIT", "") (Formula)
+Row 32: A32: 1.0, B32: Red Rose, C32: =IF($C$31>Maxes!D27, ROUNDUP(($C$31*$A$32/$A$35)/2,-1), ROUNDUP($C$31*$A$32/$A$35,-1)) (Formula), D32: =IF($C$31>Maxes!D27, ROUNDUP(($C$31*A32/$A$35)/2,-1), "") (Formula)
+Row 33: A33: 1.05, B33: Water, C33: =IF($C$31>Maxes!D27, ROUNDUP(($C$31*$A$32/$A$35)/2,-1), ROUNDUP($C$31*$A$33/$A$35,-1)) (Formula), D33: =IF($C$31>Maxes!D27, ROUNDUP(($C$31*A32/$A$35)/2,-1), "") (Formula)
+Row 34: A34: 0.011, B34: Instant Yeast, C34: =IF($C$31>Maxes!D27, ROUNDUP(($C$31*$A$34/$A$35)/2,-1), ROUNDUP($C$31*$A$34/$A$35,-1)) (Formula), D34: =IF($C$31>Maxes!D27, ROUNDUP(($C$31*A34/$A$35)/2,-1), "") (Formula)
+Row 35: A35: =SUM(A32:A34) (Formula)
+Row 37: B37: Rye Levain 
+Row 39: C39: =If('New Miche'!E11<>0, 'New Miche'!E11 + 50, 0) (Formula)
+Row 40: B40: Levain Build, C40:  
+Row 41: A41: 1.0, B41: Toasted Rye , C41: =ROUNDUP(C39*A41/A44,-1) (Formula)
+Row 42: A42: 0.9, B42: Water, C42: =roundup(C39*A42/A44,-1) (Formula)
+Row 43: A43: 0.2, B43: Emmy (starter), C43: =roundup(C41*A43,-1) (Formula)
+Row 44: A44: =SUM(A41:A43) (Formula)
+Row 46: B46: Emmy, D46: 6 AM Mix 
+Row 48: C48: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER(C5:D16,B5:B16=""Emmy (starter)""), 0))+400"),1790.0) (Formula)
+Row 49: B49: Levain Build
+Row 50: A50: 1.0, B50: Red Rose, C50: =Roundup(C48*A50/A53, -1) (Formula)
+
+=== Sheet: Experimental Soaks ===
+Dimensions: A1:F48
+
+Row 1: B1: RW Soaker, E1: ='Experimental Mixing Sheet'!A1 (Formula)
+Row 3: B3: Batch Size, C3: ='Experimental Rustic White'!D16 (Formula)
+Row 4: B4: Soaker , C4:  
+Row 5: A5: 0.26, B5: Sesame, C5: =ROUNDUP(C3*A5/A8,-1) (Formula), F5: =IF('MEP Hub'!C13=FALSE, "MEP IS OFF", "") (Formula)
+Row 6: A6: 0.21, B6: Cracked wheat, C6: =roundup(C3*A6/A8,-1) (Formula)
+Row 7: A7: 0.45, B7: Water, C7: =roundup(C3*A7/A8,-1) (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+Row 11: B11: 7 Grain Soaker
+Row 13: B13: Batch size, C13: =IF('MEP Hub'!C15, 'Two-Day Multigrain'!D16, Multigrain!D16) (Formula)
+Row 14: B14: 7 Grain Soaker, C14:  
+Row 15: A15: 1.0, B15: 7 Grain Blend, C15: =ROUNDUP(C13*A15/A18,-1) (Formula)
+Row 16: A16: 0.55, B16: Water, C16: =roundup(C13*A16/A18,-1) (Formula)
+Row 17: A17: 0.4, B17: honey, C17: =roundup(C13*A17/A18,-1) (Formula)
+Row 18: A18: =SUM(A15:A17) (Formula)
+Row 21: B21: Dinkel Soaker
+Row 23: B23: Batch size, C23: =Dinkel!D33 (Formula)
+Row 24: C24:  
+Row 25: A25: 0.45, B25: Water, C25: =ROUNDUP(C23*A25/A29,-1) (Formula)
+Row 26: A26: 0.36, B26: Spelt Flake, C26: =roundup(C23*A26/A29,-1) (Formula)
+Row 27: A27: 0.13, B27: Sunflower Kernel, C27: =roundup(C23*A27/A29,-1) (Formula)
+Row 28: A28: 0.05, B28: Potato, C28: =roundup(C23*A28/A29,-1) (Formula), E28:  
+Row 29: A29: =SUM(A25:A28) (Formula)
+
+=== Sheet: Bake Sheet ===
+Dimensions: A1:Z32
+
+Row 1: A1: =IFERROR(__xludf.DUMMYFUNCTION("ImportRange(""https://docs.google.com/spreadsheets/d/1-rF53pIBpNgOC4vbkZcBDuKZnZXNF5OkaADhIxomRU0/edit?gid=270684617#gid=270684617"", ""Weekly Bread Totals!A1:I15"")"),"Bread Totals") (Formula), B1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Mon") (Formula), C1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Tue") (Formula), D1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Wed") (Formula), E1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Thur") (Formula), F1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Fri") (Formula), G1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Sat") (Formula), H1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Sun") (Formula), I1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Totals") (Formula), K1: https://docs.google.com/spreadsheets/d/1-rF53pIBpNgOC4vbkZcBDuKZnZXNF5OkaADhIxomRU0/edit?gid=270684617#gid=270684617
+Row 2: A2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Italian") (Formula), B2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),145.0) (Formula), C2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),168.0) (Formula), D2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),199.0) (Formula), E2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),110.0) (Formula), G2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),130.0) (Formula), H2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),35.0) (Formula), I2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),787.0) (Formula)
+Row 3: A3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Baguette") (Formula), B3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), C3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),25.0) (Formula), D3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), E3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),15.0) (Formula), G3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),15.0) (Formula), H3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), I3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),115.0) (Formula)
+Row 4: A4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Miche") (Formula), B4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),5.0) (Formula), C4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), D4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), E4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), G4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), H4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), I4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),33.0) (Formula)
+Row 5: A5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Rustic White") (Formula), B5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),32.0) (Formula), C5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),34.0) (Formula), D5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),40.0) (Formula), E5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),4.0) (Formula), F5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),32.0) (Formula), G5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), H5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),21.0) (Formula), I5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),193.0) (Formula)
+Row 6: A6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Multigrain") (Formula), B6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),33.0) (Formula), C6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),34.0) (Formula), D6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),41.0) (Formula), E6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),5.0) (Formula), F6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),29.0) (Formula), G6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),24.0) (Formula), H6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),19.0) (Formula), I6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),185.0) (Formula)
+Row 7: A7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Pain d'Mie") (Formula), C7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), D7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), H7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), I7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),42.0) (Formula)
+Row 8: A8: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Specialty Bread") (Formula), I8: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), M8: =If(AND('MEP Hub'!C13, 'MEP Hub'!C15), "HOLIDAY MEP ON", IF('MEP Hub'!C13, "MEP ON", IF('MEP Hub'!C15, "Holiday Mix On", ""))) (Formula)
+Row 9: A9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Dinkelbrot") (Formula), B9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), C9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), D9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), E9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), G9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), H9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), I9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),70.0) (Formula)
+Row 10: A10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Dinklebrot Pullman") (Formula), B10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), C10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), D10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),2.0) (Formula), E10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),2.0) (Formula), G10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), H10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), I10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula)
+Row 11: A11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Focaccia Fino") (Formula), G11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),18.0) (Formula), I11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),18.0) (Formula)
+Row 12: A12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Focaccia") (Formula), F12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),4.0) (Formula), I12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),4.0) (Formula)
+Row 13: A13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Cardamom Braid ") (Formula), B13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),6.0) (Formula), C13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),6.0) (Formula), D13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),8.0) (Formula), E13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), H13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), I13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula)
+Row 14: A14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Stollen") (Formula), B14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), C14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), D14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), E14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), H14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), I14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),32.0) (Formula)
+Row 15: A15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Brioche Buns") (Formula), B15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), C15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), D15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), F15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), H15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), I15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),120.0) (Formula)
+Row 17: A17: =IF('MEP Hub'!C13, "MEP Totals", "Mix Totals") (Formula), B17: Mon, C17: Tue, D17: Wed, E17: Thur, F17: Fri, G17: Sat, H17: Sun, I17: Totals, J17: Days Mixed Ahead
+Row 18: A18: Italian, B18: =If($Z18=0, B2, IF($Z18=1, C2, If($Z18=2, D2, If($Z18=3, E2, IF($Z18=4, F2, IF($Z18=5, G2, IF($Z18=6, H2, 0))))))) (Formula), C18: =If($Z18=0, C2, IF($Z18=1, D2, If($Z18=2, E2, If($Z18=3, F2, IF($Z18=4, G2, IF($Z18=5, H2, IF($Z18=6, B2, 0))))))) (Formula), D18: =If($Z18=0, D2, IF($Z18=1, E2, If($Z18=2, F2, If($Z18=3, G2, IF($Z18=4, H2, IF($Z18=5, B2, IF($Z18=6, C2, 0))))))) (Formula), E18: =If($Z18=0, E2, IF($Z18=1, F2, If($Z18=2, G2, If($Z18=3, H2, IF($Z18=4, B2, IF($Z18=5, C2, IF($Z18=6, D2, 0))))))) (Formula), F18: =If($Z18=0, F2, IF($Z18=1, G2, If($Z18=2, H2, If($Z18=3, B2, IF($Z18=4, C2, IF($Z18=5, D2, IF($Z18=6, E2, 0))))))) (Formula), G18: =If($Z18=0, G2, IF($Z18=1, H2, If($Z18=2, B2, If($Z18=3, C2, IF($Z18=4, D2, IF($Z18=5, E2, IF($Z18=6, F2, 0))))))) (Formula), H18: =If($Z18=0, H2, IF($Z18=1, B2, If($Z18=2, C2, If($Z18=3, D2, IF($Z18=4, E2, IF($Z18=5, F2, IF(Z$18=6, G2, 0))))))) (Formula), I18: =SUM(B18:H18) (Formula), J18: 1.0, Z18: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J18+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J18+1, J18)) (Formula)
+Row 19: A19: Baguette, B19: =If($Z19=0, B3, IF($Z19=1, C3, If($Z19=2, D3, If($Z19=3, E3, IF($Z19=4, F3, IF($Z19=5, G3, IF($Z19=6, H3, 0))))))) (Formula), C19: =If($Z19=0, C3, IF($Z19=1, D3, If($Z19=2, E3, If($Z19=3, F3, IF($Z19=4, G3, IF($Z19=5, H3, IF($Z19=6, B3, 0))))))) (Formula), D19: =If($Z19=0, D3, IF($Z19=1, E3, If($Z19=2, F3, If($Z19=3, G3, IF($Z19=4, H3, IF($Z19=5, B3, IF($Z19=6, C3, 0))))))) (Formula), E19: =If($Z19=0, E3, IF($Z19=1, F3, If($Z19=2, G3, If($Z19=3, H3, IF($Z19=4, B3, IF($Z19=5, C3, IF($Z19=6, D3, 0))))))) (Formula), F19: =If($Z19=0, F3, IF($Z19=1, G3, If($Z19=2, H3, If($Z19=3, B3, IF($Z19=4, C3, IF($Z19=5, D3, IF($Z19=6, E3, 0))))))) (Formula), G19: =If($Z19=0, G3, IF($Z19=1, H3, If($Z19=2, B3, If($Z19=3, C3, IF($Z19=4, D3, IF($Z19=5, E3, IF($Z19=6, F3, 0))))))) (Formula), H19: =If($Z19=0, H3, IF($Z19=1, B3, If($Z19=2, C3, If($Z19=3, D3, IF($Z19=4, E3, IF($Z19=5, F3, IF(Z$18=6, G3, 0))))))) (Formula), I19: =SUM(B19:H19) (Formula), J19: 1.0, Z19: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J19+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J19+1, J19)) (Formula)
+Row 20: A20: Miche, B20: =If($Z20=0, B4, IF($Z20=1, C4, If($Z20=2, D4, If($Z20=3, E4, IF($Z20=4, F4, IF($Z20=5, G4, IF($Z20=6, H4, 0))))))) (Formula), C20: =If($Z20=0, C4, IF($Z20=1, D4, If($Z20=2, E4, If($Z20=3, F4, IF($Z20=4, G4, IF($Z20=5, H4, IF($Z20=6, B4, 0))))))) (Formula), D20: =If($Z20=0, D4, IF($Z20=1, E4, If($Z20=2, F4, If($Z20=3, G4, IF($Z20=4, H4, IF($Z20=5, B4, IF($Z20=6, C4, 0))))))) (Formula), E20: =If($Z20=0, E4, IF($Z20=1, F4, If($Z20=2, G4, If($Z20=3, H4, IF($Z20=4, B4, IF($Z20=5, C4, IF($Z20=6, D4, 0))))))) (Formula), F20: =If($Z20=0, F4, IF($Z20=1, G4, If($Z20=2, H4, If($Z20=3, B4, IF($Z20=4, C4, IF($Z20=5, D4, IF($Z20=6, E4, 0))))))) (Formula), G20: =If($Z20=0, G4, IF($Z20=1, H4, If($Z20=2, B4, If($Z20=3, C4, IF($Z20=4, D4, IF($Z20=5, E4, IF($Z20=6, F4, 0))))))) (Formula), H20: =If($Z20=0, H4, IF($Z20=1, B4, If($Z20=2, C4, If($Z20=3, D4, IF($Z20=4, E4, IF($Z20=5, F4, IF(Z$18=6, G4, 0))))))) (Formula), I20: =SUM(B20:H20) (Formula), J20: 1.0, Z20: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J20+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J20+1, J20)) (Formula)
+Row 21: A21: Rustic White, B21: =If($Z21=0, B5, IF($Z21=1, C5, If($Z21=2, D5, If($Z21=3, E5, IF($Z21=4, F5, IF($Z21=5, G5, IF($Z21=6, H5, 0))))))) (Formula), C21: =If($Z21=0, C5, IF($Z21=1, D5, If($Z21=2, E5, If($Z21=3, F5, IF($Z21=4, G5, IF($Z21=5, H5, IF($Z21=6, B5, 0))))))) (Formula), D21: =If($Z21=0, D5, IF($Z21=1, E5, If($Z21=2, F5, If($Z21=3, G5, IF($Z21=4, H5, IF($Z21=5, B5, IF($Z21=6, C5, 0))))))) (Formula), E21: =If($Z21=0, E5, IF($Z21=1, F5, If($Z21=2, G5, If($Z21=3, H5, IF($Z21=4, B5, IF($Z21=5, C5, IF($Z21=6, D5, 0))))))) (Formula), F21: =If($Z21=0, F5, IF($Z21=1, G5, If($Z21=2, H5, If($Z21=3, B5, IF($Z21=4, C5, IF($Z21=5, D5, IF($Z21=6, E5, 0))))))) (Formula), G21: =If($Z21=0, G5, IF($Z21=1, H5, If($Z21=2, B5, If($Z21=3, C5, IF($Z21=4, D5, IF($Z21=5, E5, IF($Z21=6, F5, 0))))))) (Formula), H21: =If($Z21=0, H5, IF($Z21=1, B5, If($Z21=2, C5, If($Z21=3, D5, IF($Z21=4, E5, IF($Z21=5, F5, IF(Z$18=6, G5, 0))))))) (Formula), I21: =SUM(B21:H21) (Formula), J21: 1.0, Z21: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J21+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J21+1, J21)) (Formula)
+Row 22: A22: Multigrain, B22: =If($Z22=0, B6, IF($Z22=1, C6, If($Z22=2, D6, If($Z22=3, E6, IF($Z22=4, F6, IF($Z22=5, G6, IF($Z22=6, H6, 0))))))) (Formula), C22: =If($Z22=0, C6, IF($Z22=1, D6, If($Z22=2, E6, If($Z22=3, F6, IF($Z22=4, G6, IF($Z22=5, H6, IF($Z22=6, B6, 0))))))) (Formula), D22: =If($Z22=0, D6, IF($Z22=1, E6, If($Z22=2, F6, If($Z22=3, G6, IF($Z22=4, H6, IF($Z22=5, B6, IF($Z22=6, C6, 0))))))) (Formula), E22: =If($Z22=0, E6, IF($Z22=1, F6, If($Z22=2, G6, If($Z22=3, H6, IF($Z22=4, B6, IF($Z22=5, C6, IF($Z22=6, D6, 0))))))) (Formula), F22: =If($Z22=0, F6, IF($Z22=1, G6, If($Z22=2, H6, If($Z22=3, B6, IF($Z22=4, C6, IF($Z22=5, D6, IF($Z22=6, E6, 0))))))) (Formula), G22: =If($Z22=0, G6, IF($Z22=1, H6, If($Z22=2, B6, If($Z22=3, C6, IF($Z22=4, D6, IF($Z22=5, E6, IF($Z22=6, F6, 0))))))) (Formula), H22: =If($Z22=0, H6, IF($Z22=1, B6, If($Z22=2, C6, If($Z22=3, D6, IF($Z22=4, E6, IF($Z22=5, F6, IF(Z$18=6, G6, 0))))))) (Formula), I22: =SUM(B22:H22) (Formula), J22: 1.0, Z22: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J22+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J22+1, J22)) (Formula)
+Row 23: A23: Pain d'Mie, B23: =If($Z23=0, B7, IF($Z23=1, C7, If($Z23=2, D7, If($Z23=3, E7, IF($Z23=4, F7, IF($Z23=5, G7, IF($Z23=6, H7, 0))))))) (Formula), C23: =If($Z23=0, C7, IF($Z23=1, D7, If($Z23=2, E7, If($Z23=3, F7, IF($Z23=4, G7, IF($Z23=5, H7, IF($Z23=6, B7, 0))))))) (Formula), D23: =If($Z23=0, D7, IF($Z23=1, E7, If($Z23=2, F7, If($Z23=3, G7, IF($Z23=4, H7, IF($Z23=5, B7, IF($Z23=6, C7, 0))))))) (Formula), E23: =If($Z23=0, E7, IF($Z23=1, F7, If($Z23=2, G7, If($Z23=3, H7, IF($Z23=4, B7, IF($Z23=5, C7, IF($Z23=6, D7, 0))))))) (Formula), F23: =If($Z23=0, F7, IF($Z23=1, G7, If($Z23=2, H7, If($Z23=3, B7, IF($Z23=4, C7, IF($Z23=5, D7, IF($Z23=6, E7, 0))))))) (Formula), G23: =If($Z23=0, G7, IF($Z23=1, H7, If($Z23=2, B7, If($Z23=3, C7, IF($Z23=4, D7, IF($Z23=5, E7, IF($Z23=6, F7, 0))))))) (Formula), H23: =If($Z23=0, H7, IF($Z23=1, B7, If($Z23=2, C7, If($Z23=3, D7, IF($Z23=4, E7, IF($Z23=5, F7, IF(Z$18=6, G7, 0))))))) (Formula), I23: =SUM(B23:H23) (Formula), J23: 1.0, Z23: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J23+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J23+1, J23)) (Formula)
+Row 24: A24: Specialty Bread, B24: =If($Z24=0, B8, IF($Z24=1, C8, If($Z24=2, D8, If($Z24=3, E8, IF($Z24=4, F8, IF($Z24=5, G8, IF($Z24=6, H8, 0))))))) (Formula), C24: =If($Z24=0, C8, IF($Z24=1, D8, If($Z24=2, E8, If($Z24=3, F8, IF($Z24=4, G8, IF($Z24=5, H8, IF($Z24=6, B8, 0))))))) (Formula), D24: =If($Z24=0, D8, IF($Z24=1, E8, If($Z24=2, F8, If($Z24=3, G8, IF($Z24=4, H8, IF($Z24=5, B8, IF($Z24=6, C8, 0))))))) (Formula), E24: =If($Z24=0, E8, IF($Z24=1, F8, If($Z24=2, G8, If($Z24=3, H8, IF($Z24=4, B8, IF($Z24=5, C8, IF($Z24=6, D8, 0))))))) (Formula), F24: =If($Z24=0, F8, IF($Z24=1, G8, If($Z24=2, H8, If($Z24=3, B8, IF($Z24=4, C8, IF($Z24=5, D8, IF($Z24=6, E8, 0))))))) (Formula), G24: =If($Z24=0, G8, IF($Z24=1, H8, If($Z24=2, B8, If($Z24=3, C8, IF($Z24=4, D8, IF($Z24=5, E8, IF($Z24=6, F8, 0))))))) (Formula), H24: =If($Z24=0, H8, IF($Z24=1, B8, If($Z24=2, C8, If($Z24=3, D8, IF($Z24=4, E8, IF($Z24=5, F8, IF(Z$18=6, G8, 0))))))) (Formula), I24: =SUM(B24:H24) (Formula), J24: 1.0, Z24: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J24+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J24+1, J24)) (Formula)
+Row 25: A25: Dinkelbrot, B25: =If($Z25=0, B9, IF($Z25=1, C9, If($Z25=2, D9, If($Z25=3, E9, IF($Z25=4, F9, IF($Z25=5, G9, IF($Z25=6, H9, 0))))))) (Formula), C25: =If($Z25=0, C9, IF($Z25=1, D9, If($Z25=2, E9, If($Z25=3, F9, IF($Z25=4, G9, IF($Z25=5, H9, IF($Z25=6, B9, 0))))))) (Formula), D25: =If($Z25=0, D9, IF($Z25=1, E9, If($Z25=2, F9, If($Z25=3, G9, IF($Z25=4, H9, IF($Z25=5, B9, IF($Z25=6, C9, 0))))))) (Formula), E25: =If($Z25=0, E9, IF($Z25=1, F9, If($Z25=2, G9, If($Z25=3, H9, IF($Z25=4, B9, IF($Z25=5, C9, IF($Z25=6, D9, 0))))))) (Formula), F25: =If($Z25=0, F9, IF($Z25=1, G9, If($Z25=2, H9, If($Z25=3, B9, IF($Z25=4, C9, IF($Z25=5, D9, IF($Z25=6, E9, 0))))))) (Formula), G25: =If($Z25=0, G9, IF($Z25=1, H9, If($Z25=2, B9, If($Z25=3, C9, IF($Z25=4, D9, IF($Z25=5, E9, IF($Z25=6, F9, 0))))))) (Formula), H25: =If($Z25=0, H9, IF($Z25=1, B9, If($Z25=2, C9, If($Z25=3, D9, IF($Z25=4, E9, IF($Z25=5, F9, IF(Z$18=6, G9, 0))))))) (Formula), I25: =SUM(B25:H25) (Formula), J25: 1.0, Z25: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J25+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J25+1, J25)) (Formula)
+Row 26: A26: Dinklebrot Pullman, B26: =If($Z26=0, B10, IF($Z26=1, C10, If($Z26=2, D10, If($Z26=3, E10, IF($Z26=4, F10, IF($Z26=5, G10, IF($Z26=6, H10, 0))))))) (Formula), C26: =If($Z26=0, C10, IF($Z26=1, D10, If($Z26=2, E10, If($Z26=3, F10, IF($Z26=4, G10, IF($Z26=5, H10, IF($Z26=6, B10, 0))))))) (Formula), D26: =If($Z26=0, D10, IF($Z26=1, E10, If($Z26=2, F10, If($Z26=3, G10, IF($Z26=4, H10, IF($Z26=5, B10, IF($Z26=6, C10, 0))))))) (Formula), E26: =If($Z26=0, E10, IF($Z26=1, F10, If($Z26=2, G10, If($Z26=3, H10, IF($Z26=4, B10, IF($Z26=5, C10, IF($Z26=6, D10, 0))))))) (Formula), F26: =If($Z26=0, F10, IF($Z26=1, G10, If($Z26=2, H10, If($Z26=3, B10, IF($Z26=4, C10, IF($Z26=5, D10, IF($Z26=6, E10, 0))))))) (Formula), G26: =If($Z26=0, G10, IF($Z26=1, H10, If($Z26=2, B10, If($Z26=3, C10, IF($Z26=4, D10, IF($Z26=5, E10, IF($Z26=6, F10, 0))))))) (Formula), H26: =If($Z26=0, H10, IF($Z26=1, B10, If($Z26=2, C10, If($Z26=3, D10, IF($Z26=4, E10, IF($Z26=5, F10, IF(Z$18=6, G10, 0))))))) (Formula), I26: =SUM(B26:H26) (Formula), J26: 1.0, Z26: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J26+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J26+1, J26)) (Formula)
+Row 27: A27: Focaccia Fino, B27: =If($Z27=0, B11, IF($Z27=1, C11, If($Z27=2, D11, If($Z27=3, E11, IF($Z27=4, F11, IF($Z27=5, G11, IF($Z27=6, H11, 0)))))))/6 (Formula), C27: =If($Z27=0, C11, IF($Z27=1, D11, If($Z27=2, E11, If($Z27=3, F11, IF($Z27=4, G11, IF($Z27=5, H11, IF($Z27=6, B11, 0)))))))/6 (Formula), D27: =If($Z27=0, D11, IF($Z27=1, E11, If($Z27=2, F11, If($Z27=3, G11, IF($Z27=4, H11, IF($Z27=5, B11, IF($Z27=6, C11, 0)))))))/6 (Formula), E27: =If($Z27=0, E11, IF($Z27=1, F11, If($Z27=2, G11, If($Z27=3, H11, IF($Z27=4, B11, IF($Z27=5, C11, IF($Z27=6, D11, 0)))))))/6 (Formula), F27: =If($Z27=0, F11, IF($Z27=1, G11, If($Z27=2, H11, If($Z27=3, B11, IF($Z27=4, C11, IF($Z27=5, D11, IF($Z27=6, E11, 0)))))))/6 (Formula), G27: =If($Z27=0, G11, IF($Z27=1, H11, If($Z27=2, B11, If($Z27=3, C11, IF($Z27=4, D11, IF($Z27=5, E11, IF($Z27=6, F11, 0)))))))/6 (Formula), H27: =If($Z27=0, H11, IF($Z27=1, B11, If($Z27=2, C11, If($Z27=3, D11, IF($Z27=4, E11, IF($Z27=5, F11, IF(Z$18=6, G11, 0)))))))/6 (Formula), I27: =SUM(B27:H27) (Formula), J27: 0.0, Z27: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J27+2, IF(OR('MEP Hub'!$C$13), J27+1, J27)) (Formula)
+Row 28: A28: Focaccia, B28: =If($Z28=0, B12, IF($Z28=1, C12, If($Z28=2, D12, If($Z28=3, E12, IF($Z28=4, F12, IF($Z28=5, G12, IF($Z28=6, H12, 0)))))))*1 (Formula), C28: =If($Z28=0, C12, IF($Z28=1, D12, If($Z28=2, E12, If($Z28=3, F12, IF($Z28=4, G12, IF($Z28=5, H12, IF($Z28=6, B12, 0)))))))*1 (Formula), D28: =If($Z28=0, D12, IF($Z28=1, E12, If($Z28=2, F12, If($Z28=3, G12, IF($Z28=4, H12, IF($Z28=5, B12, IF($Z28=6, C12, 0)))))))*1 (Formula), E28: =If($Z28=0, E12, IF($Z28=1, F12, If($Z28=2, G12, If($Z28=3, H12, IF($Z28=4, B12, IF($Z28=5, C12, IF($Z28=6, D12, 0)))))))*1 (Formula), F28: =If($Z28=0, F12, IF($Z28=1, G12, If($Z28=2, H12, If($Z28=3, B12, IF($Z28=4, C12, IF($Z28=5, D12, IF($Z28=6, E12, 0)))))))*1 (Formula), G28: =If($Z28=0, G12, IF($Z28=1, H12, If($Z28=2, B12, If($Z28=3, C12, IF($Z28=4, D12, IF($Z28=5, E12, IF($Z28=6, F12, 0)))))))*1 (Formula), H28: =If($Z28=0, H12, IF($Z28=1, B12, If($Z28=2, C12, If($Z28=3, D12, IF($Z28=4, E12, IF($Z28=5, F12, IF(Z$18=6, G12, 0)))))))*1 (Formula), I28: =SUM(B28:H28) (Formula), J28: 2.0, Z28: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J28+1, IF(OR('MEP Hub'!$C$13), J28+1, J28)) (Formula)
+Row 29: A29: Brioche Buns, B29: =If($Z29=0, B13, IF($Z29=1, C13, If($Z29=2, D13, If($Z29=3, E13, IF($Z29=4, F13, IF($Z29=5, G13, IF($Z29=6, H13, 0)))))))*1 (Formula), C29: =If($Z29=0, C13, IF($Z29=1, D13, If($Z29=2, E13, If($Z29=3, F13, IF($Z29=4, G13, IF($Z29=5, H13, IF($Z29=6, B13, 0)))))))*1 (Formula), D29: =If($Z29=0, D13, IF($Z29=1, E13, If($Z29=2, F13, If($Z29=3, G13, IF($Z29=4, H13, IF($Z29=5, B13, IF($Z29=6, C13, 0)))))))*1 (Formula), E29: =If($Z29=0, E13, IF($Z29=1, F13, If($Z29=2, G13, If($Z29=3, H13, IF($Z29=4, B13, IF($Z29=5, C13, IF($Z29=6, D13, 0)))))))*1 (Formula), F29: =If($Z29=0, F13, IF($Z29=1, G13, If($Z29=2, H13, If($Z29=3, B13, IF($Z29=4, C13, IF($Z29=5, D13, IF($Z29=6, E13, 0)))))))*1 (Formula), G29: =If($Z29=0, G13, IF($Z29=1, H13, If($Z29=2, B13, If($Z29=3, C13, IF($Z29=4, D13, IF($Z29=5, E13, IF($Z29=6, F13, 0)))))))*1 (Formula), H29: =If($Z29=0, H13, IF($Z29=1, B13, If($Z29=2, C13, If($Z29=3, D13, IF($Z29=4, E13, IF($Z29=5, F13, IF(Z$18=6, G13, 0)))))))*1 (Formula), I29: =SUM(B29:H29) (Formula), J29: 1.0, Z29: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J29+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J29+1, J29)) (Formula)
+Row 30: A30: Schiacciata, B30: =If($Z30=0, B14, IF($Z30=1, C14, If($Z30=2, D14, If($Z30=3, E14, IF($Z30=4, F14, IF($Z30=5, G14, IF($Z30=6, H14, 0))))))) (Formula), C30: =If($Z30=0, C14, IF($Z30=1, D14, If($Z30=2, E14, If($Z30=3, F14, IF($Z30=4, G14, IF($Z30=5, H14, IF($Z30=6, B14, 0))))))) (Formula), D30: =If($Z30=0, D14, IF($Z30=1, E14, If($Z30=2, F14, If($Z30=3, G14, IF($Z30=4, H14, IF($Z30=5, B14, IF($Z30=6, C14, 0))))))) (Formula), E30: =If($Z30=0, E14, IF($Z30=1, F14, If($Z30=2, G14, If($Z30=3, H14, IF($Z30=4, B14, IF($Z30=5, C14, IF($Z30=6, D14, 0))))))) (Formula), F30: =If($Z30=0, F14, IF($Z30=1, G14, If($Z30=2, H14, If($Z30=3, B14, IF($Z30=4, C14, IF($Z30=5, D14, IF($Z30=6, E14, 0))))))) (Formula), G30: =If($Z30=0, G14, IF($Z30=1, H14, If($Z30=2, B14, If($Z30=3, C14, IF($Z30=4, D14, IF($Z30=5, E14, IF($Z30=6, F14, 0))))))) (Formula), H30: =If($Z30=0, H14, IF($Z30=1, B14, If($Z30=2, C14, If($Z30=3, D14, IF($Z30=4, E14, IF($Z30=5, F14, IF(Z$18=6, G14, 0))))))) (Formula), I30: =SUM(B30:H30) (Formula), J30: 1.0, Z30: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J30+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J30+1, J30)) (Formula)
+Row 31: A31: Brioche Dinner Rolls, B31: =If($Z31=0, B15, IF($Z31=1, C15, If($Z31=2, D15, If($Z31=3, E15, IF($Z31=4, F15, IF($Z31=5, G15, IF($Z31=6, H15, 0))))))) (Formula), C31: =If($Z31=0, C15, IF($Z31=1, D15, If($Z31=2, E15, If($Z31=3, F15, IF($Z31=4, G15, IF($Z31=5, H15, IF($Z31=6, B15, 0))))))) (Formula), D31: =If($Z31=0, D15, IF($Z31=1, E15, If($Z31=2, F15, If($Z31=3, G15, IF($Z31=4, H15, IF($Z31=5, B15, IF($Z31=6, C15, 0))))))) (Formula), E31: =If($Z31=0, E15, IF($Z31=1, F15, If($Z31=2, G15, If($Z31=3, H15, IF($Z31=4, B15, IF($Z31=5, C15, IF($Z31=6, D15, 0))))))) (Formula), F31: =If($Z31=0, F15, IF($Z31=1, G15, If($Z31=2, H15, If($Z31=3, B15, IF($Z31=4, C15, IF($Z31=5, D15, IF($Z31=6, E15, 0))))))) (Formula), G31: =If($Z31=0, G15, IF($Z31=1, H15, If($Z31=2, B15, If($Z31=3, C15, IF($Z31=4, D15, IF($Z31=5, E15, IF($Z31=6, F15, 0))))))) (Formula), H31: =If($Z31=0, H15, IF($Z31=1, B15, If($Z31=2, C15, If($Z31=3, D15, IF($Z31=4, E15, IF($Z31=5, F15, IF(Z$18=6, G15, 0))))))) (Formula), I31: =SUM(B31:H31) (Formula), J31: 1.0, Z31: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J31+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J31+1, J31)) (Formula)
+
+=== Sheet: Experimental Italian ===
+Dimensions: A1:AA1002
+
+Row 1: C1: Italian
+Row 2: C2: 1000 g Batard, D2: ='MEP Hub'!G2 (Formula)
+Row 3: C3: Italian + Multgrain, D3: ='MEP Hub'!G2+'MEP Hub'!G6 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2F7C7770> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.718, C11: Red Rose , D11: =ROUND(B11*D$38/B$16,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$38*B12/B$16,-1) (Formula)
+Row 13: B13: 0.725, C13: Water, D13: =ROUND(D$38*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0, C14: Yeast, D14: =ROUND(D$38*B14/B$16,0) (Formula)
+Row 15: B15: 0.02, C15: Salt, D15: =ROUND(D$38*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 18: C18: Poolish
+Row 19: B19: 0.0, C19: Red Rose, D19: 0.0
+Row 20: B20: 0.0, C20: Water, D20: 0.0
+Row 21: B21: 0.004, C21: Dry Instant Yeast, D21: =B21*B22*D38/B16 (Formula)
+Row 22: B22: 0.0, C22: amount of flour in sour
+Row 24: C24: Levain Build
+Row 25: B25: 1.0, C25: Red Rose, D25: =B25*B27*D38/B16 (Formula)
+Row 26: B26: 1.0, C26: Water, D26: =B26*B27*D38/B16 (Formula)
+Row 27: B27: 0.14, C27: amount of flour in sour
+Row 30: C30: Final Dough
+Row 31: C31: Red Rose, D31: =ROUND(D11-D19-D25,-1) (Formula)
+Row 32: C32: Whole Wheat, D32: =D12 (Formula)
+Row 33: C33: Water, D33: =ROUND(D13-D20-D26,-1) (Formula)
+Row 34: C34: Salt, D34: =D15 (Formula)
+Row 35: C35: Poolish, D35: =ROUND(SUM(D19:D20),-1) (Formula)
+Row 36: C36: Levain, D36: =SUM(D25:D26) (Formula)
+Row 38: C38: Batch Weight, grams, D38: =D3*D41 (Formula)
+Row 40: C40: baguette oz
+Row 41: C41: baguette grams, D41: 1000.0
+Row 43: B43: Mix for 5 minutes on 1st speed in spiral mixer. (Program 3) (mixing in reverse for 2 min. halfway through)
+Row 44: B44: Autolyse for 20 minutes.
+Row 45: B45: Add salt and mix for 1 min. on 1st speed.
+Row 46: B46: Mix for 4 minutes on 2nd speed. 
+Row 48: B48: Target 72-74 degrees for final temp.
+Row 50: B50: Bulk ferment for 3 hours, folding at 45 minute intervals. (Folding can be done in spiral mixer on first speed for ten seconds)
+
+=== Sheet: Experimental Multigrain ===
+Dimensions: A1:AA1005
+
+Row 1: C1: Multigrain Italian
+Row 3: C3: 1000 gram, D3: ='MEP Hub'!G6 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2FA15310> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.72, C11: Red Rose , D11: =ROUND(B11*D$41/B$18,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$41*B12/B$18,-1) (Formula)
+Row 13: B13: 0.73, C13: Water, D13: =ROUND(D$41*B13/B$18,-1) (Formula)
+Row 14: B14: 5e-05, C14: Yeast, D14: =ROUND(D$41*B14/B$18,0) (Formula)
+Row 15: B15: 0.023, C15: Salt, D15: =ROUND(D$41*B15/B$18,0) (Formula)
+Row 16: B16: 0.24, C16: 7 Grain Soaker, D16: =ROUND(D$41*B16/B$18,0) (Formula)
+Row 18: B18: =SUM(B11:B15) (Formula)
+Row 20: C20: Poolish
+Row 21: B21: 0.0, C21: Red Rose, D21: =B21*B24*D41/B18 (Formula)
+Row 22: B22: 0.0, C22: Water, D22: =B22*B24*D41/B18 (Formula)
+Row 23: B23: 0.004, C23: Dry Instant Yeast, D23: =B23*B24*D41/B18 (Formula)
+Row 24: B24: 0.0, C24: amount of flour in sour
+Row 26: C26: Levain Build
+Row 27: B27: 1.0, C27: Red Rose, D27: =B27*B29*D41/B18 (Formula)
+Row 28: B28: 1.0, C28: Water, D28: =B28*B29*D41/B18 (Formula)
+Row 29: B29: 0.14, C29: amount of flour in sour
+Row 32: C32: Final Dough
+Row 33: C33: Red Rose, D33: =ROUND(D11-D21-D27,-1) (Formula)
+Row 34: C34: Whole Wheat, D34: =D12 (Formula)
+Row 35: C35: Water, D35: =ROUND(D13-D22-D28,-1) (Formula)
+Row 36: C36: Salt, D36: =D15 (Formula)
+Row 37: C37: Poolish, D37: =ROUND(SUM(D21:D22),-1) (Formula)
+Row 38: C38: Levain, D38: =ROUND(SUM(D27:D28),-1) (Formula)
+Row 39: C39: 7 Grain Soaker, D39: =D16 (Formula)
+Row 41: C41: Batch Weight, grams, D41: =(D44*D3) (Formula)
+Row 43: C43: baguette oz
+Row 44: C44: baguette grams, D44: 1000.0
+Row 47: B47: Add weighed Italian dough and soak to spiral mixer and mix on 2nd speed until combined. (Should be about 10 seconds)
+Row 49: B49: Bulk ferment for three hours, folding at 45 minute intervals.
+
+=== Sheet: Copy of Bake Sheet ===
+Dimensions: A1:Z32
+
+Row 1: A1: =IFERROR(__xludf.DUMMYFUNCTION("ImportRange(""https://docs.google.com/spreadsheets/d/1-rF53pIBpNgOC4vbkZcBDuKZnZXNF5OkaADhIxomRU0/edit?gid=270684617#gid=270684617"", ""Weekly Bread Totals!A1:I15"")"),"Bread Totals") (Formula), B1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Mon") (Formula), C1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Tue") (Formula), D1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Wed") (Formula), E1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Thur") (Formula), F1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Fri") (Formula), G1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Sat") (Formula), H1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Sun") (Formula), I1: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Totals") (Formula), K1: https://docs.google.com/spreadsheets/d/1-rF53pIBpNgOC4vbkZcBDuKZnZXNF5OkaADhIxomRU0/edit?gid=270684617#gid=270684617
+Row 2: A2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Italian") (Formula), B2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),145.0) (Formula), C2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),168.0) (Formula), D2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),199.0) (Formula), E2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),110.0) (Formula), G2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),130.0) (Formula), H2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),35.0) (Formula), I2: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),787.0) (Formula)
+Row 3: A3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Baguette") (Formula), B3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), C3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),25.0) (Formula), D3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), E3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),15.0) (Formula), G3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),15.0) (Formula), H3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), I3: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),115.0) (Formula)
+Row 4: A4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Miche") (Formula), B4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),5.0) (Formula), C4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), D4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), E4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), G4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula), H4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), I4: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),33.0) (Formula)
+Row 5: A5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Rustic White") (Formula), B5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),32.0) (Formula), C5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),34.0) (Formula), D5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),40.0) (Formula), E5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),4.0) (Formula), F5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),32.0) (Formula), G5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), H5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),21.0) (Formula), I5: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),193.0) (Formula)
+Row 6: A6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Multigrain") (Formula), B6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),33.0) (Formula), C6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),34.0) (Formula), D6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),41.0) (Formula), E6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),5.0) (Formula), F6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),29.0) (Formula), G6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),24.0) (Formula), H6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),19.0) (Formula), I6: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),185.0) (Formula)
+Row 7: A7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Pain d'Mie") (Formula), C7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), D7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), H7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),14.0) (Formula), I7: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),42.0) (Formula)
+Row 8: A8: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Specialty Bread") (Formula), I8: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), M8: =If(AND('MEP Hub'!C13, 'MEP Hub'!C15), "HOLIDAY MEP ON", IF('MEP Hub'!C13, "MEP ON", IF('MEP Hub'!C15, "Holiday Mix On", ""))) (Formula)
+Row 9: A9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Dinkelbrot") (Formula), B9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), C9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), D9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), E9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), G9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), H9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), I9: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),70.0) (Formula)
+Row 10: A10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Dinklebrot Pullman") (Formula), B10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), C10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), D10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),2.0) (Formula), E10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),2.0) (Formula), G10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), H10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),1.0) (Formula), I10: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),7.0) (Formula)
+Row 11: A11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Focaccia Fino") (Formula), G11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),18.0) (Formula), I11: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),18.0) (Formula)
+Row 12: A12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Focaccia") (Formula), F12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),4.0) (Formula), I12: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),4.0) (Formula)
+Row 13: A13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Cardamom Braid ") (Formula), B13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),6.0) (Formula), C13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),6.0) (Formula), D13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),8.0) (Formula), E13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), H13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), I13: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula)
+Row 14: A14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Stollen") (Formula), B14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), C14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),10.0) (Formula), D14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),12.0) (Formula), E14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), F14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), G14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), H14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),0.0) (Formula), I14: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),32.0) (Formula)
+Row 15: A15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),"Brioche Buns") (Formula), B15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), C15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), D15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), F15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),30.0) (Formula), H15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),20.0) (Formula), I15: =IFERROR(__xludf.DUMMYFUNCTION("""COMPUTED_VALUE"""),120.0) (Formula)
+Row 17: A17: =IF('MEP Hub'!C13, "MEP Totals", "Mix Totals") (Formula), B17: Mon, C17: Tue, D17: Wed, E17: Thur, F17: Fri, G17: Sat, H17: Sun, I17: Totals, J17: Days Mixed Ahead
+Row 18: A18: Italian, B18: =If($Z18=0, B2, IF($Z18=1, C2, If($Z18=2, D2, If($Z18=3, E2, IF($Z18=4, F2, IF($Z18=5, G2, IF($Z18=6, H2, 0))))))) (Formula), C18: =If($Z18=0, C2, IF($Z18=1, D2, If($Z18=2, E2, If($Z18=3, F2, IF($Z18=4, G2, IF($Z18=5, H2, IF($Z18=6, B2, 0))))))) (Formula), D18: =If($Z18=0, D2, IF($Z18=1, E2, If($Z18=2, F2, If($Z18=3, G2, IF($Z18=4, H2, IF($Z18=5, B2, IF($Z18=6, C2, 0))))))) (Formula), E18: =If($Z18=0, E2, IF($Z18=1, F2, If($Z18=2, G2, If($Z18=3, H2, IF($Z18=4, B2, IF($Z18=5, C2, IF($Z18=6, D2, 0))))))) (Formula), F18: =If($Z18=0, F2, IF($Z18=1, G2, If($Z18=2, H2, If($Z18=3, B2, IF($Z18=4, C2, IF($Z18=5, D2, IF($Z18=6, E2, 0))))))) (Formula), G18: =If($Z18=0, G2, IF($Z18=1, H2, If($Z18=2, B2, If($Z18=3, C2, IF($Z18=4, D2, IF($Z18=5, E2, IF($Z18=6, F2, 0))))))) (Formula), H18: =If($Z18=0, H2, IF($Z18=1, B2, If($Z18=2, C2, If($Z18=3, D2, IF($Z18=4, E2, IF($Z18=5, F2, IF(Z$18=6, G2, 0))))))) (Formula), I18: =SUM(B18:H18) (Formula), J18: 1.0, Z18: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J18+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J18+1, J18)) (Formula)
+Row 19: A19: Baguette, B19: =If($Z19=0, B3, IF($Z19=1, C3, If($Z19=2, D3, If($Z19=3, E3, IF($Z19=4, F3, IF($Z19=5, G3, IF($Z19=6, H3, 0))))))) (Formula), C19: =If($Z19=0, C3, IF($Z19=1, D3, If($Z19=2, E3, If($Z19=3, F3, IF($Z19=4, G3, IF($Z19=5, H3, IF($Z19=6, B3, 0))))))) (Formula), D19: =If($Z19=0, D3, IF($Z19=1, E3, If($Z19=2, F3, If($Z19=3, G3, IF($Z19=4, H3, IF($Z19=5, B3, IF($Z19=6, C3, 0))))))) (Formula), E19: =If($Z19=0, E3, IF($Z19=1, F3, If($Z19=2, G3, If($Z19=3, H3, IF($Z19=4, B3, IF($Z19=5, C3, IF($Z19=6, D3, 0))))))) (Formula), F19: =If($Z19=0, F3, IF($Z19=1, G3, If($Z19=2, H3, If($Z19=3, B3, IF($Z19=4, C3, IF($Z19=5, D3, IF($Z19=6, E3, 0))))))) (Formula), G19: =If($Z19=0, G3, IF($Z19=1, H3, If($Z19=2, B3, If($Z19=3, C3, IF($Z19=4, D3, IF($Z19=5, E3, IF($Z19=6, F3, 0))))))) (Formula), H19: =If($Z19=0, H3, IF($Z19=1, B3, If($Z19=2, C3, If($Z19=3, D3, IF($Z19=4, E3, IF($Z19=5, F3, IF(Z$18=6, G3, 0))))))) (Formula), I19: =SUM(B19:H19) (Formula), J19: 1.0, Z19: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J19+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J19+1, J19)) (Formula)
+Row 20: A20: Miche, B20: =If($Z20=0, B4, IF($Z20=1, C4, If($Z20=2, D4, If($Z20=3, E4, IF($Z20=4, F4, IF($Z20=5, G4, IF($Z20=6, H4, 0))))))) (Formula), C20: =If($Z20=0, C4, IF($Z20=1, D4, If($Z20=2, E4, If($Z20=3, F4, IF($Z20=4, G4, IF($Z20=5, H4, IF($Z20=6, B4, 0))))))) (Formula), D20: =If($Z20=0, D4, IF($Z20=1, E4, If($Z20=2, F4, If($Z20=3, G4, IF($Z20=4, H4, IF($Z20=5, B4, IF($Z20=6, C4, 0))))))) (Formula), E20: =If($Z20=0, E4, IF($Z20=1, F4, If($Z20=2, G4, If($Z20=3, H4, IF($Z20=4, B4, IF($Z20=5, C4, IF($Z20=6, D4, 0))))))) (Formula), F20: =If($Z20=0, F4, IF($Z20=1, G4, If($Z20=2, H4, If($Z20=3, B4, IF($Z20=4, C4, IF($Z20=5, D4, IF($Z20=6, E4, 0))))))) (Formula), G20: =If($Z20=0, G4, IF($Z20=1, H4, If($Z20=2, B4, If($Z20=3, C4, IF($Z20=4, D4, IF($Z20=5, E4, IF($Z20=6, F4, 0))))))) (Formula), H20: =If($Z20=0, H4, IF($Z20=1, B4, If($Z20=2, C4, If($Z20=3, D4, IF($Z20=4, E4, IF($Z20=5, F4, IF(Z$18=6, G4, 0))))))) (Formula), I20: =SUM(B20:H20) (Formula), J20: 1.0, Z20: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J20+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J20+1, J20)) (Formula)
+Row 21: A21: Rustic White, B21: =If($Z21=0, B5, IF($Z21=1, C5, If($Z21=2, D5, If($Z21=3, E5, IF($Z21=4, F5, IF($Z21=5, G5, IF($Z21=6, H5, 0))))))) (Formula), C21: =If($Z21=0, C5, IF($Z21=1, D5, If($Z21=2, E5, If($Z21=3, F5, IF($Z21=4, G5, IF($Z21=5, H5, IF($Z21=6, B5, 0))))))) (Formula), D21: =If($Z21=0, D5, IF($Z21=1, E5, If($Z21=2, F5, If($Z21=3, G5, IF($Z21=4, H5, IF($Z21=5, B5, IF($Z21=6, C5, 0))))))) (Formula), E21: =If($Z21=0, E5, IF($Z21=1, F5, If($Z21=2, G5, If($Z21=3, H5, IF($Z21=4, B5, IF($Z21=5, C5, IF($Z21=6, D5, 0))))))) (Formula), F21: =If($Z21=0, F5, IF($Z21=1, G5, If($Z21=2, H5, If($Z21=3, B5, IF($Z21=4, C5, IF($Z21=5, D5, IF($Z21=6, E5, 0))))))) (Formula), G21: =If($Z21=0, G5, IF($Z21=1, H5, If($Z21=2, B5, If($Z21=3, C5, IF($Z21=4, D5, IF($Z21=5, E5, IF($Z21=6, F5, 0))))))) (Formula), H21: =If($Z21=0, H5, IF($Z21=1, B5, If($Z21=2, C5, If($Z21=3, D5, IF($Z21=4, E5, IF($Z21=5, F5, IF(Z$18=6, G5, 0))))))) (Formula), I21: =SUM(B21:H21) (Formula), J21: 1.0, Z21: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J21+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J21+1, J21)) (Formula)
+Row 22: A22: Multigrain, B22: =If($Z22=0, B6, IF($Z22=1, C6, If($Z22=2, D6, If($Z22=3, E6, IF($Z22=4, F6, IF($Z22=5, G6, IF($Z22=6, H6, 0))))))) (Formula), C22: =If($Z22=0, C6, IF($Z22=1, D6, If($Z22=2, E6, If($Z22=3, F6, IF($Z22=4, G6, IF($Z22=5, H6, IF($Z22=6, B6, 0))))))) (Formula), D22: =If($Z22=0, D6, IF($Z22=1, E6, If($Z22=2, F6, If($Z22=3, G6, IF($Z22=4, H6, IF($Z22=5, B6, IF($Z22=6, C6, 0))))))) (Formula), E22: =If($Z22=0, E6, IF($Z22=1, F6, If($Z22=2, G6, If($Z22=3, H6, IF($Z22=4, B6, IF($Z22=5, C6, IF($Z22=6, D6, 0))))))) (Formula), F22: =If($Z22=0, F6, IF($Z22=1, G6, If($Z22=2, H6, If($Z22=3, B6, IF($Z22=4, C6, IF($Z22=5, D6, IF($Z22=6, E6, 0))))))) (Formula), G22: =If($Z22=0, G6, IF($Z22=1, H6, If($Z22=2, B6, If($Z22=3, C6, IF($Z22=4, D6, IF($Z22=5, E6, IF($Z22=6, F6, 0))))))) (Formula), H22: =If($Z22=0, H6, IF($Z22=1, B6, If($Z22=2, C6, If($Z22=3, D6, IF($Z22=4, E6, IF($Z22=5, F6, IF(Z$18=6, G6, 0))))))) (Formula), I22: =SUM(B22:H22) (Formula), J22: 1.0, Z22: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J22+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J22+1, J22)) (Formula)
+Row 23: A23: Pain d'Mie, B23: =If($Z23=0, B7, IF($Z23=1, C7, If($Z23=2, D7, If($Z23=3, E7, IF($Z23=4, F7, IF($Z23=5, G7, IF($Z23=6, H7, 0))))))) (Formula), C23: =If($Z23=0, C7, IF($Z23=1, D7, If($Z23=2, E7, If($Z23=3, F7, IF($Z23=4, G7, IF($Z23=5, H7, IF($Z23=6, B7, 0))))))) (Formula), D23: =If($Z23=0, D7, IF($Z23=1, E7, If($Z23=2, F7, If($Z23=3, G7, IF($Z23=4, H7, IF($Z23=5, B7, IF($Z23=6, C7, 0))))))) (Formula), E23: =If($Z23=0, E7, IF($Z23=1, F7, If($Z23=2, G7, If($Z23=3, H7, IF($Z23=4, B7, IF($Z23=5, C7, IF($Z23=6, D7, 0))))))) (Formula), F23: =If($Z23=0, F7, IF($Z23=1, G7, If($Z23=2, H7, If($Z23=3, B7, IF($Z23=4, C7, IF($Z23=5, D7, IF($Z23=6, E7, 0))))))) (Formula), G23: =If($Z23=0, G7, IF($Z23=1, H7, If($Z23=2, B7, If($Z23=3, C7, IF($Z23=4, D7, IF($Z23=5, E7, IF($Z23=6, F7, 0))))))) (Formula), H23: =If($Z23=0, H7, IF($Z23=1, B7, If($Z23=2, C7, If($Z23=3, D7, IF($Z23=4, E7, IF($Z23=5, F7, IF(Z$18=6, G7, 0))))))) (Formula), I23: =SUM(B23:H23) (Formula), J23: 1.0, Z23: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J23+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J23+1, J23)) (Formula)
+Row 24: A24: Specialty Bread, B24: =If($Z24=0, B8, IF($Z24=1, C8, If($Z24=2, D8, If($Z24=3, E8, IF($Z24=4, F8, IF($Z24=5, G8, IF($Z24=6, H8, 0))))))) (Formula), C24: =If($Z24=0, C8, IF($Z24=1, D8, If($Z24=2, E8, If($Z24=3, F8, IF($Z24=4, G8, IF($Z24=5, H8, IF($Z24=6, B8, 0))))))) (Formula), D24: =If($Z24=0, D8, IF($Z24=1, E8, If($Z24=2, F8, If($Z24=3, G8, IF($Z24=4, H8, IF($Z24=5, B8, IF($Z24=6, C8, 0))))))) (Formula), E24: =If($Z24=0, E8, IF($Z24=1, F8, If($Z24=2, G8, If($Z24=3, H8, IF($Z24=4, B8, IF($Z24=5, C8, IF($Z24=6, D8, 0))))))) (Formula), F24: =If($Z24=0, F8, IF($Z24=1, G8, If($Z24=2, H8, If($Z24=3, B8, IF($Z24=4, C8, IF($Z24=5, D8, IF($Z24=6, E8, 0))))))) (Formula), G24: =If($Z24=0, G8, IF($Z24=1, H8, If($Z24=2, B8, If($Z24=3, C8, IF($Z24=4, D8, IF($Z24=5, E8, IF($Z24=6, F8, 0))))))) (Formula), H24: =If($Z24=0, H8, IF($Z24=1, B8, If($Z24=2, C8, If($Z24=3, D8, IF($Z24=4, E8, IF($Z24=5, F8, IF(Z$18=6, G8, 0))))))) (Formula), I24: =SUM(B24:H24) (Formula), J24: 1.0, Z24: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J24+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J24+1, J24)) (Formula)
+Row 25: A25: Dinkelbrot, B25: =If($Z25=0, B9, IF($Z25=1, C9, If($Z25=2, D9, If($Z25=3, E9, IF($Z25=4, F9, IF($Z25=5, G9, IF($Z25=6, H9, 0))))))) (Formula), C25: =If($Z25=0, C9, IF($Z25=1, D9, If($Z25=2, E9, If($Z25=3, F9, IF($Z25=4, G9, IF($Z25=5, H9, IF($Z25=6, B9, 0))))))) (Formula), D25: =If($Z25=0, D9, IF($Z25=1, E9, If($Z25=2, F9, If($Z25=3, G9, IF($Z25=4, H9, IF($Z25=5, B9, IF($Z25=6, C9, 0))))))) (Formula), E25: =If($Z25=0, E9, IF($Z25=1, F9, If($Z25=2, G9, If($Z25=3, H9, IF($Z25=4, B9, IF($Z25=5, C9, IF($Z25=6, D9, 0))))))) (Formula), F25: =If($Z25=0, F9, IF($Z25=1, G9, If($Z25=2, H9, If($Z25=3, B9, IF($Z25=4, C9, IF($Z25=5, D9, IF($Z25=6, E9, 0))))))) (Formula), G25: =If($Z25=0, G9, IF($Z25=1, H9, If($Z25=2, B9, If($Z25=3, C9, IF($Z25=4, D9, IF($Z25=5, E9, IF($Z25=6, F9, 0))))))) (Formula), H25: =If($Z25=0, H9, IF($Z25=1, B9, If($Z25=2, C9, If($Z25=3, D9, IF($Z25=4, E9, IF($Z25=5, F9, IF(Z$18=6, G9, 0))))))) (Formula), I25: =SUM(B25:H25) (Formula), J25: 1.0, Z25: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J25+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J25+1, J25)) (Formula)
+Row 26: A26: Dinklebrot Pullman, B26: =If($Z26=0, B10, IF($Z26=1, C10, If($Z26=2, D10, If($Z26=3, E10, IF($Z26=4, F10, IF($Z26=5, G10, IF($Z26=6, H10, 0))))))) (Formula), C26: =If($Z26=0, C10, IF($Z26=1, D10, If($Z26=2, E10, If($Z26=3, F10, IF($Z26=4, G10, IF($Z26=5, H10, IF($Z26=6, B10, 0))))))) (Formula), D26: =If($Z26=0, D10, IF($Z26=1, E10, If($Z26=2, F10, If($Z26=3, G10, IF($Z26=4, H10, IF($Z26=5, B10, IF($Z26=6, C10, 0))))))) (Formula), E26: =If($Z26=0, E10, IF($Z26=1, F10, If($Z26=2, G10, If($Z26=3, H10, IF($Z26=4, B10, IF($Z26=5, C10, IF($Z26=6, D10, 0))))))) (Formula), F26: =If($Z26=0, F10, IF($Z26=1, G10, If($Z26=2, H10, If($Z26=3, B10, IF($Z26=4, C10, IF($Z26=5, D10, IF($Z26=6, E10, 0))))))) (Formula), G26: =If($Z26=0, G10, IF($Z26=1, H10, If($Z26=2, B10, If($Z26=3, C10, IF($Z26=4, D10, IF($Z26=5, E10, IF($Z26=6, F10, 0))))))) (Formula), H26: =If($Z26=0, H10, IF($Z26=1, B10, If($Z26=2, C10, If($Z26=3, D10, IF($Z26=4, E10, IF($Z26=5, F10, IF(Z$18=6, G10, 0))))))) (Formula), I26: =SUM(B26:H26) (Formula), J26: 1.0, Z26: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J26+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J26+1, J26)) (Formula)
+Row 27: A27: Focaccia Fino, B27: =If($Z27=0, B11, IF($Z27=1, C11, If($Z27=2, D11, If($Z27=3, E11, IF($Z27=4, F11, IF($Z27=5, G11, IF($Z27=6, H11, 0)))))))/6 (Formula), C27: =If($Z27=0, C11, IF($Z27=1, D11, If($Z27=2, E11, If($Z27=3, F11, IF($Z27=4, G11, IF($Z27=5, H11, IF($Z27=6, B11, 0)))))))/6 (Formula), D27: =If($Z27=0, D11, IF($Z27=1, E11, If($Z27=2, F11, If($Z27=3, G11, IF($Z27=4, H11, IF($Z27=5, B11, IF($Z27=6, C11, 0)))))))/6 (Formula), E27: =If($Z27=0, E11, IF($Z27=1, F11, If($Z27=2, G11, If($Z27=3, H11, IF($Z27=4, B11, IF($Z27=5, C11, IF($Z27=6, D11, 0)))))))/6 (Formula), F27: =If($Z27=0, F11, IF($Z27=1, G11, If($Z27=2, H11, If($Z27=3, B11, IF($Z27=4, C11, IF($Z27=5, D11, IF($Z27=6, E11, 0)))))))/6 (Formula), G27: =If($Z27=0, G11, IF($Z27=1, H11, If($Z27=2, B11, If($Z27=3, C11, IF($Z27=4, D11, IF($Z27=5, E11, IF($Z27=6, F11, 0)))))))/6 (Formula), H27: =If($Z27=0, H11, IF($Z27=1, B11, If($Z27=2, C11, If($Z27=3, D11, IF($Z27=4, E11, IF($Z27=5, F11, IF(Z$18=6, G11, 0)))))))/6 (Formula), I27: =SUM(B27:H27) (Formula), J27: 0.0, Z27: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J27+2, IF(OR('MEP Hub'!$C$13), J27+1, J27)) (Formula)
+Row 28: A28: Focaccia, B28: =If($Z28=0, B12, IF($Z28=1, C12, If($Z28=2, D12, If($Z28=3, E12, IF($Z28=4, F12, IF($Z28=5, G12, IF($Z28=6, H12, 0)))))))*1 (Formula), C28: =If($Z28=0, C12, IF($Z28=1, D12, If($Z28=2, E12, If($Z28=3, F12, IF($Z28=4, G12, IF($Z28=5, H12, IF($Z28=6, B12, 0)))))))*1 (Formula), D28: =If($Z28=0, D12, IF($Z28=1, E12, If($Z28=2, F12, If($Z28=3, G12, IF($Z28=4, H12, IF($Z28=5, B12, IF($Z28=6, C12, 0)))))))*1 (Formula), E28: =If($Z28=0, E12, IF($Z28=1, F12, If($Z28=2, G12, If($Z28=3, H12, IF($Z28=4, B12, IF($Z28=5, C12, IF($Z28=6, D12, 0)))))))*1 (Formula), F28: =If($Z28=0, F12, IF($Z28=1, G12, If($Z28=2, H12, If($Z28=3, B12, IF($Z28=4, C12, IF($Z28=5, D12, IF($Z28=6, E12, 0)))))))*1 (Formula), G28: =If($Z28=0, G12, IF($Z28=1, H12, If($Z28=2, B12, If($Z28=3, C12, IF($Z28=4, D12, IF($Z28=5, E12, IF($Z28=6, F12, 0)))))))*1 (Formula), H28: =If($Z28=0, H12, IF($Z28=1, B12, If($Z28=2, C12, If($Z28=3, D12, IF($Z28=4, E12, IF($Z28=5, F12, IF(Z$18=6, G12, 0)))))))*1 (Formula), I28: =SUM(B28:H28) (Formula), J28: 2.0, Z28: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J28+1, IF(OR('MEP Hub'!$C$13), J28+1, J28)) (Formula)
+Row 29: A29: Brioche Buns, B29: =If($Z29=0, B13, IF($Z29=1, C13, If($Z29=2, D13, If($Z29=3, E13, IF($Z29=4, F13, IF($Z29=5, G13, IF($Z29=6, H13, 0)))))))*1 (Formula), C29: =If($Z29=0, C13, IF($Z29=1, D13, If($Z29=2, E13, If($Z29=3, F13, IF($Z29=4, G13, IF($Z29=5, H13, IF($Z29=6, B13, 0)))))))*1 (Formula), D29: =If($Z29=0, D13, IF($Z29=1, E13, If($Z29=2, F13, If($Z29=3, G13, IF($Z29=4, H13, IF($Z29=5, B13, IF($Z29=6, C13, 0)))))))*1 (Formula), E29: =If($Z29=0, E13, IF($Z29=1, F13, If($Z29=2, G13, If($Z29=3, H13, IF($Z29=4, B13, IF($Z29=5, C13, IF($Z29=6, D13, 0)))))))*1 (Formula), F29: =If($Z29=0, F13, IF($Z29=1, G13, If($Z29=2, H13, If($Z29=3, B13, IF($Z29=4, C13, IF($Z29=5, D13, IF($Z29=6, E13, 0)))))))*1 (Formula), G29: =If($Z29=0, G13, IF($Z29=1, H13, If($Z29=2, B13, If($Z29=3, C13, IF($Z29=4, D13, IF($Z29=5, E13, IF($Z29=6, F13, 0)))))))*1 (Formula), H29: =If($Z29=0, H13, IF($Z29=1, B13, If($Z29=2, C13, If($Z29=3, D13, IF($Z29=4, E13, IF($Z29=5, F13, IF(Z$18=6, G13, 0)))))))*1 (Formula), I29: =SUM(B29:H29) (Formula), J29: 1.0, Z29: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J29+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J29+1, J29)) (Formula)
+Row 30: A30: Schiacciata, B30: =If($Z30=0, B14, IF($Z30=1, C14, If($Z30=2, D14, If($Z30=3, E14, IF($Z30=4, F14, IF($Z30=5, G14, IF($Z30=6, H14, 0))))))) (Formula), C30: =If($Z30=0, C14, IF($Z30=1, D14, If($Z30=2, E14, If($Z30=3, F14, IF($Z30=4, G14, IF($Z30=5, H14, IF($Z30=6, B14, 0))))))) (Formula), D30: =If($Z30=0, D14, IF($Z30=1, E14, If($Z30=2, F14, If($Z30=3, G14, IF($Z30=4, H14, IF($Z30=5, B14, IF($Z30=6, C14, 0))))))) (Formula), E30: =If($Z30=0, E14, IF($Z30=1, F14, If($Z30=2, G14, If($Z30=3, H14, IF($Z30=4, B14, IF($Z30=5, C14, IF($Z30=6, D14, 0))))))) (Formula), F30: =If($Z30=0, F14, IF($Z30=1, G14, If($Z30=2, H14, If($Z30=3, B14, IF($Z30=4, C14, IF($Z30=5, D14, IF($Z30=6, E14, 0))))))) (Formula), G30: =If($Z30=0, G14, IF($Z30=1, H14, If($Z30=2, B14, If($Z30=3, C14, IF($Z30=4, D14, IF($Z30=5, E14, IF($Z30=6, F14, 0))))))) (Formula), H30: =If($Z30=0, H14, IF($Z30=1, B14, If($Z30=2, C14, If($Z30=3, D14, IF($Z30=4, E14, IF($Z30=5, F14, IF(Z$18=6, G14, 0))))))) (Formula), I30: =SUM(B30:H30) (Formula), J30: 1.0, Z30: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J30+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J30+1, J30)) (Formula)
+Row 31: A31: Brioche Dinner Rolls, B31: =If($Z31=0, B15, IF($Z31=1, C15, If($Z31=2, D15, If($Z31=3, E15, IF($Z31=4, F15, IF($Z31=5, G15, IF($Z31=6, H15, 0))))))) (Formula), C31: =If($Z31=0, C15, IF($Z31=1, D15, If($Z31=2, E15, If($Z31=3, F15, IF($Z31=4, G15, IF($Z31=5, H15, IF($Z31=6, B15, 0))))))) (Formula), D31: =If($Z31=0, D15, IF($Z31=1, E15, If($Z31=2, F15, If($Z31=3, G15, IF($Z31=4, H15, IF($Z31=5, B15, IF($Z31=6, C15, 0))))))) (Formula), E31: =If($Z31=0, E15, IF($Z31=1, F15, If($Z31=2, G15, If($Z31=3, H15, IF($Z31=4, B15, IF($Z31=5, C15, IF($Z31=6, D15, 0))))))) (Formula), F31: =If($Z31=0, F15, IF($Z31=1, G15, If($Z31=2, H15, If($Z31=3, B15, IF($Z31=4, C15, IF($Z31=5, D15, IF($Z31=6, E15, 0))))))) (Formula), G31: =If($Z31=0, G15, IF($Z31=1, H15, If($Z31=2, B15, If($Z31=3, C15, IF($Z31=4, D15, IF($Z31=5, E15, IF($Z31=6, F15, 0))))))) (Formula), H31: =If($Z31=0, H15, IF($Z31=1, B15, If($Z31=2, C15, If($Z31=3, D15, IF($Z31=4, E15, IF($Z31=5, F15, IF(Z$18=6, G15, 0))))))) (Formula), I31: =SUM(B31:H31) (Formula), J31: 1.0, Z31: =IF(AND('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J31+2, IF(OR('MEP Hub'!$C$13, 'MEP Hub'!$C$15), J31+1, J31)) (Formula)
+
+=== Sheet: Experimental Rustic White ===
+Dimensions: A1:AA999
+
+Row 1: C1: Rustic White 
+Row 3: C3: 1000 gram, D3: ='MEP Hub'!G5 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2FA15BD0> (Formula)
+Row 4: C4: RW+Polenta, D4: ='MEP Hub'!G5 (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.98, C11: Red Rose , D11: =ROUND(B11*D$36/B$17,-1) (Formula)
+Row 12: B12: 0.016, C12: Whole wheat, D12: =ROUND(D$36*B12/B$17,-1) (Formula)
+Row 13: B13: 0.67, C13: Water, D13: =ROUND(D$36*B13/B$17,-1) (Formula)
+Row 14: B14: 0.05, C14: Olive oil, D14: =ROUND(D$36*B14/B$17,-1) (Formula)
+Row 15: B15: 0.022, C15: Salt, D15: =ROUND(D$36*B15/B$17,0) (Formula)
+Row 16: B16: 0.22, C16: RW Soaker, D16: =ROUND(D$36*B16/B$17,0) (Formula)
+Row 17: B17: =SUM(B11:B15) (Formula)
+Row 18: C18: Biga Build
+Row 19: B19: 1.0, C19: Red Rose, D19: =ROUND(B19*B22*D36/B17,0) (Formula)
+Row 20: B20: 0.96, C20: Water, D20: =ROUND(B20*B22*D36/B17,0) (Formula)
+Row 21: B21: 0.001, C21: Cake yeast, D21: 1.0
+Row 22: B22: 0.02, C22: amount of flour in sour
+Row 23: C23: Levain Build
+Row 24: B24: 1.0, C24: Red Rose, D24: =B24*B26*D36/B17 (Formula)
+Row 25: B25: 1.0, C25: Water, D25: =B25*B26*D36/B17 (Formula)
+Row 26: B26: 0.14, C26: amount of flour in sour
+Row 27: C27: Final Dough
+Row 28: C28: Red Rose, D28: =ROUND(D11-D24,-1) (Formula)
+Row 29: C29: Whole Wheat, D29: =D12 (Formula)
+Row 30: C30: Water, D30: =ROUND(D13-D25,-1) (Formula)
+Row 31: C31: Salt, D31: =D15 (Formula)
+Row 32: C32: Levain, D32: =ROUND(SUM(D24:D25),-1) (Formula)
+Row 33: C33: RW Soaker, D33: =D16 (Formula)
+Row 34: C34: Olive Oil, D34: =D14 (Formula)
+Row 35: C35: Biga Build, D35: =ROUND(SUM(D19:D20:D21),-1) (Formula)
+Row 36: C36: Batch Weight, grams, D36: =(D38*D4) (Formula)
+Row 37: C37: baguette oz
+Row 38: C38: baguette grams, D38: 1000.0
+Row 42: B42: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 43: B43: Autolyse for 20 minutes.
+Row 44: B44: Add salt and mix for 1 min. on 1st speed.
+Row 45: B45: Mix for 2 minutes on 2nd speed. Add soak when dough forms into a ball.
+Row 47: B47: Target 78-80 degrees for final temp.
+Row 49: B49: Bulk ferment for 3 hours, folding at 45 minute intervals.
+
+=== Sheet: Starters ===
+Dimensions: A1:I53
+
+Row 1: B1: Levain 
+Row 3: C3: =Baguette!D31+'Rustic White'!D32+'New Miche'!E12+'Emmy(starter)'!D7+Dinkel!D32+Ciabatta!D34+800+'Pumpkin Miche'!E12 (Formula), D3: =IF(C3>Maxes!C27, "SPLIT", "") (Formula)
+Row 4: B4: Levain Build, C4: =IF(C3>Maxes!C27, "Batch 1", "") (Formula), D4: =IF(C3>Maxes!C27, "Batch 2", "") (Formula)
+Row 5: A5: 1.0, B5: Red Rose, C5: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A5/$A$8)/2,-1), ROUNDUP($C$3*A5/$A$8,-1)) (Formula), D5: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A5/$A$8)/2,-1), "") (Formula)
+Row 6: A6: 1.0, B6: Water, C6: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A6/$A$8)/2,-1), ROUNDUP($C$3*A6/$A$8,-1)) (Formula), D6: =IF($C$3>Maxes!C27, ROUNDUP(($C$3*A6/$A$8)/2,-1), "") (Formula)
+Row 7: A7: 0.2, B7: Emmy (starter), C7: =IF($C$3>Maxes!C27, roundup(((C5+D5)*A7)/2,-1), roundup(C5*A7,-1)) (Formula), D7: =IF($C$3>Maxes!C27, roundup(((C5+D5)*A7)/2,-1), "") (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+Row 10: B10: Italian Levain 
+Row 12: C12: =Italian!D36 (Formula), D12: =IF(C12>Maxes!C27, "SPLIT", "") (Formula)
+Row 13: B13: Levain Build, C13: =IF(C12>Maxes!C27, "Batch 1", "") (Formula), D13: =IF(C12>Maxes!C27, "Batch 2", "") (Formula)
+Row 14: A14: 1.0, B14: Red Rose, C14: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*$A$14/$A$17)/2,-1), ROUNDUP($C$12*$A$14/$A$17,-1)) (Formula), D14: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*A14/$A$17)/2,-1), "") (Formula)
+Row 15: A15: 1.0, B15: Water, C15: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*$A$14/$A$17)/2,-1), ROUNDUP($C$12*$A$14/$A$17,-1)) (Formula), D15: =IF($C$12>Maxes!C27, ROUNDUP(($C$12*A15/$A$17)/2,-1), "") (Formula)
+Row 16: A16: 0.2, B16: Emmy (starter), C16: =IF(C12>Maxes!C27, roundup(((C14+D14)*A16)/2,-1), roundup(C14*A16,-1)) (Formula), D16: =IF(C12>Maxes!C27, roundup(((C14+D14)*A16)/2,-1), "") (Formula)
+Row 17: A17: =SUM(A14:A16) (Formula)
+Row 19: B19: BIGA
+Row 21: C21: ='Rustic White'!D35+Focaccia!C29 (Formula)
+Row 22: B22: Poolish, C22:  
+Row 23: A23: 1.0, B23: Red Rose, C23: =ROUNDUP(C21*A23/A26,-1) (Formula)
+Row 24: A24: 0.96, B24: Water, C24: =roundup(C21*A24/A26,-1) (Formula)
+Row 25: A25: 0.001, B25: Cake Yeast, C25: 1.0
+Row 26: A26: =SUM(A23:A25) (Formula)
+Row 29: B29: Schiacciata Poolish
+Row 30: C30: * Gets refrigerated overnight!*
+Row 31: C31: =Schiacciata!C28 (Formula)
+Row 32: A32: 1.0, B32: Red Rose, C32: =ROUNDUP(C31*A32/A35,-1) (Formula)
+Row 33: A33: 1.05, B33: Water, C33: =ROUNDUP(C31*A33/A35,-1) (Formula)
+Row 34: A34: 0.011, B34: Instant Yeast, C34: =ROUNDUP(C31*A34/A35,-1) (Formula)
+Row 35: A35: =SUM(A32:A34) (Formula)
+Row 37: B37: Rye Levain 
+Row 39: C39: =If('New Miche'!E11+'Pumpkin Miche'!E12<>0, 'New Miche'!E11+'Pumpkin Miche'!E12 + 50, 0) (Formula)
+Row 40: B40: Levain Build, C40:  
+Row 41: A41: 1.0, B41: Toasted Rye , C41: =ROUNDUP(C39*A41/A44,-1) (Formula)
+Row 42: A42: 1.6, B42: Water, C42: =roundup(C39*A42/A44,-1) (Formula)
+Row 43: A43: 0.2, B43: Emmy (starter), C43: =roundup(C41*A43,-1) (Formula)
+Row 44: A44: =SUM(A41:A43) (Formula)
+Row 46: B46: Emmy
+Row 48: C48: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER(C5:D16,B5:B16=""Emmy (starter)""), 0))"),2100.0) (Formula)
+Row 49: B49: Levain Build
+Row 50: A50: 1.0, B50: Red Rose, C50: =Roundup(C48*A50/A53, -1) (Formula)
+
+=== Sheet: Soaks ===
+Dimensions: A1:E48
+
+Row 1: B1: RW Soaker
+Row 3: B3: Batch Size, C3: ='Rustic White'!D16 (Formula)
+Row 4: B4: Soaker , C4:  
+Row 5: A5: 0.26, B5: Sesame, C5: =ROUNDUP(C3*A5/A8,-1) (Formula)
+Row 6: A6: 0.21, B6: Cracked wheat, C6: =roundup(C3*A6/A8,-1) (Formula)
+Row 7: A7: 0.52, B7: Water, C7: =roundup(C3*A7/A8,-1) (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+Row 11: B11: 7 Grain Soaker
+Row 13: B13: Batch size, C13: =Multigrain!D16 (Formula)
+Row 14: B14: 7 Grain Soaker, C14:  
+Row 15: A15: 1.0, B15: 7 Grain Blend, C15: =ROUNDUP(C13*A15/A18,-1) (Formula)
+Row 16: A16: 0.55, B16: Water, C16: =roundup(C13*A16/A18,-1) (Formula)
+Row 17: A17: 0.71, B17: honey, C17: =roundup(C13*A17/A18,-1) (Formula)
+Row 18: A18: =SUM(A15:A17) (Formula)
+Row 21: B21: Dinkel Soaker
+Row 23: B23: Batch size, C23: =Dinkel!D33 (Formula)
+Row 24: C24:  
+Row 25: A25: 0.45, B25: Water, C25: =ROUNDUP(C23*A25/A29,-1) (Formula)
+Row 26: A26: 0.36, B26: Spelt Flake, C26: =roundup(C23*A26/A29,-1) (Formula)
+Row 27: A27: 0.13, B27: Sunflower Kernel, C27: =roundup(C23*A27/A29,-1) (Formula)
+Row 28: A28: 0.05, B28: Potato, C28: =roundup(C23*A28/A29,-1) (Formula), E28:  
+Row 29: A29: =SUM(A25:A28) (Formula)
+Row 31: B31: Specialty Sourdough
+Row 33: B33: Batch Size, C33: 0.0
+Row 34: B34: Soaker , C34:  
+Row 35: A35: 0.166, B35: Sunflower Kernels, C35: =ROUNDUP(C33*A35/A39,-1) (Formula)
+Row 36: A36: 0.166, B36: Pumpkin Seed, C36: =roundup(C33*A36/A39,-1) (Formula)
+Row 37: A37: 0.166, B37: Flax seeds, C37: =roundup(C33*A37/A39,-1) (Formula)
+Row 38: A38: 0.5, B38: Water, C38: =roundup(C33*A38/A39,-1) (Formula)
+Row 39: A39: =SUM(A35:A38) (Formula)
+
+=== Sheet: Two-Day Italian ===
+Dimensions: A1:I55
+
+Row 1: C1: Italian, G1: Multigrain 2nd Mix
+Row 2: C2: 1000 g Batard, D2: ='MEP Hub'!G2 (Formula), G2: 1000 gram, H2: =D3-D2 (Formula)
+Row 3: C3: Italian + Multgrain, D3: ='MEP Hub'!G2+'MEP Hub'!G6 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B300AA190> (Formula), G3: Italian Dough, H3: =H5-H4 (Formula)
+Row 4: G4: MG Soaker, H4: ='Experimental Soaks'!C13 (Formula)
+Row 5: G5: Batch Weight, grams, H5: ='Two-Day Multigrain'!D41 (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.718, C11: Red Rose , D11: =ROUND(B11*D$38/B$16,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$38*B12/B$16,-1) (Formula)
+Row 13: B13: 0.725, C13: Water, D13: =ROUND(D$38*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0, C14: Yeast, D14: =ROUND(D$38*B14/B$16,0) (Formula)
+Row 15: B15: 0.02, C15: Salt, D15: =ROUND(D$38*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 24: C24: Levain Build
+Row 25: B25: 1.0, C25: Red Rose, D25: =B25*B27*D38/B16 (Formula)
+Row 26: B26: 1.0, C26: Water, D26: =B26*B27*D38/B16 (Formula)
+Row 27: B27: 0.13, C27: amount of flour in sour
+Row 30: C30: Final Dough
+Row 31: C31: Red Rose, D31: =ROUND(D11-D19-D25,-1) (Formula)
+Row 32: C32: Whole Wheat, D32: =D12 (Formula)
+Row 33: C33: Water, D33: =ROUND(D13-D20-D26,-1) (Formula)
+Row 34: C34: Salt, D34: =D15 (Formula)
+Row 35: C35: Poolish, D35: =ROUND(SUM(D19:D20),-1) (Formula)
+Row 36: C36: Levain, D36: =SUM(D25:D26) (Formula)
+Row 38: C38: Batch Weight, grams, D38: =D3*D41 (Formula)
+Row 40: C40: baguette oz
+Row 41: C41: baguette grams, D41: 1000.0
+Row 43: B43: Mix for 5 minutes on 1st speed in spiral mixer. (Program 3) (mixing in reverse for 2 min. halfway through)
+Row 44: B44: Autolyse for 20 minutes.
+Row 45: B45: Add salt and mix for 1 min. on 1st speed.
+Row 46: B46: Mix for 4 minutes on 2nd speed. 
+Row 48: B48: Target 72-74 degrees for final temp.
+Row 50: B50: Bulk ferment for 3 hours, folding at 45 minute intervals. (Folding can be done in spiral mixer on first speed for ten seconds)
+
+=== Sheet: Two-Day Multigrain ===
+Dimensions: A1:AA1005
+
+Row 1: C1: Multigrain Italian
+Row 3: C3: 1000 gram, D3: ='MEP Hub'!G6 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B300AA3F0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.72, C11: Red Rose , D11: =ROUND(B11*D$41/B$18,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$41*B12/B$18,-1) (Formula)
+Row 13: B13: 0.73, C13: Water, D13: =ROUND(D$41*B13/B$18,-1) (Formula)
+Row 14: B14: 5e-05, C14: Yeast, D14: =ROUND(D$41*B14/B$18,0) (Formula)
+Row 15: B15: 0.023, C15: Salt, D15: =ROUND(D$41*B15/B$18,0) (Formula)
+Row 16: B16: 0.24, C16: 7 Grain Soaker, D16: =ROUND(D$41*B16/B$18,0) (Formula)
+Row 18: B18: =SUM(B11:B15) (Formula)
+Row 20: C20: Poolish
+Row 21: B21: 0.0, C21: Red Rose, D21: =B21*B24*D41/B18 (Formula)
+Row 22: B22: 0.0, C22: Water, D22: =B22*B24*D41/B18 (Formula)
+Row 23: B23: 0.004, C23: Dry Instant Yeast, D23: =B23*B24*D41/B18 (Formula)
+Row 24: B24: 0.0, C24: amount of flour in sour
+Row 26: C26: Levain Build
+Row 27: B27: 1.0, C27: Red Rose, D27: =B27*B29*D41/B18 (Formula)
+Row 28: B28: 1.0, C28: Water, D28: =B28*B29*D41/B18 (Formula)
+Row 29: B29: 0.14, C29: amount of flour in sour
+Row 32: C32: Final Dough
+Row 33: C33: Red Rose, D33: =ROUND(D11-D21-D27,-1) (Formula)
+Row 34: C34: Whole Wheat, D34: =D12 (Formula)
+Row 35: C35: Water, D35: =ROUND(D13-D22-D28,-1) (Formula)
+Row 36: C36: Salt, D36: =D15 (Formula)
+Row 37: C37: Poolish, D37: =ROUND(SUM(D21:D22),-1) (Formula)
+Row 38: C38: Levain, D38: =ROUND(SUM(D27:D28),-1) (Formula)
+Row 39: C39: 7 Grain Soaker, D39: =D16 (Formula)
+Row 41: C41: Batch Weight, grams, D41: =(D44*D3) (Formula)
+Row 43: C43: baguette oz
+Row 44: C44: baguette grams, D44: 1000.0
+Row 47: B47: Add weighed Italian dough and soak to spiral mixer and mix on 2nd speed until combined. (Should be about 10 seconds)
+Row 49: B49: Bulk ferment for three hours, folding at 45 minute intervals.
+
+=== Sheet: Two-Day Baguette ===
+Dimensions: A1:G50
+
+Row 1: C1: Baguette
+Row 3: C3: 400 gram, D3: ='MEP Hub'!G3 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B32568170> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 1.0, C11: Red Rose, D11: =ROUND(B11*D$35/B$16,-1) (Formula)
+Row 12: B12: 0.69, C12: Water 1, D12: =ROUND(D$35*B12/B$16,-1) (Formula)
+Row 13: B13: 0.07, C13: Water 2, D13: =ROUND(D$35*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0021, C14: Dry Yeast, D14: =ROUND(D$35*B14/B$16,1) (Formula)
+Row 15: B15: 0.019, C15: Salt, D15: =ROUND(D$35*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 17: C17: Levain
+Row 18: B18: 1.0, C18: Red Rose, D18: =B18*B20*D35/B16 (Formula)
+Row 19: B19: 1.0, C19: Water, D19: =B19*B20*D35/B16 (Formula)
+Row 20: B20: 0.012, C20: amount of flour in sour
+Row 21: C21: Biga
+Row 22: B22: 1.0, C22: Red Rose, D22: =ROUND(B22*B25*D35/B16,0) (Formula)
+Row 23: B23: 0.96, C23: Water, D23: =ROUND(B23*B25*D35/B16,0) (Formula)
+Row 24: B24: 0.001, C24: Cake Yeast, D24: =ROUND(B24*B25*D35/B16,0) (Formula)
+Row 25: B25: 0.012, C25: amount of flour in sour
+Row 26: C26: Final Dough
+Row 27: C27: Red Rose, D27: =ROUND(D11-D20,-1) (Formula)
+Row 28: C28: Water 1, D28: =ROUND(D12-D21,0) (Formula)
+Row 29: C29: Water 2, D29: =D13 (Formula)
+Row 30: C30: Salt, D30: =D15 (Formula)
+Row 31: C31: Dry Yeast, D31: =D14 (Formula)
+Row 32: C32: Levain, D32: =ROUND(SUM(D18:D19),-1) (Formula)
+Row 33: C33: Biga, D33: =ROUND(SUM(D22:D24),-1) (Formula)
+Row 35: C35: Batch Weight, grams, D35: =(D38*D3) (Formula)
+Row 37: C37: baguette oz, D37: 16.0
+Row 38: C38: baguette grams, D38: 400.0
+Row 40: B40: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 41: B41: Autolyse for 20 minutes.
+Row 42: B42: Add yeast and mix for 1 minute on 1st speed, add salt on first speed.
+Row 43: B43: Mix for 2 minutes on 2nd speed, add water once the dough forms into a ball.
+Row 45: B45: Target 76-78 degrees for final temp.
+Row 47: B47: Fold after one hour of bulk ferment, fold once more and put into cooler after another hour.
+
+=== Sheet: Italian ===
+Dimensions: A1:AA1002
+
+Row 1: C1: Italian
+Row 2: C2: 1000 g Batard, D2: 87.0
+Row 3: C3: Italian + Multgrain, D3: 103.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2FA139B0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.718, C11: Red Rose , D11: =ROUND(B11*D$38/B$16,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$38*B12/B$16,-1) (Formula)
+Row 13: B13: 0.725, C13: Water, D13: =ROUND(D$38*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0, C14: Yeast, D14: =ROUND(D$38*B14/B$16,0) (Formula)
+Row 15: B15: 0.02, C15: Salt, D15: =ROUND(D$38*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 18: C18: Poolish
+Row 19: B19: 0.0, C19: Red Rose, D19: 0.0
+Row 20: B20: 0.0, C20: Water, D20: 0.0
+Row 21: B21: 0.004, C21: Dry Instant Yeast, D21: =B21*B22*D38/B16 (Formula)
+Row 22: B22: 0.0, C22: amount of flour in sour
+Row 24: C24: Levain Build
+Row 25: B25: 1.0, C25: Red Rose, D25: =B25*B27*D38/B16 (Formula)
+Row 26: B26: 1.0, C26: Water, D26: =B26*B27*D38/B16 (Formula)
+Row 27: B27: 0.14, C27: amount of flour in sour
+Row 30: C30: Final Dough
+Row 31: C31: Red Rose, D31: =ROUND(D11-D19-D25,-1) (Formula)
+Row 32: C32: Whole Wheat, D32: =D12 (Formula)
+Row 33: C33: Water, D33: =ROUND(D13-D20-D26,-1) (Formula)
+Row 34: C34: Salt, D34: =D15 (Formula)
+Row 35: C35: Poolish, D35: =ROUND(SUM(D19:D20),-1) (Formula)
+Row 36: C36: Levain, D36: =SUM(D25:D26) (Formula)
+Row 38: C38: Batch Weight, grams, D38: =D3*D41 (Formula)
+Row 40: C40: baguette oz
+Row 41: C41: baguette grams, D41: 1000.0
+Row 43: B43: Mix for 5 minutes on 1st speed in spiral mixer. (Program 3) (mixing in reverse for 2 min. halfway through)
+Row 44: B44: Autolyse for 20 minutes.
+Row 45: B45: Add salt and mix for 1 min. on 1st speed.
+Row 46: B46: Mix for 4 minutes on 2nd speed. 
+Row 48: B48: Target 72-74 degrees for final temp.
+Row 50: B50: Bulk ferment for 3 hours, folding at 45 minute intervals. (Folding can be done in spiral mixer on first speed for ten seconds)
+
+=== Sheet: Multigrain ===
+Dimensions: A1:AA1005
+
+Row 1: C1: Multigrain Italian
+Row 3: C3: 1000 gram, D3: ='MEP Hub'!G6 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2FA13BD0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.72, C11: Red Rose , D11: =ROUND(B11*D$41/B$18,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$41*B12/B$18,-1) (Formula)
+Row 13: B13: 0.73, C13: Water, D13: =ROUND(D$41*B13/B$18,-1) (Formula)
+Row 14: B14: 5e-05, C14: Yeast, D14: =ROUND(D$41*B14/B$18,0) (Formula)
+Row 15: B15: 0.023, C15: Salt, D15: =ROUND(D$41*B15/B$18,0) (Formula)
+Row 16: B16: 0.24, C16: 7 Grain Soaker, D16: =ROUND(D$41*B16/B$18,0) (Formula)
+Row 18: B18: =SUM(B11:B15) (Formula)
+Row 20: C20: Poolish
+Row 21: B21: 0.0, C21: Red Rose, D21: =B21*B24*D41/B18 (Formula)
+Row 22: B22: 0.0, C22: Water, D22: =B22*B24*D41/B18 (Formula)
+Row 23: B23: 0.004, C23: Dry Instant Yeast, D23: =B23*B24*D41/B18 (Formula)
+Row 24: B24: 0.0, C24: amount of flour in sour
+Row 26: C26: Levain Build
+Row 27: B27: 1.0, C27: Red Rose, D27: =B27*B29*D41/B18 (Formula)
+Row 28: B28: 1.0, C28: Water, D28: =B28*B29*D41/B18 (Formula)
+Row 29: B29: 0.14, C29: amount of flour in sour
+Row 32: C32: Final Dough
+Row 33: C33: Red Rose, D33: =ROUND(D11-D21-D27,-1) (Formula)
+Row 34: C34: Whole Wheat, D34: =D12 (Formula)
+Row 35: C35: Water, D35: =ROUND(D13-D22-D28,-1) (Formula)
+Row 36: C36: Salt, D36: =D15 (Formula)
+Row 37: C37: Poolish, D37: =ROUND(SUM(D21:D22),-1) (Formula)
+Row 38: C38: Levain, D38: =ROUND(SUM(D27:D28),-1) (Formula)
+Row 39: C39: 7 Grain Soaker, D39: =D16 (Formula)
+Row 41: C41: Batch Weight, grams, D41: =(D44*D3) (Formula)
+Row 43: C43: baguette oz
+Row 44: C44: baguette grams, D44: 1000.0
+Row 47: B47: Add weighed Italian dough and soak to spiral mixer and mix on 2nd speed until combined. (Should be about 10 seconds)
+Row 49: B49: Bulk ferment for three hours, folding at 45 minute intervals.
+
+=== Sheet: Rustic White ===
+Dimensions: A1:AA999
+
+Row 1: C1: Rustic White 
+Row 3: C3: 1000 gram, D3: ='MEP Hub'!G5 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B3078B250> (Formula)
+Row 4: C4: RW+Polenta, D4: ='MEP Hub'!G5 (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.98, C11: Red Rose , D11: =ROUND(B11*D$36/B$17,-1) (Formula)
+Row 12: B12: 0.016, C12: Whole wheat, D12: =ROUND(D$36*B12/B$17,-1) (Formula)
+Row 13: B13: 0.7, C13: Water, D13: =ROUND(D$36*B13/B$17,-1) (Formula)
+Row 14: B14: 0.05, C14: Olive oil, D14: =ROUND(D$36*B14/B$17,-1) (Formula)
+Row 15: B15: 0.022, C15: Salt, D15: =ROUND(D$36*B15/B$17,0) (Formula)
+Row 16: B16: 0.22, C16: RW Soaker, D16: =ROUND(D$36*B16/B$17,0) (Formula)
+Row 17: B17: =SUM(B11:B15) (Formula)
+Row 18: C18: Biga Build
+Row 19: B19: 1.0, C19: Red Rose, D19: =ROUND(B19*B22*D36/B17,0) (Formula)
+Row 20: B20: 0.96, C20: Water, D20: =ROUND(B20*B22*D36/B17,0) (Formula)
+Row 21: B21: 0.001, C21: Cake yeast, D21: 1.0
+Row 22: B22: 0.02, C22: amount of flour in sour
+Row 23: C23: Levain Build
+Row 24: B24: 1.0, C24: Red Rose, D24: =B24*B26*D36/B17 (Formula)
+Row 25: B25: 1.0, C25: Water, D25: =B25*B26*D36/B17 (Formula)
+Row 26: B26: 0.14, C26: amount of flour in sour
+Row 27: C27: Final Dough
+Row 28: C28: Red Rose, D28: =ROUND(D11-D24,-1) (Formula)
+Row 29: C29: Whole Wheat, D29: =D12 (Formula)
+Row 30: C30: Water, D30: =ROUND(D13-D25,-1) (Formula)
+Row 31: C31: Salt, D31: =D15 (Formula)
+Row 32: C32: Levain, D32: =ROUND(SUM(D24:D25),-1) (Formula)
+Row 33: C33: RW Soaker, D33: =D16 (Formula)
+Row 34: C34: Olive Oil, D34: =D14 (Formula)
+Row 35: C35: Biga Build, D35: =ROUND(SUM(D19:D20:D21),-1) (Formula)
+Row 36: C36: Batch Weight, grams, D36: =(D38*D4) (Formula)
+Row 37: C37: baguette oz
+Row 38: C38: baguette grams, D38: 1000.0
+Row 42: B42: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 43: B43: Autolyse for 20 minutes.
+Row 44: B44: Add salt and mix for 1 min. on 1st speed.
+Row 45: B45: Mix for 2 minutes on 2nd speed. Add soak when dough forms into a ball.
+Row 47: B47: Target 78-80 degrees for final temp.
+Row 49: B49: Bulk ferment for 3 hours, folding at 45 minute intervals.
+
+=== Sheet: Baguette ===
+Dimensions: A1:AA997
+
+Row 1: C1: Baguette
+Row 3: C3: 400 gram, D3: ='MEP Hub'!G3 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B3078B650> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 1.0, C11: Red Rose, D11: =ROUND(B11*D$33/B$16,-1) (Formula)
+Row 12: B12: 0.69, C12: Water 1, D12: =ROUND(D$33*B12/B$16,-1) (Formula)
+Row 13: B13: 0.07, C13: Water 2, D13: =ROUND(D$33*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0021, C14: Dry Yeast, D14: =ROUND(D$33*B14/B$16,1) (Formula)
+Row 15: B15: 0.019, C15: Salt, D15: =ROUND(D$33*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 19: C19: Levain
+Row 20: B20: 1.0, C20: Red Rose, D20: =B20*B22*D33/B16 (Formula)
+Row 21: B21: 1.0, C21: Water, D21: =B21*B22*D33/B16 (Formula)
+Row 22: B22: 0.04, C22: amount of flour in sour
+Row 25: C25: Final Dough
+Row 26: C26: Red Rose, D26: =ROUND(D11-D20,-1) (Formula)
+Row 27: C27: Water 1, D27: =ROUND(D12-D21,0) (Formula)
+Row 28: C28: Water 2, D28: =D13 (Formula)
+Row 29: C29: Salt, D29: =D15 (Formula)
+Row 30: C30: Dry Yeast, D30: =D14 (Formula)
+Row 31: C31: Levain, D31: =ROUND(SUM(D20:D21),-1) (Formula)
+Row 33: C33: Batch Weight, grams, D33: =(D36*D3) (Formula)
+Row 35: C35: baguette oz, D35: 16.0
+Row 36: C36: baguette grams, D36: 400.0
+Row 40: B40: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 41: B41: Autolyse for 20 minutes.
+Row 42: B42: Add yeast and mix for 1 minute on 1st speed, add salt on first speed.
+Row 43: B43: Mix for 2 minutes on 2nd speed, add water once the dough forms into a ball.
+Row 45: B45: Target 76-78 degrees for final temp.
+Row 47: B47: Fold after one hour of bulk ferment, fold once more and put into cooler after another hour.
+
+=== Sheet: Pain dMie ===
+Dimensions: A1:G48
+
+Row 1: C1: Pain d'Mie
+Row 3: C3: 750 grams, D3: ='MEP Hub'!G7 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B300BE5D0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 1.0, C11: Red Rose, D11: =ROUND(B11*D$36/B$21,-1) (Formula)
+Row 12: B12: 0.06, C12: Milk Powder, D12: =ROUND(D$36*B12/B$21,-1) (Formula)
+Row 13: B13: 0.08, C13: Sugar, D13: =ROUND(D$36*B13/B$21,-1) (Formula)
+Row 14: B14: 0.06, C14: Butter, soft, D14: =ROUND(D$36*B14/B$21,1) (Formula)
+Row 15: B15: 0.02, C15: Salt, D15: =ROUND(D$36*B15/B$21,0) (Formula)
+Row 16: B16: 0.012, C16: Instant Yeast, D16: =ROUND(D$36*B16/B$21,0) (Formula)
+Row 17: B17: 0.62, C17: Water, D17: =ROUND(D$36*B17/B$21,0) (Formula)
+Row 18: B18: 0.22, C18: Levain Discard, D18: =ROUND(D$36*B18/B$21,0) (Formula)
+Row 19: D19: =ROUND(D$36*B19/B$21,0) (Formula)
+Row 20: D20: =ROUND(D$36*B20/B$21,0) (Formula)
+Row 21: B21: =SUM(B11:B20) (Formula)
+Row 25: C25: Final Dough
+Row 26: C26: Red Rose, D26: =D11 (Formula)
+Row 27: C27: Milk Powder, D27: =D12 (Formula)
+Row 28: C28: Sugar, D28: =D13 (Formula)
+Row 29: C29: Butter, soft, D29: =D14 (Formula)
+Row 30: C30: Salt, D30: =D15 (Formula)
+Row 31: C31: Instant Yeast, D31: =D16 (Formula)
+Row 32: C32: Water, D32: =D17 (Formula)
+Row 33: C33: Levain Discard, D33: =D18 (Formula)
+Row 34: D34: =D19 (Formula)
+Row 35: D35: =D20 (Formula)
+Row 36: C36: Batch Weight, grams, D36: =(D37*D3) (Formula)
+Row 37: C37: baguette grams, D37: 750.0
+Row 45: B45: Mix all ingredients in 20 quart with dough hook on first speed just until combined. 
+Row 46: B46: Switch to second speed and mix until it comes into a ball and develops gluten.
+Row 47: B47: Fold after 45 minutes of bulk ferment, then bench after additional 45 minutes.
+
+=== Sheet: New Miche ===
+Dimensions: B1:S39
+
+Row 1: D1: Miche
+Row 2: D2: 1000 Gram Batard, E2: ='MEP Hub'!G4 (Formula)
+Row 3: G3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B300BE7B0> (Formula)
+Row 7: C7: Final, G7: Overall
+Row 8: C8: Bakers %, D8: Ingredient, E8: Grams, G8: Bakers %
+Row 9: C9: 0.475, D9: Red Rose, E9: =MROUND(C9*$H$21/$C$17,5) (Formula), G9: Expected, H9: Actual, I9: Ingredient, J9: Grams
+Row 10: C10: 0.4, D10: Whole Wheat, E10: =MROUND(C10*$H$21/$C$17,5) (Formula), G10: =C9+C25/C27*C12 (Formula), H10: =(E9+E25)/$I$23 (Formula), I10: Red Rose, J10: =E9+E25 (Formula)
+Row 11: C11: 0.207, D11: Rye Levain, E11: =MROUND(C11*$H$21/$C$17,5) (Formula), G11: =C10 (Formula), H11: =E10/$I$23 (Formula), I11: Whole Wheat, J11: =E10 (Formula)
+Row 12: C12: 0.09, D12: Red Rose Levain, E12: =MROUND(C12*$H$21/$C$17,5) (Formula), G12: =C20/C22*C11 (Formula), H12: =E20/$I$23 (Formula), I12: Toasted Rye, J12: =E20 (Formula)
+Row 13: C13: 0.04, D13: Barley Malt, E13: =MROUND(C13*$H$21/$C$17,5) (Formula), G13: =C14+C16+C21/C22*C11+C26/C27*C12 (Formula), H13: =(E14+E16+E21+E26)/$I$23 (Formula), I13: Water, J13: =E14+E16+E21+E26 (Formula)
+Row 14: C14: 0.515, D14: Water 1, E14: =MROUND(C14*$H$21/$C$17,5) (Formula), G14: =C13 (Formula), H14: =E13/$I$23 (Formula), I14: Barley Malt, J14: =E13 (Formula)
+Row 15: C15: 0.023, D15: Salt, E15: =MROUND(C15*$H$21/$C$17,5) (Formula), G15: =C15 (Formula), H15: =E15/$I$23 (Formula), I15: Salt, J15: =E15 (Formula)
+Row 16: C16: 0.08, D16: Water 2, E16: =MROUND(C16*$H$21/$C$17,5) (Formula), G16: =SUM(G10:G15) (Formula), H16: =SUM(H10:H15) (Formula)
+Row 17: C17: =SUM(C9:C16) (Formula)
+Row 19: C19: Rye Levain Build, H19: Batch Weight (Grams)
+Row 20: C20: 1.0, D20: Toasted Rye, E20: =MROUND(C20*E11/$C$22,5) (Formula), H20: Expected, I20: Actual
+Row 21: C21: 1.6, D21: Water, E21: =MROUND(C21*E11/$C$22,5) (Formula), H21: =(E30+8)*E2 (Formula), I21: =SUM(J10:J15) (Formula)
+Row 22: C22: =SUM(C20:C21) (Formula), H22: Flour Weight (Grams)
+Row 23: H23: =ROUND((C9+C10+C11*C20/C22+C12*C25/C27)*H21/C17,0) (Formula), I23: =E9+E10+E20+E25 (Formula)
+Row 24: C24: Red Rose Levain Build
+Row 25: C25: 1.0, D25: Red Rose, E25: =MROUND(C25*$E$12/$C$27,5) (Formula)
+Row 26: C26: 1.0, D26: Water, E26: =MROUND(C26*$E$12/$C$27,5) (Formula)
+Row 27: C27: =SUM(C25:C26) (Formula)
+Row 28: D28: Batch Weight, grams, E28: =I21+200 (Formula)
+Row 29: D29: Baguette oz
+Row 30: D30: baguette grams, E30: 1000.0
+Row 32: C32: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 33: C33: Autolyse for 40 minutes
+Row 34: C34: Add salt and mix for 1 min. on 1st speed.
+Row 35: C35: Mix for 2 minutes on 2nd speed. Add water slowly when dough forms into a ball.
+Row 37: C37: Target 76-78 degrees for final temp.
+Row 39: C39: Bulk ferment for 3 hours, folding at 45 minute intervals.
+
+=== Sheet: Brioche ===
+Dimensions: A1:I41
+
+Row 1: C1: Brioche
+Row 3: C3: 90 grams, D3: 100.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B357542F0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 1.0, C11: Red Rose, D11: =ROUND(B11*D$35/B$20,-1) (Formula), G11: 0.95
+Row 12: B12: 0.16, C12: Sugar, D12: =ROUND(D$35*B12/B$20,-1) (Formula), G12: 0.26, I12: 1.23
+Row 13: B13: 0.015, C13: Gold Yeast, D13: =ROUND(D$35*B13/B$20,-1) (Formula), G13: 0.11, I13: 0.04
+Row 14: B14: 0.3, C14: Butter, D14: =ROUND(D$35*B14/B$20,1) (Formula), G14: 1.74, I14: 0.26
+Row 15: B15: 0.025, C15: Salt, D15: =ROUND(D$35*B15/B$20,0) (Formula), G15: 0.01
+Row 16: B16: 0.24, C16: Whole Milk, D16: =ROUND(D$35*B16/B$20,0) (Formula), G16: 0.25
+Row 17: B17: 0.4, C17: Eggs, D17: =ROUND(D$35*B17/B$20,0) (Formula), G17: 1.92
+Row 18: B18: 0.05, C18: Water, D18: =ROUND(D$35*B18/B$20,0) (Formula), G18: 0.0
+Row 19: G19: =SUM(G11:G18) (Formula), I19: 1.53
+Row 20: B20: =SUM(B11:B18) (Formula), G20: 0.15, I20: 0.2
+Row 25: C25: Final Dough
+Row 26: C26: Red Rose, D26: =D11 (Formula)
+Row 27: C27: Sugar, D27: =D12 (Formula)
+Row 28: C28: Gold Yeast, D28: =D13 (Formula)
+Row 29: C29: Butter, D29: =D14 (Formula)
+Row 30: C30: Salt, D30: =D15 (Formula)
+Row 31: C31: Whole Milk, D31: =D16 (Formula)
+Row 32: C32: Eggs, D32: =D17 (Formula)
+Row 33: C33: Water, D33: =D18 (Formula)
+Row 34: D34: =D19 (Formula)
+Row 35: C35: Batch weight, grams, D35: =(D36*D3) (Formula)
+Row 36: C36: Roll, grams, D36: 90.0
+Row 38: A38: Mix milk, eggs, yeast, flour, sugar, and salt on 1st speed until combined.
+Row 39: A39: Add butter and mix on second speed until butter is incorporated.
+Row 40: A40: Change to 3rd speed and mix until the dough forms into a ball.
+Row 41: A41: Fold after 30 minutes, then refrigerate. Give one more fold after another 30 minutes.
+
+=== Sheet: Schiacciata ===
+Dimensions: A1:E50
+
+Row 1: B1: Schiacciata
+Row 3: B3: 800.0, C3: ='MEP Hub'!G14 (Formula), E3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B35754750> (Formula)
+Row 9: B9: Overall
+Row 10: A10: Bakers %, B10: Ingredient, C10: Grams
+Row 11: A11: 1.0, B11: Caputo, C11: =ROUND(A11*C$35/A$18,-1) (Formula)
+Row 12: A12: 0.84, B12: Water , C12: =ROUND(C$35*A12/A$18,-1) (Formula)
+Row 13: A13: 0.003, B13: Instant Yeast, C13: =ROUND(C$35*A13/A$18,-1) (Formula)
+Row 14: A14: 0.006, B14: Sugar, C14: =ROUND(C$35*A14/A$18,1) (Formula)
+Row 15: A15: 0.025, B15: Salt, C15: =ROUND(C$35*A15/A$18,0) (Formula)
+Row 16: A16: 0.031, B16: Olive Oil, C16: =ROUND(C$35*A16/A$18,0) (Formula)
+Row 17: A17: 0.005, B17: Instant Yeast, C17: =ROUND(C$35*A17/A$18,0) (Formula)
+Row 18: A18: =SUM(A11:A17) (Formula)
+Row 19: B19: Biga, C19: *refrigerate Overnight
+Row 20: A20: 0.011, B20: Instant Yeast, C20: =A20*A23*C35/A18 (Formula)
+Row 21: A21: 1.0, B21: Red Rose, C21: =ROUND(A21*A23*C35/A18,0) (Formula)
+Row 22: A22: 1.0, B22: Water, C22: =ROUND(A22*A23*C35/A18,0) (Formula)
+Row 23: A23: 0.43, B23: amount of flour in sour
+Row 25: B25: Final Dough
+Row 26: B26: Caputo, C26: =ROUND(C11-C21,-1) (Formula)
+Row 27: B27: Water , C27: =ROUND(C12-C22,0) (Formula)
+Row 28: B28: Biga, C28: =ROUND(SUM(C20:C22),-1) (Formula)
+Row 29: B29: Sugar, C29: =C14 (Formula)
+Row 30: B30: Salt, C30: =C15 (Formula)
+Row 31: B31: Olive Oil, C31: =C16 (Formula)
+Row 32: B32: Instant Yeast, C32: =C17 (Formula)
+Row 33: C33: =C18 (Formula)
+Row 35: B35: Batch Weight, grams, C35: =(C36*C3)+400 (Formula)
+Row 36: B36: 1 Tray, grams, C36: 800.0
+Row 38: A38: Biga 
+Row 39: A39: Add yeast to room temperature water and let it sit 10 minutes
+Row 40: A40: Add flour to water and yeast. Cover and put it in the cooler overnight.
+Row 42: A42: Final Dough
+Row 43: A43: Mix together poolish, water and sugar until water is incorporated in the poolish
+Row 44: A44: Add flour and mix until it is incorporated
+Row 45: A45: Add olive oil and salt and mix until incorporated
+Row 46: A46: Separate dough into rectangular bins, 1 tray per bin
+Row 47: A47: Fold right away 4 times to develop the gluten
+Row 48: A48: Rest for 30 minutes and fold again. 
+Row 49: A49: Rest for 2 hours at room temperature
+Row 50: A50: Dump dough onto oiled baking pan and use your fingertips to form the dough to the shape of the pan.
+
+=== Sheet: Stollen ===
+Dimensions: A1:F55
+
+Row 1: C1: Stollen
+Row 3: C3: 500g, D3: 40.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B31B68FC0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.4, C11: Milk, D11: =ROUND(B11*D$49/B$23,-1) (Formula)
+Row 12: B12: 0.016, C12: Gold Inst. Yeast, D12: =ROUND(B12*D$49/B$23,-1) (Formula)
+Row 13: B13: 0.25, C13: Eggs, D13: =ROUND(B13*D$49/B$23,-1) (Formula)
+Row 14: B14: 0.005, C14: Almond Extract, D14: =ROUND(B14*D$49/B$23,-1) (Formula)
+Row 15: B15: 0.005, C15: Vanilla Extract, D15: =ROUND(B15*D$49/B$23,-1) (Formula)
+Row 16: B16: 0.005, C16: Lemon Zest, D16: =ROUND(B16*D$49/B$23,-1) (Formula)
+Row 17: B17: 1.0, C17: Red Rose , D17: =ROUND(B17*D$49/B$23,-1) (Formula)
+Row 18: B18: 0.4, C18: Butter, D18: =ROUND(B18*D$49/B$23,-1) (Formula)
+Row 19: B19: 0.2, C19: Sugar, D19: =ROUND(B19*D$49/B$23,-1) (Formula)
+Row 20: B20: 0.013, C20: Salt, D20: =ROUND(B20*D$49/B$23,-1) (Formula)
+Row 21: B21: 0.525, C21: Soaker, D21: =ROUND(B21*D$49/B$23,-1) (Formula)
+Row 22: B22: 0.227, C22: Fruit Peels, D22: =ROUND(B22*D$49/B$23,-1) (Formula)
+Row 23: B23: =SUM(B11:B22) (Formula)
+Row 26: C26: Poolish, D26: **Refreigerate overnight**
+Row 28: B28: Baker's %, C28: Ingredient, D28: Grams
+Row 29: B29: 1.0, C29: Red Rose, D29: =ROUND(B29*B32*D49/B23,0) (Formula)
+Row 30: B30: 0.07, C30: Cake Yeast, D30: =ROUND(B30*B32*D49/B23,0) (Formula)
+Row 31: B31: 0.8, C31: Whole Milk, warm, D31: =ROUND(B31*B32*D49/B23,0) (Formula)
+Row 32: B32: 0.5, C32: amount of flour in starter
+Row 35: C35: Final Dough
+Row 37: C37: Gold Inst. Yeast, D37: =D12 (Formula)
+Row 38: C38: Eggs, D38: =D13 (Formula)
+Row 39: C39: Almond Extract, D39: =D14 (Formula)
+Row 40: C40: Vanilla Extract, D40: =D15 (Formula)
+Row 41: C41: Lemon Zest, D41: =D16 (Formula)
+Row 42: C42: Red Rose , D42: =D17-D29 (Formula)
+Row 43: C43: Butter, D43: =D18 (Formula)
+Row 44: C44: Sugar, D44: =D19 (Formula)
+Row 45: C45: Salt, D45: =D20 (Formula)
+Row 46: C46: Soaker, D46: =D21 (Formula)
+Row 47: C47: Fruit Peels, D47: =D22 (Formula)
+Row 49: C49: Total Batch weight, D49: =(D50*D3)+100 (Formula)
+Row 50: C50: Loaf weight, grams, D50: 500.0
+
+=== Sheet: Pumpkin Miche ===
+Dimensions: A1:Q44
+
+Row 1: C1: Pumpkin Miche
+Row 2: D2: 1000 Gram Batard, E2: 0.0
+Row 3: G3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2F9834D0> (Formula)
+Row 7: D7: Final, G7: Overall
+Row 8: C8: Bakers %, D8: Ingredient, E8: Grams, G8: Bakers %
+Row 9: C9: 0.775, D9: Red Rose, E9: =MROUND(C9*$H$29/$C$22,5) (Formula), G9: Expected, H9: Actual, I9: Ingredient, J9: Grams
+Row 10: C10: 0.03, D10: Spelt Flour, E10: =MROUND(C10*$H$29/$C$22,1) (Formula), G10: =C33/C35*C12+C9 (Formula), H10: =J10/$I$31 (Formula), I10: Red Rose, J10: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I10), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I10,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I10,"" 2"")),0))"),0.0) (Formula)
+Row 11: C11: 0.03, D11: Whole Wheat, E11: =MROUND(C11*$H$29/$C$22,1) (Formula), G11: =C10 (Formula), H11: =J11/$I$31 (Formula), I11: Spelt Flour, J11: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I11), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I11,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I11,"" 2"")),0))"),0.0) (Formula)
+Row 12: C12: 0.2, D12: Red Rose Levain, E12: =MROUND(C12*$H$29/$C$22,5) (Formula), G12: =C11 (Formula), H12: =J12/$I$31 (Formula), I12: Whole Wheat, J12: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I12), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I12,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I12,"" 2"")),0))"),0.0) (Formula)
+Row 13: C13: 0.163, D13: Rye Levain, E13: =MROUND(C13*$H$29/$C$22,5) (Formula), G13: =C28/C30*C13 (Formula), H13: =J13/$I$31 (Formula), I13: Toasted Rye, J13: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I13), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I13,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I13,"" 2"")),0))"),0.0) (Formula)
+Row 14: C14: 0.2, D14: Water, E14: =MROUND(C14*$H$29/$C$22,1) (Formula), G14: =C14+C29/C30*C13+C34/C35*C12 (Formula), H14: =J14/$I$31 (Formula), I14: Water, J14: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I14), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I14,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I14,"" 2"")),0))"),0.0) (Formula)
+Row 15: C15: 0.029, D15: Salt, E15: =ROUND(C15*$H$29/$C$22,0) (Formula), G15: =C15 (Formula), H15: =J15/$I$31 (Formula), I15: Salt, J15: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I15), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I15,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I15,"" 2"")),0))"),0.0) (Formula)
+Row 16: C16: 0.07, D16: Molasses, E16: =ROUND(C16*$H$29/$C$22,0) (Formula), G16: =C16 (Formula), H16: =J16/$I$31 (Formula), I16: Molasses, J16: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I16), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I16,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I16,"" 2"")),0))"),0.0) (Formula)
+Row 17: C17: 0.3, D17: Pumpkn. Puree, E17: =mround(C17 *$H$29/$C$22,1) (Formula), G17: =C17 (Formula), H17: =J17/$I$31 (Formula), I17: Pumpkn. Puree, J17: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I17), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I17,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I17,"" 2"")),0))"),0.0) (Formula)
+Row 18: C18: 0.003, D18: Rosemary, E18: =mround(C18 *$H$29/$C$22,1) (Formula), G18: =C18 (Formula), H18: =J18/$I$31 (Formula), I18: Rosemary, J18: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I18), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I18,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I18,"" 2"")),0))"),0.0) (Formula)
+Row 19: C19: 0.1, D19: Candied Pepitas, E19: =mround(C19*$H$29/$C$22,1) (Formula), G19: =C19 (Formula), H19: =J19/$I$31 (Formula), I19: Candied Pepitas, J19: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I19), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I19,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I19,"" 2"")),0))"),0.0) (Formula)
+Row 20: C20: 0.04, D20: Candied Ginger, E20: =mround(C20 *$H$29/$C$22,1) (Formula), G20: =C20 (Formula), H20: =J20/$I$31 (Formula), I20: Candied Ginger, J20: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I20), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I20,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I20,"" 2"")),0))"),0.0) (Formula)
+Row 21: C21: 0.17, D21: Pumpkin Beer, E21: =ROUND(C21*$H$29/$C$22,0) (Formula), G21: =C21 (Formula), H21: =J21/$I$31 (Formula), I21: Pumpkin Beer, J21: =IFERROR(__xludf.DUMMYFUNCTION("SUM(IFNA(FILTER($E$9:$E$34, $D$9:$D$34=I21), 0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I21,"" 1"")),0), IFNA(FILTER($E$9:$E$34, $D$9:$D$34=CONCATENATE(I21,"" 2"")),0))"),0.0) (Formula)
+Row 22: C22: =SUM(C9:C21) (Formula), G22: =SUM(G10:G21) (Formula), H22: =SUM(H10:H21) (Formula)
+Row 23: G23: Effective Hydration: (puree + water + beer)
+Row 24: G24: =H14+H17+H21 (Formula)
+Row 27: D27: Rye Levain Build, H27: Expected, I27: Actual
+Row 28: C28: 1.0, D28: Toasted Rye, E28: =MROUND(C28*E13/$C$30,5) (Formula), H28: Batch Weight (Grams)
+Row 29: C29: 1.5, D29: Water, E29: =MROUND(C29*E13/$C$30,5) (Formula), H29: =(E38+8)*E2 (Formula), I29: =SUM(J10:J21) (Formula)
+Row 30: C30: =SUM(C28:C29) (Formula), H30: Flour Weight (Grams)
+Row 31: H31: =ROUND((C9+C10+C11+C12*C33/C35+C13*C28/C30)*H29/C22,0) (Formula), I31: =E9+E10+E11+E28+E33 (Formula)
+Row 32: D32: Red Rose Levain Build
+Row 33: C33: 1.0, D33: Red Rose, E33: =MROUND(C33*$E$12/$C$35,5) (Formula)
+Row 34: C34: 1.0, D34: Water, E34: =MROUND(C34*$E$12/$C$35,5) (Formula), H34: =IF(MROUND(G22, 0.005)=MROUND(H22,0.005), "", "I am a goober.") (Formula)
+Row 35: C35: =SUM(C33:C34) (Formula)
+Row 36: D36: Batch Weight, grams, E36: =I29 (Formula)
+Row 37: D37: Baguette oz
+Row 38: D38: baguette grams, E38: 1000.0
+Row 39: B39: Mix the levains, flours, water, molasses and puree for 3 minutes
+Row 40: B40: Chop the ginger, crush the pepitas, combine in bowl, pour in some of the pumpkin beer until immersed and let it sit for the extent of the autolyse stage
+Row 41: B41: 40 min. autolyse
+Row 42: B42: Add salt and mix for about 1 minute. Add pumpkin beer as though it were 2nd water (Slowly) with mixer on 2nd speed, going until dough rotates with the hook
+Row 43: B43: Finally, add the candied ginger and pepitas mixture, mixing on 1st speed until just incorporated (do not go longer at risk of overmixing, the seeds can easily tear at the dough).
+
+=== Sheet: Dinkel ===
+Dimensions: A1:AA999
+
+Row 1: C1: Dinklebrot
+Row 3: C3: 907 gram, D3: ='MEP Hub'!G9+'MEP Hub'!G10*2.5 (Formula), F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2F983290> (Formula)
+Row 4: C4: 2268 gram
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.7, C11: Spelt Flour, D11: =ROUND(B11*D$39/B$20,-1) (Formula)
+Row 12: B12: 0.3, C12: Red Rose, D12: =ROUND(B12*D$39/B$20,-1) (Formula)
+Row 13: B13: 0.004, C13: Spice Mix, D13: =ROUND(D$39*B13/B$20,0) (Formula)
+Row 14: B14: 0.56, C14: Water, D14: =ROUND(D$39*B14/B$20,-1) (Formula)
+Row 15: B15: 0.04, C15: Salt, D15: =ROUND(D$39*B15/B$20,0) (Formula)
+Row 16: B16: 1.57, C16: Soaker, D16: =ROUND(D$39*B16/B$20,0) (Formula)
+Row 17: B17: 0.12, C17: Barley Malt, D17: =ROUND(D$39*B17/B$20,0) (Formula)
+Row 18: B18: 0.07, C18: Honey, D18: =ROUND(D$39*B18/B$20,0) (Formula)
+Row 19: B19: 0.03, C19: Cake Yeast, D19: =ROUND(D$39*B19/B$20,0) (Formula)
+Row 20: B20: =SUM(B11:B19) (Formula)
+Row 21: C21: Levain Build
+Row 22: B22: 1.0, C22: Red Rose, D22: =B22*B24*D39/B20 (Formula)
+Row 23: B23: 1.0, C23: Water, D23: =B23*B24*D39/B20 (Formula)
+Row 24: B24: 0.3, C24: amount of flour in sour
+Row 27: C27: Final Dough
+Row 28: C28: Spelt Flour, D28: =ROUND(D11,-1) (Formula)
+Row 29: C29: Spice Mix, D29: =D13 (Formula)
+Row 30: C30: Water, D30: =ROUND(D14-D23,-1) (Formula)
+Row 31: C31: Salt, D31: =D15 (Formula)
+Row 32: C32: Levain, D32: =ROUND(SUM(D22:D23),-1) (Formula)
+Row 33: C33: Soak, D33: =D16 (Formula)
+Row 34: C34: Barley Malt, D34: =D17 (Formula)
+Row 35: C35: Honey, D35: =D18 (Formula)
+Row 36: C36: Cake Yeast, D36: =D19 (Formula)
+Row 39: C39: Batch Weight, grams, D39: =(D42*D3) (Formula)
+Row 42: C42: Retail Loaf (grams), D42: 907.0
+Row 44: B44: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 45: B45: Autolyse for 20 minutes.
+Row 46: B46: Add salt and mix for 1 min. on 1st speed.
+Row 47: B47: Mix for 2 minutes on 2nd speed. Add soak when dough forms into a ball.
+Row 49: B49: Target 78-80 degrees for final temp.
+
+=== Sheet: Hot Cross Buns ===
+Dimensions: A1:D19
+
+Row 1: C1: Hot Cross Buns
+Row 4: B4: Soaker, C4: 4,290g
+Row 5: A5: Baker's %
+Row 6: A6: 0.53, B6: Dried Black Currants, C6: 2270g
+Row 7: A7: 0.049, B7: Simple Syrup, C7: 210g
+Row 8: A8: 0.031, B8: Dark Rum, C8: 135g
+Row 9: A9: 0.39, B9: Water, C9: 1,675g
+Row 14: B14: Add to 100 Batch of Brioche (9,000g batch)
+Row 16: B16: Currant Soaker, C16: 1,315g
+Row 17: B17: Cinnamon, C17: 28g
+Row 18: B18: Allspice, C18: 28g
+Row 19: B19: Oranges, zested, C19: 6 ea. 
+
+=== Sheet: Fino ===
+Dimensions: A1:G45
+
+Row 1: C1: Fino
+Row 3: C3: 3075g, D3: 3.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B343A0680> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 1.0, C11: Red Rose, D11: =ROUND(B11*D$35/B$17,-1) (Formula)
+Row 12: B12: 0.006, C12: Instant Yeast, D12: =ROUND(D$35*B12/B$17,-1) (Formula)
+Row 13: B13: 0.02, C13: Salt, D13: =ROUND(D$35*B13/B$17,-1) (Formula)
+Row 14: B14: 0.005, C14: Sugar, D14: =ROUND(D$35*B14/B$17,1) (Formula)
+Row 15: B15: 0.7, C15: Water 1, D15: =ROUND(D$35*B15/B$17,0) (Formula)
+Row 16: B16: 0.04, C16: Water 2, D16: =ROUND(D$35*B16/B$17,0) (Formula)
+Row 17: B17: =SUM(B11:B16) (Formula)
+Row 25: C25: Final Dough
+Row 26: C26: Red Rose, D26: =D11 (Formula)
+Row 27: C27: Instant Yeast, D27: =D12 (Formula)
+Row 28: C28: Salt, D28: =D13 (Formula)
+Row 29: C29: Sugar, D29: =D14 (Formula)
+Row 30: C30: Water 1, D30: =D15 (Formula)
+Row 31: C31: Water 2, D31: =D16 (Formula)
+Row 32: D32: =D17 (Formula)
+Row 33: D33: =D18 (Formula)
+Row 34: D34: =D19 (Formula)
+Row 35: C35: Batch weight, grams, D35: =(D36*D3) (Formula)
+Row 36: C36: 1 tray grams, D36: 3066.0
+Row 39: B39: Mix everything except water 2 on 1st speed for 5 minutes and 2nd speed for 2 minutes.
+Row 40: B40: Add water 2 during 2nd speed when dough forms into a ball.
+Row 41: B41: Divide into tubs evenly. , D41: 3 Trays, E41: 2 Tubs @ 4,600g each
+Row 42: D42: 4 Trays, E42: 3 Tubs @ 4,150g each
+Row 43: D43: 5 Trays, E43: 4 Tubs @ 3,875g each
+Row 44: B44: Fold after 1 hour of rest
+Row 45: B45: Bench after another hour of rest
+
+=== Sheet: Focaccia ===
+Dimensions: A1:E42
+
+Row 1: B1: Focaccia
+Row 3: B3: 2140 Grams, C3: 0.0, E3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B343A07E0> (Formula)
+Row 9: B9: Overall
+Row 10: A10: Bakers %, B10: Ingredient, C10: Grams
+Row 11: A11: 0.8, B11: Pinsa Flour, C11: =ROUND(A11*C$35/A$19,-1) (Formula)
+Row 12: A12: 0.747, B12: Water , C12: =ROUND(C$35*A12/A$19,-1) (Formula)
+Row 13: A13: 0.01, B13: Cake Yeast, C13: =ROUND(C$35*A13/A$19,-1) (Formula)
+Row 14: A14: 0.03, B14: Whole Wheat , C14: =ROUND(C$35*A14/A$19,1) (Formula)
+Row 15: A15: 0.17, B15: Red Rose, C15: =ROUND(C$35*A15/A$19,0) (Formula)
+Row 16: A16: 0.023, B16: Salt, C16: =ROUND(C$35*A16/A$19,0) (Formula)
+Row 17: A17: 0.034, B17: Olive Oil, C17: =ROUND(C$35*A17/A$19,0) (Formula)
+Row 18: A18: 0.028, B18: Water 2, C18: =ROUND(C$35*A18/A$19,0) (Formula)
+Row 19: A19: =SUM(A11:A17) (Formula)
+Row 20: B20: Biga, C20: =A20*A23*C35/A19 (Formula)
+Row 21: A21: 1.0, B21: Red Rose, C21: =ROUND(A21*A23*C35/A19,0) (Formula)
+Row 22: A22: 0.96, B22: Water, C22: =ROUND(A22*A23*C35/A19,0) (Formula)
+Row 23: A23: 0.17, B23: amount of flour in sour
+Row 25: B25: Final Dough
+Row 26: B26: Pinsa, C26: =ROUND(C11-C20,-1) (Formula)
+Row 27: B27: Water 1, C27: =ROUND(C12-C21,0) (Formula)
+Row 28: B28: Cake Yeast, C28: =C13 (Formula)
+Row 29: B29: Biga, C29: =ROUND(SUM(C21:C22),-1) (Formula)
+Row 30: B30: Whole Wheat, C30: =C14 (Formula)
+Row 31: B31: Salt, C31: =C16 (Formula)
+Row 32: B32: Olive Oil, C32: =C17 (Formula)
+Row 33: B33: Water 2, C33: =C18 (Formula)
+Row 35: B35: Batch Weight, grams, C35: =(C36*C3) (Formula)
+Row 36: B36: 1 Tray, grams, C36: 2140.0
+Row 38: A38: Mix water, flour, biga and yeast on 1st speed for 3 minutes.
+Row 39: A39: Rest for 15-20 minutes.
+Row 40: A40: Add salt and mix on 1st speed for one minute, scrape down the bowl.
+Row 41: A41: Add olive oil slowly while mixing on 2nd speed for 3 minutes.
+Row 42: A42: Divide dough evenly between bins. (2 trays = 2 small bins).
+
+=== Sheet: Croissant ===
+Dimensions: A1:AA980
+
+Row 1: C1: Croissant
+Row 3: C3: 2700 grams, D3: 0.0, E3: books
+Row 4: C4: total flour, D4:  
+Row 6: B6: Bakers %
+Row 7: B7: 1.0, C7: Red Rose, D7: =round(D18*B7/B15,-1) (Formula)
+Row 8: B8: 0.3, C8: Water, D8: =round(D18*B8/B15,-1) (Formula)
+Row 9: B9: 0.02, C9: Salt, D9: =round(D18*B9/B15,0) (Formula)
+Row 10: B10: 0.24, C10: Whole Milk, D10: =ROUND(D18*B10/B15,0) (Formula)
+Row 11: B11: 0.013, C11: Yeast, D11: =round(D18*B11/B15,0) (Formula)
+Row 12: B12: 0.02, C12: Butter, D12: =round(D18*B12/B15,0) (Formula)
+Row 13: B13: 0.12, C13: Sugar, D13: =round(D18*B13/B15,0) (Formula)
+Row 14: B14: 0.15, C14: Old Dough Preferment, D14: =round(D18*B14/B15,0) (Formula), G14:  
+Row 15: B15: =SUM(B7:B14) (Formula)
+Row 18: C18: Batch Weight, grams, D18: =MULTIPLY(D3,D20) (Formula)
+Row 20: C20: Weight / Book, D20: 2700.0
+Row 21: C21: Butter / Book, D21: 675.0
+Row 23: B23: Water temp 81-83 degrees (refer to yesterdays temp on mix sheet)
+Row 24: B24: Set mixer timer to 7 minutes first speed and 1 minute second speed
+Row 25: B25: For the first minute, mix in reverse 
+Row 26: B26: Add softened butter after 1.5 minutes (shaggy dough)
+Row 28: B28: DDT (desired dough temperature) is 74 - 75 degrees
+Row 29: B29: If 75 degrees, bulk ferment 30 minutes. If 74 degrees, bulk ferment 45 minutes.
+Row 31: B31: Find this form in Google Sheets entitled "bread & pastry formulas"
+Row 33: B33: *winter percentages: 
+Row 34: B34: Yeast 1.3% and water 31%
+Row 36: B36: *summer percentages: 
+Row 37: B37: Yeast 1.2% and water 30%
+Row 38: A38:   
+
+=== Sheet: Brotchen ===
+Dimensions: A1:F33
+
+Row 1: C1: Brotchen
+Row 3: C3: 120 grams, D3: 0.0, E3: Rolls
+Row 4: D4:  
+Row 6: B6: Bakers %
+Row 7: B7: 1.0, C7: AP Flour, D7: =round(D15*B7/B14,-1) (Formula)
+Row 8: B8: 0.6, C8: Water, D8: =round(D15*B8/B14,-1) (Formula)
+Row 9: B9: 0.015, C9: Cake Yeast, D9: =round(D15*B9/B14,0) (Formula)
+Row 10: B10: 0.02, C10: Salt, D10: =ROUND(D15*B10/B14,0) (Formula)
+Row 11: B11: 0.018, C11: Sugar, D11: =round(D15*B11/B14,0) (Formula)
+Row 12: B12: 0.008, C12: Diastatic Barley Malt Flour, D12: =round(D15*B12/B14,0) (Formula)
+Row 13: B13: 0.2, C13: Levain Discard, D13: =round(D15*B13/B14,0) (Formula)
+Row 14: B14: =sum(B8:B13) (Formula)
+Row 15: C15: Batch Weight, grams, D15: =MULTIPLY(D3,D16) (Formula)
+Row 16: C16: Weight, per roll, D16: 120.0
+Row 20: B20: Add half of the water to the mixing bowl with yeast, stir to dissolve.
+Row 21: B21: Add dry ingredients
+Row 22: B22: Mix on 1st speed until combined
+Row 23: B23: Slowly start adding the rest of the water as the dough mixes on 1st speed
+Row 24: B24: Once all the water is added and incorporated, mix on 2nd speed until gluten development forms(about 10-12 min.)
+Row 25: B25: Fold right after mixing is complete.
+Row 26: B26: Bulk ferment for 15-20 minutes
+Row 28: B28: Scale rolls and preshape
+Row 30: B30: Final shape rolls and proof (about 20-30 min.)
+Row 32: B32: Preheat oven to 450, turn down to 400 once rolls are loaded in.
+Row 33: B33: Bake with steam about 10-12 minutes
+
+=== Sheet: Chocolate Croissant ===
+Dimensions: A1:H60
+
+Row 1: C1: Chocolate Croissant
+Row 3: C3: 2700 grams, D3: 0.0, E3: books
+Row 4: C4: total flour, D4:  
+Row 6: B6: Bakers %
+Row 7: B7: 0.8, C7: Red Rose, D7: =round(D47*B7/B18,-1) (Formula)
+Row 8: B8: 0.5, C8: Water, D8: =round(D47*B8/B18,-1) (Formula)
+Row 9: B9: 0.02, C9: Salt, D9: =round(D47*B9/B18,0) (Formula)
+Row 10: B10: 0.24, C10: Whole Milk, D10: =ROUND(D47*B10/B18,0) (Formula)
+Row 11: B11: 0.013, C11: Yeast, D11: =round(D47*B11/B18,0) (Formula)
+Row 12: B12: 0.08, C12: Cocoa Powder, D12: =round(D47*B12/B18,0) (Formula)
+Row 13: B13: 0.2, C13: Rye Flour , D13: =round(D47*B13/B18,0) (Formula)
+Row 14: B14: 0.15, C14: AP Flour, D14: =round(D47*B14/B18,0) (Formula)
+Row 15: B15: 0.02, C15: Butter, D15: =round(D47*B15/B18,0) (Formula)
+Row 16: B16: 0.12, C16: Sugar, D16: =round(D47*B16/B18,0) (Formula)
+Row 18: B18: =SUM(B8:B17) (Formula)
+Row 19: B19: Levain Build
+Row 20: B20: 1.0, C20: Red Rose, D20: =ROUND(B20*B23*D47/B18,0) (Formula)
+Row 21: B21: 0.56, C21: Water, D21: =ROUND(B21*B23*D47/B18,0) (Formula)
+Row 22: B22: 0.33, C22: Sourdough Starter, D22: =ROUND(B22*B23*D47/B18,0) (Formula)
+Row 23: B23: 0.15, C23: amount of flour in sour, D23: =SUM(D20:D22) (Formula)
+Row 24: B24: Biga Build
+Row 25: B25: 1.0, C25: Red Rose, D25: =ROUND(B25*B28*D47/B18,0) (Formula)
+Row 26: B26: 0.96, C26: Water, D26: =ROUND(B26*B28*D47/B18,0) (Formula)
+Row 27: B27: 0.001, C27: Cake Yeast, D27: =ROUND(B27*B28*D47/B18,0) (Formula)
+Row 28: C28: amount of flour in sour, D28: =SUM(D25:D27) (Formula)
+Row 33: C33: Overall
+Row 34: C34: Stiff Levain, D34: =D23 (Formula)
+Row 35: C35: Biga, D35: =D28 (Formula)
+Row 36: C36: Red Rose, D36: =D7-D20-D25 (Formula)
+Row 37: C37: Rye Flour, D37: =D13 (Formula)
+Row 38: C38: AP Flour, D38: =D14 (Formula)
+Row 39: C39: Cocoa Powder, D39: =D12 (Formula)
+Row 40: C40: Water, D40: =D8 (Formula)
+Row 41: C41: Salt, D41: =D9 (Formula)
+Row 42: C42: Milk, D42: =D10 (Formula)
+Row 43: C43: Gold Instant Yeast, D43: =D11 (Formula)
+Row 44: C44: Butter, D44: =D15 (Formula)
+Row 45: C45: Sugar, D45: =D16 (Formula)
+Row 47: C47: Batch Weight, grams, D47: =MULTIPLY(D3,D49) (Formula)
+Row 49: C49: Weight / Book, D49: 2700.0
+Row 50: C50: Butter / Book, D50: 675.0
+
+=== Sheet: Saturday Mixing Sheet ===
+Dimensions: A1:V973
+
+Row 1: A1: Saturday MEP 8/31
+Row 2: A2: Italian, D2: Multigrain, G2: Rustic White 
+Row 3: G3: 1000 gram, H3: ='Rustic White'!D3 (Formula)
+Row 4: A4: 1000 g Batard, B4: ='Saturday Italian'!D2 (Formula), D4: 1000 gram, E4: ='Saturday Multigrain'!D3 (Formula), G4: RW + Polenta, H4: ='Rustic White'!D4 (Formula)
+Row 5: A5: Italian + Multgrain, B5: ='Saturday Italian'!D3 (Formula), D5: Italian Dough, E5: =E7-E6 (Formula), G5: Final Dough
+Row 6: A6: Final Dough, D6: MG Soaker, E6: ='Saturday Soaks'!C13 (Formula), G6: Red Rose, H6: ='Rustic White'!D28 (Formula)
+Row 7: A7: Red Rose, B7: ='Saturday Italian'!D31 (Formula), D7: Batch Weight, grams, E7: ='Saturday Multigrain'!D41 (Formula), G7: Whole Wheat, H7: ='Rustic White'!D29 (Formula)
+Row 8: A8: Whole Wheat, B8: ='Saturday Italian'!D32 (Formula), G8: Water, H8: ='Rustic White'!D30 (Formula)
+Row 9: A9: Water, B9: ='Saturday Italian'!D33 (Formula), D9: Pain d'Mie, G9: Salt, H9: ='Rustic White'!D31 (Formula)
+Row 10: A10: Salt, B10: ='Saturday Italian'!D34 (Formula), D10: 750 grams, E10: ='Pain dMie'!D3 (Formula), G10: Levain, H10: ='Rustic White'!D32 (Formula)
+Row 11: A11: Poolish, B11: ='Saturday Italian'!D35 (Formula), D11: Final Dough, G11: RW Soaker, H11: ='Rustic White'!D33 (Formula)
+Row 12: A12: Levain, B12: ='Saturday Italian'!D36 (Formula), D12: Red Rose, E12: ='Pain dMie'!D26 (Formula), G12: Olive Oil, H12: ='Rustic White'!D34 (Formula)
+Row 13: D13: Milk Powder, E13: ='Pain dMie'!D27 (Formula), G13: Biga, H13: ='Rustic White'!D35 (Formula)
+Row 14: A14: Batch Weight, grams, B14: ='Saturday Italian'!D38 (Formula), D14: Sugar, E14: ='Pain dMie'!D28 (Formula), G14: Batch Weight, grams, H14: ='Rustic White'!D36 (Formula)
+Row 15: D15: Butter, soft, E15: ='Pain dMie'!D29 (Formula), G15: baguette oz
+Row 16: A16: loaf, B16: 1000.0, D16: Salt, E16: ='Pain dMie'!D30 (Formula), G16: baguette grams, H16: ='Rustic White'!D38 (Formula)
+Row 17: D17: Cake Yeast, E17: ='Pain dMie'!D31 (Formula)
+Row 18: A18: Baguette, D18: Water, E18: ='Pain dMie'!D32 (Formula), G18: Parker
+Row 19: A19: 400 gram, B19: ='Saturday Baguette'!D3 (Formula), D19: Old Itl. Dough, E19: ='Pain dMie'!D33 (Formula), G19: 100 grams, H19: =Brioche!D3 (Formula)
+Row 20: A20: Final Dough, D20: Honey, E20: ='Pain dMie'!D34 (Formula), G20: Final Dough
+Row 21: A21: Red Rose, B21: ='Saturday Baguette'!D27 (Formula), D21: batch weight, E21: ='Pain dMie'!D35 (Formula), G21: Red Rose, H21: =Brioche!D26 (Formula)
+Row 22: A22: Water 1, B22: ='Saturday Baguette'!D28 (Formula), D22: baguette grams, E22: ='Pain dMie'!D36 (Formula), G22: Sugar, H22: =Brioche!D27 (Formula)
+Row 23: A23: Water 2, B23: ='Saturday Baguette'!D29 (Formula), G23: Cake Yeast, H23: =Brioche!D28 (Formula)
+Row 24: A24: Salt, B24: ='Saturday Baguette'!D30 (Formula), D24: Dinkelbrot, G24: Butter, soft, H24: =Brioche!D29 (Formula)
+Row 25: A25: Dry Yeast, B25: ='Saturday Baguette'!D31 (Formula), G25: Salt, H25: =Brioche!D30 (Formula)
+Row 26: A26: Levain, B26: ='Saturday Baguette'!D32 (Formula), D26: 907 gram, E26: =Dinkel!D3 (Formula), G26: Whole Milk, H26: =Brioche!D31 (Formula)
+Row 27: A27: Biga, B27: ='Saturday Baguette'!D33 (Formula), D27: 2268 gram, G27: Eggs, H27: =Brioche!D32 (Formula)
+Row 28: A28: Batch Weight, grams, B28: =Baguette!D33 (Formula), D28: Final Dough, G28: batch weight, H28: =Brioche!D35 (Formula)
+Row 29: D29: Spelt Flour, E29: =Dinkel!D28 (Formula), G29: Roll grams, H29: =Brioche!D36 (Formula)
+Row 30: A30: baguette grams, B30: =Baguette!D36 (Formula), D30: Spice Mix, E30: =Dinkel!D29 (Formula), H30: ='Pain dMie'!G35 (Formula)
+Row 31: D31: Water, E31: =Dinkel!D30 (Formula), H31: ='Pain dMie'!G36 (Formula)
+Row 32: A32: Miche, D32: Salt, E32: =Dinkel!D31 (Formula), G32: Fino
+Row 33: A33: 1000 gram Batard, B33: =Miche!E3 (Formula), D33: Levain, E33: =Dinkel!D32 (Formula), G33: 400 gram, H33: =Fino!D3 (Formula)
+Row 34: A34: Final Dough, D34: Soak, E34: =Dinkel!D33 (Formula), G34: Final Dough
+Row 35: A35: Red Rose, B35: =Miche!E33 (Formula), D35: Barley Malt, E35: =Dinkel!D34 (Formula), G35: Red Rose, H35: =Fino!D26 (Formula)
+Row 36: A36: Whole Wheat, B36: =Miche!E34 (Formula), D36: Honey, E36: =Dinkel!D35 (Formula), G36: Instant Yeast, H36: =Fino!D27 (Formula)
+Row 37: A37: Rye, B37: =Miche!E35 (Formula), D37: Cake Yeast, E37: =Dinkel!D36/2 (Formula), G37: Salt, H37: =Fino!D28 (Formula)
+Row 38: A38: Water 1, B38: =Miche!E36 (Formula), D38: Batch Weight, grams, E38: =Dinkel!D39 (Formula), G38: Sugar, H38: =Fino!D29 (Formula)
+Row 39: A39: Water 2, B39: =Miche!E37 (Formula), D39: Retail Loaf (grams), E39: =Dinkel!D42 (Formula), G39: Water 1, H39: =Fino!D30 (Formula)
+Row 40: A40: Salt, B40: =Miche!E38 (Formula), G40: Water2, H40: =Fino!D31 (Formula)
+Row 41: A41: Levain, B41: =Miche!E39 (Formula)
+Row 42: G42: Batch Weight, grams, H42: =Fino!D35 (Formula)
+Row 43: A43: Batch Weight, grams, B43: =Miche!E41 (Formula), H43: =Fino!D34 (Formula)
+Row 44: G44: 1 Tray, grams, H44: =Fino!D36 (Formula)
+Row 45: A45: baguette grams, B45: =Miche!E44 (Formula)
+Row 46: D46: Polenta, G46: Focaccia
+Row 47: A47: Schiacciata, D47: 1000 gram, E47: 4.0, G47: 2140 grams, H47: =Focaccia!C3 (Formula)
+Row 48: A48: 2400.0, B48: =Schiacciata!C3 (Formula), D48: Final Dough, G48: Final Dough
+Row 49: A49: Final Dough, D49: RW Dough, E49: 3340.0, G49: Pinsa, H49: =Focaccia!C26 (Formula)
+Row 50: A50: Caputo, B50: =Schiacciata!C26 (Formula), D50: Polenta, E50: 330.0, G50: Water 1, H50: =Focaccia!C27 (Formula)
+
+=== Sheet: Saturday Soaks ===
+Dimensions: A1:E47
+
+Row 1: B1: RW Soaker
+Row 3: B3: Batch Size, C3: ='Rustic White'!D16 (Formula)
+Row 4: B4: Soaker , C4:  
+Row 5: A5: 0.26, B5: Sesame, C5: =ROUNDUP(C3*A5/A8,-1) (Formula)
+Row 6: A6: 0.21, B6: Cracked wheat, C6: =roundup(C3*A6/A8,-1) (Formula)
+Row 7: A7: 0.52, B7: Water, C7: =roundup(C3*A7/A8,-1) (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+Row 11: B11: 7 Grain Soaker
+Row 13: B13: Batch size, C13: ='Saturday Multigrain'!D39 (Formula)
+Row 14: B14: 7 Grain Soaker, C14:  
+Row 15: A15: 1.0, B15: 7 Grain Blend, C15: =ROUNDUP(C13*A15/A18,-1) (Formula)
+Row 16: A16: 0.55, B16: Water, C16: =roundup(C13*A16/A18,-1) (Formula)
+Row 17: A17: 0.71, B17: honey, C17: =roundup(C13*A17/A18,-1) (Formula)
+Row 18: A18: =SUM(A15:A17) (Formula)
+Row 21: B21: Dinkel Soaker
+Row 23: B23: Batch size, C23: =Dinkel!D33 (Formula)
+Row 24: B24: 7 Grain Soaker, C24:  
+Row 25: A25: 0.45, B25: Water, C25: =ROUNDUP(C23*A25/A29,-1) (Formula)
+Row 26: A26: 0.36, B26: Spelt Flake, C26: =roundup(C23*A26/A29,-1) (Formula)
+Row 27: A27: 0.13, B27: Sunflower Kernel, C27: =roundup(C23*A27/A29,-1) (Formula)
+Row 28: A28: 0.05, B28: Potato, C28: =roundup(C23*A28/A29,-1) (Formula), E28:  
+Row 29: A29: =SUM(A25:A28) (Formula)
+Row 32: B32: Polenta Sourdough
+Row 34: B34: Batch Size, C34: 330.0
+Row 35: B35: Soaker , C35:  
+Row 36: A36: 0.166, B36: Sunflower Kernels, C36: =ROUNDUP(C34*A36/A40,-1) (Formula)
+Row 37: A37: 0.166, B37: Pumpkin Seed, C37: =roundup(C34*A37/A40,-1) (Formula)
+Row 38: A38: 0.166, B38: Flax seeds, C38: =roundup(C34*A38/A40,-1) (Formula)
+Row 39: A39: 0.5, B39: Water, C39: =roundup(C34*A39/A40,-1) (Formula)
+Row 40: A40: =SUM(A36:A39) (Formula)
+Row 42: B42: Rye Soaker
+Row 43: B43: Batch Size, C43: 300.0
+Row 44: B44: Soaker
+Row 45: A45: 1.0, B45: Toasted Rye, C45: =ROUNDUP(C43*A45/A47,0) (Formula)
+Row 46: A46: 1.0, B46: Water, C46: =ROUNDUP(C43*A46/A47,0) (Formula)
+Row 47: A47: =sum(A45:A46) (Formula)
+
+=== Sheet: Saturday Starters ===
+Dimensions: A1:H55
+
+Row 1: B1: Levain 
+Row 3: C3: =Baguette!D31+'Rustic White'!D32+Miche!E39+'Emmy(starter)'!D7+Dinkel!D32+Ciabatta!D34+500 (Formula)
+Row 4: B4: Levain Build, C4:  
+Row 5: A5: 1.0, B5: Red Rose, C5: =ROUNDUP(C3*A5/A8,-1) (Formula)
+Row 6: A6: 1.0, B6: Water, C6: =roundup(C3*A6/A8,-1) (Formula)
+Row 7: A7: 0.15, B7: Emmy (starter), C7: =roundup(C5*A7,-1) (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+Row 10: B10: Rye Levain 
+Row 12: C12: ='New Miche'!E11 (Formula)
+Row 13: B13: Levain Build, C13:  
+Row 14: A14: 1.0, B14: Red Rose, C14: =ROUNDUP(C12*A14/A17,-1) (Formula)
+Row 15: A15: 1.6, B15: Water, C15: =roundup(C12*A15/A17,-1) (Formula)
+Row 16: A16: 0.2, B16: Emmy (starter), C16: =roundup(C14*A16,-1) (Formula)
+Row 17: A17: =SUM(A14:A16) (Formula)
+Row 19: B19: Italian Levain 
+Row 21: C21: =Italian!D54 (Formula)
+Row 22: B22: Levain Build, C22: ='Saturday Italian'!D36 (Formula)
+Row 23: A23: 1.0, B23: Red Rose, C23: =ROUNDUP(C22*A23/A26,-1) (Formula)
+Row 24: A24: 1.0, B24: Water, C24: =roundup(C22*A24/A26,-1) (Formula)
+Row 25: A25: 0.15, B25: Emmy (starter), C25: =roundup(C23*A25,-1) (Formula)
+Row 26: A26: =SUM(A23:A25) (Formula)
+Row 29: B29: BIGA
+Row 31: C31: ='Rustic White'!D35+Focaccia!C29+'Saturday Baguette'!D33 (Formula)
+Row 32: B32: Poolish, C32:  
+Row 33: A33: 1.0, B33: Red Rose, C33: =ROUNDUP(C31*A33/A36,-1) (Formula)
+Row 34: A34: 0.96, B34: Water, C34: =roundup(C31*A34/A36,-1) (Formula)
+Row 35: A35: 0.001, B35: Cake Yeast, C35: 1.0
+Row 36: A36: =SUM(A33:A35) (Formula)
+Row 39: B39: Poolish
+Row 41: C41: =Ciabatta!D45 (Formula)
+Row 42: A42: 1.0, B42: Red Rose, C42: =ROUNDUP(C41*A42/A45,-1) (Formula)
+Row 43: A43: 1.0, B43: Water, C43: =ROUNDUP(C41*A43/A45,-1) (Formula)
+Row 44: A44: 0.0011, B44: Instant Yeast, C44: =ROUNDUP(C41*A44/A45,-1) (Formula)
+Row 45: A45: =SUM(A42:A44) (Formula)
+Row 47: B47: Schiacciata Poolish
+Row 48: B48: *Keep in retarder overnight!*
+Row 49: C49: =Ciabatta!D53 (Formula)
+Row 50: C50: =Schiacciata!C28 (Formula)
+
+=== Sheet: Saturday Italian ===
+Dimensions: A1:I55
+
+Row 1: C1: Italian, G1: Multigrain 2nd Mix
+Row 2: C2: 1000 g Batard, D2: 71.0, G2: 1000 gram, H2: =D3-D2 (Formula)
+Row 3: C3: Italian + Multgrain, D3: 82.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2F9CD4F0> (Formula), G3: Italian Dough, H3: =H5-H4 (Formula)
+Row 4: G4: MG Soaker, H4: ='Saturday Soaks'!C13 (Formula)
+Row 5: G5: Batch Weight, grams, H5: ='Saturday Multigrain'!D41 (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.718, C11: Red Rose , D11: =ROUND(B11*D$38/B$16,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$38*B12/B$16,-1) (Formula)
+Row 13: B13: 0.725, C13: Water, D13: =ROUND(D$38*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0, C14: Yeast, D14: =ROUND(D$38*B14/B$16,0) (Formula)
+Row 15: B15: 0.02, C15: Salt, D15: =ROUND(D$38*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 24: C24: Levain Build
+Row 25: B25: 1.0, C25: Red Rose, D25: =B25*B27*D38/B16 (Formula)
+Row 26: B26: 1.0, C26: Water, D26: =B26*B27*D38/B16 (Formula)
+Row 27: B27: 0.13, C27: amount of flour in sour
+Row 30: C30: Final Dough
+Row 31: C31: Red Rose, D31: =ROUND(D11-D19-D25,-1) (Formula)
+Row 32: C32: Whole Wheat, D32: =D12 (Formula)
+Row 33: C33: Water, D33: =ROUND(D13-D20-D26,-1) (Formula)
+Row 34: C34: Salt, D34: =D15 (Formula)
+Row 35: C35: Poolish, D35: =ROUND(SUM(D19:D20),-1) (Formula)
+Row 36: C36: Levain, D36: =SUM(D25:D26) (Formula)
+Row 38: C38: Batch Weight, grams, D38: =D3*D41 (Formula)
+Row 40: C40: baguette oz
+Row 41: C41: baguette grams, D41: 1000.0
+Row 43: B43: Mix for 5 minutes on 1st speed in spiral mixer. (Program 3) (mixing in reverse for 2 min. halfway through)
+Row 44: B44: Autolyse for 20 minutes.
+Row 45: B45: Add salt and mix for 1 min. on 1st speed.
+Row 46: B46: Mix for 4 minutes on 2nd speed. 
+Row 48: B48: Target 72-74 degrees for final temp.
+Row 50: B50: Bulk ferment for 3 hours, folding at 45 minute intervals. (Folding can be done in spiral mixer on first speed for ten seconds)
+
+=== Sheet: Saturday Multigrain ===
+Dimensions: A1:AA1005
+
+Row 1: C1: Multigrain Italian
+Row 3: C3: 1000 gram, D3: 11.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2F9CD9F0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.72, C11: Red Rose , D11: =ROUND(B11*D$41/B$18,-1) (Formula)
+Row 12: B12: 0.28, C12: Whole wheat, D12: =ROUND(D$41*B12/B$18,-1) (Formula)
+Row 13: B13: 0.73, C13: Water, D13: =ROUND(D$41*B13/B$18,-1) (Formula)
+Row 14: B14: 5e-05, C14: Yeast, D14: =ROUND(D$41*B14/B$18,0) (Formula)
+Row 15: B15: 0.023, C15: Salt, D15: =ROUND(D$41*B15/B$18,0) (Formula)
+Row 16: B16: 0.24, C16: 7 Grain Soaker, D16: =ROUND(D$41*B16/B$18,0) (Formula)
+Row 18: B18: =SUM(B11:B15) (Formula)
+Row 20: C20: Poolish
+Row 21: B21: 0.0, C21: Red Rose, D21: =B21*B24*D41/B18 (Formula)
+Row 22: B22: 0.0, C22: Water, D22: =B22*B24*D41/B18 (Formula)
+Row 23: B23: 0.004, C23: Dry Instant Yeast, D23: =B23*B24*D41/B18 (Formula)
+Row 24: B24: 0.0, C24: amount of flour in sour
+Row 26: C26: Levain Build
+Row 27: B27: 1.0, C27: Red Rose, D27: =B27*B29*D41/B18 (Formula)
+Row 28: B28: 1.0, C28: Water, D28: =B28*B29*D41/B18 (Formula)
+Row 29: B29: 0.14, C29: amount of flour in sour
+Row 32: C32: Final Dough
+Row 33: C33: Red Rose, D33: =ROUND(D11-D21-D27,-1) (Formula)
+Row 34: C34: Whole Wheat, D34: =D12 (Formula)
+Row 35: C35: Water, D35: =ROUND(D13-D22-D28,-1) (Formula)
+Row 36: C36: Salt, D36: =D15 (Formula)
+Row 37: C37: Poolish, D37: =ROUND(SUM(D21:D22),-1) (Formula)
+Row 38: C38: Levain, D38: =ROUND(SUM(D27:D28),-1) (Formula)
+Row 39: C39: 7 Grain Soaker, D39: =D16 (Formula)
+Row 41: C41: Batch Weight, grams, D41: =(D44*D3) (Formula)
+Row 43: C43: baguette oz
+Row 44: C44: baguette grams, D44: 1000.0
+Row 47: B47: Add weighed Italian dough and soak to spiral mixer and mix on 2nd speed until combined. (Should be about 10 seconds)
+Row 49: B49: Bulk ferment for three hours, folding at 45 minute intervals.
+
+=== Sheet: Saturday Baguette ===
+Dimensions: A1:G50
+
+Row 1: C1: Baguette
+Row 3: C3: 400 gram, D3: 10.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B2F8E11C0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 1.0, C11: Red Rose, D11: =ROUND(B11*D$35/B$16,-1) (Formula)
+Row 12: B12: 0.69, C12: Water 1, D12: =ROUND(D$35*B12/B$16,-1) (Formula)
+Row 13: B13: 0.07, C13: Water 2, D13: =ROUND(D$35*B13/B$16,-1) (Formula)
+Row 14: B14: 0.0021, C14: Dry Yeast, D14: =ROUND(D$35*B14/B$16,1) (Formula)
+Row 15: B15: 0.019, C15: Salt, D15: =ROUND(D$35*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B11:B15) (Formula)
+Row 17: C17: Levain
+Row 18: B18: 1.0, C18: Red Rose, D18: =B18*B20*D35/B16 (Formula)
+Row 19: B19: 1.0, C19: Water, D19: =B19*B20*D35/B16 (Formula)
+Row 20: B20: 0.012, C20: amount of flour in sour
+Row 21: C21: Biga
+Row 22: B22: 1.0, C22: Red Rose, D22: =ROUND(B22*B25*D35/B16,0) (Formula)
+Row 23: B23: 0.96, C23: Water, D23: =ROUND(B23*B25*D35/B16,0) (Formula)
+Row 24: B24: 0.001, C24: Cake Yeast, D24: =ROUND(B24*B25*D35/B16,0) (Formula)
+Row 25: B25: 0.012, C25: amount of flour in sour
+Row 26: C26: Final Dough
+Row 27: C27: Red Rose, D27: =ROUND(D11-D20,-1) (Formula)
+Row 28: C28: Water 1, D28: =ROUND(D12-D21,0) (Formula)
+Row 29: C29: Water 2, D29: =D13 (Formula)
+Row 30: C30: Salt, D30: =D15 (Formula)
+Row 31: C31: Dry Yeast, D31: =D14 (Formula)
+Row 32: C32: Levain, D32: =ROUND(SUM(D18:D19),-1) (Formula)
+Row 33: C33: Biga, D33: =ROUND(SUM(D22:D24),-1) (Formula)
+Row 35: C35: Batch Weight, grams, D35: =(D38*D3) (Formula)
+Row 37: C37: baguette oz, D37: 16.0
+Row 38: C38: baguette grams, D38: 400.0
+Row 40: B40: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 41: B41: Autolyse for 20 minutes.
+Row 42: B42: Add yeast and mix for 1 minute on 1st speed, add salt on first speed.
+Row 43: B43: Mix for 2 minutes on 2nd speed, add water once the dough forms into a ball.
+Row 45: B45: Target 76-78 degrees for final temp.
+Row 47: B47: Fold after one hour of bulk ferment, fold once more and put into cooler after another hour.
+
+=== Sheet: Light Rye  ===
+Dimensions: A1:F38
+
+Row 1: C1: Light Rye
+Row 3: C3: 500 Grams, D3: 0.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B36E33CD0> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.66, C11: Red Rose, D11: =ROUND(B11*D$35/B$20,-1) (Formula)
+Row 12: B12: 0.34, C12: Rye Flour, D12: =ROUND(D$35*B12/B$20,-1) (Formula)
+Row 13: B13: 0.59, C13: Water, D13: =ROUND(D$35*B13/B$20,-1) (Formula)
+Row 14: B14: 0.3, C14: Levain, D14: =ROUND(D$35*B14/B$20,1) (Formula)
+Row 15: B15: 0.06, C15: Sugar, D15: =ROUND(D$35*B15/B$20,0) (Formula)
+Row 16: B16: 0.03, C16: Olive Oil, D16: =ROUND(D$35*B16/B$20,0) (Formula)
+Row 17: B17: 0.025, C17: Salt, D17: =ROUND(D$35*B17/B$20,0) (Formula)
+Row 18: B18: 0.016, C18: Caraway Seeds, D18: =ROUND(D$35*B18/B$20,0) (Formula)
+Row 19: B19: 0.014, C19: Instant Yeast, D19: =ROUND(D$35*B19/B$20,0) (Formula)
+Row 20: B20: =SUM(B11:B19) (Formula)
+Row 25: C25: Final Dough
+Row 26: C26: Red Rose, D26: =D11 (Formula)
+Row 27: C27: Rye Flour, D27: =D12 (Formula)
+Row 28: C28: Water, D28: =D13 (Formula)
+Row 29: C29: Levain, D29: =D14 (Formula)
+Row 30: C30: Sugar, D30: =D15 (Formula)
+Row 31: C31: Olive Oil, D31: =D16 (Formula)
+Row 32: C32: Salt, D32: =D17 (Formula)
+Row 33: C33: Caraway seeds, D33: =D18 (Formula)
+Row 34: C34: Instant Yeast, D34: =D19 (Formula)
+Row 35: C35: Batch weight, grams, D35: =(D36*D3) (Formula)
+Row 36: C36: baguette grams, D36: 500.0
+
+=== Sheet: Dark Rye ===
+Dimensions: A1:F38
+
+Row 1: C1: Dark Rye
+Row 3: C3: 500 Grams, D3: 0.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B36E32350> (Formula)
+Row 9: C9: Overall
+Row 10: B10: Bakers %, C10: Ingredient, D10: Grams
+Row 11: B11: 0.66, C11: Red Rose, D11: =ROUND(B11*D$36/B$21,-1) (Formula)
+Row 12: B12: 0.34, C12: Rye Flour, D12: =ROUND(D$36*B12/B$21,-1) (Formula)
+Row 13: B13: 0.59, C13: Water, D13: =ROUND(D$36*B13/B$21,-1) (Formula)
+Row 14: B14: 0.3, C14: Levain, D14: =ROUND(D$36*B14/B$21,1) (Formula)
+Row 15: B15: 0.06, C15: Sugar, D15: =ROUND(D$36*B15/B$21,0) (Formula)
+Row 16: B16: 0.03, C16: Olive Oil, D16: =ROUND(D$36*B16/B$21,0) (Formula)
+Row 17: B17: 0.025, C17: Salt, D17: =ROUND(D$36*B17/B$21,0) (Formula)
+Row 18: B18: 0.016, C18: Caraway Seeds, D18: =ROUND(D$36*B18/B$21,0) (Formula)
+Row 19: B19: 0.014, C19: Instant Yeast, D19: =ROUND(D$36*B19/B$21,0) (Formula)
+Row 20: B20: 0.055, C20: Molasses, D20: =ROUND(D$36*B20/B$21,0) (Formula)
+Row 21: B21: =SUM(B12:B20) (Formula)
+Row 25: C25: Final Dough
+Row 26: C26: Red Rose, D26: =D11 (Formula)
+Row 27: C27: Rye Flour, D27: =D12 (Formula)
+Row 28: C28: Water, D28: =D13 (Formula)
+Row 29: C29: Levain, D29: =D14 (Formula)
+Row 30: C30: Sugar, D30: =D15 (Formula)
+Row 31: C31: Olive Oil, D31: =D16 (Formula)
+Row 32: C32: Salt, D32: =D17 (Formula)
+Row 33: C33: Caraway seeds, D33: =D18 (Formula)
+Row 34: C34: Instant Yeast, D34: =D19 (Formula)
+Row 36: C36: Batch weight, grams, D36: =(D37*D3) (Formula)
+Row 37: C37: baguette grams, D37: 500.0
+
+=== Sheet: Ciabatta ===
+Dimensions: A1:G50
+
+Row 1: C1: Ciabatta
+Row 3: C3: 150 grams, D3: 15.0, F3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B37CD47C0> (Formula)
+Row 7: C7: Overall
+Row 8: B8: Bakers %, C8: Ingredient, D8: Grams
+Row 9: B9: 1.0, C9: Red Rose, D9: =ROUND(B9*D$38/B$16,-1) (Formula)
+Row 10: B10: 0.8, C10: Water 1, D10: =ROUND(D$38*B10/B$16,-1) (Formula)
+Row 11: B11: 0.05, C11: Water 2, D11: =ROUND(D$38*B11/B$16,-1) (Formula)
+Row 12: B12: 0.06, C12: Olive OIl, D12: =ROUND(D$38*B12/B$16,1) (Formula)
+Row 13: B13: 0.0238, C13: Salt , D13: =ROUND(D$38*B13/B$16,0) (Formula)
+Row 15: B15: 0.0029, C15: Instant Yeast, D15: =ROUND(D$38*B15/B$16,0) (Formula)
+Row 16: B16: =SUM(B9:B15) (Formula)
+Row 18: C18: Levain
+Row 19: B19: 1.0, C19: Red Rose, D19: =ROUND(B19*B21*D38/B16,0) (Formula)
+Row 20: B20: 1.0, C20: Water, D20: =B20*B21*D38/B16 (Formula)
+Row 21: B21: 0.11, C21: amount of flour in sour
+Row 23: C23: Poolish
+Row 24: B24: 1.0, C24: Red Rose, D24: =ROUND(B24*B27*D38/B16,0) (Formula)
+Row 25: B25: 1.0, C25: Water , D25: =ROUND(B25*B27*D38/B16,0) (Formula)
+Row 26: B26: 0.0011, C26: Instant Yeast, D26: =ROUND(B26*B27*D38/B16,0) (Formula)
+Row 27: B27: 0.0, C27: amount of flour in sour
+Row 28: C28: Final Dough
+Row 29: C29: Red Rose, D29: =ROUND(D9-D19-D24,-1) (Formula)
+Row 30: C30: Water 1, D30: =ROUND(D10-D20-D25,0) (Formula)
+Row 31: C31: Water 2, D31: =D11 (Formula)
+Row 32: C32: Salt, D32: =D13 (Formula)
+Row 33: C33: Olive Oil, D33: =D12 (Formula)
+Row 34: C34: Levain, D34: =ROUND(SUM(D19:D20),-1) (Formula)
+Row 35: C35: Poolish, D35: =ROUND(D24+D25+D26,-1) (Formula)
+Row 36: C36: Instant Yeast, D36: =D15 (Formula)
+Row 38: C38: Batch Weight, grams, D38: =(D41*D3) (Formula)
+Row 40: C40: baguette oz, D40: 16.0
+Row 41: C41: baguette grams, D41: 150.0
+Row 43: B43: Mix water 2 and salt together, set aside.
+Row 44: B44: Combine water 1 and instant yeast in mixer and stir to dissolve yeast.
+Row 45: B45: Add Levain and flour and mix on 1st speed for 3 minutes.
+Row 46: B46: Autolyse for 20-30 minutes.
+Row 47: B47: Mix on 2nd speed to medium gluten development, then add salt water mixture on 1st speed until fully combined.
+Row 48: B48: Add oil while mixing on 2nd speed until fully incorporated.
+Row 49: B49: Bulk ferment for 2.5 hours (Fold at each hour)
+Row 50: B50: Bench after bulk fermentation (30 minutes after last fold)
+
+=== Sheet: Naan ===
+Dimensions: A1:E49
+
+Row 1: B1: Naan
+Row 3: B3: 100g, C3: 0.0, E3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B37CDD0F0> (Formula)
+Row 8: B8: Overall
+Row 9: A9: Bakers %, B9: Ingredient, C9: Grams
+Row 10: A10: 0.014, B10: Instant Yeast, C10: =ROUND(A10*C$35/A$19,-1) (Formula)
+Row 11: A11: 1.0, B11: Bread Flour, C11: =ROUND(A11*C$35/A$19,-1) (Formula)
+Row 12: A12: 0.37, B12: Warm Water, C12: =ROUND(C$35*A12/A$19,-1) (Formula)
+Row 13: A13: 0.11, B13: Clarified Butter, C13: =ROUND(C$35*A13/A$19,-1) (Formula)
+Row 14: A14: 0.11, B14: Milk, C14: =ROUND(C$35*A14/A$19,1) (Formula)
+Row 15: A15: 0.09, B15: Yogurt, C15: =ROUND(C$35*A15/A$19,0) (Formula)
+Row 16: A16: 0.1, B16: Eggs, C16: =ROUND(C$35*A16/A$19,0) (Formula)
+Row 17: A17: 0.055, B17: Sugar, C17: =ROUND(C$35*A17/A$19,0) (Formula)
+Row 18: A18: 0.014, B18: Salt, C18: =ROUND(C$35*A18/A$19,0) (Formula)
+Row 19: A19: =SUM(A11:A17) (Formula)
+Row 25: B25: Final Dough
+Row 26: B26: Bread Flour, C26: =ROUND(C11-C20,-1) (Formula)
+Row 27: B27: Warm Water, C27: =ROUND(C12-C21,0) (Formula)
+Row 28: B28: Clarified Butter, C28: =C13 (Formula)
+Row 29: B29: Milk, C29: =C13 (Formula)
+Row 30: B30: Yogurt, C30: =C14 (Formula)
+Row 31: B31: Eggs, C31: =C16 (Formula)
+Row 32: B32: Sugar, C32: =C17 (Formula)
+Row 33: B33: Salt, C33: =C18 (Formula)
+Row 34: B34: Instant Yeast, C34: =C10 (Formula)
+Row 35: B35: Batch Weight, grams, C35: =(C36*C3) (Formula)
+Row 36: B36: 1 loaf, C36: 100.0
+Row 38: A38: Mix yeast with warm water and sugar in a mixing bowl, let sit for 10 minutes 
+Row 39: A39: Whisk eggs, yogurt, and milk together
+Row 40: A40: Sift flour and salt in a separate bowl, add to water, yeast, and sugar
+Row 41: A41: Add egg mixture and butter
+Row 42: A42: Mix on 1st speed until just combined
+Row 43: A43: Mix on 2nd speed until it forms into a ball
+Row 44: A44: Proof until it doubles in size, 1-1.5 hours.
+Row 45: A45: Scale and round into balls
+Row 46: A46: Rest for 15-20 minutes at room temperature
+Row 47: A47: Roll out to about 6.5" diameter
+Row 48: A48: Dock and Bake on hearth 1-2 minutes each side
+Row 49: A49: Brush with garlic butter and sprinkle light sea salt and parsley
+
+=== Sheet: Miche ===
+Dimensions: A1:AB1005
+
+Row 1: D1: Miche
+Row 3: D3: 1000 gram Batard, E3: 0.0, G3: <openpyxl.worksheet.formula.ArrayFormula object at 0x0000025B37CC0D70> (Formula)
+Row 9: D9: Overall
+Row 10: C10: Bakers %, D10: Ingredient, E10: Grams
+Row 11: C11: 0.526, D11: Red Rose , E11: =ROUND(C11*E$41/C$18,-1) (Formula)
+Row 12: C12: 0.4, D12: Whole Wheat, E12: =ROUND(E$41*C12/C$18,-1) (Formula)
+Row 13: C13: 0.0658, D13: Toasted Rye, E13: =ROUND($E$3*C13/$C$18,0) (Formula)
+Row 14: C14: 0.04, D14: Barley Malt, E14: =ROUND($E$3*C14/$C$18,0) (Formula)
+Row 15: C15: 0.49, D15: Water 1, E15: =ROUND(E$41*C15/C$18,-1) (Formula)
+Row 16: C16: 0.08, D16: Water 2, E16: =ROUND(E$41*C16/C$18,0) (Formula)
+Row 17: C17: 0.023, D17: Salt, E17: =ROUND(E$41*C17/C$18,0) (Formula)
+Row 18: C18: =SUM(C11:C17) (Formula)
+Row 20: D20: Rye Levain Build
+Row 21: C21: 1.0, D21: Toasted Rye, E21: =ROUND($C$24*E41/$C$18,-1) (Formula)
+Row 22: C22: 1.6, D22: Water, E22: =ROUND(C22*$C$24*E41/$C$18,-1) (Formula)
+Row 24: C24: 0.0658, D24: amount of flour in sour
+Row 26: D26: Levain Build
+Row 27: C27: 1.0, D27: Red Rose, E27: =C11*C27*C29*E41/C18 (Formula)
+Row 28: C28: 1.0, D28: Water, E28: =C28*C29*E41/C18 (Formula)
+Row 29: C29: 0.0477, D29: amount of flour in sour
+Row 32: D32: Final Dough
+Row 33: D33: Red Rose, E33: =ROUND(E11-E27,-1) (Formula)
+Row 34: D34: Whole Wheat, E34: =E12 (Formula)
+Row 35: D35: Rye, E35: =E13 (Formula)
+Row 36: D36: Water 1, E36: =ROUND(E15-E28,-1) (Formula)
+Row 37: D37: Water 2, E37: =E16 (Formula)
+Row 38: D38: Salt, E38: =E17 (Formula)
+Row 39: D39: Levain, E39: =ROUND(SUM(E27:E28),-1) (Formula)
+Row 41: D41: Batch Weight, grams, E41: =(E44*E3) (Formula)
+Row 43: D43: baguette oz
+Row 44: D44: baguette grams, E44: 1000.0
+Row 46: C46: Mix for 3 minutes on 1st speed in spiral mixer. (mixing in reverse for 1 min. halfway through)
+Row 47: C47: Autolyse for 20 minutes.
+Row 48: C48: Add salt and mix for 1 min. on 1st speed.
+Row 49: C49: Mix for 2 minutes on 2nd speed. Add water slowly when dough forms into a ball.
+
+=== Sheet: Itl Levain ===
+Dimensions: A1:D8
+
+Row 1: B1: ItalianLevain 
+Row 3: C3: =Italian!D36 (Formula)
+Row 4: B4: Levain Build, C4:  
+Row 5: A5: 1.0, B5: Red Rose, C5: =ROUNDUP(C3*A5/A8,-1) (Formula)
+Row 6: A6: 1.0, B6: Water, C6: =roundup(C3*A6/A8,-1) (Formula)
+Row 7: A7: 0.2, B7: Emmy (starter), C7: =roundup(C5*A7,-1) (Formula)
+Row 8: A8: =SUM(A5:A7) (Formula)
+
+=== Sheet: Levain ===
+Dimensions: A1:AA972
+
+Row 1: C1: Levain 
+Row 3: D3: =Baguette!D31+'Rustic White'!D32+Miche!E39+'Emmy(starter)'!D7+Dinkel!D32+Ciabatta!D31+300 (Formula), F3: =if(D3>130000,"Over Limit!","") (Formula)
+Row 4: C4: Levain Build, D4:  
+Row 5: B5: 1.0, C5: Red Rose, D5: =ROUNDUP(D3*B5/B8,-1) (Formula)
+Row 6: B6: 1.0, C6: Water, D6: =roundup(D3*B6/B8,-1) (Formula)
+Row 7: B7: 0.2, C7: Emmy (starter), D7: =roundup(D5*B7,-1) (Formula)
+Row 8: B8: =SUM(B5:B7) (Formula), F8:  
+Row 15: H15:  
+
+=== Sheet: Biga ===
+Dimensions: A1:E10
+
+Row 1: C1: BIGA
+Row 3: D3: ='Rustic White'!D35+Focaccia!C29 (Formula)
+Row 4: C4: Poolish, D4:  
+Row 5: B5: 1.0, C5: Red Rose, D5: =ROUNDUP(D3*B5/B8,-1) (Formula)
+Row 6: B6: 0.96, C6: Water, D6: =roundup(D3*B6/B8,-1) (Formula)
+Row 7: B7: 0.001, C7: Cake Yeast, D7: 1.0
+Row 8: B8: =SUM(B5:B7) (Formula)
+
+=== Sheet: Emmy(starter) ===
+Dimensions: A1:AA972
+
+Row 1: C1: Emmy (Starter)
+Row 3: D3: 1500.0, F3: =if(D3>130000,"Over Limit!","") (Formula)
+Row 4: C4: Emmy Build, D4:  
+Row 5: B5: 1.0, C5: Red Rose, D5: =ROUNDUP(D3*B5/B8,-1) (Formula)
+Row 6: B6: 1.0, C6: Water, D6: =roundup(D3*B6/B8,-1) (Formula)
+Row 7: B7: 0.25, C7: Levain, D7: =roundup(D5*B7,-1) (Formula)
+Row 8: B8: =SUM(B5:B7) (Formula), F8:  
+Row 15: H15:  
+
+=== Sheet: Poolish ===
+Dimensions: A1:AA972
+
+Row 1: C1: Poolish
+Row 3: D3: 10000.0, F3: =if(D3>130000,"Over Limit!","") (Formula)
+Row 4: C4: Poolish, D4:  
+Row 5: B5: 1.0, C5: Red Rose, D5: =ROUNDUP(D3*B5/B8,-1) (Formula)
+Row 6: B6: 1.0, C6: Water, D6: =roundup(D3*B6/B8,-1) (Formula)
+Row 7: B7: 0.001, C7: Dry Yeast, D7: =(D5*B7) (Formula)
+Row 8: B8: =SUM(B5:B7) (Formula), F8:  
+Row 15: H15:  
+
+=== Sheet: RW Soaker ===
+Dimensions: A1:AA972
+
+Row 1: C1: RW Soaker
+Row 3: C3: Batch Size, D3: ='Rustic White'!D16 (Formula), F3: =if(D3>130000,"Over Limit!","") (Formula)
+Row 4: C4: Soaker , D4:  
+Row 5: B5: 0.26, C5: Sesame, D5: =ROUNDUP(D3*B5/B8,-1) (Formula)
+Row 6: B6: 0.21, C6: Cracked wheat, D6: =roundup(D3*B6/B8,-1) (Formula)
+Row 7: B7: 0.52, C7: Water, D7: =roundup(D3*B7/B8,-1) (Formula)
+Row 8: B8: =SUM(B5:B7) (Formula), F8:  
+Row 15: H15:  
+
+=== Sheet: 7 Grain Soaker ===
+Dimensions: A1:AA977
+
+Row 1: C1: 7 Grain Soaker
+Row 3: C3: Batch size, D3: =Multigrain!D16 (Formula), F3: =if(D3>130000,"Over Limit!","") (Formula)
+Row 4: C4: 7 Grain Soaker, D4:  
+Row 5: B5: 1.0, C5: 7 Grain Blend, D5: =ROUNDUP(D3*B5/B8,-1) (Formula)
+Row 6: B6: 0.55, C6: Water, D6: =roundup(D3*B6/B8,-1) (Formula)
+Row 7: B7: 0.71, C7: honey, D7: =roundup(D3*B7/B8,-1) (Formula)
+Row 8: B8: =SUM(B5:B7) (Formula), F8:  
+Row 11: B11: 7 Grain Seed Blend, D11: 10000.0
+Row 12: B12: 0.9, C12: Rolled Oats, D12: =ROUNDUP(D11*B12/B20,-1) (Formula)
+Row 13: B13: 0.25, C13: Spelt Flakes, D13: =ROUNDUP(D11*B13/B20,-1) (Formula)
+Row 14: B14: 0.7, C14: Sesame Seed, D14: =ROUNDUP(D11*B14/B20,-1) (Formula)
+Row 15: B15: 0.7, C15: Flax Seed, D15: =ROUNDUP(D11*B15/B20,-1) (Formula)
+Row 16: B16: 0.6, C16: Pumpkin Seed, D16: =ROUNDUP(D11*B16/B20,-1) (Formula)
+Row 17: B17: 0.7, C17: Sunflower Seed, D17: =ROUNDUP(D11*B17/B20,-1) (Formula)
+Row 18: B18: 0.9, C18: Millet, D18: =ROUNDUP(D11*B18/B20,-1) (Formula)
+Row 20: B20: =SUM(B12:B18) (Formula), H20:  
+
+=== Sheet: Dinkel Soaker ===
+Dimensions: A1:F20
+
+Row 1: C1: Dinkel Soaker
+Row 3: C3: Batch size, D3: =Dinkel!D33 (Formula), F3: =if(D3>130000,"Over Limit!","") (Formula)
+Row 4: C4: 7 Grain Soaker, D4:  
+Row 5: B5: 0.45, C5: Water, D5: =ROUNDUP(D3*B5/B9,-1) (Formula)
+Row 6: B6: 0.36, C6: Spelt Flake, D6: =roundup(D3*B6/B9,-1) (Formula)
+Row 7: B7: 0.13, C7: Sunflower Kernel, D7: =roundup(D3*B7/B9,-1) (Formula)
+Row 8: B8: 0.05, C8: Potato, D8: =roundup(D3*B8/B9,-1) (Formula), F8:  
+Row 9: B9: =SUM(B5:B8) (Formula)
+
+=== Sheet: Mixing Instructions ===
+Dimensions: A1:H149
+
+Row 1: D1: Mixing Instructions
+Row 3: A3: Italian:, B3: Group 1 ingredients 
+Row 4: A4: Spiral Mixer, B4: Mix for 5 minutes on 1st speed, reverse at 3 minute mark and back to forward at 1 minute mark
+Row 5: B5: Rest for 20-30 minutes.
+Row 6: B6: Group 2 ingredients , E6: *Add while mixing on first speed*
+Row 7: B7: Mix on 1st speed for 1 minute and  2nd speed for 4 minutes.
+Row 8: B8: Fold 3 times (45 minute intervals)
+Row 10: A10: MG:, B10: After Italian final mix, scale Italian dough needed for multigrain batch.
+Row 11: A11: Spiral Mixer, B11: Mix with MG soaker on 2nd speed just until combined.
+Row 12: B12: Fold 3 times (45 minute intervals)
+Row 14: A14: Baguette:, B14: Group 1 Ingredients 
+Row 15: A15: Spiral Mixer, B15: Mix on 1st speed for 3 minutes, scrape down.
+Row 16: B16: Rest for 15-20 minutes.
+Row 17: B17: Add salt while mixing on 1st speed for 1 minute.
+Row 18: B18: Add water slowly while mixing on 2nd speed for 2 minutes.
+Row 19: B19: Scrape bowl to help the dough come together within the 2 minutes.
+Row 20: B20: Fold 2 times (1 hour intervals). Refrigerate after 2nd fold. 
+Row 21: A21: RW:, B21: Mix water, flour, and levain on 1st speed for 3 minutes, scrape down.
+Row 22: A22: Spiral Mixer, B22: Rest for 15-20 minutes.
+Row 23: B23: Add salt while mixing on 1st speed for 1 minute.
+Row 24: B24: Add RW soaker and olive oil while mixing on 2nd speed for 2 minutes.
+Row 25: B25: Fold 3 times (45 minute intervals)
+Row 27: A27: Pain d'Mie:, B27: Mix everything on 1st speed just until combined.
+Row 28: A28: 20 or 60 qt. / Dough Hook, B28: Mix on 2nd speed until the dough develops gluten.
+Row 29: B29: Fold after 1 hour of bulk fermentation
+Row 30: B30: Bench after one more hour of bulk fermentation
+Row 33: A33: Dinkelbrot:, B33: Mix everything together on 1st speed until combined.
+Row 34: A34: 20 or 60 qt. / Paddle, B34: Mix on 2nd speed until dough forms into a ball. 
+Row 35: B35: Scale dough into pans. Top with sunflower kernels and refrigerate.
+Row 37: A37: Miche:, B37: Mix everything except salt and water 2 on 1st speed for 3 minutes, scrape down.
+Row 38: A38: Spiral Mixer, B38: Rest for 40 minutes.
+Row 39: B39: Add salt while mixing on 1st speed for 1 minute.
+Row 40: B40: Mix on 2nd speed for 2 minutes. Add water 2 slowly when dough forms into a ball
+Row 41: B41: Fold 3 times (45 minute intervals)
+Row 43: A43: Brioche, B43: Mix water, milk and yeast and let sit for 5 minutes for the yeast to bloom.
+Row 44: A44: 60 qt. / Dough Hook, B44: Add flour and eggs and mix until gluten development forms.
+Row 45: B45: Add butter and salt, a little at a time, alternating between the two
+Row 46: B46: Mix until the dough forms into a ball and pulls away from the sides of the bowl.
+Row 47: B47: Fold after 1 hour. 
+Row 48: B48: Bulk ferment overnight.
+Row 50: A50: Fino:, B50: Mix everything except water 2 on 1st speed for 5 minutes and 2nd speed for 2 minutes.
+
+=== Sheet: Baking Tasks ===
+Dimensions: A1:Z84
+
+Row 1: F1: Baking Tasks
+Row 3: C3: Put pan breads and rolls into proofer and turn on
+Row 5: C5: Bake off Dinkelbrot and Italian to fill all ovens
+Row 7: C7: Bench baguette dough and preshape (400g each), put into running proofer
+Row 8: C8: *These will proof about 45 minutes, usually once the ovens are unloaded and brushed out*
+Row 10: C10: Load pan breads, more italian if needed, and miche
+Row 12: C12: Final shape baguettes (6-7 per couche) and place in the proofing cabinet that is not running. 
+Row 13: C13: *These can sit another 45 minutes, roughly, as long as they're fully relaxed and have grown almost double the width*
+Row 15: C15: Bake off Pain d'mie (egg wash first before scoring) in doyon oven
+Row 17: C17: Bake off rolls if there are any
+Row 19: C19: Slice breads for orders
+Row 21: C21: Set up and deliver orders for restaurants, prioritize retail's bread numbers unless instructed otherwise
+Row 22: C22: * Prioritize retail's bread numbers unless instructed otherwise*
+Row 24: C24: Brush out baskets and dry out in Blodgett oven at 200 degrees (15-20 min.)
+Row 26: C26: Help with shaping
+Row 28: C28: Clean baking area, if time allows work on deep cleaning any specific areas that need it, proofers included.
+Row 30: C30: Help any other bakers if you have extra time (pastry and bread)
+Row 45: F45: Tareas de horneado
+Row 47: B47: Coloque los panes y panecillos en la cámara de fermentación y enciéndalos.
+Row 49: B49: Hornee Dinkelbrot e italiano para llenar todos los hornos.
+
+=== Sheet: Bread Tasks ===
+Dimensions: A1:G36
+
+Row 1: D1: Weekly Bread Prep Tasks
+Row 2: D2: * Work gets split up between mixer and baker during any down time *
+Row 3: A3: Monday, B3: Tuesday, C3: Wednesday, D3: Thursday, E3: Friday, F3: Saturday, G3: Sunday
+Row 4: A4: MG Soak , B4: MG Soak, C4: MG Soak, D4: MG Soak, E4: MG Soak, F4: MG Soak, G4: MG Soak
+Row 5: A5: RW Soak, B5: RW Soak, C5: RW Soak, D5: RW Soak, E5: RW Soak, F5: RW Soak, G5: RW Soak
+Row 6: A6: Dinkel Soak, B6: Dinkel Soak, C6: Dinkel Soak, D6: Dinkel Soak, E6: Dinkel Soak, F6: Dinkel Soak, G6: Dinkel Soak
+Row 7: A7: Refill Ingredients, B7: Refill Ingredients, C7: Refill Ingredients, D7: Refill Ingredients, E7: Refill Ingredients, F7: Refill Ingredients, G7: Refill Ingredients
+Row 8: A8: Vaccum baskets & dry out in oven
+Row 9: A9: Pull Croissant Butters, B9: 7 Grain Mix?, C9: Mashed Potatoes for Dinkel, D9: Focaccia Toppings, E9: Parmesan Peppercorn Filling
+Row 19: D19: Weekly Bread Cleaning Tasks
+Row 20: D20: * Work gets split up between mixer and baker during any down time *
+Row 22: B22: =char(9679) (Formula), C22: Clean Proofers with hot bleach water
+Row 23: B23: =char(9679) (Formula), C23: Take proofer racks out and clean 
+Row 24: B24: =char(9679) (Formula), C24: Clean the outside of hearth bread oven 
+Row 25: B25: =char(9679) (Formula), C25: Wipe/Spray down speed racks
+Row 26: B26: =char(9679) (Formula), C26: Wipe/Spray down bread cooling racks
+Row 27: B27: =char(9679) (Formula), C27: Sweep and Mop retarder cooler
+Row 28: B28: =char(9679) (Formula), C28: Vacuum off the tops of the ovens (Doyon & Blodgett)
+Row 29: B29: =char(9679) (Formula), C29: Empty out and clean shop-vac
+Row 30: B30: =char(9679) (Formula), C30: Wipe down walls 
+Row 31: B31: =char(9679) (Formula), C31: Wipe down knife holder
+Row 32: B32: =char(9679) (Formula), C32: Wipe down flour bins
+Row 33: B33: =char(9679) (Formula), C33: Deep clean mixers
+Row 34: B34: =char(9679) (Formula), C34: Wipe down garbage cans
+Row 35: B35: =char(9679) (Formula), C35: Clean out 4 door cooler
+
+=== Sheet: Irish Soda Bread  ===
+Dimensions: B1:I35
+
+Row 1: C1: Irish Soda Bread
+Row 2: D2: 125 grams, E2: 36.0
+Row 3: C3: Final Dough
+Row 4: C4: 0.85, D4: Pastry, E4: =ROUND(C4*E$12/C$12,-1) (Formula)
+Row 5: C5: 0.15, D5: Rye Flour, toasted, E5: =ROUND(C5*E$12/C$12,-1) (Formula)
+Row 6: C6: 0.1, D6: Sugar, E6: =ROUND(C6*E$12/C$12,-1) (Formula)
+Row 7: C7: 0.018, D7: Baking Soda, E7: =ROUND(C7*E$12/C$12,-1) (Formula)
+Row 8: C8: 0.009, D8: Baking Powder, E8: =ROUND(C8*E$12/C$12,-1) (Formula)
+Row 9: C9: 0.018, D9: Salt, E9: =ROUND(C9*E$12/C$12,-1) (Formula)
+Row 10: C10: 0.11, D10: Butter, cold, E10: =ROUND(C10*E$12/C$12,-1) (Formula)
+Row 11: C11: 0.87, D11: Buttermilk, E11: =ROUND(C11*E$12/C$12,-1) (Formula)
+Row 12: C12: =SUM(C4:C11) (Formula), D12: Batch Weight, grams, E12: =E13*E2 (Formula)
+Row 13: D13: Loaf weight, grams, E13: 125.0
+Row 16: B16: Whisk dry ingredients until fully combined.
+Row 17: B17: Grate cold butter into dry ingredients and incorporate until butter is pea-sized. 
+Row 18: B18: Add buttermilk and currants and mix just until combined.
+Row 19: B19: Knead gently on bench and shape into rounds.
+
+=== Sheet: DDT Sheet ===
+Dimensions: A1:Z31
+
+Row 1: A1: Date:, E1: Initials:
+Row 2: A2: Dough, B2: Size, C2: Room, D2: Flour, E2: PF, F2: H2O, G2: Final, H2: Bulk, I2: Fold(s), J2: Portion/Ref.
+Row 3: A3: Italian 1
+Row 4: A4: MG
+Row 5: A5: Italian 2
+Row 6: A6: Baguette
+Row 7: A7: RW
+Row 8: A8: Schiacciata
+Row 9: A9: Pain d'Mie
+Row 10: A10: Brioche
+Row 11: A11: CRX
+Row 12: A12: Choc CRX
+Row 13: A13: Miche
+Row 14: A14: Fino
+Row 15: A15: Focaccia
+Row 16: A16: Specialty Bread
+Row 20: J20: DDT
+Row 21: I21: Italian:, J21: 70-73
+Row 22: I22: Baguette:, J22: 75-78
+Row 23: I23: RW:, J23: 81-83
+Row 24: I24: MG:, J24: 81-83
+Row 25: I25: Miche:, J25: 76-78
+Row 26: I26: Pain d'Mie:, J26: 75.0
+Row 27: I27: Fino:, J27: 76-77
+Row 28: I28: Croissant:, J28: 74-75
+Row 29: I29: Schiacciata:, J29: 75.0
+Row 30: I30: Focaccia:, J30: 75-77
+
+=== Sheet: Baking Schedule ===
+Dimensions: A2:Z16
+
+Row 2: B2: Monday, E2: Tuesday, H2: Wednesday, K2: Thursday, N2: Friday, Q2: Saturday, T2: Sunday
+Row 3: B3: Bake, C3: Mix, D3: MEP, E3: Bake, F3: Mix, G3: MEP, H3: Bake, I3: Mix, J3: MEP, K3: Bake, L3: Mix, M3: MEP, N3: Bake, O3: Mix, P3: MEP, Q3: Bake, R3: Mix, S3: MEP, T3: Bake, U3: Mix, V3: MEP
+Row 4: A4: Italian, B4: 58.0, C4: 56.0, D4: 64.0, E4: =C4 (Formula), F4: =D4 (Formula), G4: 60.0, H4: =F4 (Formula), I4: =G4 (Formula), J4: 79.0, K4: =I4 (Formula), L4: =J4 (Formula), M4: 100.0, N4: =L4 (Formula), O4: =M4 (Formula), P4: 15.0, Q4: =O4 (Formula), R4: =P4 (Formula), S4: 58.0, T4: =R4 (Formula), U4: 58.0, V4: 56.0
+Row 5: A5: Baguette, B5: =U5 (Formula), C5: =V5 (Formula), D5: 12.0, E5: =C5 (Formula), F5: =D5 (Formula), G5: 12.0, H5: =F5 (Formula), I5: =G5 (Formula), J5: 21.0, K5: =I5 (Formula), L5: 20.0, M5: 20.0, N5: =L5 (Formula), O5: =M5 (Formula), P5: 12.0, Q5: =O5 (Formula), R5: =P5 (Formula), S5: 12.0, T5: =R5 (Formula), U5: =S5 (Formula), V5: 12.0
+Row 6: A6: RW, B6: 11.0, C6: 10.0, D6: 9.0, E6: =C6 (Formula), F6: =D6 (Formula), G6: 10.0, H6: =F6 (Formula), I6: =G6 (Formula), J6: 13.0, K6: =I6 (Formula), L6: =J6 (Formula), M6: 15.0, N6: =L6 (Formula), O6: =M6 (Formula), P6: 6.0, Q6: =O6 (Formula), R6: =P6 (Formula), S6: 11.0, T6: =R6 (Formula), U6: =S6 (Formula), V6: 10.0
+Row 7: A7: MG, B7: =U7 (Formula), C7: =V7 (Formula), D7: 7.0, E7: =C7 (Formula), F7: =D7 (Formula), G7: 7.0, H7: =F7 (Formula), I7: =G7 (Formula), J7: 10.0, K7: =I7 (Formula), L7: =J7 (Formula), M7: 10.0, N7: =L7 (Formula), O7: =M7 (Formula), P7: 6.0, Q7: =O7 (Formula), R7: =P7 (Formula), S7: 7.0, T7: =R7 (Formula), U7: =S7 (Formula), V7: 7.0
+Row 8: A8: Specialty, B8: 0.0, C8: 0.0, D8: 0.0, E8: 0.0, F8: =D8 (Formula), G8: 0.0, H8: =F8 (Formula), I8: 0.0, J8: 0.0, K8: =I8 (Formula), L8: =J8 (Formula), M8: 0.0, N8: =L8 (Formula), O8: =M8 (Formula), P8: 0.0, Q8: =O8 (Formula), R8: 0.0, S8: 0.0, T8: =R8 (Formula), U8: =S8 (Formula), V8: 0.0
+Row 9: A9: Parker, B9: =U9 (Formula), C9: =V9 (Formula), D9: 0.0, E9: =C9 (Formula), F9: =D9 (Formula), G9: 0.0, H9: =F9 (Formula), I9: 0.0, J9: 0.0, K9: =I9 (Formula), L9: =J9 (Formula), M9: 0.0, N9: =L9 (Formula), O9: =M9 (Formula), P9: 99.0, Q9: =O9 (Formula), R9: =P9 (Formula), S9: 99.0, T9: =R9 (Formula), U9: =S9 (Formula), V9: 99.0
+Row 10: A10: Dinklebrot, B10: 6.0, C10: 6.0, D10: 6.0, E10: =C10 (Formula), F10: =D10 (Formula), G10: 6.0, H10: =F10 (Formula), I10: =G10 (Formula), J10: 2024-08-02 00:00:00, K10: =I10 (Formula), L10: =J10 (Formula), M10: 2024-08-01 00:00:00, N10: =L10 (Formula), O10: =M10 (Formula), P10: 6.0, Q10: =O10 (Formula), R10: =P10 (Formula), S10: 2024-06-01 00:00:00, T10: =R10 (Formula), U10: =S10 (Formula), V10: 6.0
+Row 11: A11: Fino, B11: 0.0, C11: 0.0, D11: 0.0, E11: 0.0, F11: =D11 (Formula), G11: 0.0, H11: =I11 (Formula), I11: =G11 (Formula), J11: 0.0, K11: =J11 (Formula), L11: =J11 (Formula), M11: 0.0, N11: =O11 (Formula), O11: =M11 (Formula), P11: 0.0, Q11: 0.0, R11: =P11 (Formula), S11: 0.0, T11: =R11 (Formula), U11: =S11 (Formula), V11: 0.0
+Row 12: A12: PDM, B12: 4.0, C12: 0.0, D12: 4.0, E12: =C12 (Formula), F12: 4.0, G12: 0.0, H12: =F12 (Formula), I12: 0.0, J12: 6.0, K12: =I12 (Formula), L12: 6.0, M12: 6.0, N12: =L12 (Formula), O12: =M12 (Formula), P12: 0.0, Q12: =O12 (Formula), R12: =P12 (Formula), S12: 4.0, T12: =R12 (Formula), U12: =S12 (Formula), V12: 0.0
+Row 13: A13: Miche, B13: 0.0, C13: 0.0, D13: 0.0, E13: 0.0, F13: =D13 (Formula), G13: 0.0, H13: =F13 (Formula), I13: 0.0, J13: 5.0, K13: =I13 (Formula), L13: 5.0, M13: 8.0, N13: =L13 (Formula), O13: =M13 (Formula), P13: 4.0, Q13: =O13 (Formula), R13: =P13 (Formula), S13: 0.0, T13: =R13 (Formula), U13: =S13 (Formula), V13: 0.0
+Row 14: A14: PP Fino, B14: 0.0, C14: 0.0, D14: 0.0, E14: 0.0, F14: =D14 (Formula), G14: 0.0, H14: =I14 (Formula), I14: =G14 (Formula), J14: 0.0, K14: =I14 (Formula), L14: =J14 (Formula), M14: 0.0, N14: =O14 (Formula), O14: =M14 (Formula), P14: 3.0, Q14: =R14 (Formula), R14: =P14 (Formula), S14: 0.0, T14: 0.0, U14: =S14 (Formula), V14: 0.0
+Row 15: A15: Focaccia, B15: 0.0, C15: 0.0, D15: 0.0, E15: 0.0, F15: =D15 (Formula), G15: 2.0, H15: 0.0, I15: =G15 (Formula), J15: 0.0, K15: 0.0, L15: =J15 (Formula), M15: 0.0, N15: =I15 (Formula), O15: 0.0, P15: 0.0, Q15: =O15 (Formula), R15: 0.0, S15: 0.0, T15: =R15 (Formula), U15: =S15 (Formula), V15: 0.0
+Row 16: A16: CRX, B16: 0.0, E16: 0.0, F16: =D16 (Formula), G16: 0.0, H16: 0.0, I16: 0.0, J16: 0.0, K16: =I16 (Formula), L16: =J16 (Formula), M16: 0.0, N16: 0.0, O16: 0.0, P16: 0.0, Q16: =O16 (Formula), R16: 0.0, S16: 0.0, T16: =R16 (Formula), U16: =S16 (Formula)
+
+=== Sheet: Maxes ===
+Dimensions: A1:M27
+
+Row 1: A1: Hi! Sam here. This is a sheet of hidden variables to be used to label maximum capacities for given containers, like the bins and the mixers. The values given are used to determine whether the mix and starter sheets (so far) will split certain quantities into two containers.
+Row 2: A2: This is here so you can adjust the values without sifting through the worksheet cells. You can turn off the splitting function by checking the button provided.
+Row 4: A4: Off Button, B4: Italian Mixer Max, C4: Levain Bus Bin Max, D4: Sciacciata Poolish, E4: For, F4: More, G4: Maxes, H4: If, I4: You'd, J4: Like, K4: To, L4: Use, M4: It
+Row 5: A5: False, B5: 110.0, C5: 6999.0, D5: 4000.0
+Row 8: E8: =IF($A$5,"_________","") (Formula), J8: =IF($A$5,"_________","") (Formula)
+Row 9: D9: =IF($A$5,"(","") (Formula), E9: =IF($A$5,"X","") (Formula), F9: =IF($A$5,")","") (Formula), I9: =IF($A$5,"(","") (Formula), J9: =IF($A$5,"X","") (Formula), K9: =IF($A$5,")","") (Formula)
+Row 13: G13: =IF($A$5,"/","") (Formula), H13: =IF($A$5,"\","") (Formula)
+Row 18: G18: =IF($A$5,"-","") (Formula), H18: =IF($A$5,"-","") (Formula)
+Row 19: F19: =IF($A$5,"-","") (Formula), I19: =IF($A$5,"-","") (Formula)
+Row 20: E20: =IF($A$5,"-","") (Formula), J20: =IF($A$5,"-","") (Formula)
+Row 21: D21: =IF($A$5,"/","") (Formula), K21: =IF($A$5,"\","") (Formula)
+Row 26: B26: Ignore this
+Row 27: B27: =IF(NOT($A$5), B5, 9E+99) (Formula), C27: =IF(NOT($A$5), C5, 9E+99) (Formula), D27: =IF(NOT($A$5), D5, 9E+99) (Formula), E27: =IF(NOT($A$5), E5, 9E+99) (Formula), F27: =IF(NOT($A$5), F5, 9E+99) (Formula), G27: =IF(NOT($A$5), G5, 9E+99) (Formula), H27: =IF(NOT($A$5), H5, 9E+99) (Formula), I27: =IF(NOT($A$5), I5, 9E+99) (Formula), J27: =IF(NOT($A$5), J5, 9E+99) (Formula), K27: =IF(NOT($A$5), K5, 9E+99) (Formula), L27: =IF(NOT($A$5), L5, 9E+99) (Formula), M27: =IF(NOT($A$5), M5, 9E+99) (Formula)
