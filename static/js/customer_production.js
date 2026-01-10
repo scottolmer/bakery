@@ -216,7 +216,84 @@ function displayProduction() {
 }
 
 function printProduction() {
-    window.print();
+    if (!currentProduction || currentProduction.recipes.length === 0) {
+        alert('Please load production data before printing. Select a customer and click "Load Production" first.');
+        return;
+    }
+
+    // Get the table HTML
+    const tableHtml = document.getElementById('production-table-container').innerHTML;
+    const title = document.getElementById('production-title').textContent;
+
+    // Create print window
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>${title}</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                }
+                h2 {
+                    margin-bottom: 20px;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid #000;
+                    padding: 8px;
+                    text-align: center;
+                }
+                th {
+                    background-color: #3498db;
+                    color: white;
+                    font-weight: bold;
+                }
+                th.recipe-header {
+                    background-color: #2c3e50;
+                    text-align: left;
+                }
+                td.recipe-name {
+                    font-weight: bold;
+                    text-align: left;
+                    background: #ecf0f1;
+                }
+                .quantity.has-order {
+                    color: #2ecc71;
+                    font-weight: 600;
+                }
+                .quantity.no-order {
+                    color: #95a5a6;
+                }
+                .totals-row {
+                    font-weight: 600;
+                    background: #e8f4f8;
+                }
+                @media print {
+                    body {
+                        margin: 0.5in;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <h2>${title}</h2>
+            ${tableHtml}
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+
+    // Wait for content to load, then print
+    setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+    }, 250);
 }
 
 function showError(message) {

@@ -154,26 +154,69 @@
 }
 
 @media print {
-    .navbar, .page-header p, .controls-grid, .btn, footer {
+    * {
+        visibility: visible !important;
+    }
+
+    /* Hide unwanted elements */
+    nav,
+    .navbar,
+    .page-header p,
+    .card:first-child,
+    footer,
+    #no-data-card,
+    #success-message,
+    #error-message {
         display: none !important;
     }
 
-    .card {
-        box-shadow: none;
-        border: none;
+    /* Reset body and containers */
+    html, body {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0.5in;
+        overflow: visible;
     }
 
-    .production-table {
+    body * {
+        visibility: visible;
+    }
+
+    /* Simple layout */
+    #production-table-card {
         page-break-inside: avoid;
     }
 
-    .page-header h2 {
-        margin-bottom: 0.5rem;
+    .production-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
     }
 
-    #production-title {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
+    .production-table th,
+    .production-table td {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .production-table th {
+        background-color: #3498db !important;
+        color: white !important;
+        font-weight: bold;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .production-table th.recipe-header {
+        background-color: #2c3e50 !important;
+        text-align: left;
+    }
+
+    .production-table td.recipe-name {
+        font-weight: bold;
+        text-align: left;
     }
 }
 </style>
