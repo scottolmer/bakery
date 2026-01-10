@@ -16,6 +16,14 @@
             <button onclick="showAddRecipeModal()" class="btn btn-primary">+ Add Recipe</button>
         </div>
         <div class="card-body">
+            <!-- Recipe Type Filter -->
+            <div class="recipe-filter" style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="filter-btn active" onclick="filterRecipes('all')">All</button>
+                <button class="filter-btn" onclick="filterRecipes('bread')">Breads</button>
+                <button class="filter-btn" onclick="filterRecipes('starter')">Starters</button>
+                <button class="filter-btn" onclick="filterRecipes('soaker')">Soakers</button>
+            </div>
+
             <div id="recipes-list">
                 <p class="placeholder-text">Loading recipes...</p>
             </div>
@@ -72,8 +80,45 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="recipe-selling-price">Selling Price per Loaf ($):</label>
+                    <input type="number" id="recipe-selling-price" class="form-control" step="0.01" placeholder="e.g., 8.00">
+                    <small style="color: #7f8c8d;">Optional: Enter selling price for profit margin calculation</small>
+                </div>
+
+                <div class="form-group">
                     <label for="recipe-notes">Notes:</label>
                     <textarea id="recipe-notes" class="form-control" rows="3"></textarea>
+                </div>
+
+                <hr style="margin: 1.5rem 0;">
+
+                <!-- Ingredients Section -->
+                <div class="form-group">
+                    <label style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; display: block;">Recipe Ingredients</label>
+
+                    <div id="recipe-ingredients-list" style="margin-bottom: 1rem;">
+                        <!-- Ingredients will be added here dynamically -->
+                    </div>
+
+                    <div class="add-ingredient-section" style="background: #f8f9fa; padding: 1rem; border-radius: 4px;">
+                        <h4 style="margin: 0 0 0.75rem 0; font-size: 0.95rem;">Add Ingredient</h4>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr auto; gap: 0.5rem; align-items: end;">
+                            <div>
+                                <label for="add-ingredient-select" style="font-size: 0.85rem; display: block; margin-bottom: 0.25rem;">Ingredient:</label>
+                                <select id="add-ingredient-select" class="form-control">
+                                    <option value="">Select ingredient...</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="add-ingredient-percentage" style="font-size: 0.85rem; display: block; margin-bottom: 0.25rem;">Percentage (%):</label>
+                                <input type="number" id="add-ingredient-percentage" class="form-control" step="0.1" placeholder="e.g., 100">
+                            </div>
+                            <button type="button" onclick="addIngredientToRecipe()" class="btn btn-primary" style="padding: 0.55rem 1rem;">+ Add</button>
+                        </div>
+                        <small style="color: #7f8c8d; display: block; margin-top: 0.5rem;">
+                            Use baker's percentages (flour = 100%). Grams will be calculated automatically based on batch weight.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -113,6 +158,12 @@
                         <option value="dairy">Dairy</option>
                         <option value="other">Other</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredient-cost">Cost per Gram ($):</label>
+                    <input type="number" id="ingredient-cost" class="form-control" step="0.001" placeholder="e.g., 0.005">
+                    <small style="color: #7f8c8d;">Optional: Enter cost per gram for cost tracking</small>
                 </div>
 
                 <div class="modal-footer">
@@ -293,6 +344,90 @@
     padding: 1rem;
     border-radius: 4px;
     margin-bottom: 1rem;
+}
+
+.recipe-ingredient-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-ingredient-item:hover {
+    background: #f8f9fa;
+}
+
+.ingredient-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex: 1;
+}
+
+.ingredient-name {
+    font-weight: 500;
+    color: #2c3e50;
+    min-width: 150px;
+}
+
+.ingredient-percentage {
+    color: #3498db;
+    font-weight: 600;
+}
+
+.ingredient-percentage input {
+    width: 80px;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.ingredient-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-small {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-remove {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid #3498db;
+    background: white;
+    color: #3498db;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    background: #ecf0f1;
+}
+
+.filter-btn.active {
+    background: #3498db;
+    color: white;
 }
 </style>
 {% endblock %}

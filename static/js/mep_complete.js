@@ -501,6 +501,11 @@ function showTab(tabName) {
 
     // Activate button
     event.target.classList.add('active');
+
+    // Initialize mixing log when tab is shown
+    if (tabName === 'mixing-log') {
+        initializeMixingLog();
+    }
 }
 
 function formatDate(dateStr) {

@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Production View - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Customer Production View</h2>
+    <p>View production schedule by customer and date range</p>
+</div>
+
+<div class="customer-production-container">
+    <!-- Controls -->
+    <div class="card">
+        <div class="card-body">
+            <div class="controls-grid">
+                <div class="form-group">
+                    <label for="customer-select">Customer:</label>
+                    <select id="customer-select" class="form-control">
+                        <option value="">Select a customer...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="view-type">View:</label>
+                    <select id="view-type" class="form-control">
+                        <option value="week">This Week</option>
+                        <option value="next-week">Next Week</option>
+                        <option value="month">This Month</option>
+                        <option value="custom">Custom Range</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="custom-date-group" style="display: none;">
+                    <label for="start-date">Start Date:</label>
+                    <input type="date" id="start-date" class="form-control">
+                </div>
+
+                <div class="form-group" id="custom-end-group" style="display: none;">
+                    <label for="end-date">End Date:</label>
+                    <input type="date" id="end-date" class="form-control">
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <button onclick="loadCustomerProduction()" class="btn btn-primary" style="width: 100%;">Load Production</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Production Table -->
+    <div class="card" id="production-table-card" style="display: none;">
+        <div class="card-header">
+            <h3 id="production-title">Customer Production</h3>
+            <button onclick="printProduction()" class="btn btn-secondary">Print</button>
+        </div>
+        <div class="card-body">
+            <div id="production-table-container"></div>
+        </div>
+    </div>
+
+    <!-- No Data Message -->
+    <div class="card" id="no-data-card" style="display: none;">
+        <div class="card-body">
+            <p class="placeholder-text">No production data found for the selected customer and date range.</p>
+        </div>
+    </div>
+</div>
+
+<div id="success-message" class="alert alert-success" style="display: none;"></div>
+<div id="error-message" class="alert alert-error" style="display: none;"></div>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.customer-production-container {
+    display: grid;
+    gap: 2rem;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.production-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.production-table th,
+.production-table td {
+    padding: 0.75rem;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.production-table th {
+    background: #3498db;
+    color: white;
+    font-weight: 600;
+}
+
+.production-table th.recipe-header {
+    background: #2c3e50;
+    text-align: left;
+}
+
+.production-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.production-table td.recipe-name {
+    font-weight: 600;
+    text-align: left;
+    background: #ecf0f1;
+}
+
+.production-table td.quantity {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.production-table td.quantity.has-order {
+    color: #2ecc71;
+}
+
+.production-table td.quantity.no-order {
+    color: #95a5a6;
+}
+
+.day-header {
+    font-size: 0.85rem;
+}
+
+.day-name {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.date-display {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.totals-row {
+    font-weight: 600;
+    background: #e8f4f8 !important;
+}
+
+@media print {
+    .navbar, .page-header p, .controls-grid, .btn, footer {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none;
+        border: none;
+    }
+
+    .production-table {
+        page-break-inside: avoid;
+    }
+
+    .page-header h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    #production-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/customer_production.js') }}"></script>
+{% endblock %}

@@ -11,6 +11,12 @@ class Ingredient(db.Model):
     name = db.Column(db.String(100), nullable=False, unique=True)
     category = db.Column(db.String(50))  # flour, water, yeast, starter, soaker, etc.
     unit = db.Column(db.String(20), default='grams')
+    cost_per_unit = db.Column(db.Float)  # Cost per gram (or per unit specified)
+
+    # Inventory tracking
+    quantity_in_stock = db.Column(db.Float, default=0)  # Current quantity in stock
+    low_stock_threshold = db.Column(db.Float)  # Alert when stock falls below this amount
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     def __repr__(self):
         return f'<Ingredient {self.name}>'
@@ -27,6 +33,7 @@ class Recipe(db.Model):
     loaf_weight = db.Column(db.Float)  # grams per loaf
     is_active = db.Column(db.Boolean, default=True)
     notes = db.Column(db.Text)
+    selling_price = db.Column(db.Float)  # Price per loaf
 
     # Relationships
     ingredients = db.relationship('RecipeIngredient', back_populates='recipe', cascade='all, delete-orphan')
@@ -197,3 +204,124 @@ class WeeklyOrderTemplate(db.Model):
 
     def __repr__(self):
         return f'<WeeklyTemplate {self.customer.name} - {self.recipe.name} x{self.quantity} on {self.day_of_week}>'
+
+
+class DDTTarget(db.Model):
+    """Target temperature ranges for different bread types"""
+    __tablename__ = 'ddt_targets'
+
+    id = db.Column(db.Integer, primary_key=True)
+    bread_name = db.Column(db.String(100), nullable=False, unique=True)
+    target_temp_min = db.Column(db.Float, nullable=False)  # Minimum target temp (F)
+    target_temp_max = db.Column(db.Float, nullable=False)  # Maximum target temp (F)
+    notes = db.Column(db.Text)
+    is_active = db.Column(db.Boolean, default=True)
+
+    def __repr__(self):
+        return f'<DDTTarget {self.bread_name}: {self.target_temp_min}-{self.target_temp_max}°F>'
+
+
+class MixingLog(db.Model):
+    """Parent table for daily mixing sessions"""
+    __tablename__ = 'mixing_logs'
+
+    id = db.Column(db.Integer, primary_key=True)
+    production_run_id = db.Column(db.Integer, db.ForeignKey('production_runs.id'), nullable=False)
+    date = db.Column(db.Date, nullable=False, index=True)  # Mix date
+    mixer_initials = db.Column(db.String(10), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    notes = db.Column(db.Text)
+
+    # Relationships
+    production_run = db.relationship('ProductionRun', backref='mixing_log')
+    entries = db.relationship('MixingLogEntry', back_populates='mixing_log', cascade='all, delete-orphan')
+
+    # Unique constraint: one mixing log per production run
+    __table_args__ = (db.UniqueConstraint('production_run_id', name='unique_production_mixing_log'),)
+
+    def __repr__(self):
+        return f'<MixingLog {self.date} by {self.mixer_initials}>'
+
+
+class MixingLogEntry(db.Model):
+    """Individual bread entries within a mixing log"""
+    __tablename__ = 'mixing_log_entries'
+
+    id = db.Column(db.Integer, primary_key=True)
+    mixing_log_id = db.Column(db.Integer, db.ForeignKey('mixing_logs.id'), nullable=False)
+    bread_name = db.Column(db.String(100), nullable=False)  # Denormalized for historical accuracy
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=True)  # Optional FK
+
+    # Batch information
+    batch_size = db.Column(db.Float)  # Weight in grams
+    quantity = db.Column(db.Integer)  # Number of loaves
+
+    # Temperature readings (all in Fahrenheit)
+    room_temp = db.Column(db.Float)
+    flour_temp = db.Column(db.Float)
+    preferment_temp = db.Column(db.Float)  # Pre-ferment temperature
+    friction_factor = db.Column(db.Float)  # Heat from mixing (typically 20-30°F)
+    water_temp = db.Column(db.Float)
+    final_dough_temp = db.Column(db.Float)
+
+    # Process notes (text fields for flexibility)
+    bulk_fermentation_notes = db.Column(db.Text)  # e.g., "3 hours at room temp"
+    fold_schedule = db.Column(db.Text)  # e.g., "Every 30 min x 3"
+    portioning_notes = db.Column(db.Text)  # e.g., "Refrigerated at 4pm"
+    batch_notes = db.Column(db.Text)  # Issues, adjustments, observations for this batch
+
+    # Metadata
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    order = db.Column(db.Integer, default=0)  # Display order
+
+    # Relationships
+    mixing_log = db.relationship('MixingLog', back_populates='entries')
+    recipe = db.relationship('Recipe')
+
+    def __repr__(self):
+        return f'<MixingLogEntry {self.bread_name}: {self.final_dough_temp}°F>'
+
+
+class ProductionIssue(db.Model):
+    """Log production problems and equipment issues"""
+    __tablename__ = 'production_issues'
+
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date, nullable=False, index=True)
+    issue_type = db.Column(db.String(50), nullable=False)  # equipment, timing, quality, other
+    severity = db.Column(db.String(20), nullable=False)  # low, medium, high, critical
+    title = db.Column(db.String(200), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    affected_items = db.Column(db.Text)  # Comma-separated list of affected breads/recipes
+    resolution = db.Column(db.Text)  # How it was resolved
+    resolved_at = db.Column(db.DateTime)
+    reported_by = db.Column(db.String(100))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<ProductionIssue {self.title} on {self.date}>'
+
+
+class InventoryTransaction(db.Model):
+    """Log all inventory additions and deductions"""
+    __tablename__ = 'inventory_transactions'
+
+    id = db.Column(db.Integer, primary_key=True)
+    ingredient_id = db.Column(db.Integer, db.ForeignKey('ingredients.id'), nullable=False)
+    transaction_type = db.Column(db.String(20), nullable=False)  # addition, deduction, adjustment
+    quantity = db.Column(db.Float, nullable=False)  # Positive for additions, negative for deductions
+    quantity_before = db.Column(db.Float, nullable=False)  # Stock level before transaction
+    quantity_after = db.Column(db.Float, nullable=False)  # Stock level after transaction
+    production_run_id = db.Column(db.Integer, db.ForeignKey('production_runs.id'))  # If related to production
+    notes = db.Column(db.Text)
+    created_by = db.Column(db.String(100))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    # Relationships
+    ingredient = db.relationship('Ingredient')
+    production_run = db.relationship('ProductionRun')
+
+    def __repr__(self):
+        return f'<InventoryTransaction {self.ingredient.name if self.ingredient else "Unknown"}: {self.quantity}>'

@@ -5,7 +5,7 @@ Main Flask application
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from config import Config
-from models import db, Recipe, Ingredient, RecipeIngredient, ProductionRun, ProductionItem, ProductionIngredient, ScheduleTemplate, MixerCapacity, Customer, Order, WeeklyOrderTemplate
+from models import db, Recipe, Ingredient, RecipeIngredient, ProductionRun, ProductionItem, ProductionIngredient, ScheduleTemplate, MixerCapacity, Customer, Order, WeeklyOrderTemplate, MixingLog, MixingLogEntry, DDTTarget, ProductionIssue, InventoryTransaction
 from datetime import datetime, date, timedelta
 import json
 from mep_calculator import MEPCalculator
@@ -150,7 +150,8 @@ def get_recipes():
         'name': r.name,
         'recipe_type': r.recipe_type,
         'base_batch_weight': r.base_batch_weight,
-        'loaf_weight': r.loaf_weight
+        'loaf_weight': r.loaf_weight,
+        'selling_price': r.selling_price
     } for r in recipes])
 
 
@@ -162,6 +163,7 @@ def get_recipe(recipe_id):
 
     for ri in recipe.ingredients:
         ingredients.append({
+            'ingredient_id': ri.ingredient_id,
             'ingredient_name': ri.ingredient.name,
             'percentage': ri.percentage,
             'amount_grams': ri.amount_grams,
@@ -169,13 +171,34 @@ def get_recipe(recipe_id):
             'category': ri.ingredient.category
         })
 
+    # Calculate recipe cost based on ingredients
+    recipe_cost_per_loaf = 0
+    for ri in recipe.ingredients:
+        if ri.ingredient.cost_per_unit:
+            if ri.is_percentage:
+                # Calculate actual grams from percentage
+                # Percentage is based on flour weight (100% = base_batch_weight)
+                actual_grams = (ri.percentage / 100) * recipe.base_batch_weight
+            else:
+                actual_grams = ri.amount_grams
+
+            # Cost for this ingredient in the batch
+            ingredient_cost = actual_grams * ri.ingredient.cost_per_unit
+
+            # Divide by number of loaves in batch
+            loaves_per_batch = recipe.base_batch_weight / recipe.loaf_weight
+            recipe_cost_per_loaf += ingredient_cost / loaves_per_batch
+
     return jsonify({
         'id': recipe.id,
         'name': recipe.name,
         'recipe_type': recipe.recipe_type,
         'base_batch_weight': recipe.base_batch_weight,
         'loaf_weight': recipe.loaf_weight,
-        'ingredients': ingredients
+        'selling_price': recipe.selling_price,
+        'cost_per_loaf': round(recipe_cost_per_loaf, 2),
+        'ingredients': ingredients,
+        'notes': recipe.notes
     })
 
 
@@ -399,7 +422,8 @@ def get_ingredients():
         'id': i.id,
         'name': i.name,
         'category': i.category,
-        'unit': i.unit
+        'unit': i.unit,
+        'cost_per_unit': i.cost_per_unit
     } for i in ingredients])
 
 
@@ -416,7 +440,8 @@ def create_ingredient():
     ingredient = Ingredient(
         name=data['name'],
         category=data.get('category', 'other'),
-        unit=data.get('unit', 'grams')
+        unit=data.get('unit', 'grams'),
+        cost_per_unit=data.get('cost_per_unit')
     )
     db.session.add(ingredient)
     db.session.commit()
@@ -442,9 +467,24 @@ def create_recipe():
         recipe_type=data.get('recipe_type', 'bread'),
         base_batch_weight=data.get('base_batch_weight'),
         loaf_weight=data.get('loaf_weight'),
-        notes=data.get('notes', '')
+        notes=data.get('notes', ''),
+        selling_price=data.get('selling_price')
     )
     db.session.add(recipe)
+    db.session.flush()  # Get recipe.id before adding ingredients
+
+    # Add ingredients if provided
+    if 'ingredients' in data and data['ingredients']:
+        for ing_data in data['ingredients']:
+            recipe_ingredient = RecipeIngredient(
+                recipe_id=recipe.id,
+                ingredient_id=ing_data['ingredient_id'],
+                percentage=ing_data.get('percentage'),
+                is_percentage=ing_data.get('is_percentage', True),
+                amount_grams=ing_data.get('amount_grams')
+            )
+            db.session.add(recipe_ingredient)
+
     db.session.commit()
 
     return jsonify({
@@ -464,6 +504,23 @@ def update_recipe(recipe_id):
     recipe.base_batch_weight = data.get('base_batch_weight', recipe.base_batch_weight)
     recipe.loaf_weight = data.get('loaf_weight', recipe.loaf_weight)
     recipe.notes = data.get('notes', recipe.notes)
+    recipe.selling_price = data.get('selling_price', recipe.selling_price)
+
+    # Update ingredients if provided
+    if 'ingredients' in data:
+        # Delete existing ingredients
+        RecipeIngredient.query.filter_by(recipe_id=recipe_id).delete()
+
+        # Add new ingredients
+        for ing_data in data['ingredients']:
+            recipe_ingredient = RecipeIngredient(
+                recipe_id=recipe.id,
+                ingredient_id=ing_data['ingredient_id'],
+                percentage=ing_data.get('percentage'),
+                is_percentage=ing_data.get('is_percentage', True),
+                amount_grams=ing_data.get('amount_grams')
+            )
+            db.session.add(recipe_ingredient)
 
     db.session.commit()
 
@@ -781,6 +838,729 @@ def create_production_from_orders():
         'success': True,
         'production_runs_created': runs_created
     })
+
+
+# =============================================================================
+# Mixing Log API Endpoints
+# =============================================================================
+
+@app.route('/api/ddt-targets')
+def get_ddt_targets():
+    """Get all DDT target ranges for validation"""
+    targets = DDTTarget.query.filter_by(is_active=True).all()
+
+    return jsonify({
+        'targets': [{
+            'id': target.id,
+            'bread_name': target.bread_name,
+            'target_temp_min': target.target_temp_min,
+            'target_temp_max': target.target_temp_max,
+            'notes': target.notes
+        } for target in targets]
+    })
+
+
+@app.route('/api/mixing-log/breads/<date_str>')
+def get_mixing_log_breads(date_str):
+    """Get list of breads from production run for auto-population"""
+    try:
+        target_date = datetime.strptime(date_str, '%Y-%m-%d').date()
+    except ValueError:
+        return jsonify({'error': 'Invalid date format. Use YYYY-MM-DD'}), 400
+
+    # Calculate mix date (delivery date - 1 day)
+    mix_date = target_date - timedelta(days=1)
+
+    # Find production run for this mix date
+    production_run = ProductionRun.query.filter_by(date=target_date).first()
+    if not production_run:
+        return jsonify({'error': f'No production run found for date {date_str}'}), 404
+
+    # Get breads from production run
+    breads = []
+    for item in production_run.items:
+        recipe = item.recipe
+
+        # Get DDT target for this bread
+        ddt_target = DDTTarget.query.filter_by(bread_name=recipe.name, is_active=True).first()
+
+        breads.append({
+            'recipe_id': recipe.id,
+            'bread_name': recipe.name,
+            'quantity': item.quantity,
+            'batch_weight': item.batch_weight,
+            'ddt_target': {
+                'min': ddt_target.target_temp_min if ddt_target else None,
+                'max': ddt_target.target_temp_max if ddt_target else None
+            } if ddt_target else None
+        })
+
+    return jsonify({
+        'date': target_date.strftime('%Y-%m-%d'),
+        'mix_date': mix_date.strftime('%Y-%m-%d'),
+        'production_run_id': production_run.id,
+        'batch_id': production_run.batch_id,
+        'breads': breads
+    })
+
+
+@app.route('/api/mixing-log/<date_str>')
+def get_mixing_log(date_str):
+    """Get mixing log for a specific date"""
+    try:
+        target_date = datetime.strptime(date_str, '%Y-%m-%d').date()
+    except ValueError:
+        return jsonify({'error': 'Invalid date format. Use YYYY-MM-DD'}), 400
+
+    # Find production run for this date
+    production_run = ProductionRun.query.filter_by(date=target_date).first()
+    if not production_run:
+        return jsonify({'error': f'No production run found for date {date_str}'}), 404
+
+    # Find mixing log for this production run
+    mixing_log = MixingLog.query.filter_by(production_run_id=production_run.id).first()
+    if not mixing_log:
+        return jsonify({'error': f'No mixing log found for date {date_str}'}), 404
+
+    # Build response with entries
+    entries = []
+    for entry in sorted(mixing_log.entries, key=lambda e: e.order):
+        # Get DDT target for validation
+        ddt_target = DDTTarget.query.filter_by(bread_name=entry.bread_name, is_active=True).first()
+
+        temp_warnings = {}
+        if entry.final_dough_temp and ddt_target:
+            temp_warnings['final_dough_temp'] = {
+                'in_range': ddt_target.target_temp_min <= entry.final_dough_temp <= ddt_target.target_temp_max,
+                'target_min': ddt_target.target_temp_min,
+                'target_max': ddt_target.target_temp_max
+            }
+
+        entries.append({
+            'id': entry.id,
+            'bread_name': entry.bread_name,
+            'recipe_id': entry.recipe_id,
+            'batch_size': entry.batch_size,
+            'quantity': entry.quantity,
+            'room_temp': entry.room_temp,
+            'flour_temp': entry.flour_temp,
+            'preferment_temp': entry.preferment_temp,
+            'friction_factor': entry.friction_factor,
+            'water_temp': entry.water_temp,
+            'final_dough_temp': entry.final_dough_temp,
+            'bulk_fermentation_notes': entry.bulk_fermentation_notes,
+            'fold_schedule': entry.fold_schedule,
+            'portioning_notes': entry.portioning_notes,
+            'batch_notes': entry.batch_notes,
+            'temp_warnings': temp_warnings
+        })
+
+    return jsonify({
+        'id': mixing_log.id,
+        'date': mixing_log.date.strftime('%Y-%m-%d'),
+        'mixer_initials': mixing_log.mixer_initials,
+        'notes': mixing_log.notes,
+        'production_run_id': production_run.id,
+        'batch_id': production_run.batch_id,
+        'created_at': mixing_log.created_at.isoformat(),
+        'entries': entries
+    })
+
+
+@app.route('/api/mixing-log/save', methods=['POST'])
+def save_mixing_log():
+    """Save or update mixing log with entries"""
+    data = request.json
+
+    # Validate required fields
+    if not data.get('date'):
+        return jsonify({'error': 'Date is required'}), 400
+
+    if not data.get('mixer_initials'):
+        return jsonify({'error': 'Mixer initials are required'}), 400
+
+    if not data.get('entries') or len(data['entries']) == 0:
+        return jsonify({'error': 'At least one entry is required'}), 400
+
+    # Parse date
+    try:
+        log_date = datetime.strptime(data['date'], '%Y-%m-%d').date()
+    except ValueError:
+        return jsonify({'error': 'Invalid date format'}), 400
+
+    # Find production run for this date
+    production_run = ProductionRun.query.filter_by(date=log_date).first()
+    if not production_run:
+        return jsonify({'error': f'No production run found for date {log_date}'}), 404
+
+    # Check if mixing log already exists
+    existing_log = MixingLog.query.filter_by(production_run_id=production_run.id).first()
+
+    warnings = []
+
+    try:
+        if existing_log:
+            # Update existing
+            mixing_log = existing_log
+            mixing_log.mixer_initials = data['mixer_initials']
+            mixing_log.notes = data.get('notes', '')
+            mixing_log.updated_at = datetime.utcnow()
+
+            # Delete old entries
+            for entry in mixing_log.entries:
+                db.session.delete(entry)
+        else:
+            # Create new
+            mixing_log = MixingLog(
+                production_run_id=production_run.id,
+                date=log_date,
+                mixer_initials=data['mixer_initials'],
+                notes=data.get('notes', '')
+            )
+            db.session.add(mixing_log)
+
+        db.session.flush()  # Get mixing_log.id
+
+        # Add entries and validate
+        for i, entry_data in enumerate(data['entries']):
+            entry = MixingLogEntry(
+                mixing_log_id=mixing_log.id,
+                bread_name=entry_data['bread_name'],
+                recipe_id=entry_data.get('recipe_id'),
+                batch_size=entry_data.get('batch_size'),
+                quantity=entry_data.get('quantity'),
+                room_temp=entry_data.get('room_temp'),
+                flour_temp=entry_data.get('flour_temp'),
+                preferment_temp=entry_data.get('preferment_temp'),
+                friction_factor=entry_data.get('friction_factor'),
+                water_temp=entry_data.get('water_temp'),
+                final_dough_temp=entry_data.get('final_dough_temp'),
+                bulk_fermentation_notes=entry_data.get('bulk_fermentation_notes'),
+                fold_schedule=entry_data.get('fold_schedule'),
+                portioning_notes=entry_data.get('portioning_notes'),
+                batch_notes=entry_data.get('batch_notes'),
+                order=i
+            )
+            db.session.add(entry)
+
+            # Validate against DDT targets
+            if entry.final_dough_temp:
+                target = DDTTarget.query.filter_by(bread_name=entry.bread_name, is_active=True).first()
+
+                if target:
+                    in_range = (target.target_temp_min <= entry.final_dough_temp <= target.target_temp_max)
+                    warnings.append({
+                        'bread_name': entry.bread_name,
+                        'field': 'final_dough_temp',
+                        'value': entry.final_dough_temp,
+                        'target_range': f"{target.target_temp_min}-{target.target_temp_max}°F",
+                        'in_range': in_range
+                    })
+
+        db.session.commit()
+
+        return jsonify({
+            'success': True,
+            'mixing_log_id': mixing_log.id,
+            'warnings': warnings
+        })
+
+    except Exception as e:
+        db.session.rollback()
+        app.logger.error(f"Error saving mixing log: {str(e)}")
+        return jsonify({'error': 'Failed to save mixing log. Please try again.'}), 500
+
+
+@app.route('/api/mixing-log/history')
+def get_mixing_log_history():
+    """Query mixing logs with filters"""
+    # Get query parameters
+    start_date_str = request.args.get('start_date')
+    end_date_str = request.args.get('end_date')
+    bread_name = request.args.get('bread_name')
+    limit = int(request.args.get('limit', 50))
+    offset = int(request.args.get('offset', 0))
+
+    # Build query
+    query = MixingLog.query
+
+    # Date filters
+    if start_date_str:
+        try:
+            start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+            query = query.filter(MixingLog.date >= start_date)
+        except ValueError:
+            return jsonify({'error': 'Invalid start_date format'}), 400
+
+    if end_date_str:
+        try:
+            end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+            query = query.filter(MixingLog.date <= end_date)
+        except ValueError:
+            return jsonify({'error': 'Invalid end_date format'}), 400
+
+    # Bread filter (need to join with entries)
+    if bread_name:
+        query = query.join(MixingLogEntry).filter(MixingLogEntry.bread_name == bread_name)
+
+    # Count total
+    total = query.count()
+
+    # Get logs with pagination
+    logs = query.order_by(MixingLog.date.desc()).limit(limit).offset(offset).all()
+
+    # Format response
+    log_list = []
+    for log in logs:
+        # Get breads mixed
+        breads_mixed = list(set([entry.bread_name for entry in log.entries]))
+
+        # Calculate average final temp
+        temps = [entry.final_dough_temp for entry in log.entries if entry.final_dough_temp]
+        avg_final_temp = sum(temps) / len(temps) if temps else None
+
+        # Check if any warnings
+        has_warnings = False
+        for entry in log.entries:
+            if entry.final_dough_temp:
+                target = DDTTarget.query.filter_by(bread_name=entry.bread_name, is_active=True).first()
+                if target and not (target.target_temp_min <= entry.final_dough_temp <= target.target_temp_max):
+                    has_warnings = True
+                    break
+
+        log_list.append({
+            'id': log.id,
+            'date': log.date.strftime('%Y-%m-%d'),
+            'mixer_initials': log.mixer_initials,
+            'batch_id': log.production_run.batch_id,
+            'breads_mixed': breads_mixed,
+            'entry_count': len(log.entries),
+            'avg_final_temp': round(avg_final_temp, 1) if avg_final_temp else None,
+            'has_warnings': has_warnings
+        })
+
+    return jsonify({
+        'total': total,
+        'logs': log_list
+    })
+
+
+@app.route('/api/mixing-log/trends/<bread_name>')
+def get_mixing_log_trends(bread_name):
+    """Get temperature trend data for a specific bread type"""
+    # Get query parameters
+    days = int(request.args.get('days', 30))
+    start_date_str = request.args.get('start_date')
+    end_date_str = request.args.get('end_date')
+
+    # Calculate date range
+    if start_date_str and end_date_str:
+        try:
+            start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+            end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+        except ValueError:
+            return jsonify({'error': 'Invalid date format'}), 400
+    else:
+        end_date = date.today()
+        start_date = end_date - timedelta(days=days)
+
+    # Get DDT target for this bread
+    ddt_target = DDTTarget.query.filter_by(bread_name=bread_name, is_active=True).first()
+
+    # Get all entries for this bread in date range
+    entries = MixingLogEntry.query\
+        .join(MixingLog)\
+        .filter(MixingLogEntry.bread_name == bread_name)\
+        .filter(MixingLog.date >= start_date)\
+        .filter(MixingLog.date <= end_date)\
+        .order_by(MixingLog.date.desc())\
+        .all()
+
+    # Build data points
+    data_points = []
+    final_temps = []
+    in_range_count = 0
+
+    for entry in entries:
+        in_range = False
+        if entry.final_dough_temp and ddt_target:
+            in_range = (ddt_target.target_temp_min <= entry.final_dough_temp <= ddt_target.target_temp_max)
+            if in_range:
+                in_range_count += 1
+            final_temps.append(entry.final_dough_temp)
+
+        data_points.append({
+            'date': entry.mixing_log.date.strftime('%Y-%m-%d'),
+            'mixing_log_id': entry.mixing_log_id,
+            'room_temp': entry.room_temp,
+            'flour_temp': entry.flour_temp,
+            'preferment_temp': entry.preferment_temp,
+            'water_temp': entry.water_temp,
+            'final_dough_temp': entry.final_dough_temp,
+            'batch_size': entry.batch_size,
+            'in_range': in_range
+        })
+
+    # Calculate statistics
+    statistics = {}
+    if final_temps:
+        statistics = {
+            'avg_final_temp': round(sum(final_temps) / len(final_temps), 1),
+            'min_final_temp': round(min(final_temps), 1),
+            'max_final_temp': round(max(final_temps), 1),
+            'in_range_percentage': round((in_range_count / len(final_temps)) * 100, 1) if ddt_target else None,
+            'total_entries': len(final_temps)
+        }
+
+    return jsonify({
+        'bread_name': bread_name,
+        'target_range': {
+            'min': ddt_target.target_temp_min if ddt_target else None,
+            'max': ddt_target.target_temp_max if ddt_target else None
+        } if ddt_target else None,
+        'data_points': data_points,
+        'statistics': statistics
+    })
+
+
+@app.route('/issues')
+def issues_page():
+    """Production issues page"""
+    return render_template('issues.html')
+
+
+@app.route('/api/issues', methods=['GET'])
+def get_issues():
+    """Get all production issues"""
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+    issue_type = request.args.get('issue_type')
+    severity = request.args.get('severity')
+
+    query = ProductionIssue.query
+
+    if start_date:
+        query = query.filter(ProductionIssue.date >= start_date)
+    if end_date:
+        query = query.filter(ProductionIssue.date <= end_date)
+    if issue_type:
+        query = query.filter(ProductionIssue.issue_type == issue_type)
+    if severity:
+        query = query.filter(ProductionIssue.severity == severity)
+
+    issues = query.order_by(ProductionIssue.date.desc()).all()
+
+    return jsonify([{
+        'id': issue.id,
+        'date': issue.date.strftime('%Y-%m-%d'),
+        'issue_type': issue.issue_type,
+        'severity': issue.severity,
+        'title': issue.title,
+        'description': issue.description,
+        'affected_items': issue.affected_items,
+        'resolution': issue.resolution,
+        'resolved_at': issue.resolved_at.isoformat() if issue.resolved_at else None,
+        'reported_by': issue.reported_by,
+        'created_at': issue.created_at.isoformat()
+    } for issue in issues])
+
+
+@app.route('/api/issues', methods=['POST'])
+def create_issue():
+    """Create a new production issue"""
+    data = request.json
+
+    issue = ProductionIssue(
+        date=datetime.strptime(data['date'], '%Y-%m-%d').date(),
+        issue_type=data['issue_type'],
+        severity=data['severity'],
+        title=data['title'],
+        description=data['description'],
+        affected_items=data.get('affected_items', ''),
+        reported_by=data.get('reported_by', '')
+    )
+
+    db.session.add(issue)
+    db.session.commit()
+
+    return jsonify({'success': True, 'issue_id': issue.id})
+
+
+@app.route('/api/issues/<int:issue_id>', methods=['PUT'])
+def update_issue(issue_id):
+    """Update a production issue (mark as resolved, etc.)"""
+    issue = ProductionIssue.query.get_or_404(issue_id)
+    data = request.json
+
+    if 'resolution' in data:
+        issue.resolution = data['resolution']
+        if data.get('mark_resolved'):
+            issue.resolved_at = datetime.utcnow()
+
+    if 'severity' in data:
+        issue.severity = data['severity']
+
+    db.session.commit()
+
+    return jsonify({'success': True})
+
+
+# ===== Inventory Management Endpoints =====
+
+@app.route('/inventory')
+def inventory_page():
+    """Inventory management page"""
+    return render_template('inventory.html')
+
+
+@app.route('/api/inventory', methods=['GET'])
+def get_inventory():
+    """Get all ingredients with inventory levels"""
+    ingredients = Ingredient.query.all()
+    inventory_data = []
+
+    for ing in ingredients:
+        # Check if low stock
+        is_low_stock = False
+        if ing.low_stock_threshold and ing.quantity_in_stock:
+            is_low_stock = ing.quantity_in_stock <= ing.low_stock_threshold
+
+        inventory_data.append({
+            'id': ing.id,
+            'name': ing.name,
+            'category': ing.category,
+            'unit': ing.unit,
+            'quantity_in_stock': ing.quantity_in_stock or 0,
+            'low_stock_threshold': ing.low_stock_threshold,
+            'is_low_stock': is_low_stock,
+            'cost_per_unit': ing.cost_per_unit,
+            'last_updated': ing.last_updated.isoformat() if ing.last_updated else None
+        })
+
+    return jsonify(inventory_data)
+
+
+@app.route('/api/inventory/add', methods=['POST'])
+def add_inventory():
+    """Add stock to an ingredient"""
+    data = request.json
+    ingredient_id = data['ingredient_id']
+    quantity = float(data['quantity'])
+    notes = data.get('notes', '')
+    created_by = data.get('created_by', '')
+
+    ingredient = Ingredient.query.get_or_404(ingredient_id)
+
+    quantity_before = ingredient.quantity_in_stock or 0
+    quantity_after = quantity_before + quantity
+
+    # Update ingredient stock
+    ingredient.quantity_in_stock = quantity_after
+    ingredient.last_updated = datetime.utcnow()
+
+    # Log transaction
+    transaction = InventoryTransaction(
+        ingredient_id=ingredient_id,
+        transaction_type='addition',
+        quantity=quantity,
+        quantity_before=quantity_before,
+        quantity_after=quantity_after,
+        notes=notes,
+        created_by=created_by
+    )
+    db.session.add(transaction)
+    db.session.commit()
+
+    return jsonify({
+        'success': True,
+        'new_quantity': quantity_after,
+        'transaction_id': transaction.id
+    })
+
+
+@app.route('/api/inventory/adjust', methods=['POST'])
+def adjust_inventory():
+    """Adjust stock level (manual correction)"""
+    data = request.json
+    ingredient_id = data['ingredient_id']
+    new_quantity = float(data['new_quantity'])
+    notes = data.get('notes', '')
+    created_by = data.get('created_by', '')
+
+    ingredient = Ingredient.query.get_or_404(ingredient_id)
+
+    quantity_before = ingredient.quantity_in_stock or 0
+    quantity_change = new_quantity - quantity_before
+
+    # Update ingredient stock
+    ingredient.quantity_in_stock = new_quantity
+    ingredient.last_updated = datetime.utcnow()
+
+    # Log transaction
+    transaction = InventoryTransaction(
+        ingredient_id=ingredient_id,
+        transaction_type='adjustment',
+        quantity=quantity_change,
+        quantity_before=quantity_before,
+        quantity_after=new_quantity,
+        notes=notes,
+        created_by=created_by
+    )
+    db.session.add(transaction)
+    db.session.commit()
+
+    return jsonify({
+        'success': True,
+        'new_quantity': new_quantity,
+        'transaction_id': transaction.id
+    })
+
+
+@app.route('/api/inventory/set-threshold', methods=['POST'])
+def set_low_stock_threshold():
+    """Set low stock threshold for an ingredient"""
+    data = request.json
+    ingredient_id = data['ingredient_id']
+    threshold = float(data['threshold']) if data.get('threshold') else None
+
+    ingredient = Ingredient.query.get_or_404(ingredient_id)
+    ingredient.low_stock_threshold = threshold
+    db.session.commit()
+
+    return jsonify({'success': True})
+
+
+@app.route('/api/inventory/transactions', methods=['GET'])
+def get_inventory_transactions():
+    """Get inventory transaction history"""
+    ingredient_id = request.args.get('ingredient_id')
+    limit = int(request.args.get('limit', 50))
+
+    query = InventoryTransaction.query
+
+    if ingredient_id:
+        query = query.filter_by(ingredient_id=ingredient_id)
+
+    transactions = query.order_by(InventoryTransaction.created_at.desc()).limit(limit).all()
+
+    return jsonify([{
+        'id': t.id,
+        'ingredient_id': t.ingredient_id,
+        'ingredient_name': t.ingredient.name if t.ingredient else 'Unknown',
+        'transaction_type': t.transaction_type,
+        'quantity': t.quantity,
+        'quantity_before': t.quantity_before,
+        'quantity_after': t.quantity_after,
+        'production_run_id': t.production_run_id,
+        'notes': t.notes,
+        'created_by': t.created_by,
+        'created_at': t.created_at.isoformat() if t.created_at else None
+    } for t in transactions])
+
+
+@app.route('/api/inventory/low-stock', methods=['GET'])
+def get_low_stock_items():
+    """Get ingredients that are below their low stock threshold"""
+    low_stock_items = []
+
+    ingredients = Ingredient.query.filter(
+        Ingredient.low_stock_threshold.isnot(None)
+    ).all()
+
+    for ing in ingredients:
+        if ing.quantity_in_stock and ing.quantity_in_stock <= ing.low_stock_threshold:
+            low_stock_items.append({
+                'id': ing.id,
+                'name': ing.name,
+                'category': ing.category,
+                'quantity_in_stock': ing.quantity_in_stock,
+                'low_stock_threshold': ing.low_stock_threshold,
+                'deficit': ing.low_stock_threshold - ing.quantity_in_stock
+            })
+
+    return jsonify(low_stock_items)
+
+
+# ===== Customer Production View Endpoints =====
+
+@app.route('/customer-production')
+def customer_production_page():
+    """Customer production view page"""
+    return render_template('customer_production.html')
+
+
+@app.route('/api/customer-production/<int:customer_id>', methods=['GET'])
+def get_customer_production(customer_id):
+    """Get customer production calendar for a date range"""
+    start_date_str = request.args.get('start_date')
+    end_date_str = request.args.get('end_date')
+
+    if not start_date_str or not end_date_str:
+        return jsonify({'error': 'start_date and end_date required'}), 400
+
+    start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+    end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+
+    # Get all orders for this customer in the date range
+    orders = Order.query.filter(
+        Order.customer_id == customer_id,
+        Order.order_date >= start_date,
+        Order.order_date <= end_date
+    ).all()
+
+    # Get customer info
+    customer = Customer.query.get_or_404(customer_id)
+
+    # Organize orders by recipe and date
+    production_data = {}
+    all_dates = []
+    current_date = start_date
+    while current_date <= end_date:
+        all_dates.append(current_date)
+        current_date += timedelta(days=1)
+
+    # Group orders by recipe
+    for order in orders:
+        recipe_name = order.recipe.name
+        if recipe_name not in production_data:
+            production_data[recipe_name] = {
+                'recipe_id': order.recipe_id,
+                'dates': {}
+            }
+
+        date_str = order.order_date.strftime('%Y-%m-%d')
+        production_data[recipe_name]['dates'][date_str] = order.quantity
+
+    # Build response
+    result = {
+        'customer_id': customer.id,
+        'customer_name': customer.name,
+        'start_date': start_date_str,
+        'end_date': end_date_str,
+        'dates': [d.strftime('%Y-%m-%d') for d in all_dates],
+        'recipes': []
+    }
+
+    # Add each recipe with quantities for each date
+    for recipe_name, data in sorted(production_data.items()):
+        recipe_row = {
+            'recipe_name': recipe_name,
+            'recipe_id': data['recipe_id'],
+            'quantities': []
+        }
+
+        for date_obj in all_dates:
+            date_str = date_obj.strftime('%Y-%m-%d')
+            quantity = data['dates'].get(date_str, 0)
+            recipe_row['quantities'].append({
+                'date': date_str,
+                'day_of_week': date_obj.strftime('%A'),
+                'quantity': quantity
+            })
+
+        result['recipes'].append(recipe_row)
+
+    return jsonify(result)
 
 
 if __name__ == '__main__':
