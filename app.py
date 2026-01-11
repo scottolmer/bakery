@@ -96,6 +96,192 @@ def seed_db():
     print("Database seeded successfully!")
 
 
+@app.cli.command('import-recipes')
+def import_recipes():
+    """Import recipes from Excel file"""
+    import openpyxl
+    from config import Config
+
+    print("Importing recipes from Excel...")
+
+    try:
+        wb = openpyxl.load_workbook(Config.BREAD_FORMULAS_FILE, data_only=True)
+    except FileNotFoundError:
+        print(f"Error: Could not find {Config.BREAD_FORMULAS_FILE}")
+        return
+
+    # Define which sheets to import and their types
+    bread_sheets = ['Italian', 'Multigrain', 'Rustic White', 'Baguette', 'Pain dMie',
+                    'Miche', 'Brioche', 'Schiacciata', 'Stollen', 'Pumpkin Miche',
+                    'Dinkel', 'Hot Cross Buns', 'Fino', 'Focaccia', 'Croissant',
+                    'Brotchen', 'Chocolate Croissant', 'Light Rye ', 'Dark Rye',
+                    'Ciabatta', 'Naan', 'Irish Soda Bread ']
+
+    starter_sheets = ['Levain', 'Itl Levain', 'Biga', 'Emmy(starter)', 'Poolish']
+    soaker_sheets = ['RW Soaker', '7 Grain Soaker', 'Dinkel Soaker']
+
+    recipes_imported = 0
+    ingredients_created = 0
+
+    def import_sheet(sheet_name, recipe_type):
+        nonlocal recipes_imported, ingredients_created
+
+        if sheet_name not in wb.sheetnames:
+            print(f"  Skipping {sheet_name} - sheet not found")
+            return
+
+        sheet = wb[sheet_name]
+
+        # Extract recipe name from row 1, column C
+        recipe_name = None
+        for row in sheet.iter_rows(min_row=1, max_row=5, values_only=True):
+            if row[2]:  # Column C
+                recipe_name = str(row[2]).strip()
+                if recipe_name and recipe_name not in ['Overall', 'Ingredient', 'Bakers %']:
+                    break
+
+        if not recipe_name:
+            print(f"  Skipping {sheet_name} - could not find recipe name")
+            return
+
+        # Check if recipe already exists
+        existing = Recipe.query.filter_by(name=recipe_name).first()
+        if existing:
+            print(f"  Skipping {recipe_name} - already exists")
+            return
+
+        # Extract loaf weight (look for gram/g in first few rows)
+        loaf_weight = 1000  # default
+        for row in sheet.iter_rows(min_row=1, max_row=5, values_only=True):
+            if row[2] and isinstance(row[2], str):
+                text = str(row[2]).lower()
+                if 'gram' in text or 'g ' in text:
+                    # Try to extract number
+                    import re
+                    match = re.search(r'(\d+)', text)
+                    if match:
+                        loaf_weight = int(match.group(1))
+                        break
+            # Also check column D for numeric values
+            if row[3] and isinstance(row[3], (int, float)):
+                if 500 <= row[3] <= 5000:  # reasonable batch size
+                    loaf_weight = int(row[3])
+                    break
+
+        # Find ingredients section (look for "Bakers %" header)
+        ingredients = []
+        start_row = None
+
+        for i, row in enumerate(sheet.iter_rows(values_only=True), 1):
+            if row[1] and str(row[1]).strip() in ['Bakers %', "Bakers'%"]:
+                start_row = i + 1  # Ingredients start on next row
+                break
+
+        if not start_row:
+            print(f"  Skipping {recipe_name} - could not find ingredients section")
+            return
+
+        # Extract ingredients
+        for row in sheet.iter_rows(min_row=start_row, values_only=True):
+            baker_pct = row[1]  # Column B
+            ing_name = row[2]   # Column C
+
+            # Stop at sum row or empty rows
+            if not ing_name or not baker_pct:
+                continue
+
+            if isinstance(baker_pct, str) and 'SUM' in baker_pct.upper():
+                break
+
+            # Clean ingredient name
+            ing_name = str(ing_name).strip()
+            if ing_name in ['', 'Ingredient', 'Overall', 'Poolish', 'Biga', 'Levain Build', 'Soaker']:
+                continue
+
+            # Convert percentage
+            try:
+                pct = float(baker_pct) * 100  # Convert 0.72 to 72%
+                if pct > 0 and pct < 500:  # Sanity check
+                    ingredients.append((ing_name, pct))
+            except (ValueError, TypeError):
+                continue
+
+        if not ingredients:
+            print(f"  Skipping {recipe_name} - no ingredients found")
+            return
+
+        # Create recipe
+        recipe = Recipe(
+            name=recipe_name,
+            recipe_type=recipe_type,
+            base_batch_weight=loaf_weight,
+            loaf_weight=loaf_weight
+        )
+        db.session.add(recipe)
+        db.session.flush()
+
+        # Create/find ingredients and link to recipe
+        for order, (ing_name, pct) in enumerate(ingredients, 1):
+            # Find or create ingredient
+            ingredient = Ingredient.query.filter_by(name=ing_name).first()
+            if not ingredient:
+                # Determine category
+                category = 'other'
+                name_lower = ing_name.lower()
+                if 'flour' in name_lower or 'rose' in name_lower or 'wheat' in name_lower:
+                    category = 'flour'
+                elif 'water' in name_lower:
+                    category = 'water'
+                elif 'salt' in name_lower:
+                    category = 'salt'
+                elif 'yeast' in name_lower:
+                    category = 'yeast'
+                elif 'oil' in name_lower:
+                    category = 'oil'
+                elif 'levain' in name_lower or 'poolish' in name_lower or 'biga' in name_lower or 'emmy' in name_lower or 'starter' in name_lower:
+                    category = 'starter'
+                elif 'soaker' in name_lower or 'grain' in name_lower:
+                    category = 'soaker'
+
+                ingredient = Ingredient(name=ing_name, category=category)
+                db.session.add(ingredient)
+                db.session.flush()
+                ingredients_created += 1
+
+            # Link ingredient to recipe
+            recipe_ingredient = RecipeIngredient(
+                recipe_id=recipe.id,
+                ingredient_id=ingredient.id,
+                percentage=pct,
+                is_percentage=True,
+                order=order
+            )
+            db.session.add(recipe_ingredient)
+
+        db.session.commit()
+        recipes_imported += 1
+        print(f"  ✓ Imported {recipe_name} ({len(ingredients)} ingredients)")
+
+    # Import breads
+    print("\nImporting bread recipes...")
+    for sheet_name in bread_sheets:
+        import_sheet(sheet_name, 'bread')
+
+    # Import starters
+    print("\nImporting starter recipes...")
+    for sheet_name in starter_sheets:
+        import_sheet(sheet_name, 'starter')
+
+    # Import soakers
+    print("\nImporting soaker recipes...")
+    for sheet_name in soaker_sheets:
+        import_sheet(sheet_name, 'soaker')
+
+    print(f"\n✅ Import complete!")
+    print(f"   Recipes imported: {recipes_imported}")
+    print(f"   New ingredients created: {ingredients_created}")
+
+
 # =============================================================================
 # API Routes
 # =============================================================================
