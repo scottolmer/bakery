@@ -2,6 +2,7 @@
 
 let productionItems = [];
 let recipes = [];
+let customers = [];
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,8 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('production-date').value = today;
 
-    // Load recipes
+    // Load recipes and customers
     loadRecipes();
+    loadCustomers();
 });
 
 async function loadRecipes() {
@@ -31,7 +33,26 @@ async function loadRecipes() {
     }
 }
 
+async function loadCustomers() {
+    try {
+        const response = await fetch('/api/customers');
+        customers = await response.json();
+
+        const select = document.getElementById('customer-select');
+        customers.forEach(customer => {
+            const option = document.createElement('option');
+            option.value = customer.id;
+            option.textContent = customer.name;
+            select.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Error loading customers:', error);
+        showError('Failed to load customers');
+    }
+}
+
 function addItem() {
+    const customerId = document.getElementById('customer-select').value ? parseInt(document.getElementById('customer-select').value) : null;
     const recipeId = parseInt(document.getElementById('recipe-select').value);
     const quantity = parseInt(document.getElementById('quantity-input').value);
 
@@ -51,8 +72,13 @@ function addItem() {
         return;
     }
 
-    // Check if recipe already exists
-    const existingIndex = productionItems.findIndex(item => item.recipe_id === recipeId);
+    const customer = customerId ? customers.find(c => c.id === customerId) : null;
+
+    // Check if same recipe AND customer combination already exists
+    const existingIndex = productionItems.findIndex(item =>
+        item.recipe_id === recipeId && item.customer_id === customerId
+    );
+
     if (existingIndex >= 0) {
         // Update quantity
         productionItems[existingIndex].quantity += quantity;
@@ -61,6 +87,8 @@ function addItem() {
         productionItems.push({
             recipe_id: recipeId,
             recipe_name: recipe.name,
+            customer_id: customerId,
+            customer_name: customer ? customer.name : 'House use',
             quantity: quantity,
             loaf_weight: recipe.loaf_weight,
             total_weight: quantity * recipe.loaf_weight
@@ -99,6 +127,7 @@ function updateItemsDisplay() {
     productionItems.forEach((item, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
+            <td>${item.customer_name || '-'}</td>
             <td><strong>${item.recipe_name}</strong></td>
             <td>${item.quantity} loaves</td>
             <td>${item.loaf_weight}g</td>
@@ -204,7 +233,8 @@ async function saveProduction() {
                 created_by: 'admin', // TODO: Get from logged-in user
                 items: productionItems.map(item => ({
                     recipe_id: item.recipe_id,
-                    quantity: item.quantity
+                    quantity: item.quantity,
+                    customer_id: item.customer_id
                 }))
             })
         });

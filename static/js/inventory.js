@@ -81,6 +81,7 @@ function displayInventory() {
                     <button class="btn btn-small btn-primary" onclick="showAddStockModal(${item.id})">+ Add Stock</button>
                     <button class="btn btn-small btn-secondary" onclick="showAdjustStockModal(${item.id})">Adjust</button>
                     <button class="btn btn-small btn-secondary" onclick="showThresholdModal(${item.id})">Set Alert</button>
+                    <button class="btn btn-small" onclick="deleteIngredient(${item.id}, '${item.name}')" style="background-color: #e74c3c; color: white;">Delete</button>
                 </td>
             </tr>
         `;
@@ -366,4 +367,31 @@ function showSuccess(message) {
     setTimeout(() => {
         successDiv.style.display = 'none';
     }, 3000);
+}
+
+async function deleteIngredient(ingredientId, ingredientName) {
+    // Confirm deletion
+    if (!confirm(`Are you sure you want to delete "${ingredientName}"?\n\nThis will also delete all inventory transaction history for this ingredient.\n\nNote: You cannot delete ingredients that are used in recipes.`)) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/ingredients/${ingredientId}`, {
+            method: 'DELETE'
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            showError(data.error || 'Failed to delete ingredient');
+            return;
+        }
+
+        showSuccess(`Successfully deleted "${ingredientName}"`);
+        loadInventory();
+
+    } catch (error) {
+        console.error('Error deleting ingredient:', error);
+        showError('Failed to delete ingredient');
+    }
 }

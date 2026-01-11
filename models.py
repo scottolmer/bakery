@@ -87,12 +87,14 @@ class ProductionItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     production_run_id = db.Column(db.Integer, db.ForeignKey('production_runs.id'), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.id'))  # Optional customer association
     quantity = db.Column(db.Integer, nullable=False)  # number of loaves
     batch_weight = db.Column(db.Float)  # calculated batch weight in grams
 
     # Relationships
     production_run = db.relationship('ProductionRun', back_populates='items')
     recipe = db.relationship('Recipe')
+    customer = db.relationship('Customer')
     ingredient_amounts = db.relationship('ProductionIngredient', back_populates='production_item', cascade='all, delete-orphan')
 
     def __repr__(self):
