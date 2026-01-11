@@ -2,12 +2,13 @@
 Bakery Production Management System
 Main Flask application
 """
+import os
+import json
 from flask import Flask, render_template, jsonify, request
 from flask_cors import CORS
 from config import Config
 from models import db, Recipe, Ingredient, RecipeIngredient, ProductionRun, ProductionItem, ProductionIngredient, ScheduleTemplate, MixerCapacity, Customer, Order, WeeklyOrderTemplate, MixingLog, MixingLogEntry, DDTTarget, ProductionIssue, InventoryTransaction
 from datetime import datetime, date, timedelta
-import json
 from mep_calculator import MEPCalculator
 
 app = Flask(__name__)
@@ -341,6 +342,7 @@ def save_production():
         production_item = ProductionItem(
             production_run_id=production_run.id,
             recipe_id=item_data['recipe_id'],
+            customer_id=item_data.get('customer_id'),
             quantity=item_data['quantity'],
             batch_weight=item_data['quantity'] * recipe.loaf_weight
         )
@@ -450,6 +452,28 @@ def create_ingredient():
         'success': True,
         'ingredient_id': ingredient.id
     })
+
+
+@app.route('/api/ingredients/<int:ingredient_id>', methods=['DELETE'])
+def delete_ingredient(ingredient_id):
+    """Delete an ingredient"""
+    ingredient = Ingredient.query.get_or_404(ingredient_id)
+
+    # Check if ingredient is used in any recipes
+    recipes_using = RecipeIngredient.query.filter_by(ingredient_id=ingredient_id).count()
+    if recipes_using > 0:
+        return jsonify({
+            'error': f'Cannot delete ingredient. It is used in {recipes_using} recipe(s).'
+        }), 400
+
+    # Delete any inventory transactions
+    InventoryTransaction.query.filter_by(ingredient_id=ingredient_id).delete()
+
+    # Delete the ingredient
+    db.session.delete(ingredient)
+    db.session.commit()
+
+    return jsonify({'success': True})
 
 
 @app.route('/api/recipes', methods=['POST'])
@@ -1564,4 +1588,6 @@ def get_customer_production(customer_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    app.run(debug=debug, host='0.0.0.0', port=port)
