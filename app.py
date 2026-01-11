@@ -848,6 +848,45 @@ def get_customers():
     } for c in customers])
 
 
+@app.route('/api/customers', methods=['POST'])
+def create_customer():
+    """Create a new customer"""
+    data = request.json
+
+    # Check if customer already exists
+    existing = Customer.query.filter_by(name=data['name']).first()
+    if existing:
+        return jsonify({'error': 'Customer already exists'}), 400
+
+    customer = Customer(
+        name=data['name'],
+        short_name=data.get('short_name', data['name'][:10])
+    )
+    db.session.add(customer)
+    db.session.commit()
+
+    return jsonify({
+        'success': True,
+        'customer_id': customer.id
+    })
+
+
+@app.route('/api/customers/<int:customer_id>', methods=['DELETE'])
+def delete_customer(customer_id):
+    """Delete a customer"""
+    customer = Customer.query.get_or_404(customer_id)
+    customer.is_active = False
+    db.session.commit()
+
+    return jsonify({'success': True})
+
+
+@app.route('/customers')
+def customers_page():
+    """Customer management page"""
+    return render_template('customers.html')
+
+
 @app.route('/api/orders', methods=['GET'])
 def get_orders():
     """Get all orders with optional date and customer filtering"""
