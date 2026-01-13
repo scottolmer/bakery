@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Quick Order Entry - Bakery Production{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Quick Order Entry</h2>
+    <p>Fast multi-day order entry for customers</p>
+</div>
+
+<!-- Customer & Date Selection -->
+<div class="card">
+    <div class="card-header">
+        <h3>Order Details</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="customer-select">Customer:</label>
+                <select id="customer-select" class="form-control" required>
+                    <option value="">Select a customer...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start-date">Week Starting:</label>
+                <input type="date" id="start-date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <button id="load-template-btn" class="btn btn-secondary">Load Last Week's Orders</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Grid -->
+<div class="card" id="order-grid-card" style="display: none;">
+    <div class="card-header">
+        <h3 id="grid-title">Order Grid</h3>
+    </div>
+    <div class="card-body">
+        <div style="overflow-x: auto;">
+            <table class="order-grid-table" id="order-grid">
+                <thead>
+                    <tr id="date-header">
+                        <th>Bread</th>
+                        <!-- Date columns will be added by JS -->
+                    </tr>
+                </thead>
+                <tbody id="grid-body">
+                    <!-- Bread rows will be added by JS -->
+                </tbody>
+                <tfoot>
+                    <tr id="totals-row" style="font-weight: 600; background-color: #f9f9f9;">
+                        <td>Daily Totals</td>
+                        <!-- Total columns will be added by JS -->
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
+            <button id="save-orders-btn" class="btn btn-primary">Save All Orders</button>
+            <button id="clear-grid-btn" class="btn btn-secondary">Clear Grid</button>
+            <span id="save-status" style="margin-left: 12px; color: #666;"></span>
+        </div>
+    </div>
+</div>
+
+<!-- Messages -->
+<div id="error-message" class="alert alert-error" style="display: none;"></div>
+<div id="success-message" class="alert alert-success" style="display: none;"></div>
+
+<style>
+.order-grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 800px;
+}
+
+.order-grid-table th,
+.order-grid-table td {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.order-grid-table th {
+    background-color: #fafafa;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.order-grid-table td:first-child,
+.order-grid-table th:first-child {
+    text-align: left;
+    font-weight: 600;
+    background-color: #fafafa;
+    position: sticky;
+    left: 0;
+    z-index: 5;
+}
+
+.order-grid-table input {
+    width: 70px;
+    padding: 6px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.order-grid-table input:focus {
+    outline: none;
+    border-color: var(--toast-orange);
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}
+
+.order-grid-table .day-name {
+    font-size: 12px;
+    color: #666;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.order-grid-table .date-value {
+    font-weight: 600;
+}
+
+.has-previous-value {
+    background-color: #e8f5e9;
+}
+
+.weekend-column {
+    background-color: #f5f5f5;
+}
+</style>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/quick_order.js') }}"></script>
+{% endblock %}

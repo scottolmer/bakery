@@ -887,6 +887,81 @@ def customers_page():
     return render_template('customers.html')
 
 
+@app.route('/orders/quick')
+def quick_order_page():
+    """Quick multi-day order entry page"""
+    return render_template('quick_order.html')
+
+
+@app.route('/api/customers/<int:customer_id>/typical-breads', methods=['GET'])
+def get_customer_typical_breads(customer_id):
+    """Get breads this customer typically orders based on order history"""
+    # Get unique recipes from customer's order history
+    orders = db.session.query(
+        Order.recipe_id,
+        Recipe.name.label('recipe_name'),
+        db.func.count(Order.id).label('order_count')
+    ).join(Recipe).filter(
+        Order.customer_id == customer_id
+    ).group_by(Order.recipe_id, Recipe.name).order_by(
+        db.func.count(Order.id).desc()
+    ).all()
+
+    breads = [{
+        'recipe_id': order.recipe_id,
+        'recipe_name': order.recipe_name,
+        'order_count': order.order_count
+    } for order in orders]
+
+    return jsonify({'breads': breads})
+
+
+@app.route('/api/orders/bulk', methods=['POST'])
+def create_bulk_orders():
+    """Create multiple orders at once"""
+    data = request.json
+    orders_data = data.get('orders', [])
+
+    if not orders_data:
+        return jsonify({'error': 'No orders provided'}), 400
+
+    created_count = 0
+    updated_count = 0
+
+    for order_data in orders_data:
+        # Check if order already exists for this customer/recipe/date
+        existing_order = Order.query.filter_by(
+            customer_id=order_data['customer_id'],
+            recipe_id=order_data['recipe_id'],
+            order_date=datetime.strptime(order_data['order_date'], '%Y-%m-%d').date()
+        ).first()
+
+        if existing_order:
+            # Update existing order
+            existing_order.quantity = order_data['quantity']
+            updated_count += 1
+        else:
+            # Create new order
+            order = Order(
+                customer_id=order_data['customer_id'],
+                recipe_id=order_data['recipe_id'],
+                order_date=datetime.strptime(order_data['order_date'], '%Y-%m-%d').date(),
+                quantity=order_data['quantity'],
+                day_of_week=datetime.strptime(order_data['order_date'], '%Y-%m-%d').strftime('%A')
+            )
+            db.session.add(order)
+            created_count += 1
+
+    db.session.commit()
+
+    return jsonify({
+        'success': True,
+        'created': created_count,
+        'updated': updated_count,
+        'total': created_count + updated_count
+    })
+
+
 @app.route('/api/orders', methods=['GET'])
 def get_orders():
     """Get all orders with optional date and customer filtering"""
