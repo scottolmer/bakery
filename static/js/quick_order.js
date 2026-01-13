@@ -70,7 +70,7 @@ async function loadCustomerBreads(customerId) {
         customerBreads = data.breads || [];
 
         if (customerBreads.length === 0) {
-            showError('This customer has no order history. Add breads manually or create orders first.');
+            showError('This customer has no order history yet. Create their first orders using the Orders page, then use Quick Order Entry for future weeks.');
         }
     } catch (error) {
         console.error('Error loading customer breads:', error);
