@@ -126,7 +126,7 @@ body {
 }
 
 .menu-link.active {
-    background: #ff6b35;
+    background: var(--toast-orange, #ff6b35);
     color: white;
 }
 
