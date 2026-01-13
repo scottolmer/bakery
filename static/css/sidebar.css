@@ -52,13 +52,18 @@ body {
     left: 0;
     top: 60px;
     bottom: 0;
-    width: 240px;
+    width: 60px;
     background: #fafafa;
     border-right: 1px solid #e0e0e0;
     transition: width 0.3s ease;
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 90;
+}
+
+.sidebar:hover,
+.sidebar.expanded {
+    width: 240px;
 }
 
 .sidebar.collapsed {
@@ -84,12 +89,13 @@ body {
     font-weight: 600;
     white-space: nowrap;
     color: #333;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 0.2s ease;
 }
 
-.sidebar.collapsed .sidebar-title {
-    opacity: 0;
+.sidebar:hover .sidebar-title,
+.sidebar.expanded .sidebar-title {
+    opacity: 1;
 }
 
 /* Menu Items */
@@ -136,36 +142,38 @@ body {
     margin-left: 12px;
     font-size: 14px;
     white-space: nowrap;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 0.2s ease;
 }
 
-.sidebar.collapsed .menu-text {
-    opacity: 0;
+.sidebar:hover .menu-text,
+.sidebar.expanded .menu-text {
+    opacity: 1;
 }
 
 .menu-arrow {
     margin-left: auto;
     font-size: 16px;
-    opacity: 1;
+    opacity: 0;
     transition: opacity 0.2s ease;
 }
 
-.sidebar.collapsed .menu-arrow {
-    opacity: 0;
+.sidebar:hover .menu-arrow,
+.sidebar.expanded .menu-arrow {
+    opacity: 1;
 }
 
 /* Submenu Panel */
 .submenu-panel {
     position: fixed;
-    left: 240px;
+    left: 60px;
     top: 60px;
     bottom: 0;
     width: 240px;
     background: white;
     border-right: 1px solid #e0e0e0;
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, left 0.3s ease;
     overflow-y: auto;
     z-index: 85;
     box-shadow: 2px 0 8px rgba(0,0,0,0.1);
@@ -175,8 +183,9 @@ body {
     transform: translateX(0);
 }
 
-.sidebar.collapsed + .submenu-panel {
-    left: 60px;
+.sidebar:hover + .submenu-panel,
+.sidebar.expanded + .submenu-panel {
+    left: 240px;
 }
 
 .submenu-header {
@@ -217,23 +226,15 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-left: 240px;
+    margin-left: 60px;
     margin-top: 60px;
     padding: 20px;
     transition: margin-left 0.3s ease;
     min-height: calc(100vh - 60px);
 }
 
-.sidebar.collapsed ~ .main-content {
-    margin-left: 60px;
-}
-
 /* When submenu is open, shift content */
 .submenu-panel.active ~ .main-content {
-    margin-left: 480px;
-}
-
-.sidebar.collapsed ~ .submenu-panel.active ~ .main-content {
     margin-left: 300px;
 }
 

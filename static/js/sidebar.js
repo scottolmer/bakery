@@ -5,24 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('sidebar-toggle');
     const menuLinks = document.querySelectorAll('.menu-link');
 
-    // Load saved sidebar state
-    const sidebarCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
-    if (sidebarCollapsed) {
-        sidebar.classList.add('collapsed');
-    }
-
-    // Toggle sidebar collapse/expand
+    // Optional: Toggle button for manual pin/unpin
     toggleBtn.addEventListener('click', function() {
-        sidebar.classList.toggle('collapsed');
-
-        // Close any open submenus when collapsing
-        if (sidebar.classList.contains('collapsed')) {
-            closeAllSubmenus();
-        }
+        sidebar.classList.toggle('expanded');
 
         // Save state
-        localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+        localStorage.setItem('sidebarExpanded', sidebar.classList.contains('expanded'));
     });
+
+    // Load saved sidebar state
+    const sidebarExpanded = localStorage.getItem('sidebarExpanded') === 'true';
+    if (sidebarExpanded) {
+        sidebar.classList.add('expanded');
+    }
 
     // Handle menu item clicks
     menuLinks.forEach(link => {
@@ -31,13 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (submenuId) {
                 e.preventDefault();
-
-                // If sidebar is collapsed, expand it first
-                if (sidebar.classList.contains('collapsed')) {
-                    sidebar.classList.remove('collapsed');
-                    localStorage.setItem('sidebarCollapsed', 'false');
-                }
-
                 toggleSubmenu(submenuId);
             } else {
                 // Regular link - set as active
@@ -49,11 +37,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set active link based on current page
     setActiveLinkFromURL();
 
-    // Close submenu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.sidebar') && !e.target.closest('.submenu-panel')) {
-            closeAllSubmenus();
-        }
+    // Close submenus when mouse leaves both sidebar and submenu
+    let isOverSidebar = false;
+    let isOverSubmenu = false;
+
+    sidebar.addEventListener('mouseenter', function() {
+        isOverSidebar = true;
+    });
+
+    sidebar.addEventListener('mouseleave', function() {
+        isOverSidebar = false;
+        setTimeout(function() {
+            if (!isOverSidebar && !isOverSubmenu) {
+                closeAllSubmenus();
+            }
+        }, 300);
+    });
+
+    document.querySelectorAll('.submenu-panel').forEach(panel => {
+        panel.addEventListener('mouseenter', function() {
+            isOverSubmenu = true;
+        });
+
+        panel.addEventListener('mouseleave', function() {
+            isOverSubmenu = false;
+            setTimeout(function() {
+                if (!isOverSidebar && !isOverSubmenu) {
+                    closeAllSubmenus();
+                }
+            }, 300);
+        });
     });
 });
 
