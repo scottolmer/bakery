@@ -18,7 +18,19 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadRecipes() {
     try {
         const response = await fetch('/api/recipes');
-        recipes = await response.json();
+        const basicRecipes = await response.json();
+
+        // Fetch detailed info for each recipe to get costs
+        recipes = await Promise.all(basicRecipes.map(async (recipe) => {
+            try {
+                const detailResponse = await fetch(`/api/recipes/${recipe.id}`);
+                return await detailResponse.json();
+            } catch (error) {
+                console.error(`Error loading recipe ${recipe.id}:`, error);
+                return recipe;
+            }
+        }));
+
         displayRecipes();
     } catch (error) {
         console.error('Error loading recipes:', error);
@@ -79,12 +91,28 @@ function displayRecipes() {
             'soaker': '#f39c12'
         }[recipe.recipe_type] || '#95a5a6';
 
+        // Cost and pricing display
+        let costHTML = '';
+        if (recipe.cost_per_loaf !== undefined && recipe.cost_per_loaf !== null) {
+            costHTML += `<span><strong>Cost:</strong> $${recipe.cost_per_loaf.toFixed(2)}/loaf</span>`;
+        }
+        if (recipe.selling_price) {
+            costHTML += `<span><strong>Price:</strong> $${recipe.selling_price.toFixed(2)}/loaf</span>`;
+        }
+        if (recipe.cost_per_loaf && recipe.selling_price) {
+            const profit = recipe.selling_price - recipe.cost_per_loaf;
+            const margin = ((profit / recipe.selling_price) * 100).toFixed(0);
+            const profitColor = profit > 0 ? '#28a745' : '#dc3545';
+            costHTML += `<span style="color: ${profitColor};"><strong>Profit:</strong> $${profit.toFixed(2)} (${margin}%)</span>`;
+        }
+
         html += `
             <div class="recipe-card">
                 <h4>${recipe.name} <span style="background: ${typeBadgeColor}; color: white; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.75rem; margin-left: 0.5rem;">${recipe.recipe_type.toUpperCase()}</span></h4>
                 <div class="recipe-meta">
                     <span><strong>Batch:</strong> ${recipe.base_batch_weight}g</span>
                     <span><strong>Loaf:</strong> ${recipe.loaf_weight}g</span>
+                    ${costHTML}
                 </div>
                 <div class="recipe-actions">
                     <button class="btn-edit" onclick="editRecipe(${recipe.id})">Edit</button>
@@ -121,10 +149,15 @@ function displayIngredients() {
         html += `<h4 style="margin-top: 1.5rem; color: #2c3e50;">${category.charAt(0).toUpperCase() + category.slice(1)}</h4>`;
         html += '<div class="ingredients-grid">';
         grouped[category].forEach(ing => {
+            const costDisplay = ing.cost_per_unit
+                ? `<p class="ingredient-cost" style="color: #28a745; font-weight: 600;">$${ing.cost_per_unit.toFixed(4)}/g</p>`
+                : '<p class="ingredient-cost" style="color: #999;">No cost set</p>';
+
             html += `
                 <div class="ingredient-card">
                     <h5>${ing.name}</h5>
                     <p class="ingredient-category">${ing.category}</p>
+                    ${costDisplay}
                 </div>
             `;
         });
