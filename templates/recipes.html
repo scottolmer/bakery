@@ -134,11 +134,12 @@
 <div id="ingredient-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h3>Add Ingredient</h3>
+            <h3 id="ingredient-modal-title">Add Ingredient</h3>
             <span class="close" onclick="closeIngredientModal()">&times;</span>
         </div>
         <div class="modal-body">
             <form id="ingredient-form">
+                <input type="hidden" id="ingredient-id">
                 <div class="form-group">
                     <label for="ingredient-name">Ingredient Name:</label>
                     <input type="text" id="ingredient-name" class="form-control" required>

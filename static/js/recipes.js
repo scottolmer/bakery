@@ -158,6 +158,7 @@ function displayIngredients() {
                     <h5>${ing.name}</h5>
                     <p class="ingredient-category">${ing.category}</p>
                     ${costDisplay}
+                    <button class="btn-small btn-edit" onclick="editIngredient(${ing.id})" style="margin-top: 8px;">Edit</button>
                 </div>
             `;
         });
@@ -488,7 +489,21 @@ async function handleRecipeSubmit(e) {
 }
 
 function showAddIngredientModal() {
+    document.getElementById('ingredient-modal-title').textContent = 'Add Ingredient';
+    document.getElementById('ingredient-id').value = '';
     document.getElementById('ingredient-form').reset();
+    document.getElementById('ingredient-modal').classList.add('show');
+}
+
+function editIngredient(ingredientId) {
+    const ingredient = ingredients.find(ing => ing.id === ingredientId);
+    if (!ingredient) return;
+
+    document.getElementById('ingredient-modal-title').textContent = 'Edit Ingredient';
+    document.getElementById('ingredient-id').value = ingredient.id;
+    document.getElementById('ingredient-name').value = ingredient.name;
+    document.getElementById('ingredient-category').value = ingredient.category;
+    document.getElementById('ingredient-cost').value = ingredient.cost_per_unit || '';
     document.getElementById('ingredient-modal').classList.add('show');
 }
 
@@ -499,6 +514,7 @@ function closeIngredientModal() {
 async function handleIngredientSubmit(e) {
     e.preventDefault();
 
+    const ingredientId = document.getElementById('ingredient-id').value;
     const costValue = document.getElementById('ingredient-cost').value;
     const ingredientData = {
         name: document.getElementById('ingredient-name').value,
@@ -507,8 +523,11 @@ async function handleIngredientSubmit(e) {
     };
 
     try {
-        const response = await fetch('/api/ingredients', {
-            method: 'POST',
+        const url = ingredientId ? `/api/ingredients/${ingredientId}` : '/api/ingredients';
+        const method = ingredientId ? 'PUT' : 'POST';
+
+        const response = await fetch(url, {
+            method: method,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -516,17 +535,18 @@ async function handleIngredientSubmit(e) {
         });
 
         if (!response.ok) {
-            showError('Error adding ingredient');
+            showError(ingredientId ? 'Error updating ingredient' : 'Error adding ingredient');
             return;
         }
 
-        showSuccess('Ingredient added successfully!');
+        showSuccess(ingredientId ? 'Ingredient updated successfully!' : 'Ingredient added successfully!');
         closeIngredientModal();
         loadIngredients();
+        loadRecipes(); // Reload recipes in case ingredient costs changed
 
     } catch (error) {
         console.error('Error:', error);
-        showError('Failed to add ingredient');
+        showError(ingredientId ? 'Failed to update ingredient' : 'Failed to add ingredient');
     }
 }
 

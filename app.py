@@ -640,6 +640,25 @@ def create_ingredient():
     })
 
 
+@app.route('/api/ingredients/<int:ingredient_id>', methods=['PUT'])
+def update_ingredient(ingredient_id):
+    """Update an ingredient"""
+    ingredient = Ingredient.query.get_or_404(ingredient_id)
+    data = request.json
+
+    # Update fields
+    ingredient.name = data.get('name', ingredient.name)
+    ingredient.category = data.get('category', ingredient.category)
+    ingredient.cost_per_unit = data.get('cost_per_unit')
+
+    db.session.commit()
+
+    return jsonify({
+        'success': True,
+        'ingredient_id': ingredient.id
+    })
+
+
 @app.route('/api/ingredients/<int:ingredient_id>', methods=['DELETE'])
 def delete_ingredient(ingredient_id):
     """Delete an ingredient"""

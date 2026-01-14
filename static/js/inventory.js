@@ -48,6 +48,8 @@ function displayInventory() {
                 <th>Ingredient</th>
                 <th>Category</th>
                 <th>Stock Level</th>
+                <th>Cost Per Unit</th>
+                <th>Stock Value</th>
                 <th>Low Stock Alert</th>
                 <th>Last Updated</th>
                 <th>Actions</th>
@@ -62,6 +64,16 @@ function displayInventory() {
             ? new Date(item.last_updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
             : 'Never';
 
+        // Cost display
+        const costDisplay = item.cost_per_unit
+            ? `$${item.cost_per_unit.toFixed(4)}/${item.unit === 'grams' ? 'g' : item.unit}`
+            : '<span style="color: #999;">-</span>';
+
+        // Stock value calculation
+        const stockValue = item.cost_per_unit && item.quantity_in_stock
+            ? `$${(item.cost_per_unit * item.quantity_in_stock).toFixed(2)}`
+            : '<span style="color: #999;">-</span>';
+
         html += `
             <tr>
                 <td><strong>${item.name}</strong></td>
@@ -71,6 +83,8 @@ function displayInventory() {
                         ${item.quantity_in_stock.toFixed(1)} ${item.unit}
                     </span>
                 </td>
+                <td style="color: #28a745; font-weight: 600;">${costDisplay}</td>
+                <td style="color: #28a745; font-weight: 600;">${stockValue}</td>
                 <td>
                     ${item.low_stock_threshold
                         ? `${item.low_stock_threshold.toFixed(1)} ${item.unit}`
