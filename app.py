@@ -1916,6 +1916,82 @@ def get_customer_production(customer_id):
     return jsonify(result)
 
 
+@app.route('/total-production')
+def total_production_page():
+    """Total production view page - all customers aggregated"""
+    return render_template('total_production.html')
+
+
+@app.route('/api/total-production', methods=['GET'])
+def get_total_production():
+    """Get total production calendar aggregated across all customers for a date range"""
+    start_date_str = request.args.get('start_date')
+    end_date_str = request.args.get('end_date')
+
+    if not start_date_str or not end_date_str:
+        return jsonify({'error': 'start_date and end_date required'}), 400
+
+    start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+    end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+
+    # Get all orders in the date range (across all customers)
+    orders = Order.query.filter(
+        Order.order_date >= start_date,
+        Order.order_date <= end_date
+    ).all()
+
+    # Organize orders by recipe and date
+    production_data = {}
+    all_dates = []
+    current_date = start_date
+    while current_date <= end_date:
+        all_dates.append(current_date)
+        current_date += timedelta(days=1)
+
+    # Group orders by recipe, aggregating quantities across all customers
+    for order in orders:
+        recipe_name = order.recipe.name
+        if recipe_name not in production_data:
+            production_data[recipe_name] = {
+                'recipe_id': order.recipe_id,
+                'dates': {}
+            }
+
+        date_str = order.order_date.strftime('%Y-%m-%d')
+        if date_str not in production_data[recipe_name]['dates']:
+            production_data[recipe_name]['dates'][date_str] = 0
+        production_data[recipe_name]['dates'][date_str] += order.quantity
+
+    # Build response
+    result = {
+        'start_date': start_date_str,
+        'end_date': end_date_str,
+        'dates': [d.strftime('%Y-%m-%d') for d in all_dates],
+        'recipes': []
+    }
+
+    # Add each recipe with quantities for each date
+    for recipe_name, data in sorted(production_data.items()):
+        recipe_row = {
+            'recipe_name': recipe_name,
+            'recipe_id': data['recipe_id'],
+            'quantities': []
+        }
+
+        for date_obj in all_dates:
+            date_str = date_obj.strftime('%Y-%m-%d')
+            quantity = data['dates'].get(date_str, 0)
+            recipe_row['quantities'].append({
+                'date': date_str,
+                'day_of_week': date_obj.strftime('%A'),
+                'quantity': quantity
+            })
+
+        result['recipes'].append(recipe_row)
+
+    return jsonify(result)
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_ENV') != 'production'
