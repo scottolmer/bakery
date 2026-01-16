@@ -259,6 +259,38 @@ class MEPCalculator:
 
         return ingredients
 
+    def _calculate_mep_bread_ingredients(self, recipe, quantity, total_weight):
+        """Helper method to calculate ingredients for MEP (skips starters, soakers, and Italian dough)"""
+        # Calculate total percentage for baker's percentage calculation
+        total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage and ri.ingredient.name != 'Italian dough')
+        flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
+        ingredients = []
+        for ri in recipe.ingredients:
+            # Skip starters, soakers, and Italian dough (handled separately)
+            if ri.ingredient.category in ['starter', 'soaker']:
+                continue
+            if ri.ingredient.name == 'Italian dough':
+                continue
+
+            if ri.is_percentage:
+                # Baker's percentage calculation
+                # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                amount = (ri.percentage / 100.0) * flour_weight
+            else:
+                amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
+
+            ingredients.append({
+                'name': ri.ingredient.name,
+                'amount_grams': round(amount, 1),
+                'category': ri.ingredient.category
+            })
+
+        # Sort ingredients by category for better organization
+        ingredients.sort(key=lambda x: (x['category'], x['name']))
+
+        return ingredients
+
     def calculate_starter_sheet(self) -> Dict:
         """
         Starter Prep Sheet - what starters should have been built last night for today's mix
@@ -627,69 +659,163 @@ class MEPCalculator:
         # Organize bread ingredients by bread type
         breads = []
 
+        # ITALIAN SPLIT THRESHOLD
+        ITALIAN_SPLIT_THRESHOLD = 110  # loaves
+
+        # First pass: Count Italian + Multigrain loaves and calculate Italian dough needed
+        italian_loaves = 0
+        multigrain_loaves = 0
+        italian_dough_needed = 0.0
+        breads_using_italian_dough = []
+
+        for item in self.production_items:
+            recipe = Recipe.query.get(item['recipe_id'])
+            if not recipe or recipe.recipe_type != 'bread':
+                continue
+
+            # Count Italian loaves
+            if recipe.name == 'Italian':
+                italian_loaves = item['quantity']
+
+            # Check if this bread uses Italian dough (like Multigrain)
+            for ri in recipe.ingredients:
+                if ri.ingredient.name == 'Italian dough':
+                    multigrain_loaves = item['quantity']
+                    quantity = item['quantity']
+                    total_weight = quantity * recipe.loaf_weight
+
+                    # Calculate total percentage for baker's percentage calculation
+                    total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+                    flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
+                    # Calculate how much Italian dough this bread needs using baker's percentages
+                    if ri.is_percentage:
+                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                        amount = (ri.percentage / 100.0) * flour_weight
+                    else:
+                        amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
+
+                    italian_dough_needed += amount
+                    breads_using_italian_dough.append({
+                        'name': recipe.name,
+                        'quantity': quantity,
+                        'amount': round(amount, 1)
+                    })
+                    break
+
+        # Determine if Italian needs to be split
+        total_italian_units = italian_loaves + multigrain_loaves
+        needs_split = total_italian_units > ITALIAN_SPLIT_THRESHOLD
+
+        # Calculate batch sizes if splitting
+        if needs_split:
+            # Batch 1 includes Multigrain units
+            batch1_italian = (total_italian_units // 2) - multigrain_loaves
+            batch2_italian = total_italian_units // 2
+
+            # If odd number, give extra to batch 2
+            if total_italian_units % 2 == 1:
+                batch2_italian += 1
+
+        # Second pass: process each bread for the MEP ingredient list
         for item in self.production_items:
             recipe = Recipe.query.get(item['recipe_id'])
             if not recipe or recipe.recipe_type != 'bread':
                 continue
 
             quantity = item['quantity']
-            total_weight = quantity * recipe.loaf_weight
 
-            # Calculate total percentage for baker's percentage calculation
-            total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
-            flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+            # Check if this bread uses Italian dough
+            uses_italian_dough = any(ri.ingredient.name == 'Italian dough' for ri in recipe.ingredients)
 
-            bread_ingredients = []
-            italian_dough_amount = None
+            # ITALIAN DOUGH - Handle splitting
+            if recipe.name == 'Italian' and needs_split:
+                # Create Batch 1 (includes Multigrain removal)
+                batch1_weight = batch1_italian * recipe.loaf_weight + italian_dough_needed
+                batch1_ingredients = self._calculate_mep_bread_ingredients(recipe, batch1_italian, batch1_weight)
 
-            for ri in recipe.ingredients:
-                # Skip starters and soakers (they're prepared separately)
-                if ri.ingredient.category in ['starter', 'soaker']:
-                    continue
-
-                # Handle Italian dough specially
-                if ri.ingredient.name == 'Italian dough':
-                    if ri.is_percentage:
-                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
-                        italian_dough_amount = round((ri.percentage / 100.0) * flour_weight, 1)
-                    else:
-                        if recipe.base_batch_weight > 0:
-                            italian_dough_amount = round(ri.amount_grams * (total_weight / recipe.base_batch_weight), 1)
-                        else:
-                            italian_dough_amount = 0
-                    continue
-
-                if ri.is_percentage:
-                    # Baker's percentage calculation
-                    # flour_weight is the base (flour = 100%), other ingredients are relative to it
-                    amount = (ri.percentage / 100.0) * flour_weight
-                else:
-                    if recipe.base_batch_weight > 0:
-                        amount = ri.amount_grams * (total_weight / recipe.base_batch_weight)
-                    else:
-                        amount = 0
-
-                bread_ingredients.append({
-                    'name': ri.ingredient.name,
-                    'amount_grams': round(amount, 1),
-                    'category': ri.ingredient.category
+                breads.append({
+                    'bread_name': 'Italian - BATCH 1',
+                    'quantity': batch1_italian,
+                    'total_weight': batch1_weight,
+                    'ingredients': batch1_ingredients,
+                    'extra_dough_for': breads_using_italian_dough,
+                    'batch_number': 1
                 })
 
-            # Sort ingredients by category for better organization
-            bread_ingredients.sort(key=lambda x: (x['category'], x['name']))
+                # Create Batch 2 (pure Italian, no removal)
+                batch2_weight = batch2_italian * recipe.loaf_weight
+                batch2_ingredients = self._calculate_mep_bread_ingredients(recipe, batch2_italian, batch2_weight)
 
-            bread_info = {
-                'bread_name': recipe.name,
-                'quantity': quantity,
-                'total_weight': total_weight,
-                'ingredients': bread_ingredients
-            }
+                breads.append({
+                    'bread_name': 'Italian - BATCH 2',
+                    'quantity': batch2_italian,
+                    'total_weight': batch2_weight,
+                    'ingredients': batch2_ingredients,
+                    'batch_number': 2
+                })
 
-            # Add Italian dough amount if this bread uses it
-            if italian_dough_amount is not None:
-                bread_info['italian_dough_amount'] = italian_dough_amount
+            # ITALIAN DOUGH - No split needed
+            elif recipe.name == 'Italian' and not needs_split:
+                total_weight = quantity * recipe.loaf_weight
+                if italian_dough_needed > 0:
+                    total_weight += italian_dough_needed
 
-            breads.append(bread_info)
+                bread_ingredients = self._calculate_mep_bread_ingredients(recipe, quantity, total_weight)
+
+                bread_info = {
+                    'bread_name': recipe.name,
+                    'quantity': quantity,
+                    'total_weight': total_weight,
+                    'ingredients': bread_ingredients
+                }
+
+                if breads_using_italian_dough:
+                    bread_info['extra_dough_for'] = breads_using_italian_dough
+
+                breads.append(bread_info)
+
+            # MULTIGRAIN OR OTHER BREADS USING ITALIAN DOUGH
+            elif uses_italian_dough:
+                total_weight = quantity * recipe.loaf_weight
+                bread_ingredients = self._calculate_mep_bread_ingredients(recipe, quantity, total_weight)
+
+                # Calculate Italian dough amount needed
+                italian_dough_amount = None
+                for ri in recipe.ingredients:
+                    if ri.ingredient.name == 'Italian dough':
+                        # Calculate total percentage for baker's percentage calculation
+                        total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+                        flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
+                        if ri.is_percentage:
+                            italian_dough_amount = round((ri.percentage / 100.0) * flour_weight, 1)
+                        else:
+                            if recipe.base_batch_weight > 0:
+                                italian_dough_amount = round(ri.amount_grams * (total_weight / recipe.base_batch_weight), 1)
+                            else:
+                                italian_dough_amount = 0
+                        break
+
+                breads.append({
+                    'bread_name': recipe.name,
+                    'quantity': quantity,
+                    'total_weight': total_weight,
+                    'ingredients': bread_ingredients,
+                    'italian_dough_amount': italian_dough_amount
+                })
+
+            # ALL OTHER BREADS (not Italian, not using Italian dough)
+            else:
+                total_weight = quantity * recipe.loaf_weight
+                bread_ingredients = self._calculate_mep_bread_ingredients(recipe, quantity, total_weight)
+
+                breads.append({
+                    'bread_name': recipe.name,
+                    'quantity': quantity,
+                    'total_weight': total_weight,
+                    'ingredients': bread_ingredients
+                })
 
         return {
             'starters': starter_sheet['starters'],
