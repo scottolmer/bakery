@@ -82,9 +82,14 @@ class MEPCalculator:
                     quantity = item['quantity']
                     total_weight = quantity * recipe.loaf_weight
 
-                    # Calculate how much Italian dough this bread needs
+                    # Calculate total percentage for baker's percentage calculation
+                    total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+                    flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
+                    # Calculate how much Italian dough this bread needs using baker's percentages
                     if ri.is_percentage:
-                        amount = (ri.percentage / 100.0) * total_weight
+                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                        amount = (ri.percentage / 100.0) * flour_weight
                     else:
                         amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
 
@@ -229,6 +234,10 @@ class MEPCalculator:
 
     def _calculate_bread_ingredients(self, recipe, quantity, total_weight):
         """Helper method to calculate ingredients for a bread batch"""
+        # Calculate total percentage for baker's percentage calculation
+        total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage and ri.ingredient.name != 'Italian dough')
+        flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
         ingredients = []
         for ri in recipe.ingredients:
             # Skip Italian dough ingredient (handled separately)
@@ -236,7 +245,9 @@ class MEPCalculator:
                 continue
 
             if ri.is_percentage:
-                amount = (ri.percentage / 100.0) * total_weight
+                # Baker's percentage calculation
+                # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                amount = (ri.percentage / 100.0) * flour_weight
             else:
                 amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
 
@@ -263,12 +274,17 @@ class MEPCalculator:
             quantity = item['quantity']
             total_weight = quantity * recipe.loaf_weight
 
+            # Calculate total percentage for baker's percentage calculation
+            total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+            flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
             # Find all starter requirements for this recipe
             for ri in recipe.ingredients:
                 if ri.ingredient.category == 'starter':
-                    # Calculate amount needed
+                    # Calculate amount needed using baker's percentages
                     if ri.is_percentage:
-                        amount = (ri.percentage / 100.0) * total_weight
+                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                        amount = (ri.percentage / 100.0) * flour_weight
                     else:
                         amount = ri.amount_grams * (total_weight / recipe.base_batch_weight)
 
@@ -425,12 +441,17 @@ class MEPCalculator:
             quantity = item['quantity']
             total_weight = quantity * recipe.loaf_weight
 
+            # Calculate total percentage for baker's percentage calculation
+            total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+            flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
             # Find all starter requirements for this recipe
             for ri in recipe.ingredients:
                 if ri.ingredient.category == 'starter':
-                    # Calculate amount needed
+                    # Calculate amount needed using baker's percentages
                     if ri.is_percentage:
-                        amount = (ri.percentage / 100.0) * total_weight
+                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                        amount = (ri.percentage / 100.0) * flour_weight
                     else:
                         amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
 
@@ -530,11 +551,17 @@ class MEPCalculator:
             quantity = item['quantity']
             total_weight = quantity * recipe.loaf_weight
 
+            # Calculate total percentage for baker's percentage calculation
+            total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+            flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
             # Find all soaker requirements
             for ri in recipe.ingredients:
                 if ri.ingredient.category == 'soaker':
+                    # Calculate amount needed using baker's percentages
                     if ri.is_percentage:
-                        amount = (ri.percentage / 100.0) * total_weight
+                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                        amount = (ri.percentage / 100.0) * flour_weight
                     else:
                         amount = ri.amount_grams * (total_weight / recipe.base_batch_weight)
 
@@ -608,6 +635,10 @@ class MEPCalculator:
             quantity = item['quantity']
             total_weight = quantity * recipe.loaf_weight
 
+            # Calculate total percentage for baker's percentage calculation
+            total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+            flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
             bread_ingredients = []
             italian_dough_amount = None
 
@@ -619,7 +650,8 @@ class MEPCalculator:
                 # Handle Italian dough specially
                 if ri.ingredient.name == 'Italian dough':
                     if ri.is_percentage:
-                        italian_dough_amount = round((ri.percentage / 100.0) * total_weight, 1)
+                        # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                        italian_dough_amount = round((ri.percentage / 100.0) * flour_weight, 1)
                     else:
                         if recipe.base_batch_weight > 0:
                             italian_dough_amount = round(ri.amount_grams * (total_weight / recipe.base_batch_weight), 1)
@@ -628,7 +660,9 @@ class MEPCalculator:
                     continue
 
                 if ri.is_percentage:
-                    amount = (ri.percentage / 100.0) * total_weight
+                    # Baker's percentage calculation
+                    # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                    amount = (ri.percentage / 100.0) * flour_weight
                 else:
                     if recipe.base_batch_weight > 0:
                         amount = ri.amount_grams * (total_weight / recipe.base_batch_weight)
