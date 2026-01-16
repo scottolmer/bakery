@@ -360,12 +360,17 @@ def get_recipe(recipe_id):
 
     # Calculate recipe cost based on ingredients
     recipe_cost_per_loaf = 0
+
+    # Calculate total percentage for baker's percentage calculation
+    total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+    flour_weight = recipe.base_batch_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
     for ri in recipe.ingredients:
         if ri.ingredient.cost_per_unit:
             if ri.is_percentage:
-                # Calculate actual grams from percentage
-                # Percentage is based on flour weight (100% = base_batch_weight)
-                actual_grams = (ri.percentage / 100) * recipe.base_batch_weight
+                # Calculate actual grams from baker's percentage
+                # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                actual_grams = (ri.percentage / 100.0) * flour_weight
             else:
                 actual_grams = ri.amount_grams
 
@@ -411,12 +416,17 @@ def calculate_production():
         # Calculate batch weight needed
         total_weight = quantity * recipe.loaf_weight
 
+        # Calculate total percentage for baker's percentage calculation
+        total_percentage = sum(ri.percentage for ri in recipe.ingredients if ri.is_percentage)
+        flour_weight = total_weight / (total_percentage / 100.0) if total_percentage > 0 else 0
+
         # Calculate ingredients
         ingredients = []
         for ri in recipe.ingredients:
             if ri.is_percentage:
                 # Baker's percentage calculation
-                amount = (ri.percentage / 100.0) * recipe.base_batch_weight * (total_weight / recipe.base_batch_weight)
+                # flour_weight is the base (flour = 100%), other ingredients are relative to it
+                amount = (ri.percentage / 100.0) * flour_weight
             else:
                 # Fixed amount
                 amount = ri.amount_grams * (total_weight / recipe.base_batch_weight)
