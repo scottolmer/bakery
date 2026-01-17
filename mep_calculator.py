@@ -500,6 +500,32 @@ class MEPCalculator:
 
                     starters[ri.ingredient.name]['total_grams'] += amount
 
+                elif ri.ingredient.category == 'dough':
+                    # This recipe uses another dough (e.g., Multigrain uses Italian dough)
+                    # Need to look up what starters the source dough recipe requires
+                    dough_recipe = Recipe.query.filter_by(name=ri.ingredient.name, recipe_type='bread').first()
+                    if dough_recipe:
+                        # Calculate how much of this dough is needed
+                        if ri.is_percentage:
+                            dough_amount = (ri.percentage / 100.0) * flour_weight
+                        else:
+                            dough_amount = ri.amount_grams * (total_weight / recipe.base_batch_weight) if recipe.base_batch_weight > 0 else 0
+
+                        # Calculate flour weight for the source dough
+                        dough_total_percentage = sum(dri.percentage for dri in dough_recipe.ingredients if dri.is_percentage)
+                        if dough_total_percentage > 0:
+                            dough_flour_weight = dough_amount / (dough_total_percentage / 100.0)
+
+                            # Find starters in the source dough recipe
+                            for dri in dough_recipe.ingredients:
+                                if dri.ingredient.category == 'starter':
+                                    if dri.is_percentage:
+                                        starter_amount = (dri.percentage / 100.0) * dough_flour_weight
+                                    else:
+                                        starter_amount = dri.amount_grams * (dough_amount / dough_recipe.base_batch_weight) if dough_recipe.base_batch_weight > 0 else 0
+
+                                    starters[dri.ingredient.name]['total_grams'] += starter_amount
+
         # Now calculate Emmy needed for these starters
         for starter_name, data in starters.items():
             # Get the starter recipe to see if it uses Emmy
