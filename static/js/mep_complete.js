@@ -167,7 +167,19 @@ function displayMorningEmmyFeed(morningEmmyData) {
     const container = document.getElementById('morning-emmy-content');
 
     if (!morningEmmyData || !morningEmmyData.emmy_feed) {
-        container.innerHTML = '<p class="placeholder-text">No Emmy feed needed (no production scheduled for tomorrow)</p>';
+        let html = '<p class="placeholder-text">No Emmy feed needed (no production scheduled for tomorrow)</p>';
+
+        // Display debug info if available
+        if (morningEmmyData && morningEmmyData.debug) {
+            html += '<div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-left: 4px solid #3498db;">';
+            html += '<h4 style="margin-top: 0;">Debug Information:</h4>';
+            html += '<pre style="font-family: monospace; font-size: 0.9rem; margin: 0;">';
+            html += JSON.stringify(morningEmmyData.debug, null, 2);
+            html += '</pre>';
+            html += '</div>';
+        }
+
+        container.innerHTML = html;
         return;
     }
 
