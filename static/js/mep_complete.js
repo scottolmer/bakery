@@ -182,6 +182,29 @@ function displayMorningEmmyFeed(morningEmmyData) {
             html += '<p><strong>Looking for date:</strong> ' + debug.looking_for_date + '</p>';
             html += '<p><strong>Current delivery date:</strong> ' + debug.current_delivery_date + '</p>';
             html += '<p><strong>Found next day run:</strong> ' + debug.found_run + '</p>';
+
+            // Show items count and details
+            if (debug.next_run_items_count !== undefined) {
+                html += '<p><strong>Next day items count:</strong> <span style="color: ' + (debug.next_run_items_count > 0 ? '#28a745' : '#e74c3c') + '; font-weight: bold;">' + debug.next_run_items_count + '</span></p>';
+
+                if (debug.next_run_items && debug.next_run_items.length > 0) {
+                    html += '<p><strong>Next day breads:</strong></p>';
+                    html += '<ul style="margin: 0.5rem 0; padding-left: 2rem;">';
+                    for (const item of debug.next_run_items) {
+                        html += '<li>' + item.recipe + ' × ' + item.quantity + '</li>';
+                    }
+                    html += '</ul>';
+                }
+            }
+
+            if (debug.reason) {
+                html += '<p><strong>Reason:</strong> <span style="color: #e74c3c;">' + debug.reason + '</span></p>';
+            }
+
+            if (debug.starters_checked) {
+                html += '<p><strong>Starters checked:</strong> ' + debug.starters_checked.join(', ') + '</p>';
+            }
+
             html += '<p><strong>All production dates:</strong> ' + debug.all_production_dates.join(', ') + '</p>';
             html += '</div>';
         } else {
