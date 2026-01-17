@@ -527,19 +527,29 @@ class MEPCalculator:
                                     starters[dri.ingredient.name]['total_grams'] += starter_amount
 
         # Now calculate Emmy needed for these starters
+        emmy_calc_debug = []
         for starter_name, data in starters.items():
             # Get the starter recipe to see if it uses Emmy
             starter_recipe = Recipe.query.filter_by(name=starter_name, recipe_type='starter').first()
+
+            calc_info = {'starter': starter_name, 'grams': data['total_grams']}
+
             if starter_recipe:
+                calc_info['recipe_found'] = True
+
                 # Calculate total percentage for this starter to find flour weight
                 starter_total_percentage = sum(ri.percentage for ri in starter_recipe.ingredients if ri.is_percentage)
+                calc_info['total_percentage'] = starter_total_percentage
 
                 if starter_total_percentage > 0:
                     # Work backwards from total weight to flour weight
                     starter_flour_weight = data['total_grams'] / (starter_total_percentage / 100.0)
+                    calc_info['flour_weight'] = starter_flour_weight
 
+                    emmy_found = False
                     for ri in starter_recipe.ingredients:
                         if 'Emmy' in ri.ingredient.name:
+                            emmy_found = True
                             # Calculate Emmy based on flour weight
                             if ri.is_percentage:
                                 emmy_amount = (ri.percentage / 100.0) * starter_flour_weight
@@ -548,7 +558,18 @@ class MEPCalculator:
                                     emmy_amount = ri.amount_grams * (data['total_grams'] / starter_recipe.base_batch_weight)
                                 else:
                                     emmy_amount = 0
+
+                            calc_info['emmy_found'] = True
+                            calc_info['emmy_percentage'] = ri.percentage if ri.is_percentage else None
+                            calc_info['emmy_amount'] = emmy_amount
                             total_emmy_needed += emmy_amount
+
+                    if not emmy_found:
+                        calc_info['emmy_found'] = False
+            else:
+                calc_info['recipe_found'] = False
+
+            emmy_calc_debug.append(calc_info)
 
         if total_emmy_needed == 0:
             return {
@@ -558,7 +579,8 @@ class MEPCalculator:
                     'reason': 'total_emmy_needed is 0',
                     'starters_checked': list(starters.keys()),
                     'starters_detail': {name: {'grams': data['total_grams']} for name, data in starters.items()},
-                    'total_emmy_needed': total_emmy_needed
+                    'total_emmy_needed': total_emmy_needed,
+                    'emmy_calc_debug': emmy_calc_debug
                 }
             }
 

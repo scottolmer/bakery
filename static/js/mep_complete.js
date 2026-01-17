@@ -218,6 +218,40 @@ function displayMorningEmmyFeed(morningEmmyData) {
                 html += '<p><strong>Total Emmy needed:</strong> ' + debug.total_emmy_needed.toFixed(1) + 'g</p>';
             }
 
+            if (debug.emmy_calc_debug) {
+                html += '<p><strong>Emmy calculation details:</strong></p>';
+                html += '<ul style="margin: 0.5rem 0; padding-left: 2rem; font-size: 0.9rem;">';
+                for (const calc of debug.emmy_calc_debug) {
+                    html += '<li>' + calc.starter + ' (' + calc.grams.toFixed(1) + 'g):';
+                    if (calc.recipe_found) {
+                        html += ' Recipe found ✓';
+                        if (calc.total_percentage !== undefined) {
+                            html += ', Total %: ' + calc.total_percentage;
+                        }
+                        if (calc.flour_weight !== undefined) {
+                            html += ', Flour: ' + calc.flour_weight.toFixed(1) + 'g';
+                        }
+                        if (calc.emmy_found !== undefined) {
+                            if (calc.emmy_found) {
+                                html += ', Emmy found ✓';
+                                if (calc.emmy_percentage) {
+                                    html += ' (' + calc.emmy_percentage + '%)';
+                                }
+                                if (calc.emmy_amount !== undefined) {
+                                    html += ', Calculated: ' + calc.emmy_amount.toFixed(1) + 'g';
+                                }
+                            } else {
+                                html += ', <span style="color: #e74c3c;">Emmy NOT found in recipe</span>';
+                            }
+                        }
+                    } else {
+                        html += ' <span style="color: #e74c3c;">Recipe NOT found</span>';
+                    }
+                    html += '</li>';
+                }
+                html += '</ul>';
+            }
+
             html += '<p><strong>All production dates:</strong> ' + debug.all_production_dates.join(', ') + '</p>';
             html += '</div>';
         } else {
