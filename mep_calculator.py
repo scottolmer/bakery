@@ -445,26 +445,15 @@ class MEPCalculator:
 
         # If no delivery date provided, can't calculate next day's Emmy
         if not self.delivery_date:
-            return {'emmy_feed': None, 'debug': 'No delivery date provided'}
+            return {'emmy_feed': None}
 
         # Look up NEXT day's production run (delivery_date + 1)
         next_delivery_date = self.delivery_date + timedelta(days=1)
         next_production_run = ProductionRun.query.filter_by(date=next_delivery_date).first()
 
-        # Debug: Check what we found
-        all_runs = ProductionRun.query.all()
-        debug_info = {
-            'looking_for_date': next_delivery_date.isoformat(),
-            'current_delivery_date': self.delivery_date.isoformat(),
-            'found_run': next_production_run is not None,
-            'all_production_dates': [run.date.isoformat() for run in all_runs],
-            'next_run_items_count': len(next_production_run.items) if next_production_run else 0,
-            'next_run_items': [{'recipe': item.recipe.name, 'quantity': item.quantity} for item in next_production_run.items] if next_production_run else []
-        }
-
         if not next_production_run or not next_production_run.items:
             # No production tomorrow, so no Emmy feed needed
-            return {'emmy_feed': None, 'debug': debug_info}
+            return {'emmy_feed': None}
 
         # Calculate starters needed for NEXT day's production
         next_day_items = [{'recipe_id': item.recipe_id, 'quantity': item.quantity}
@@ -527,38 +516,19 @@ class MEPCalculator:
                                     starters[dri.ingredient.name]['total_grams'] += starter_amount
 
         # Now calculate Emmy needed for these starters
-        emmy_calc_debug = []
-
-        # Debug: Get all starter recipes in database
-        all_starter_recipes = Recipe.query.filter_by(recipe_type='starter').all()
-        available_starters = [r.name for r in all_starter_recipes]
-
         for starter_name, data in starters.items():
             # Get the starter recipe to see if it uses Emmy
             starter_recipe = Recipe.query.filter_by(name=starter_name, recipe_type='starter').first()
-
-            calc_info = {
-                'starter': starter_name,
-                'grams': data['total_grams'],
-                'starter_name_repr': repr(starter_name)  # Show exact string with quotes
-            }
-
             if starter_recipe:
-                calc_info['recipe_found'] = True
-
                 # Calculate total percentage for this starter to find flour weight
                 starter_total_percentage = sum(ri.percentage for ri in starter_recipe.ingredients if ri.is_percentage)
-                calc_info['total_percentage'] = starter_total_percentage
 
                 if starter_total_percentage > 0:
                     # Work backwards from total weight to flour weight
                     starter_flour_weight = data['total_grams'] / (starter_total_percentage / 100.0)
-                    calc_info['flour_weight'] = starter_flour_weight
 
-                    emmy_found = False
                     for ri in starter_recipe.ingredients:
                         if 'Emmy' in ri.ingredient.name:
-                            emmy_found = True
                             # Calculate Emmy based on flour weight
                             if ri.is_percentage:
                                 emmy_amount = (ri.percentage / 100.0) * starter_flour_weight
@@ -567,44 +537,15 @@ class MEPCalculator:
                                     emmy_amount = ri.amount_grams * (data['total_grams'] / starter_recipe.base_batch_weight)
                                 else:
                                     emmy_amount = 0
-
-                            calc_info['emmy_found'] = True
-                            calc_info['emmy_percentage'] = ri.percentage if ri.is_percentage else None
-                            calc_info['emmy_amount'] = emmy_amount
                             total_emmy_needed += emmy_amount
 
-                    if not emmy_found:
-                        calc_info['emmy_found'] = False
-            else:
-                calc_info['recipe_found'] = False
-
-            emmy_calc_debug.append(calc_info)
-
         if total_emmy_needed == 0:
-            return {
-                'emmy_feed': None,
-                'debug': {
-                    **debug_info,
-                    'reason': 'total_emmy_needed is 0',
-                    'starters_checked': list(starters.keys()),
-                    'starters_detail': {name: {'grams': data['total_grams']} for name, data in starters.items()},
-                    'total_emmy_needed': total_emmy_needed,
-                    'emmy_calc_debug': emmy_calc_debug,
-                    'available_starter_recipes': available_starters
-                }
-            }
+            return {'emmy_feed': None}
 
         # Get Emmy recipe to calculate morning feed ingredients
         emmy_recipe = Recipe.query.filter_by(name='Emmy(starter)', recipe_type='starter').first()
         if not emmy_recipe:
-            return {
-                'emmy_feed': None,
-                'debug': {
-                    **debug_info,
-                    'reason': 'Emmy(starter) recipe not found',
-                    'total_emmy_needed': total_emmy_needed
-                }
-            }
+            return {'emmy_feed': None}
 
         # Calculate ingredients for morning Emmy feed
         # Need to work backwards from total weight to flour weight
@@ -615,14 +556,7 @@ class MEPCalculator:
         total_percentage = sum(ri.percentage for ri in emmy_recipe.ingredients if ri.is_percentage)
 
         if total_percentage == 0:
-            return {
-                'emmy_feed': None,
-                'debug': {
-                    **debug_info,
-                    'reason': 'Emmy recipe has no percentage-based ingredients',
-                    'total_emmy_needed': total_emmy_needed
-                }
-            }
+            return {'emmy_feed': None}
 
         # Calculate flour weight (the base)
         flour_weight = total_emmy_needed / (total_percentage / 100.0)
