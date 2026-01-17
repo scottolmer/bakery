@@ -523,12 +523,26 @@ class MEPCalculator:
                             total_emmy_needed += emmy_amount
 
         if total_emmy_needed == 0:
-            return {'emmy_feed': None}
+            return {
+                'emmy_feed': None,
+                'debug': {
+                    **debug_info,
+                    'reason': 'total_emmy_needed is 0',
+                    'starters_checked': list(starters.keys())
+                }
+            }
 
         # Get Emmy recipe to calculate morning feed ingredients
         emmy_recipe = Recipe.query.filter_by(name='Emmy(starter)', recipe_type='starter').first()
         if not emmy_recipe:
-            return {'emmy_feed': None}
+            return {
+                'emmy_feed': None,
+                'debug': {
+                    **debug_info,
+                    'reason': 'Emmy(starter) recipe not found',
+                    'total_emmy_needed': total_emmy_needed
+                }
+            }
 
         # Calculate ingredients for morning Emmy feed
         # Need to work backwards from total weight to flour weight
@@ -539,7 +553,14 @@ class MEPCalculator:
         total_percentage = sum(ri.percentage for ri in emmy_recipe.ingredients if ri.is_percentage)
 
         if total_percentage == 0:
-            return {'emmy_feed': None}
+            return {
+                'emmy_feed': None,
+                'debug': {
+                    **debug_info,
+                    'reason': 'Emmy recipe has no percentage-based ingredients',
+                    'total_emmy_needed': total_emmy_needed
+                }
+            }
 
         # Calculate flour weight (the base)
         flour_weight = total_emmy_needed / (total_percentage / 100.0)
