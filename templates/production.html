@@ -15,7 +15,12 @@
     <div class="card-body">
         <div class="form-group">
             <label for="production-date">Delivery Date (when breads will be delivered):</label>
-            <input type="date" id="production-date" class="form-control">
+            <div style="display: flex; gap: 1rem; align-items: end;">
+                <input type="date" id="production-date" class="form-control" style="flex: 1;">
+                <button onclick="loadOrdersForDate()" class="btn btn-secondary" style="white-space: nowrap;">
+                    📋 Load Orders
+                </button>
+            </div>
             <small style="color: #7f8c8d; margin-top: 0.5rem; display: block;">
                 This is the date when the bread will be baked and delivered. Mix will happen the day before.
             </small>

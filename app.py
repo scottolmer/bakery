@@ -1193,6 +1193,45 @@ def create_production_from_orders():
     })
 
 
+@app.route('/api/orders/for-date/<date_str>', methods=['GET'])
+def get_orders_for_production(date_str):
+    """
+    Get orders for a specific date, grouped by recipe for loading into production
+    Returns: List of recipes with aggregated quantities
+    """
+    try:
+        target_date = datetime.strptime(date_str, '%Y-%m-%d').date()
+    except ValueError:
+        return jsonify({'error': 'Invalid date format. Use YYYY-MM-DD'}), 400
+
+    # Get all orders for this date
+    orders = Order.query.filter_by(order_date=target_date).all()
+
+    if not orders:
+        return jsonify({'orders': [], 'message': 'No orders found for this date'})
+
+    # Aggregate by recipe
+    aggregated = {}
+    for order in orders:
+        if order.recipe_id not in aggregated:
+            aggregated[order.recipe_id] = {
+                'recipe_id': order.recipe_id,
+                'recipe_name': order.recipe.name,
+                'quantity': 0,
+                'customers': []
+            }
+        aggregated[order.recipe_id]['quantity'] += order.quantity
+        aggregated[order.recipe_id]['customers'].append({
+            'name': order.customer.name,
+            'quantity': order.quantity
+        })
+
+    return jsonify({
+        'orders': list(aggregated.values()),
+        'total_items': len(aggregated)
+    })
+
+
 # =============================================================================
 # Mixing Log API Endpoints
 # =============================================================================

@@ -51,6 +51,67 @@ async function loadCustomers() {
     }
 }
 
+async function loadOrdersForDate() {
+    const dateInput = document.getElementById('production-date');
+    const productionDate = dateInput.value;
+
+    if (!productionDate) {
+        showError('Please select a production date first');
+        return;
+    }
+
+    try {
+        const response = await fetch(`/api/orders/for-date/${productionDate}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+            showError(data.error || 'Failed to load orders');
+            return;
+        }
+
+        if (data.orders.length === 0) {
+            showError(data.message || 'No orders found for this date');
+            return;
+        }
+
+        // Add each order to production items (without customer_id since orders are aggregated)
+        let itemsAdded = 0;
+        for (const order of data.orders) {
+            const recipe = recipes.find(r => r.id === order.recipe_id);
+            if (!recipe) continue;
+
+            // Check if recipe already exists in production items (house use)
+            const existingIndex = productionItems.findIndex(item =>
+                item.recipe_id === order.recipe_id && !item.customer_id
+            );
+
+            if (existingIndex >= 0) {
+                // Update quantity
+                productionItems[existingIndex].quantity += order.quantity;
+            } else {
+                // Add new item
+                productionItems.push({
+                    recipe_id: order.recipe_id,
+                    recipe_name: order.recipe_name,
+                    customer_id: null,
+                    customer_name: `Orders (${order.customers.length} customers)`,
+                    quantity: order.quantity,
+                    loaf_weight: recipe.loaf_weight,
+                    total_weight: order.quantity * recipe.loaf_weight
+                });
+            }
+            itemsAdded++;
+        }
+
+        updateItemsDisplay();
+        showSuccess(`Loaded ${itemsAdded} bread items from orders for ${productionDate}`);
+
+    } catch (error) {
+        console.error('Error loading orders:', error);
+        showError('Failed to load orders');
+    }
+}
+
 function addItem() {
     const customerId = document.getElementById('customer-select').value ? parseInt(document.getElementById('customer-select').value) : null;
     const recipeId = parseInt(document.getElementById('recipe-select').value);
