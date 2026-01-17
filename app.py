@@ -372,6 +372,75 @@ def import_recipes():
 
 
 # =============================================================================
+# Helper Functions
+# =============================================================================
+
+def sync_production_runs_for_dates(dates):
+    """
+    Automatically sync production runs from orders for the given dates.
+    This eliminates the need to manually click "Create Production Runs".
+
+    Args:
+        dates: Single date object or list of date objects
+    """
+    if not isinstance(dates, list):
+        dates = [dates]
+
+    for target_date in dates:
+        # Get all orders for this date
+        orders = Order.query.filter_by(order_date=target_date).all()
+
+        # Aggregate orders by recipe
+        recipe_quantities = {}
+        for order in orders:
+            if order.recipe_id not in recipe_quantities:
+                recipe_quantities[order.recipe_id] = 0
+            recipe_quantities[order.recipe_id] += order.quantity
+
+        # Check if production run exists
+        existing_run = ProductionRun.query.filter_by(date=target_date).first()
+
+        if not recipe_quantities:
+            # No orders for this date - delete production run if it exists
+            if existing_run:
+                # Delete all production items first (cascade should handle this, but being explicit)
+                for item in existing_run.items:
+                    db.session.delete(item)
+                db.session.delete(existing_run)
+        else:
+            # Orders exist - create or update production run
+            if existing_run:
+                # Delete existing items and recreate
+                for item in existing_run.items:
+                    db.session.delete(item)
+                production_run = existing_run
+            else:
+                # Create new production run
+                production_run = ProductionRun(
+                    date=target_date,
+                    batch_id=target_date.strftime('%m%d%y'),  # Auto-generate batch ID (MMDDYY)
+                    created_by='auto_sync',
+                    notes='Auto-synced from customer orders'
+                )
+                db.session.add(production_run)
+                db.session.flush()  # Get the production_run.id
+
+            # Add production items
+            for recipe_id, quantity in recipe_quantities.items():
+                recipe = Recipe.query.get(recipe_id)
+                if recipe:
+                    production_item = ProductionItem(
+                        production_run_id=production_run.id,
+                        recipe_id=recipe_id,
+                        quantity=quantity,
+                        batch_weight=quantity * recipe.loaf_weight
+                    )
+                    db.session.add(production_item)
+
+    db.session.commit()
+
+
+# =============================================================================
 # API Routes
 # =============================================================================
 
@@ -1045,13 +1114,17 @@ def create_bulk_orders():
 
     created_count = 0
     updated_count = 0
+    affected_dates = set()
 
     for order_data in orders_data:
+        order_date = datetime.strptime(order_data['order_date'], '%Y-%m-%d').date()
+        affected_dates.add(order_date)
+
         # Check if order already exists for this customer/recipe/date
         existing_order = Order.query.filter_by(
             customer_id=order_data['customer_id'],
             recipe_id=order_data['recipe_id'],
-            order_date=datetime.strptime(order_data['order_date'], '%Y-%m-%d').date()
+            order_date=order_date
         ).first()
 
         if existing_order:
@@ -1063,14 +1136,17 @@ def create_bulk_orders():
             order = Order(
                 customer_id=order_data['customer_id'],
                 recipe_id=order_data['recipe_id'],
-                order_date=datetime.strptime(order_data['order_date'], '%Y-%m-%d').date(),
+                order_date=order_date,
                 quantity=order_data['quantity'],
-                day_of_week=datetime.strptime(order_data['order_date'], '%Y-%m-%d').strftime('%A')
+                day_of_week=order_date.strftime('%A')
             )
             db.session.add(order)
             created_count += 1
 
     db.session.commit()
+
+    # Auto-sync production runs for all affected dates
+    sync_production_runs_for_dates(list(affected_dates))
 
     return jsonify({
         'success': True,
@@ -1129,6 +1205,9 @@ def create_order():
     db.session.add(order)
     db.session.commit()
 
+    # Auto-sync production runs for this date
+    sync_production_runs_for_dates(order.order_date)
+
     return jsonify({
         'success': True,
         'order_id': order.id
@@ -1139,8 +1218,12 @@ def create_order():
 def delete_order(order_id):
     """Delete an order"""
     order = Order.query.get_or_404(order_id)
+    order_date = order.order_date  # Save before deletion
     db.session.delete(order)
     db.session.commit()
+
+    # Auto-sync production runs for this date
+    sync_production_runs_for_dates(order_date)
 
     return jsonify({'success': True})
 
@@ -1160,10 +1243,16 @@ def delete_week_orders():
         Order.order_date <= end_date
     ).all()
 
+    # Collect affected dates before deletion
+    affected_dates = set(order.order_date for order in orders)
+
     for order in orders:
         db.session.delete(order)
 
     db.session.commit()
+
+    # Auto-sync production runs for all affected dates
+    sync_production_runs_for_dates(list(affected_dates))
 
     return jsonify({'success': True, 'deleted': len(orders)})
 

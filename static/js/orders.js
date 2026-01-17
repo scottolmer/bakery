@@ -289,43 +289,8 @@ function displayProductionSummary(aggregated) {
     });
 }
 
-async function createProductionRuns() {
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
-
-    if (!startDate || !endDate) {
-        alert('Please select start and end dates');
-        return;
-    }
-
-    if (!confirm('This will create/update production runs from your orders. Continue?')) {
-        return;
-    }
-
-    try {
-        const response = await fetch('/api/orders/create-production', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                start_date: startDate,
-                end_date: endDate
-            })
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            alert(`Production runs created successfully!\n\nYou can now view MEP sheets in the Complete MEP page.`);
-        } else {
-            alert('Failed to create production runs');
-        }
-    } catch (error) {
-        console.error('Error creating production runs:', error);
-        alert('Failed to create production runs');
-    }
-}
+// createProductionRuns function removed - production runs are now automatically
+// synced whenever orders are created, updated, or deleted
 
 function showMessage(message, type) {
     // Simple message display - could be enhanced with a toast notification
