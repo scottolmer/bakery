@@ -205,6 +205,19 @@ function displayMorningEmmyFeed(morningEmmyData) {
                 html += '<p><strong>Starters checked:</strong> ' + debug.starters_checked.join(', ') + '</p>';
             }
 
+            if (debug.starters_detail) {
+                html += '<p><strong>Starters detail:</strong></p>';
+                html += '<ul style="margin: 0.5rem 0; padding-left: 2rem;">';
+                for (const [name, detail] of Object.entries(debug.starters_detail)) {
+                    html += '<li>' + name + ': ' + detail.grams.toFixed(1) + 'g</li>';
+                }
+                html += '</ul>';
+            }
+
+            if (debug.total_emmy_needed !== undefined) {
+                html += '<p><strong>Total Emmy needed:</strong> ' + debug.total_emmy_needed.toFixed(1) + 'g</p>';
+            }
+
             html += '<p><strong>All production dates:</strong> ' + debug.all_production_dates.join(', ') + '</p>';
             html += '</div>';
         } else {

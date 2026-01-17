@@ -556,7 +556,9 @@ class MEPCalculator:
                 'debug': {
                     **debug_info,
                     'reason': 'total_emmy_needed is 0',
-                    'starters_checked': list(starters.keys())
+                    'starters_checked': list(starters.keys()),
+                    'starters_detail': {name: {'grams': data['total_grams']} for name, data in starters.items()},
+                    'total_emmy_needed': total_emmy_needed
                 }
             }
 
