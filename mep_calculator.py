@@ -457,7 +457,9 @@ class MEPCalculator:
             'looking_for_date': next_delivery_date.isoformat(),
             'current_delivery_date': self.delivery_date.isoformat(),
             'found_run': next_production_run is not None,
-            'all_production_dates': [run.date.isoformat() for run in all_runs]
+            'all_production_dates': [run.date.isoformat() for run in all_runs],
+            'next_run_items_count': len(next_production_run.items) if next_production_run else 0,
+            'next_run_items': [{'recipe': item.recipe.name, 'quantity': item.quantity} for item in next_production_run.items] if next_production_run else []
         }
 
         if not next_production_run or not next_production_run.items:
