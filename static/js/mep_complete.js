@@ -218,11 +218,19 @@ function displayMorningEmmyFeed(morningEmmyData) {
                 html += '<p><strong>Total Emmy needed:</strong> ' + debug.total_emmy_needed.toFixed(1) + 'g</p>';
             }
 
+            if (debug.available_starter_recipes) {
+                html += '<p><strong>Available starter recipes in database:</strong> ' + debug.available_starter_recipes.join(', ') + '</p>';
+            }
+
             if (debug.emmy_calc_debug) {
                 html += '<p><strong>Emmy calculation details:</strong></p>';
                 html += '<ul style="margin: 0.5rem 0; padding-left: 2rem; font-size: 0.9rem;">';
                 for (const calc of debug.emmy_calc_debug) {
-                    html += '<li>' + calc.starter + ' (' + calc.grams.toFixed(1) + 'g):';
+                    html += '<li>' + calc.starter;
+                    if (calc.starter_name_repr) {
+                        html += ' <span style="color: #999; font-size: 0.85rem;">(' + calc.starter_name_repr + ')</span>';
+                    }
+                    html += ' (' + calc.grams.toFixed(1) + 'g):';
                     if (calc.recipe_found) {
                         html += ' Recipe found ✓';
                         if (calc.total_percentage !== undefined) {

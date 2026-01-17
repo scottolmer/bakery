@@ -528,11 +528,20 @@ class MEPCalculator:
 
         # Now calculate Emmy needed for these starters
         emmy_calc_debug = []
+
+        # Debug: Get all starter recipes in database
+        all_starter_recipes = Recipe.query.filter_by(recipe_type='starter').all()
+        available_starters = [r.name for r in all_starter_recipes]
+
         for starter_name, data in starters.items():
             # Get the starter recipe to see if it uses Emmy
             starter_recipe = Recipe.query.filter_by(name=starter_name, recipe_type='starter').first()
 
-            calc_info = {'starter': starter_name, 'grams': data['total_grams']}
+            calc_info = {
+                'starter': starter_name,
+                'grams': data['total_grams'],
+                'starter_name_repr': repr(starter_name)  # Show exact string with quotes
+            }
 
             if starter_recipe:
                 calc_info['recipe_found'] = True
@@ -580,7 +589,8 @@ class MEPCalculator:
                     'starters_checked': list(starters.keys()),
                     'starters_detail': {name: {'grams': data['total_grams']} for name, data in starters.items()},
                     'total_emmy_needed': total_emmy_needed,
-                    'emmy_calc_debug': emmy_calc_debug
+                    'emmy_calc_debug': emmy_calc_debug,
+                    'available_starter_recipes': available_starters
                 }
             }
 
