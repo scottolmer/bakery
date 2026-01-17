@@ -19,6 +19,95 @@ CORS(app)
 db.init_app(app)
 
 
+# Auto-import recipes on startup if they don't exist
+def auto_import_recipes():
+    """Import recipes from Excel if database is empty"""
+    with app.app_context():
+        try:
+            # Check if any starter recipes exist
+            starter_count = Recipe.query.filter_by(recipe_type='starter').count()
+            if starter_count == 0:
+                print("No starter recipes found. Auto-importing from Excel...")
+                import openpyxl
+
+                # Run the import logic
+                wb = openpyxl.load_workbook(Config.BREAD_FORMULAS_FILE, data_only=True)
+
+                # Import starters
+                for sheet_name in ['Levain', 'Emmy(starter)', 'Poolish', 'Biga', 'Itl Levain']:
+                    if sheet_name not in wb.sheetnames:
+                        continue
+
+                    ws = wb[sheet_name]
+                    recipe_name = sheet_name
+
+                    # Check if recipe already exists
+                    existing = Recipe.query.filter_by(name=recipe_name).first()
+                    if existing:
+                        continue
+
+                    # Create recipe
+                    recipe = Recipe(
+                        name=recipe_name,
+                        recipe_type='starter',
+                        base_batch_weight=0,
+                        loaf_weight=0
+                    )
+                    db.session.add(recipe)
+                    db.session.flush()
+
+                    # Parse ingredients from rows 5-8 (typical starter format)
+                    for row_idx in range(5, 9):
+                        percentage_cell = ws.cell(row=row_idx, column=2)  # Column B
+                        ingredient_cell = ws.cell(row=row_idx, column=3)  # Column C
+
+                        if not percentage_cell.value or not ingredient_cell.value:
+                            continue
+
+                        try:
+                            percentage = float(percentage_cell.value)
+                        except (ValueError, TypeError):
+                            continue
+
+                        ingredient_name = str(ingredient_cell.value).strip()
+
+                        # Find or create ingredient
+                        ingredient = Ingredient.query.filter_by(name=ingredient_name).first()
+                        if not ingredient:
+                            # Guess category
+                            category = 'other'
+                            if 'flour' in ingredient_name.lower():
+                                category = 'flour'
+                            elif 'water' in ingredient_name.lower():
+                                category = 'water'
+                            elif 'emmy' in ingredient_name.lower() or 'levain' in ingredient_name.lower():
+                                category = 'starter'
+
+                            ingredient = Ingredient(name=ingredient_name, category=category, unit='grams')
+                            db.session.add(ingredient)
+                            db.session.flush()
+
+                        # Add to recipe
+                        recipe_ingredient = RecipeIngredient(
+                            recipe_id=recipe.id,
+                            ingredient_id=ingredient.id,
+                            percentage=percentage,
+                            is_percentage=True
+                        )
+                        db.session.add(recipe_ingredient)
+
+                    print(f"Imported starter recipe: {recipe_name}")
+
+                db.session.commit()
+                print("Auto-import completed successfully!")
+        except Exception as e:
+            print(f"Auto-import failed: {e}")
+            db.session.rollback()
+
+# Run auto-import on startup
+auto_import_recipes()
+
+
 # =============================================================================
 # Database Initialization
 # =============================================================================
