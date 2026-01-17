@@ -445,15 +445,24 @@ class MEPCalculator:
 
         # If no delivery date provided, can't calculate next day's Emmy
         if not self.delivery_date:
-            return {'emmy_feed': None}
+            return {'emmy_feed': None, 'debug': 'No delivery date provided'}
 
         # Look up NEXT day's production run (delivery_date + 1)
         next_delivery_date = self.delivery_date + timedelta(days=1)
         next_production_run = ProductionRun.query.filter_by(date=next_delivery_date).first()
 
+        # Debug: Check what we found
+        all_runs = ProductionRun.query.all()
+        debug_info = {
+            'looking_for_date': next_delivery_date.isoformat(),
+            'current_delivery_date': self.delivery_date.isoformat(),
+            'found_run': next_production_run is not None,
+            'all_production_dates': [run.date.isoformat() for run in all_runs]
+        }
+
         if not next_production_run or not next_production_run.items:
             # No production tomorrow, so no Emmy feed needed
-            return {'emmy_feed': None}
+            return {'emmy_feed': None, 'debug': debug_info}
 
         # Calculate starters needed for NEXT day's production
         next_day_items = [{'recipe_id': item.recipe_id, 'quantity': item.quantity}
