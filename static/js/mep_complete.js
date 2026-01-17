@@ -166,18 +166,29 @@ function displayMixSheet(mixSheet) {
 function displayMorningEmmyFeed(morningEmmyData) {
     const container = document.getElementById('morning-emmy-content');
 
+    // Log what we received for debugging
+    console.log('Morning Emmy Data:', morningEmmyData);
+
     if (!morningEmmyData || !morningEmmyData.emmy_feed) {
         let html = '<p class="placeholder-text">No Emmy feed needed (no production scheduled for tomorrow)</p>';
 
-        // Display debug info if available
+        // ALWAYS show debug section when no Emmy feed
+        html += '<div style="margin-top: 2rem; padding: 1.5rem; background: #fff3cd; border: 2px solid #ffc107; border-radius: 4px;">';
+        html += '<h4 style="margin-top: 0; color: #856404;">🔍 Debug Information</h4>';
+
         if (morningEmmyData && morningEmmyData.debug) {
-            html += '<div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-left: 4px solid #3498db;">';
-            html += '<h4 style="margin-top: 0;">Debug Information:</h4>';
-            html += '<pre style="font-family: monospace; font-size: 0.9rem; margin: 0;">';
-            html += JSON.stringify(morningEmmyData.debug, null, 2);
-            html += '</pre>';
+            const debug = morningEmmyData.debug;
+            html += '<div style="font-family: monospace; font-size: 0.95rem; color: #2c3e50;">';
+            html += '<p><strong>Looking for date:</strong> ' + debug.looking_for_date + '</p>';
+            html += '<p><strong>Current delivery date:</strong> ' + debug.current_delivery_date + '</p>';
+            html += '<p><strong>Found next day run:</strong> ' + debug.found_run + '</p>';
+            html += '<p><strong>All production dates:</strong> ' + debug.all_production_dates.join(', ') + '</p>';
             html += '</div>';
+        } else {
+            html += '<p style="color: #856404;">No debug data available. Data structure: ' + JSON.stringify(morningEmmyData) + '</p>';
         }
+
+        html += '</div>';
 
         container.innerHTML = html;
         return;
