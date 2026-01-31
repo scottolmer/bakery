@@ -608,12 +608,16 @@ def calculate_production():
 @app.route('/api/production/history', methods=['GET'])
 def get_production_history():
     """Get production history with optional date filtering"""
+    from sqlalchemy.orm import joinedload
+
     # Query parameters
     start_date = request.args.get('start_date')
     end_date = request.args.get('end_date')
     recipe_name = request.args.get('recipe_name')
 
-    query = ProductionRun.query
+    query = ProductionRun.query.options(
+        joinedload(ProductionRun.items).joinedload(ProductionItem.recipe)
+    )
 
     if start_date:
         query = query.filter(ProductionRun.date >= datetime.strptime(start_date, '%Y-%m-%d').date())
@@ -1159,11 +1163,16 @@ def create_bulk_orders():
 @app.route('/api/orders', methods=['GET'])
 def get_orders():
     """Get all orders with optional date and customer filtering"""
+    from sqlalchemy.orm import joinedload
+
     start_date = request.args.get('start_date')
     end_date = request.args.get('end_date')
     customer_id = request.args.get('customer_id')
 
-    query = Order.query
+    query = Order.query.options(
+        joinedload(Order.customer),
+        joinedload(Order.recipe)
+    )
 
     if start_date:
         query = query.filter(Order.order_date >= datetime.strptime(start_date, '%Y-%m-%d').date())
@@ -1264,12 +1273,16 @@ def aggregate_orders():
     Input: { "start_date": "2026-01-06", "end_date": "2026-01-12" }
     Output: { "2026-01-06": [{"recipe_id": 1, "recipe_name": "Italian", "total_quantity": 50}, ...], ... }
     """
+    from sqlalchemy.orm import joinedload
+
     data = request.json
     start_date = datetime.strptime(data['start_date'], '%Y-%m-%d').date()
     end_date = datetime.strptime(data['end_date'], '%Y-%m-%d').date()
 
     # Get all orders in date range
-    orders = Order.query.filter(
+    orders = Order.query.options(
+        joinedload(Order.recipe)
+    ).filter(
         Order.order_date >= start_date,
         Order.order_date <= end_date
     ).all()
@@ -1306,12 +1319,16 @@ def create_production_from_orders():
     Input: { "start_date": "2026-01-06", "end_date": "2026-01-12" }
     Output: { "success": true, "production_runs_created": 5 }
     """
+    from sqlalchemy.orm import joinedload
+
     data = request.json
     start_date = datetime.strptime(data['start_date'], '%Y-%m-%d').date()
     end_date = datetime.strptime(data['end_date'], '%Y-%m-%d').date()
 
     # Get aggregated orders
-    orders = Order.query.filter(
+    orders = Order.query.options(
+        joinedload(Order.recipe)
+    ).filter(
         Order.order_date >= start_date,
         Order.order_date <= end_date
     ).all()
@@ -1377,13 +1394,18 @@ def get_orders_for_production(date_str):
     Get orders for a specific date, grouped by recipe for loading into production
     Returns: List of recipes with aggregated quantities
     """
+    from sqlalchemy.orm import joinedload
+
     try:
         target_date = datetime.strptime(date_str, '%Y-%m-%d').date()
     except ValueError:
         return jsonify({'error': 'Invalid date format. Use YYYY-MM-DD'}), 400
 
     # Get all orders for this date
-    orders = Order.query.filter_by(order_date=target_date).all()
+    orders = Order.query.options(
+        joinedload(Order.recipe),
+        joinedload(Order.customer)
+    ).filter_by(order_date=target_date).all()
 
     if not orders:
         return jsonify({'orders': [], 'message': 'No orders found for this date'})
@@ -2062,6 +2084,8 @@ def customer_production_page():
 @app.route('/api/customer-production/<int:customer_id>', methods=['GET'])
 def get_customer_production(customer_id):
     """Get customer production calendar for a date range"""
+    from sqlalchemy.orm import joinedload
+
     start_date_str = request.args.get('start_date')
     end_date_str = request.args.get('end_date')
 
@@ -2072,7 +2096,9 @@ def get_customer_production(customer_id):
     end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
 
     # Get all orders for this customer in the date range
-    orders = Order.query.filter(
+    orders = Order.query.options(
+        joinedload(Order.recipe)
+    ).filter(
         Order.customer_id == customer_id,
         Order.order_date >= start_date,
         Order.order_date <= end_date
@@ -2142,6 +2168,8 @@ def total_production_page():
 @app.route('/api/total-production', methods=['GET'])
 def get_total_production():
     """Get total production calendar aggregated across all customers for a date range"""
+    from sqlalchemy.orm import joinedload
+
     start_date_str = request.args.get('start_date')
     end_date_str = request.args.get('end_date')
 
@@ -2152,7 +2180,9 @@ def get_total_production():
     end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
 
     # Get all orders in the date range (across all customers)
-    orders = Order.query.filter(
+    orders = Order.query.options(
+        joinedload(Order.recipe)
+    ).filter(
         Order.order_date >= start_date,
         Order.order_date <= end_date
     ).all()
